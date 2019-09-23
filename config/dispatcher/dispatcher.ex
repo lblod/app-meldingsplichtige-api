@@ -271,8 +271,19 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://adressenregister/"
   end
 
+  #################################################################
+  # automatic submission
+  #################################################################
+  match "/melding/*path" do
+    Proxy.forward conn, path, "http://submission/melding"
+  end
+
+  #################################################################
+  # catch all
+  #################################################################
   match _ do
     send_resp( conn, 404, "Route not found.  See config/dispatcher.ex" )
   end
+
 
 end
