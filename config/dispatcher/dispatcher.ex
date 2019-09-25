@@ -279,6 +279,16 @@ defmodule Dispatcher do
   end
 
   #################################################################
+  # verify submission
+  #################################################################
+  get "/bestuurseenheid/*path" do
+    Proxy.forward conn, path, "http://verify-submission/bestuurseenheid"
+  end
+
+  get "/inzending/*path" do
+    Proxy.forward conn, path, "http://verify-submission/inzending"
+  end
+  #################################################################
   # catch all
   #################################################################
   match _ do

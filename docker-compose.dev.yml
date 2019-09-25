@@ -18,3 +18,7 @@ services:
     restart: "no"
   file:
     restart: "no"
+  submission:
+    restart: "no"
+  verify-submission:
+    restart: "no"
