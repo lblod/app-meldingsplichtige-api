@@ -23,7 +23,7 @@ services:
     restart: always
     logging: *default-logging
   database:
-    image: semtech/mu-authorization:0.2.0
+    image: semtech/mu-authorization:0.5.0
     environment:
       MU_SPARQL_ENDPOINT: "http://virtuoso:8890/sparql"
     volumes:
@@ -80,3 +80,5 @@ services:
     logging: *default-logging
     labels:
       - "logging=true"
+  submission:
+    image: lblod/automatic-submission-service:0.3.2
