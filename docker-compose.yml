@@ -81,4 +81,4 @@ services:
     labels:
       - "logging=true"
   submission:
-    image: lblod/automatic-submission-service:0.3.2
+    image: lblod/automatic-submission-service:0.4.0
