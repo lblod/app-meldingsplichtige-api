@@ -72,3 +72,11 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  download-url-service:
+    image: lblod/download-url-service:0.1.0
+    volumes:
+      - ./data/files:/share
+    restart: always
+    logging: *default-logging
+    labels:
+      - "logging=true"
