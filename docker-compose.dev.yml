@@ -26,3 +26,5 @@ services:
     restart: "no"
   verify-submission:
     restart: "no"
+  deltanotifier:
+    restart: "no"
