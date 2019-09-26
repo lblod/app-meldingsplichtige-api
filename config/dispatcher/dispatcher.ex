@@ -87,6 +87,22 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/submission-document-statuses/"
   end
 
+  #################################################################
+  # automatic submission
+  #################################################################
+  match "/melding/*path" do
+    Proxy.forward conn, path, "http://submission/melding"
+  end
+
+  #################################################################
+  # verify submission
+  #################################################################
+  get "/verify/bestuurseenheid/*path" do
+    Proxy.forward conn, path, "http://verify-submission/bestuurseenheid"
+  end
+  get "/verify/inzending/*path" do
+    Proxy.forward conn, path, "http://verify-submission/inzending"
+  end
 
   match _ do
     send_resp( conn, 404, "Route not found.  See config/dispatcher.ex" )
