@@ -25,7 +25,7 @@ services:
     restart: always
     logging: *default-logging
   database:
-    image: semtech/mu-authorization:0.2.0
+    image: semtech/mu-authorization:0.5.0
     environment:
       MU_SPARQL_ENDPOINT: "http://virtuoso:8890/sparql"
     volumes:
@@ -78,6 +78,28 @@ services:
     image: semtech/mu-file-service:3.1.0
     volumes:
       - ./data/files:/share
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  download-url-service:
+    image: lblod/download-url-service:0.1.0
+    volumes:
+      - ./data/files:/share
+    restart: always
+    logging: *default-logging
+    labels:
+      - "logging=true"
+  submission:
+    image: lblod/automatic-submission-service:0.4.0
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  verify-submission:
+    image: lblod/verify-submission-service:0.0.2
+    links:
+      - virtuoso:database
     labels:
       - "logging=true"
     restart: always
