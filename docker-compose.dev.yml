@@ -6,6 +6,8 @@ services:
     restart: "no"
   dispatcher:
     restart: "no"
+  deltanotifier:
+    restart: "no"
   database:
     restart: "no"
   virtuoso:
@@ -25,6 +27,4 @@ services:
   automatic-submission:
     restart: "no"
   verify-submission:
-    restart: "no"
-  deltanotifier:
     restart: "no"
