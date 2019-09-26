@@ -42,129 +42,19 @@ defmodule Acl.UserGroups.Config do
                     graph: "http://mu.semte.ch/graphs/public",
                     constraint: %ResourceConstraint{
                       resource_types: [
-                        "http://mu.semte.ch/vocabularies/validation/Execution",
-                        "http://mu.semte.ch/vocabularies/validation/Validation",
-                        "http://mu.semte.ch/vocabularies/validation/Error",
-                        "http://mu.semte.ch/vocabularies/ext/FormNode",
-                        "http://mu.semte.ch/vocabularies/ext/FormInput",
-                        "http://mu.semte.ch/vocabularies/ext/DynamicSubform",
-                        "http://mu.semte.ch/vocabularies/ext/DocumentStatus",
-                        "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
-                        "http://mu.semte.ch/vocabularies/ext/supervision/InzendingType",
-                        "http://mu.semte.ch/vocabularies/ext/supervision/DecisionType",
-                        "http://mu.semte.ch/vocabularies/ext/ChartOfAccount",
-                        "http://mu.semte.ch/vocabularies/ext/supervision/AccountAcceptanceStatus",
-                        "http://mu.semte.ch/vocabularies/ext/supervision/DocumentAuthenticityType",
-                        "http://mu.semte.ch/vocabularies/ext/supervision/RegulationType",
-                        "http://www.w3.org/ns/prov#Location",
+                        "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
                         "http://mu.semte.ch/vocabularies/ext/BestuurseenheidClassificatieCode",
                         "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
                         "http://mu.semte.ch/vocabularies/ext/BestuursorgaanClassificatieCode",
-                        "http://mu.semte.ch/vocabularies/ext/Fractietype",
-                        "http://mu.semte.ch/vocabularies/ext/KandidatenlijstType",
-                        "http://data.vlaanderen.be/ns/mandaat#Kandidatenlijst",
-                        "http://data.vlaanderen.be/ns/mandaat#Mandaat",
-                        "http://mu.semte.ch/vocabularies/ext/BestuursfunctieCode",
-                        "http://mu.semte.ch/vocabularies/ext/MandatarisStatusCode",
-                        "http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode",
-                        "http://mu.semte.ch/vocabularies/ext/GeslachtCode",
-                        "http://data.europa.eu/eli/ontology#LegalResource",
-                        "http://data.vlaanderen.be/ns/mandaat#RechtsgrondAanstelling",
-                        "http://data.vlaanderen.be/ns/mandaat#RechtsgrondBeeindiging",
-                        "http://data.vlaanderen.be/ns/mandaat#RechtstreekseVerkiezing",
-                        "http://data.vlaanderen.be/ns/mandaat#Verkiezingsresultaat",
-                        "http://mu.semte.ch/vocabularies/ext/VerkiezingsresultaatGevolgCode",
-                        "http://www.w3.org/ns/org#Role",
-                        "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
-                        "http://data.lblod.info/vocabularies/leidinggevenden/FunctionarisStatusCode",
-                        "http://data.lblod.info/vocabularies/leidinggevenden/Bestuursfunctie",
-                        "http://persistence.uni-leipzig.org/nlp2rdf/ontologies/rlog#Entry",
-                        "http://persistence.uni-leipzig.org/nlp2rdf/ontologies/rlog#Level",
-                        "http://persistence.uni-leipzig.org/nlp2rdf/ontologies/rlog#StatusCode",
-                        "http://mu.semte.ch/vocabularies/ext/LogSource"
-                      ]
-                    } },
-                  %GraphSpec{
-                    graph: "http://mu.semte.ch/graphs/sessions",
-                    constraint: %ResourceFormatConstraint{
-                      resource_prefix: "http://mu.semte.ch/sessions/"
-                    } } ] },
-      %GroupSpec{
-        name: "public-wf",
-        useage: [:write, :read_for_write],
-        access: %AlwaysAccessible{}, # TODO: Should be only for logged in users
-        graphs: [%GraphSpec{
-                    graph: "http://mu.semte.ch/graphs/public",
-                    constraint: %ResourceConstraint{
-                      resource_types: [
-                        "http://mu.semte.ch/vocabularies/ext/BeleidsdomeinCode",
+                        "http://mu.semte.ch/vocabularies/ext/ChartOfAccount",
+                        "http://mu.semte.ch/vocabularies/ext/AuthenticityType",
+                        "http://mu.semte.ch/vocabularies/ext/TaxType",
+                        "http://mu.semte.ch/vocabularies/ext/SubmissionDocumentStatus",
+                        "http://data.vlaanderen.be/ns/besluit#Zitting",
+                        "http://data.vlaanderen.be/ns/besluit#Agendapunt",
+                        "http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt",
                         "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject"
-                      ]
-                    } } ] },
-      # // ORGANIZATION HAS POSSIBLY DUPLICATE USER DATA
-      %GroupSpec{
-        name: "org",
-        useage: [:read],
-        access: %AccessByQuery{
-          vars: ["session_group"],
-          query: "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
-                  PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
-                  SELECT ?session_group ?session_role WHERE {
-                    <SESSION_ID> ext:sessionGroup/mu:uuid ?session_group.
-                    }" },
-        graphs: [ %GraphSpec{
-                    graph: "http://mu.semte.ch/graphs/organizations/",
-                    constraint: %ResourceConstraint{
-                      resource_types: [
-                        "http://xmlns.com/foaf/0.1/Person",
-                        "http://xmlns.com/foaf/0.1/OnlineAccount",
-                        "http://www.w3.org/ns/adms#Identifier"
-                      ] } } ] },
-
-      # // ORG-MANDATENBEHEER
-      %GroupSpec{
-        name: "o-mdb-r",
-        useage: [:read],
-        access: access_by_role( "LoketLB-mandaatGebruiker" ),
-        graphs: [ %GraphSpec{
-                    graph: "http://mu.semte.ch/graphs/organizations/",
-                    constraint: %ResourceConstraint{
-                      resource_types: [
-                        "http://data.vlaanderen.be/ns/mandaat#Fractie",
-                        "http://data.vlaanderen.be/ns/persoon#Geboorte",
-                        "http://www.w3.org/ns/org#Membership",
-                        "http://data.vlaanderen.be/ns/mandaat#Mandataris",
-                        "http://www.w3.org/ns/person#Person",
-                        "http://www.w3.org/ns/adms#Identifier",
-                        "http://purl.org/dc/terms/PeriodOfTime" ] } } ] },
-      %GroupSpec{
-        name: "o-mdb-wf",
-        useage: [:write, :read_for_write],
-        access: access_by_role( "LoketLB-mandaatGebruiker" ),
-        graphs: [ %GraphSpec{
-                    graph: "http://mu.semte.ch/graphs/organizations/",
-                    constraint: %ResourceConstraint{
-                      resource_types: [
-                        "http://data.vlaanderen.be/ns/mandaat#Fractie",
-                        "http://data.vlaanderen.be/ns/persoon#Geboorte",
-                        "http://www.w3.org/ns/org#Membership",
-                        "http://data.vlaanderen.be/ns/mandaat#Mandataris",
-                        "http://www.w3.org/ns/person#Person",
-                        "http://www.w3.org/ns/adms#Identifier",
-                        "http://purl.org/dc/terms/PeriodOfTime" ] } } ] },
-
-      # // BBCDR
-      %GroupSpec{
-        name: "o-bbcdr-rwf",
-        useage: [:read, :write, :read_for_write],
-        access: access_by_role( "LoketLB-bbcdrGebruiker" ),
-        graphs: [ %GraphSpec{
-                    graph: "http://mu.semte.ch/graphs/organizations/",
-                    constraint: %ResourceConstraint{
-                      resource_types: [
-                        "http://mu.semte.ch/vocabularies/ext/bbcdr/Report"
-                      ] } } ] },
-
+                    ] } } ] },
       # // TOEZICHT
       %GroupSpec{
         name: "o-toez-rwf",
@@ -175,56 +65,9 @@ defmodule Acl.UserGroups.Config do
                     constraint: %ResourceConstraint{
                       resource_types: [
                         "http://rdf.myexperiment.org/ontologies/base/Submission",
-                        "http://lblod.data.gift/vocabularies/besluit/TaxRate",
-                        "http://mu.semte.ch/vocabularies/ext/Vendor"
+                        "http://mu.semte.ch/vocabularies/ext/SubmissionDocument",
+                        "http://lblod.data.gift/vocabularies/besluit/TaxRate"
                       ] } } ] },
-
-      # // LEIDINGGEVENDEN
-      %GroupSpec{
-        name: "o-leidinggevende-rwf",
-        useage: [:read, :write, :read_for_write],
-        access: access_by_role( "LoketLB-leidinggevendenGebruiker" ),
-        graphs: [ %GraphSpec{
-                    graph: "http://mu.semte.ch/graphs/organizations/",
-                    constraint: %ResourceConstraint{
-                      resource_types: [
-                        "http://schema.org/ContactPoint",
-                        "http://www.w3.org/ns/locn#Address",
-                        "http://data.lblod.info/vocabularies/leidinggevenden/Functionaris",
-                        "http://data.vlaanderen.be/ns/persoon#Geboorte",
-                        "http://www.w3.org/ns/person#Person",
-                        "http://www.w3.org/ns/adms#Identifier"
-                      ] } },
-                  %GraphSpec{
-                    graph: "http://mu.semte.ch/graphs/organizations/",
-                    constraint: %ResourceConstraint{
-                      resource_types: [ "http://data.lblod.info/vocabularies/leidinggevenden/Bestuursfunctie" ],
-                      predicates: %NoPredicates{
-                        except: [
-                          "http://schema.org/contactPoint" ] } } } ] },
-
-      # // MESSAGING CENTRE
-      %GroupSpec{
-        name: "o-messaging-rwf",
-        useage: [:read, :write, :read_for_write],
-        access: access_by_role( "LoketLB-berichtenGebruiker" ),
-        graphs: [ %GraphSpec{
-                    graph: "http://mu.semte.ch/graphs/organizations/",
-                    constraint: %ResourceConstraint{
-                      resource_types: [
-                        "http://schema.org/Message",
-                        "http://schema.org/Conversation"
-                      ] } },
-                  %GraphSpec{
-                    graph: "http://mu.semte.ch/graphs/organizations/",
-                    constraint: %ResourceConstraint{
-                      resource_types: [ "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid" ],
-                      predicates: %NoPredicates{
-                        except: [
-                          "http://mu.semte.ch/vocabularies/ext/mailAdresVoorNotificaties",
-                          "http://mu.semte.ch/vocabularies/ext/wilMailOntvangen"
-                        ] }
-                    } } ] },
 
 
 
