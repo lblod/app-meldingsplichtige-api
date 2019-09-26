@@ -1,25 +1,52 @@
 export default [
+  // {
+  //   match: {
+  //     subject: { }
+  //   },
+  //   callback: {
+  //     url: 'http://resource/.mu/delta',
+  //     method: 'POST'
+  //   },
+  //   options: {
+  //     resourceFormat: 'v0.0.1',
+  //     gracePeriod: 250,
+  //     ignoreFromSelf: true
+  //   }
+  // },
   {
     match: {
-      subject: { }
+      predicate: {
+        type: 'uri',
+        value: 'http://www.w3.org/ns/adms#status'
+      },
+      object: {
+        type: 'uri',
+        value: 'http://lblod.data.gift/file-download-statuses/ready-to-be-cached'
+      }
     },
     callback: {
-      url: 'http://resource/.mu/delta',
+      url: 'http://download-url/process-remote-data-objects',
       method: 'POST'
     },
     options: {
       resourceFormat: 'v0.0.1',
-      gracePeriod: 250,
+      gracePeriod: 1000,
       ignoreFromSelf: true
     }
   },
   {
     match: {
-      predicate: 'http://www.w3.org/ns/adms#status',
-      object: 'http://lblod.data.gift/file-download-statuses/ready-to-be-cached'
+      predicate: {
+        type: 'uri',
+        value: 'http://www.w3.org/ns/adms#status'
+      },
+      object: {
+        type: 'uri',
+        value: 'http://lblod.data.gift/file-download-statuses/success'
+      }
     },
     callback: {
-      url: 'http://download-url/process-remote-data-objects',
+      url: 'http://import-submission/delta',
       method: 'POST'
     },
     options: {

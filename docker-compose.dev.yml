@@ -26,5 +26,7 @@ services:
     restart: "no"
   automatic-submission:
     restart: "no"
+  import-submission:
+    restart: "no"
   verify-submission:
     restart: "no"

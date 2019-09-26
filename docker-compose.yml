@@ -75,7 +75,7 @@ services:
     restart: always
     logging: *default-logging
   resource:
-    image: semtech/mu-cl-resources:1.18.0
+    image: semtech/mu-cl-resources:latest
     environment:
       CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
     volumes:
@@ -106,10 +106,18 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  import-submission:
+    image: lblod/import-submission-service
+    volumes:
+      - ./data/files:/share
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   verify-submission:
     image: lblod/verify-submission-service:0.0.2
-    links:
-      - virtuoso:database
+    environment:
+      MU_SPARQL_ENDPOINT: "http://virtuoso:8890/sparql"
     labels:
       - "logging=true"
     restart: always
