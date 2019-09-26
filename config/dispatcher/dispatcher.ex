@@ -25,9 +25,6 @@ defmodule Dispatcher do
   match "/bestuurseenheden/*path" do
     Proxy.forward conn, path, "http://cache/bestuurseenheden/"
   end
-  match "/werkingsgebieden/*path" do
-    Proxy.forward conn, path, "http://cache/werkingsgebieden/"
-  end
   match "/bestuurseenheid-classificatie-codes/*path" do
     Proxy.forward conn, path, "http://cache/bestuurseenheid-classificatie-codes/"
   end
@@ -37,65 +34,16 @@ defmodule Dispatcher do
   match "/bestuursorgaan-classificatie-codes/*path" do
     Proxy.forward conn, path, "http://cache/bestuursorgaan-classificatie-codes/"
   end
-  match "/fracties/*path" do
-    Proxy.forward conn, path, "http://cache/fracties/"
+  match "/agendapunten/*path" do
+    Proxy.forward conn, path, "http://cache/agendapunten/"
   end
-  match "/fractietypes/*path" do
-    Proxy.forward conn, path, "http://cache/fractietypes/"
+  match "/behandelingen-van-agendapunten/*path" do
+    Proxy.forward conn, path, "http://cache/behandelingen-van-agendapunten/"
   end
-  match "/geboortes/*path" do
-    Proxy.forward conn, path, "http://cache/geboortes/"
-  end
-  match "/lijsttypes/*path" do
-    Proxy.forward conn, path, "http://cache/lijsttypes/"
-  end
-  match "/kandidatenlijsten/*path" do
-    Proxy.forward conn, path, "http://cache/kandidatenlijsten/"
-  end
-  match "/lidmaatschappen/*path" do
-    Proxy.forward conn, path, "http://cache/lidmaatschappen/"
-  end
-  match "/mandaten/*path" do
-    Proxy.forward conn, path, "http://cache/mandaten/"
-  end
-  match "/bestuursfunctie-codes/*path" do
-    Proxy.forward conn, path, "http://cache/bestuursfunctie-codes/"
-  end
-  match "/mandatarissen/*path" do
-    Proxy.forward conn, path, "http://cache/mandatarissen/"
-  end
-  match "/mandataris-status-codes/*path" do
-    Proxy.forward conn, path, "http://cache/mandataris-status-codes/"
-  end
-  match "/beleidsdomein-codes/*path" do
-    Proxy.forward conn, path, "http://cache/beleidsdomein-codes/"
-  end
-  match "/personen/*path" do
-    Proxy.forward conn, path, "http://cache/personen/"
-  end
-  match "/geslacht-codes/*path" do
-    Proxy.forward conn, path, "http://cache/geslacht-codes/"
-  end
-  match "/identificatoren/*path" do
-    Proxy.forward conn, path, "http://cache/identificatoren/"
+  match "/zittingen/*path" do
+    Proxy.forward conn, path, "http://cache/zittingen/"
   end
 
-  match "/tijdsintervallen/*path" do
-    Proxy.forward conn, path, "http://cache/tijdsintervallen/"
-  end
-
-  match "/mock/sessions/*path" do
-    Proxy.forward conn, path, "http://mocklogin/sessions/"
-  end
-  match "/sessions/*path" do
-    Proxy.forward conn, path, "http://login/sessions/"
-  end
-  match "/gebruikers/*path" do
-    Proxy.forward conn, path, "http://cache/gebruikers/"
-  end
-  match "/accounts/*path" do
-    Proxy.forward conn, path, "http://cache/accounts/"
-  end
 
   match "/document-statuses/*path" do
     Proxy.forward conn, path, "http://cache/document-statuses/"
@@ -115,162 +63,37 @@ defmodule Dispatcher do
   delete "/files/*path" do
     Proxy.forward conn, path, "http://file/files/"
   end
-  match "/file-addresses/*path" do
-    Proxy.forward conn, path, "http://resource/file-addresses/"
-  end
-  match "/file-address-cache-statuses/*path" do
-    Proxy.forward conn, path, "http://resource/file-address-cache-statuses/"
-  end
-  post "/bbcdr-reports/*path" do
-    Proxy.forward conn, path, "http://create-bbcdr/bbcdr-reports/"
-  end
-  delete "/bbcdr-reports/*path" do
-    Proxy.forward conn, path, "http://resource/bbcdr-reports/"
-  end
-  get "/bbcdr-reports/*path" do
-    Proxy.forward conn, path, "http://resource/bbcdr-reports/"
-  end
-  patch "/bbcdr-reports/*path" do
-    Proxy.forward conn, path, "http://create-bbcdr/bbcdr-reports/"
-  end
-  post "/validation-executions/*path" do
-    Proxy.forward conn, path, "http://validation/executions/"
-  end
-  get "/validation-executions/*path" do
-    Proxy.forward conn, path, "http://resource/validation-executions/"
-  end
-  get "/validations/*path" do
-    Proxy.forward conn, path, "http://resource/validations/"
-  end
-  get "/validation-errors/*path" do
-    Proxy.forward conn, path, "http://resource/validation-errors/"
+
+
+  match "/submissions/*path" do
+    Proxy.forward conn, path, "http://cache/submissions/"
   end
 
-  ###############################################################
-  # dynamic-forms-domain.lisp
-  ###############################################################
-  match "/form-nodes/*path" do
-    Proxy.forward conn, path, "http://cache/form-nodes/"
-  end
-  match "/form-inputs/*path" do
-    Proxy.forward conn, path, "http://cache/form-inputs/"
-  end
-  match "/dynamic-subforms/*path" do
-    Proxy.forward conn, path, "http://cache/dynamic-subforms/"
-  end
-
-  match "/input-states/*path" do
-    Proxy.forward conn, path, "http://cache/input-states/"
-  end
-
-  ###############################################################
-  # master-toezicht-domain.lisp
-  ###############################################################
-
-  get "/toezicht/bestanden/*path" do
-    Proxy.forward conn, path, "http://filehost/"
-  end
-
-  match "/inzendingen/*path" do
-    Proxy.forward conn, path, "http://cache/inzendingen/"
+  match "/submission-documents/*path" do
+    Proxy.forward conn, path, "http://cache/submission-documentss/"
   end
 
   match "/vendors/*path" do
     Proxy.forward conn, path, "http://cache/vendors/"
   end
 
-  match "/inzending-documenten/*path" do
-    Proxy.forward conn, path, "http://cache/inzending-documenten/"
+  match "/autenticity-types/*path" do
+    Proxy.forward conn, path, "http://cache/autenticity-types/"
   end
 
-  match "/aanslagvoeten/*path" do
-    Proxy.forward conn, path, "http://cache/aanslagvoeten/"
+  match "/tax-types/*path" do
+    Proxy.forward conn, path, "http://cache/tax-types/"
   end
 
-  ###############################################################
-  # master-messages-domain.lisp
-  ###############################################################
-  match "/conversaties/*path" do
-    Proxy.forward conn, path, "http://resource/conversaties/"
+  match "/tax-rates/*path" do
+    Proxy.forward conn, path, "http://cache/tax-rates/"
   end
 
-  match "/berichten/*path" do
-    Proxy.forward conn, path, "http://resource/berichten/"
+  match "/chart-of-accounts/*path" do
+    Proxy.forward conn, path, "http://cache/chart-of-accounts/"
   end
 
-  ###############################################################
-  # master-email-domain.lisp
-  ###############################################################
-  match "/mailboxes/*path" do
-    Proxy.forward conn, path, "http://resource/mailboxes/"
-  end
-
-  match "/mail-folders/*path" do
-    Proxy.forward conn, path, "http://resource/mail-folders/"
-  end
-
-  match "/emails/*path" do
-    Proxy.forward conn, path, "http://resource/emails/"
-  end
-
-  match "/email-headers/*path" do
-    Proxy.forward conn, path, "http://resource/email-headers/"
-  end
-
-  ###############################################################
-  # master-log-domain.lisp
-  ###############################################################
-
-  match "/log-entries/*path" do
-    Proxy.forward conn, path, "http://resource/log-entries/"
-  end
-
-  match "/log-levels/*path" do
-    Proxy.forward conn, path, "http://resource/log-levels/"
-  end
-
-  match "/status-codes/*path" do
-    Proxy.forward conn, path, "http://resource/status-codes/"
-  end
-
-  match "/log-sources/*path" do
-    Proxy.forward conn, path, "http://resource/log-sources/"
-  end
-
-  match "/status-codes/*path" do
-    Proxy.forward conn, path, "http://resource/acm-idm-service-log-entries/"
-  end
-
-  #################################################################
-  # slave leidinggevenden
-  #################################################################
-  match "/bestuursfuncties/*path" do
-    Proxy.forward conn, path, "http://cache/bestuursfuncties/"
-  end
-
-  match "/functionarissen/*path" do
-    Proxy.forward conn, path, "http://cache/functionarissen/"
-  end
-
-  match "/contact-punten/*path" do
-    Proxy.forward conn, path, "http://cache/contact-punten/"
-  end
-
-  match "/adressen/*path" do
-    Proxy.forward conn, path, "http://cache/adressen/"
-  end
-
-  match "/functionaris-status-codes/*path" do
-    Proxy.forward conn, path, "http://cache/functionaris-status-codes/"
-  end
-
-  #################################################################
-  # adressenregister
-  #################################################################
-  match "/adressenregister/*path" do
-    Proxy.forward conn, path, "http://adressenregister/"
-  end
-
+  
   match _ do
     send_resp( conn, 404, "Route not found.  See config/dispatcher.ex" )
   end
