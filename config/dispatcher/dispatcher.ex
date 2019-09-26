@@ -91,7 +91,7 @@ defmodule Dispatcher do
   # automatic submission
   #################################################################
   match "/melding/*path" do
-    Proxy.forward conn, path, "http://submission/melding"
+    Proxy.forward conn, path, "http://automatic-submission/melding"
   end
 
   #################################################################
