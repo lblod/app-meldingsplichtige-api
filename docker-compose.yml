@@ -82,7 +82,7 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
-  download-url-service:
+  download-url:
     image: lblod/download-url-service:0.1.0
     volumes:
       - ./data/files:/share
@@ -90,7 +90,7 @@ services:
     logging: *default-logging
     labels:
       - "logging=true"
-  submission:
+  automatic-submission:
     image: lblod/automatic-submission-service:0.4.0
     labels:
       - "logging=true"

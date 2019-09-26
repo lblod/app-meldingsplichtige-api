@@ -14,11 +14,15 @@ services:
     restart: "no"
   migrations:
     restart: "no"
+  cache:
+    restart: "no"
   resource:
     restart: "no"
   file:
     restart: "no"
-  submission:
+  download-url:
+    restart: "no"
+  automatic-submission:
     restart: "no"
   verify-submission:
     restart: "no"
