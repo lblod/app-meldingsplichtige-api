@@ -69,7 +69,7 @@
   :properties `((:label :string ,(s-prefix "skos:prefLabel")))
   :resource-base (s-url "http://lblod.data.gift/concepts/")
   :features `(include-uri)
-  :on-path "document-statuses")
+  :on-path "submission-document-statuses")
 
 (define-resource authenticity-type ()
   :class (s-prefix "ext:AuthenticityType") ;; subclass of skos:Concept

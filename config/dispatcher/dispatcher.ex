@@ -66,13 +66,13 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/submissions/"
   end
   match "/submission-documents/*path" do
-    Proxy.forward conn, path, "http://cache/submission-documentss/"
+    Proxy.forward conn, path, "http://cache/submission-documents/"
   end
   match "/vendors/*path" do
     Proxy.forward conn, path, "http://cache/vendors/"
   end
-  match "/autenticity-types/*path" do
-    Proxy.forward conn, path, "http://cache/autenticity-types/"
+  match "/authenticity-types/*path" do
+    Proxy.forward conn, path, "http://cache/authenticity-types/"
   end
   match "/tax-types/*path" do
     Proxy.forward conn, path, "http://cache/tax-types/"

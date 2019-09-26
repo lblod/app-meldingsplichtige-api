@@ -10,7 +10,6 @@
 (defparameter *max-group-sorted-properties* nil)
 
 (read-domain-file "master-files-domain.lisp")
-(read-domain-file "slave-mandaat-domain.lisp")
+(read-domain-file "master-submissions-domain.lisp")
 (read-domain-file "slave-besluit-domain.lisp")
-(read-domain-file "slave-toezicht-domain.lisp")
 
