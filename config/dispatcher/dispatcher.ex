@@ -45,9 +45,6 @@ defmodule Dispatcher do
   end
 
 
-  match "/document-statuses/*path" do
-    Proxy.forward conn, path, "http://cache/document-statuses/"
-  end
   get "/files/:id/download" do
     Proxy.forward conn, [], "http://file/files/" <> id <> "/download"
   end
@@ -68,32 +65,28 @@ defmodule Dispatcher do
   match "/submissions/*path" do
     Proxy.forward conn, path, "http://cache/submissions/"
   end
-
   match "/submission-documents/*path" do
     Proxy.forward conn, path, "http://cache/submission-documentss/"
   end
-
   match "/vendors/*path" do
     Proxy.forward conn, path, "http://cache/vendors/"
   end
-
   match "/autenticity-types/*path" do
     Proxy.forward conn, path, "http://cache/autenticity-types/"
   end
-
   match "/tax-types/*path" do
     Proxy.forward conn, path, "http://cache/tax-types/"
   end
-
   match "/tax-rates/*path" do
     Proxy.forward conn, path, "http://cache/tax-rates/"
   end
-
   match "/chart-of-accounts/*path" do
     Proxy.forward conn, path, "http://cache/chart-of-accounts/"
   end
+  match "/submission-document-statuses/*path" do
+    Proxy.forward conn, path, "http://cache/submission-document-statuses/"
+  end
 
-  
   match _ do
     send_resp( conn, 404, "Route not found.  See config/dispatcher.ex" )
   end
