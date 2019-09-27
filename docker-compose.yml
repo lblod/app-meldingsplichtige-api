@@ -115,7 +115,7 @@ services:
     restart: always
     logging: *default-logging
   verify-submission:
-    image: lblod/verify-submission-service:0.0.2
+    image: lblod/verify-submission-service:0.1.0
     environment:
       MU_SPARQL_ENDPOINT: "http://virtuoso:8890/sparql"
     labels:
