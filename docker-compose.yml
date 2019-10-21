@@ -75,7 +75,7 @@ services:
     restart: always
     logging: *default-logging
   resource:
-    image: semtech/mu-cl-resources:latest
+    image: semtech/mu-cl-resources:1.19.0
     environment:
       CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
     volumes:
@@ -107,7 +107,7 @@ services:
     restart: always
     logging: *default-logging
   import-submission:
-    image: lblod/import-submission-service:0.0.1
+    image: lblod/import-submission-service:0.0.2
     volumes:
       - ./data/files:/share
     labels:
