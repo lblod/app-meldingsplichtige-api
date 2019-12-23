@@ -16,7 +16,7 @@
   :on-path "submissions")
 
 (define-resource submission-document ()
-  :class (s-prefix "ext:SubmissionDocument") ; Subclass of foaf:Document ; Subclass of besluit:Besluit
+  :class (s-prefix "ext:SubmissionDocument") ; Subclass of foaf:Document ; Subclass of eli:LegalExpression
   :properties `((:publication-date :date ,(s-prefix "eli:date_publication"))
                 (:report-year :gYear ,(s-prefix "elod:financialYear"))
                 (:first-date-in-force :date ,(s-prefix "eli:first_date_entry_in_force"))
@@ -53,10 +53,7 @@
 
 (define-resource tax-rate ()
   :class (s-prefix "lblodBesluit:TaxRate") ; Subclass of schema:UnitPriceSpecification
-  :properties `((:amount :number ,(s-prefix "schema:price"))
-                (:unit :string ,(s-prefix "schema:unitText"))
-                (:base :string ,(s-prefix "lblodBesluit:taxableBase"))
-                (:description :string ,(s-prefix "schema:description")))
+  :properties `((:amount :number ,(s-prefix "schema:price")))
   :resource-base (s-url "http://data.lblod.info/tax-rates/")
   :features `(include-uri)
   :on-path "tax-rates")
