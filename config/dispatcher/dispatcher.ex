@@ -60,6 +60,20 @@ defmodule Dispatcher do
   delete "/files/*path" do
     Proxy.forward conn, path, "http://file/files/"
   end
+  
+
+  match "/mock/sessions/*path" do
+    Proxy.forward conn, path, "http://mocklogin/sessions/"
+  end
+  match "/sessions/*path" do
+    Proxy.forward conn, path, "http://login/sessions/"
+  end
+  match "/gebruikers/*path" do
+    Proxy.forward conn, path, "http://cache/gebruikers/"
+  end
+  match "/accounts/*path" do
+    Proxy.forward conn, path, "http://cache/accounts/"
+  end
 
 
   match "/submissions/*path" do
