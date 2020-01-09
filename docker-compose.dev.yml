@@ -28,5 +28,7 @@ services:
     restart: "no"
   import-submission:
     restart: "no"
+  validate-submission:
+    restart: "no"
   verify-submission:
     restart: "no"

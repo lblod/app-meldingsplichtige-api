@@ -101,19 +101,24 @@ services:
     labels:
       - "logging=true"
   automatic-submission:
-    image: lblod/automatic-submission-service:0.4.3
+    image: lblod/automatic-submission-service:0.4.4
     labels:
       - "logging=true"
     restart: always
     logging: *default-logging
   import-submission:
-    image: lblod/import-submission-service:0.0.3
+    image: lblod/import-submission-service:0.1.0
     volumes:
       - ./data/files:/share
     labels:
       - "logging=true"
     restart: always
     logging: *default-logging
+  validate-submission:
+    image: lblod/validate-submission-service
+    volumes:
+      - ./data/files/submissions:/share/submissions
+      - ./data/semantic-forms:/data/semantic-forms
   verify-submission:
     image: lblod/verify-submission-service:0.1.0
     environment:
