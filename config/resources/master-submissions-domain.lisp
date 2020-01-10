@@ -1,3 +1,11 @@
+(define-resource automatic-submission-task ()
+  :class (s-prefix "melding:AutomaticSubmissionTask")
+  :properties `((:created :datetime ,(s-prefix "dct:created")))
+  :has-one `((submission :via ,(s-prefix "prov:generated")
+                         :as "submission"))
+  :resource-base (s-url "http://data.lblod.info/automatic-submission-tasks/")
+  :on-path "automatic-submission-tasks")
+
 (define-resource submission ()
   :class (s-prefix "meb:Submission")
   :properties `((:href :url ,(s-prefix "prov:atLocation")))
@@ -8,7 +16,10 @@
              (submission-document :via ,(s-prefix "dct:subject")
                                   :as "submitted-resource")
              (submission-document-status :via ,(s-prefix "adms:status")
-                                         :as "status"))
+                                         :as "status")
+             (automatic-submission-task :via ,(s-prefix "prov:generated")
+                                        :inverse t
+                                        :as "task"))
   :has-many `((file :via ,(s-prefix "nfo:FileDataObject")
                     :as "file"))
   :resource-base (s-url "http://data.lblod.info/submissions/")
@@ -88,3 +99,4 @@
   :resource-base (s-url "http://lblod.data.gift/concepts/")
   :features `(include-uri)
   :on-path "chart-of-accounts")
+
