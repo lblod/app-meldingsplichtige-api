@@ -60,7 +60,6 @@ defmodule Dispatcher do
   delete "/files/*path" do
     Proxy.forward conn, path, "http://file/files/"
   end
-  
 
   match "/mock/sessions/*path" do
     Proxy.forward conn, path, "http://mocklogin/sessions/"
@@ -116,6 +115,10 @@ defmodule Dispatcher do
   end
   get "/verify/inzending/*path" do
     Proxy.forward conn, path, "http://verify-submission/inzending"
+  end
+
+  get "/publications/*path" do
+    Proxy.forward conn, path, "http://static-file/"
   end
 
   match _ do

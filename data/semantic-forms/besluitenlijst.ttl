@@ -46,12 +46,7 @@ fields:plannedStartDate a form:Field ;
     form:validations
       [ a form:RequiredConstraint ;
         form:grouping form:Bag ;
-        sh:path ( [ sh:inversePath besluit:heeftBesluitenlijst ] besluit:geplandeStart ) ],
-      [ a sh:PropertyShape ;
-        form:grouping form:MatchEvery ;
-        sh:path ( [ sh:inversePath besluit:heeftBesluitenlijst ] besluit:geplandeStart ) ;
-        sh:dataType xsd:dateTime ;
-        sh:nodeKind sh:Literal ] ;
+        sh:path ( [ sh:inversePath besluit:heeftBesluitenlijst ] besluit:geplandeStart ) ] ;
     form:displayType displayTypes:dateTime ;
     sh:group fields:anIntermediatePropertyGroup .
 
@@ -86,9 +81,6 @@ fields:administrativeBody a form:Field ;
     sh:order 2 ;
     sh:path eli:passed_by ;
     form:validations
-      [ a form:AdminstrativeUnitCodelistConstraint ;
-        form:grouping form:MatchEvery ;
-        sh:path eli:passed_by ],
       [ a form:RequiredConstraint ;
         form:grouping form:Bag ;
         sh:path eli:passed_by ] ;
@@ -103,12 +95,7 @@ fields:meetingDate a form:Field ;
     form:validations
       [ a form:RequiredConstraint ;
         form:grouping form:Bag ;
-        sh:path ( [ sh:inversePath besluit:heeftBesluitenlijst ] prov:startedAtTime ) ],
-      [ a sh:PropertyShape ;
-        form:grouping form:MatchEvery ;
-        sh:path ( [ sh:inversePath besluit:heeftBesluitenlijst ] prov:startedAtTime ) ;
-        sh:dataType xsd:dateTime ;
-        sh:nodeKind sh:Literal ] ;
+        sh:path ( [ sh:inversePath besluit:heeftBesluitenlijst ] prov:startedAtTime ) ] ;
     form:displayType displayTypes:dateTime ;
     sh:group fields:anIntermediatePropertyGroup .
 
@@ -120,44 +107,15 @@ fields:publicationDate a form:Field ;
     form:validations
       [ a form:RequiredConstraint ;
         form:grouping form:Bag ;
-        sh:path eli:date_publication ],
-      [ a sh:PropertyShape ;
-        form:grouping form:MatchSome ;
-        sh:path eli:date_publication ;
-        sh:dataType xsd:date ;
-        sh:nodeKind sh:Literal ] ;
+        sh:path eli:date_publication ] ;
     form:displayType displayTypes:date ;
     form:hasConditionalFieldGroup fields:humanPublicationConditionalGroup ;
     sh:group fields:anIntermediatePropertyGroup .
-
-fields:humanPublicationConditionalGroup a form:ConditionalFieldGroup ;
-    form:conditions
-      [ a form:RequiredConstraint ;
-        form:grouping form:Bag ;
-        sh:path eli:date_publication ] ;
-    form:hasFieldGroup
-      [ a form:FieldGroup ;
-        form:hasField fields:humanPublicationUrl ] .
-
-fields:humanPublicationUrl a form:Field ;
-    mu:uuid "aff7faf3-361a-4723-b3f3-0ad8d431eb95" ;
-    sh:name "Menselijke URL voor publicatie" ;
-    sh:order 5 ;
-    sh:path ext:humanPublicationUrl ;
-    form:validations
-      [ a form:RequiredConstraint ;
-        form:grouping form:Bag ;
-        sh:path ext:humanPublicationUrl ] ;
-    form:displayType displayTypes:defaultInput ;
-    sh:group fields:aDynamicPropertyGroup .
-
+    
 fields:filesAndLinks a form:Field ;
     mu:uuid "fd7422a5-da17-4b20-a4dd-a364b77178bf" ;
     sh:name "Bestanden of URLs" ;
     sh:order 10 ;
-    form:validations [
-        a form:FilesOrLinksConstraint ;
-        form:grouping form:Bag ] ;
     form:displayType displayTypes:filesAndLinks ;
     sh:group fields:anIntermediatePropertyGroup .
 
