@@ -117,6 +117,18 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://verify-submission/inzending"
   end
 
+  #################################################################
+  # validate submission
+  #################################################################
+
+  match "/submission-forms/*path" do
+    Proxy.forward conn, path, "http://validate-submission/submission-forms/"
+  end
+
+  #################################################################
+  # end validate submission
+  #################################################################
+
   get "/publications/*path" do
     Proxy.forward conn, path, "http://static-file/"
   end
