@@ -92,6 +92,8 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+    links:
+      - database:database
   download-url:
     image: lblod/download-url-service:0.3.0
     volumes:
