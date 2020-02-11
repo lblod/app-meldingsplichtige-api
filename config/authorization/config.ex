@@ -67,7 +67,8 @@ defmodule Acl.UserGroups.Config do
                       resource_types: [
                         "http://rdf.myexperiment.org/ontologies/base/Submission",
                         "http://mu.semte.ch/vocabularies/ext/SubmissionDocument",
-                        "http://lblod.data.gift/vocabularies/besluit/TaxRate"
+                        "http://lblod.data.gift/vocabularies/besluit/TaxRate",
+                        "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject"
                       ] } } ] },
 
       %GroupSpec{
