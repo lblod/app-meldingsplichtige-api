@@ -100,6 +100,12 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/submission-document-statuses/"
   end
 
+  # TODO redirect to cache instead of resource
+
+  match "/file-download-statuses/*path" do
+    Proxy.forward conn, path, "http://resource/file-download-statuses/"
+  end
+
   #################################################################
   # automatic submission
   #################################################################

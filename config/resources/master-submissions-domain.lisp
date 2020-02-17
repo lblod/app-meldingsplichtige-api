@@ -69,6 +69,36 @@
   :features `(include-uri)
   :on-path "tax-rates")
 
+(define-resource remote-url ()
+  :class (s-prefix "nfo:RemoteDataObject")
+  :properties `((:address :url ,(s-prefix "nie:url"))
+                (:created :datetime ,(s-prefix "dct:created"))
+                (:modified :datetime ,(s-prefix "dct:modified"))
+                )
+  :has-one `(
+    (file :via ,(s-prefix "nie:dataSource")
+                   :inverse t
+                   :as "replicated-file")
+     (file-download-status :via ,(s-prefix "adms:status")
+                   :as "download-status")
+     (remote-url-creator :via ,(s-prefix "dct:creator")
+                   :as "creator")
+  :resource-base (s-url "http://data.lblod.info/id/remote-urls/")
+  :features `(include-uri)
+  :on-path "remote-urls")
+
+(define-resource file-download-status ()
+  :class (s-prefix "lblodDataGift:FileDownloadStatus") ;;Subclass of skos:Concept
+  :properties `((:label :string ,(s-prefix "skos:prefLabel")))
+  :resource-base (s-url "http://lblod.data.gift/file-download-statuses/")
+  :features `(include-uri)
+  :on-path "file-download-statuses")
+
+(define-resource remote-url-creator ()
+  :class (s-prefix "lblodDataGift:RemoteUrlCreator") ;;Subclass of foaf:Agent
+  :resource-base (s-url "http://lblod.data.gift/services/")
+  :features `(include-uri)
+  :on-path "service-agents")
 
 ;; CODELISTS
 

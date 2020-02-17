@@ -9,6 +9,8 @@ services:
   deltanotifier:
     restart: "no"
   database:
+    environment:
+      LOG_INCOMING_SPARQL_QUERIES: "true"
     restart: "no"
   virtuoso:
     ports:

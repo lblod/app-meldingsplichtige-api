@@ -1,0 +1,21 @@
+
+
+<http://lblod.data.gift/file-download-statuses/bd1017b8-6353-4d52-9e09-37dcc92f05b5>
+    a  <http://www.w3.org/2004/02/skos/core#Concept>;
+    <http://mu.semte.ch/vocabularies/core/uuid> "bd1017b8-6353-4d52-9e09-37dcc92f05b5";
+    skos:prefLabel "Klaar om te verwerken"@nl.
+
+<http://lblod.data.gift/file-download-statuses/d09214f3-c5b2-498b-a0cf-e72ce4484204>
+    a  <http://www.w3.org/2004/02/skos/core#Concept>;
+    <http://mu.semte.ch/vocabularies/core/uuid> "d09214f3-c5b2-498b-a0cf-e72ce4484204";
+    skos:prefLabel "In verwerking"@nl.
+
+<http://lblod.data.gift/file-download-statuses/f3c26a72-1a9e-4f8f-a669-5d804605976b>
+    a  <http://www.w3.org/2004/02/skos/core#Concept>;
+    <http://mu.semte.ch/vocabularies/core/uuid> "f3c26a72-1a9e-4f8f-a669-5d804605976b";
+    skos:prefLabel "Succes"@nl.
+
+<http://lblod.data.gift/file-download-statuses/51aaa791-ba19-4ccb-ad2d-9d5b7f65d351>
+    a  <http://www.w3.org/2004/02/skos/core#Concept>;
+    <http://mu.semte.ch/vocabularies/core/uuid> "51aaa791-ba19-4ccb-ad2d-9d5b7f65d351";
+    skos:prefLabel "Gefaald"@nl .
