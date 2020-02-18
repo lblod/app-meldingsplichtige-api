@@ -1,3 +1,0 @@
-<http://lblod.data.gift/fronted-end-componets/remote-url-creator>
-    a                                           <http://lblod.data.gift/RemoteUrlCreator> ;
-    <http://mu.semte.ch/vocabularies/core/uuid> "d298d62c-cb94-4cbd-a88a-ca3f2bec003a" .

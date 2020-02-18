@@ -56,8 +56,7 @@ defmodule Acl.UserGroups.Config do
               "http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt",
               "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
               "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RemoteDataObject",
-              "http://lblod.data.gift/vocabularies/automatische-melding/AutomaticSubmissionTask",
-              "http://lblod.data.gift/FileDownloadStatus"
+              "http://lblod.data.gift/vocabularies/automatische-melding/AutomaticSubmissionTask"
 
             ]
           }
