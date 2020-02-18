@@ -102,6 +102,10 @@ defmodule Dispatcher do
 
   # TODO redirect to cache instead of resource
 
+  match "/service-agents/*path" do
+    Proxy.forward conn, path, "http://resource/service-agents/"
+  end
+
   match "/file-download-states/*path" do
     Proxy.forward conn, path, "http://resource/file-download-states/"
   end
