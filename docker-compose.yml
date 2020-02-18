@@ -117,7 +117,7 @@ services:
     restart: always
     logging: *default-logging
   validate-submission:
-    image: lblod/validate-submission-service:0.1.0
+    image: lblod/validate-submission-service:0.2.0
     volumes:
       - ./data/files/submissions:/share/submissions
       - ./data/semantic-forms:/data/semantic-forms
