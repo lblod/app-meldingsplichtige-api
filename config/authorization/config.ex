@@ -56,7 +56,7 @@ defmodule Acl.UserGroups.Config do
               "http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt",
               "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
               "http://lblod.data.gift/vocabularies/automatische-melding/AutomaticSubmissionTask",
-              "http://www.w3.org/2004/02/skos/core#Concept"
+              "http://lblod.data.gift/FileDownloadStatus"
             ]
           }
         }]
@@ -73,8 +73,7 @@ defmodule Acl.UserGroups.Config do
               "http://rdf.myexperiment.org/ontologies/base/Submission",
               "http://mu.semte.ch/vocabularies/ext/SubmissionDocument",
               "http://lblod.data.gift/vocabularies/besluit/TaxRate",
-              "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
-              "http://www.w3.org/2004/02/skos/core#Concept"
+              "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject"
             ]
           }
         }]

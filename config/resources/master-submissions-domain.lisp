@@ -87,13 +87,6 @@
   :features `(include-uri)
   :on-path "remote-urls")
 
-(define-resource file-download-status ()
-  :class (s-prefix "lblodDataGift:FileDownloadStatus") ;;Subclass of skos:Concept
-  :properties `((:label :string ,(s-prefix "skos:prefLabel")))
-  :resource-base (s-url "http://lblod.data.gift/file-download-statuses/")
-  :features `(include-uri)
-  :on-path "file-download-statuses")
-
 (define-resource remote-url-creator ()
   :class (s-prefix "lblodDataGift:RemoteUrlCreator") ;;Subclass of foaf:Agent
   :resource-base (s-url "http://lblod.data.gift/services/")
