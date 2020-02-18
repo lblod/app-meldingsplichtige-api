@@ -53,9 +53,19 @@ defmodule Acl.UserGroups.Config do
                         "http://data.vlaanderen.be/ns/besluit#Zitting",
                         "http://data.vlaanderen.be/ns/besluit#Agendapunt",
                         "http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt",
-                        "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
-                        "http://lblod.data.gift/vocabularies/automatische-melding/AutomaticSubmissionTask"
-                    ] } } ] },
+                        "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject"
+                      ] } } ] },
+      %GroupSpec{
+        name: "public-wf",
+        useage: [:write, :read_for_write],
+        access: %AlwaysAccessible{}, # TODO: Should be only for logged in users
+        graphs: [%GraphSpec{
+                    graph: "http://mu.semte.ch/graphs/public",
+                    constraint: %ResourceConstraint{
+                      resource_types: [
+                        "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject"
+                      ]
+                    } } ] },
       # // TOEZICHT
       %GroupSpec{
         name: "o-toez-rwf",
@@ -68,8 +78,7 @@ defmodule Acl.UserGroups.Config do
                         "http://xmlns.com/foaf/0.1/Document",
                         "http://rdf.myexperiment.org/ontologies/base/Submission",
                         "http://mu.semte.ch/vocabularies/ext/SubmissionDocument",
-                        "http://lblod.data.gift/vocabularies/besluit/TaxRate",
-                        "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject"
+                        "http://lblod.data.gift/vocabularies/besluit/TaxRate"
                       ] } } ] },
 
       %GroupSpec{
@@ -79,8 +88,8 @@ defmodule Acl.UserGroups.Config do
         graphs: [ %GraphSpec{
                     graph: "http://mu.semte.ch/graphs/automatic-submission",
                     constraint: %ResourceConstraint{
-                    resource_types: [
-                                     "http://mu.semte.ch/vocabularies/ext/Vendor"
+                      resource_types: [
+                        "http://mu.semte.ch/vocabularies/ext/Vendor"
                       ] } } ] },
 
 
