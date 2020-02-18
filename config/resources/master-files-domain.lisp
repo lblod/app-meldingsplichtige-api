@@ -11,10 +11,3 @@
   :resource-base (s-url "http://data.lblod.info/files/")
   :features `(include-uri)
   :on-path "files")
-
-  (define-resource file-download-status ()
-    :class (s-prefix "lblodDataGift:FileDownloadStatus") ;;Subclass of skos:Concept
-    :properties `((:label :string ,(s-prefix "skos:prefLabel")))
-    :resource-base (s-url "http://lblod.data.gift/file-download-statuses/")
-    :features `(include-uri)
-    :on-path "file-download-states")
