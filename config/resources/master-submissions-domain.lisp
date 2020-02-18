@@ -85,7 +85,7 @@
              )
   :resource-base (s-url "http://data.lblod.info/id/remote-urls/")
   :features `(include-uri)
-  :on-path "remote-urls")
+  :on-path "remote-urlen")
 
 ;; CODELISTS
 
@@ -122,11 +122,11 @@
   :properties `((:label :string ,(s-prefix "skos:prefLabel")))
   :resource-base (s-url "http://lblod.data.gift/file-download-statuses/")
   :features `(include-uri)
-  :on-path "file-download-states")
+  :on-path "file-download-statussen")
 
 (define-resource remote-url-creator ()
   :class (s-prefix "lblodDataGift:RemoteUrlCreator") ;;Subclass of foaf:Agent
   :resource-base (s-url "http://lblod.data.gift/services/")
   :features `(include-uri)
-  :on-path "service-agents")
+  :on-path "service-agenten")
 

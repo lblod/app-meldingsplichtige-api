@@ -102,16 +102,16 @@ defmodule Dispatcher do
 
   # TODO redirect to cache instead of resource remote-urls
 
-  match "/remote-urls/*path" do
-    Proxy.forward conn, path, "http://resource/remote-urls/"
+  match "/remote-urlen/*path" do
+    Proxy.forward conn, path, "http://resource/remote-urlen/"
   end
 
-  match "/service-agents/*path" do
-    Proxy.forward conn, path, "http://resource/service-agents/"
+  match "/service-agenten/*path" do
+    Proxy.forward conn, path, "http://resource/service-agenten/"
   end
 
-  match "/file-download-states/*path" do
-    Proxy.forward conn, path, "http://resource/file-download-states/"
+  match "/file-download-statussen/*path" do
+    Proxy.forward conn, path, "http://resource/file-download-statussen/"
   end
 
   #################################################################

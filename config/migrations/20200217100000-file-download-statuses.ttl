@@ -1,6 +1,6 @@
 
 
-<http://lblod.data.gift/file-download-statuses/ready-to-be-cashed>
+<http://lblod.data.gift/file-download-statuses/ready-to-be-cached>
     a  <http://lblod.data.gift/FileDownloadStatus>;
     <http://mu.semte.ch/vocabularies/core/uuid> "bd1017b8-6353-4d52-9e09-37dcc92f05b5";
     <http://www.w3.org/2004/02/skos/core#prefLabel> "Klaar om te verwerken"@nl.
