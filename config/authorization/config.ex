@@ -62,6 +62,20 @@ defmodule Acl.UserGroups.Config do
           }
         }]
       },
+      %GroupSpec{
+        name: "public-wf",
+        useage: [:write, :read_for_write],
+        access: %AlwaysAccessible{}, # TODO: Should be only for logged in users
+        graphs: [%GraphSpec{
+          graph: "http://mu.semte.ch/graphs/public",
+          constraint: %ResourceConstraint{
+            resource_types: [
+              "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
+              "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RemoteDataObject"
+            ]
+          }
+        }]
+      },
       # // TOEZICHT
       %GroupSpec{
         name: "o-toez-rwf",
