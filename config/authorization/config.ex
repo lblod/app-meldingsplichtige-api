@@ -57,7 +57,6 @@ defmodule Acl.UserGroups.Config do
               "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
               "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RemoteDataObject",
               "http://lblod.data.gift/vocabularies/automatische-melding/AutomaticSubmissionTask"
-
             ]
           }
         }]
@@ -85,6 +84,7 @@ defmodule Acl.UserGroups.Config do
           graph: "http://mu.semte.ch/graphs/organizations/",
           constraint: %ResourceConstraint{
             resource_types: [
+              "http://xmlns.com/foaf/0.1/Document",
               "http://rdf.myexperiment.org/ontologies/base/Submission",
               "http://mu.semte.ch/vocabularies/ext/SubmissionDocument",
               "http://lblod.data.gift/vocabularies/besluit/TaxRate"
