@@ -39,29 +39,24 @@ defmodule Acl.UserGroups.Config do
         name: "public",
         useage: [:read],
         access: %AlwaysAccessible{}, # TODO: Should be only for logged in users
-        graphs: [%GraphSpec{
-          graph: "http://mu.semte.ch/graphs/public",
-          constraint: %ResourceConstraint{
-            resource_types: [
-              "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
-              "http://mu.semte.ch/vocabularies/ext/BestuurseenheidClassificatieCode",
-              "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
-              "http://mu.semte.ch/vocabularies/ext/BestuursorgaanClassificatieCode",
-              "http://mu.semte.ch/vocabularies/ext/ChartOfAccount",
-              "http://mu.semte.ch/vocabularies/ext/AuthenticityType",
-              "http://mu.semte.ch/vocabularies/ext/TaxType",
-              "http://mu.semte.ch/vocabularies/ext/SubmissionDocumentStatus",
-              "http://data.vlaanderen.be/ns/besluit#Zitting",
-              "http://data.vlaanderen.be/ns/besluit#Agendapunt",
-              "http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt",
-              "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
-              "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RemoteDataObject",
-              "http://lblod.data.gift/vocabularies/automatische-melding/AutomaticSubmissionTask"
-
-            ]
-          }
-        }]
-      },
+        graphs: [ %GraphSpec{
+                    graph: "http://mu.semte.ch/graphs/public",
+                    constraint: %ResourceConstraint{
+                      resource_types: [
+                        "http://data.vlaanderen.be/ns/besluit#Bestuurseenheid",
+                        "http://mu.semte.ch/vocabularies/ext/BestuurseenheidClassificatieCode",
+                        "http://data.vlaanderen.be/ns/besluit#Bestuursorgaan",
+                        "http://mu.semte.ch/vocabularies/ext/BestuursorgaanClassificatieCode",
+                        "http://mu.semte.ch/vocabularies/ext/ChartOfAccount",
+                        "http://mu.semte.ch/vocabularies/ext/AuthenticityType",
+                        "http://mu.semte.ch/vocabularies/ext/TaxType",
+                        "http://mu.semte.ch/vocabularies/ext/SubmissionDocumentStatus",
+                        "http://data.vlaanderen.be/ns/besluit#Zitting",
+                        "http://data.vlaanderen.be/ns/besluit#Agendapunt",
+                        "http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt",
+                        "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
+                        "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RemoteDataObject",
+                      ] } } ] },
       %GroupSpec{
         name: "public-wf",
         useage: [:write, :read_for_write],
@@ -80,32 +75,26 @@ defmodule Acl.UserGroups.Config do
       %GroupSpec{
         name: "o-toez-rwf",
         useage: [:read, :write, :read_for_write],
-        access: access_by_role("LoketLB-toezichtGebruiker"),
-        graphs: [%GraphSpec{
-          graph: "http://mu.semte.ch/graphs/organizations/",
-          constraint: %ResourceConstraint{
-            resource_types: [
-              "http://rdf.myexperiment.org/ontologies/base/Submission",
-              "http://mu.semte.ch/vocabularies/ext/SubmissionDocument",
-              "http://lblod.data.gift/vocabularies/besluit/TaxRate"
-            ]
-          }
-        }]
-      },
-
+        access: access_by_role( "LoketLB-toezichtGebruiker" ),
+        graphs: [ %GraphSpec{
+                    graph: "http://mu.semte.ch/graphs/organizations/",
+                    constraint: %ResourceConstraint{
+                      resource_types: [
+                        "http://xmlns.com/foaf/0.1/Document",
+                        "http://rdf.myexperiment.org/ontologies/base/Submission",
+                        "http://mu.semte.ch/vocabularies/ext/SubmissionDocument",
+                        "http://lblod.data.gift/vocabularies/besluit/TaxRate"
+                      ] } } ] },
       %GroupSpec{
         name: "o-toezicht-vendor-rwf",
         useage: [:read],
         access: %AlwaysAccessible{},
-        graphs: [%GraphSpec{
-          graph: "http://mu.semte.ch/graphs/automatic-submission",
-          constraint: %ResourceConstraint{
-            resource_types: [
-              "http://mu.semte.ch/vocabularies/ext/Vendor"
-            ]
-          }
-        }]
-      },
+        graphs: [ %GraphSpec{
+                    graph: "http://mu.semte.ch/graphs/automatic-submission",
+                    constraint: %ResourceConstraint{
+                      resource_types: [
+                        "http://mu.semte.ch/vocabularies/ext/Vendor"
+                      ] } } ] },
 
 
       # // USER HAS NO DATA
