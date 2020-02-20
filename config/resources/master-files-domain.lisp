@@ -11,3 +11,20 @@
   :resource-base (s-url "http://data.lblod.info/files/")
   :features `(include-uri)
   :on-path "files")
+
+(define-resource remote-url ()
+ :class (s-prefix "nfo:RemoteDataObject")
+ :properties `((:address :url ,(s-prefix "nie:url"))
+               (:created :datetime ,(s-prefix "dct:created"))
+               (:modified :datetime ,(s-prefix "dct:modified"))
+               (:download-status :url ,(s-prefix "adms:status"))
+               (:creator :url ,(s-prefix "dct:creator"))
+               )
+ :has-one `(
+   (file :via ,(s-prefix "nie:dataSource")
+                  :inverse t
+                  :as "replicated-file")
+                  )
+ :resource-base (s-url "http://lblod.data.gift/id/remote-urls/")
+ :features `(include-uri)
+ :on-path "remote-urls")

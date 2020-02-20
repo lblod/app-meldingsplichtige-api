@@ -17,7 +17,6 @@
 (add-prefix "meb" "http://rdf.myexperiment.org/ontologies/base/")
 (add-prefix "melding" "http://lblod.data.gift/vocabularies/automatische-melding/")
 (add-prefix "lblodBesluit" "http://lblod.data.gift/vocabularies/besluit/")
-(add-prefix "lblodDataGift" "http://lblod.data.gift/")
 (add-prefix "muAccount" "http://mu.semte.ch/vocabularies/account/")
 (add-prefix "elod" "http://linkedeconomy.org/ontology#")
 (add-prefix "rdfs" "https://www.w3.org/2000/01/rdf-schema#")
