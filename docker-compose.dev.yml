@@ -36,3 +36,14 @@ services:
     restart: "no"
   mocklogin:
     image: lblod/mock-login-service:0.3.1
+  save-submission:
+    image: semtech/mu-javascript-template
+    ports:
+      - 8888:80
+    environment:
+      NODE_ENV: "development"
+    links:
+      - database:database
+    volumes:
+      - /home/dries/Projects/LBLOD/toezicht-flattened-form-data-generator/:/app/
+    restart : "no"
