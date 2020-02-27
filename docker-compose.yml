@@ -120,7 +120,7 @@ services:
     image: lblod/validate-submission-service:0.3.1
     volumes:
       - ./data/files/submissions:/share/submissions
-      - ./data/semantic-forms:/data/semantic-forms
+      - ./data/static-files/semantic-forms-data:/data/semantic-forms
   verify-submission:
     image: lblod/verify-submission-service:0.1.0
     environment:
