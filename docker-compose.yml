@@ -130,6 +130,6 @@ services:
     restart: always
     logging: *default-logging
   static-file:
-    image: semtech/static-file-service
+    image: semtech/static-file-service:0.1.0
     volumes:
-      - ./data/publications:/data
+      - ./data/static-files:/data
