@@ -39,6 +39,7 @@ services:
   save-submission:
     image: semtech/mu-javascript-template
     ports:
+      - 9229:9229
       - 8888:80
     environment:
       NODE_ENV: "development"
