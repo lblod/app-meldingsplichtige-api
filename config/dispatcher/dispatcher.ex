@@ -132,12 +132,28 @@ defmodule Dispatcher do
   end
 
   #################################################################
-  # end validate submission
+  # dummy publications
   #################################################################
 
   get "/publications/*path" do
-    Proxy.forward conn, path, "http://static-file/"
+    Proxy.forward conn, path, "http://static-file/publications/"
   end
+
+  #################################################################
+  # end dummy publications
+  #################################################################
+
+  #################################################################
+  # static semantic-forms-data
+  #################################################################
+
+  get "/semantic-forms-data/*path" do
+    Proxy.forward conn, path, "http://static-file/semantic-forms-data/"
+  end
+
+  #################################################################
+  # end static semantic-forms-data
+  #################################################################
 
   match _ do
     send_resp( conn, 404, "Route not found.  See config/dispatcher.ex" )

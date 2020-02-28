@@ -117,10 +117,10 @@ services:
     restart: always
     logging: *default-logging
   validate-submission:
-    image: lblod/validate-submission-service:0.3.1
+    image: lblod/validate-submission-service:0.3.2
     volumes:
       - ./data/files/submissions:/share/submissions
-      - ./data/semantic-forms:/data/semantic-forms
+      - ./data/static-files/semantic-forms-data:/data/semantic-forms
   verify-submission:
     image: lblod/verify-submission-service:0.1.0
     environment:
@@ -130,6 +130,6 @@ services:
     restart: always
     logging: *default-logging
   static-file:
-    image: semtech/static-file-service
+    image: semtech/static-file-service:0.1.0
     volumes:
-      - ./data/publications:/data
+      - ./data/static-files:/data
