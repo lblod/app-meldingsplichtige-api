@@ -133,7 +133,7 @@ services:
     image: semtech/static-file-service:0.1.0
     volumes:
       - ./data/static-files:/data
-  save-sent-submission:
+  toezicht-flattened-form-data-generator:
     image: lblod/toezicht-flattened-form-data-generator
     volumes:
       - ./data/files/submissions:/share/submissions
