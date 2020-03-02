@@ -37,15 +37,4 @@ services:
   mocklogin:
     image: lblod/mock-login-service:0.3.1
   save-sent-submission:
-    image: semtech/mu-javascript-template
-    ports:
-      - 9229:9229
-      - 8888:80
-    environment:
-      NODE_ENV: "development"
-    links:
-      - database:database
-    volumes:
-      - /home/dries/Projects/LBLOD/toezicht-flattened-form-data-generator/:/app/
-      - ./data/files/submissions:/share/submissions
-    restart : "no"
+    restart: "no"
