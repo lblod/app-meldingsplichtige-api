@@ -102,7 +102,7 @@ export default [
       }
     },
     callback: {
-      url: 'http://save-sent-submission/delta',
+      url: 'http://toezicht-flattened-form-data-generator/delta',
       method: 'POST'
     },
     options: {
