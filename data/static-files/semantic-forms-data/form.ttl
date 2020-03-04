@@ -19,6 +19,8 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#>.
 @prefix nfo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#> .
 @prefix nie: <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#>.
+@prefix schema: <http://schema.org/>.
+
 # conditional fields are dynamic
 # TODO: fix groups (probably) too
 
@@ -328,11 +330,23 @@ fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a a form:Field ;
     form:displayType displayTypes:files;
     sh:group fields:aDynamicPropertyGroup .
 
+
+##########################################################
+#  VLABEL [First version]
+# It is a bit of the odity this set of fields.
+# There is no 1:1 relation between components in the frontend
+# and the required fields of VLABEL.
+# This is because it is relatively complex from UI-perspective
+# This is why we group all validations under field "Opcentiem"
+# as this will handle and display errors to the user.
+# The hidden input fields are still part of the form and are used
+# to extract information from the form.
+##########################################################
 fields:1ee5132e-28c0-4292-9fe6-24c7be456580 a form:Field ;
     mu:uuid "1ee5132e-28c0-4292-9fe6-24c7be456580" ;
     sh:name "Opcentiem" ;
     sh:order 5001 ;
-    sh:path lblodBesluit:taxRate ;
+    sh:path ( lblodBesluit:taxRate schema:price );
     form:validations [
       a form:VlabelExtraTaxRateOrAmountConstraint ;
       form:grouping form:Bag ;
@@ -356,6 +370,24 @@ fields:1ee5132e-28c0-4292-9fe6-24c7be456580 a form:Field ;
     ];
     form:displayType displayTypes:vLabelOpcentiem ;
     sh:group fields:aDynamicPropertyGroup .
+
+fields:f3c1f62e-0fc6-4440-8208-7a0ef49fb28c a form:Field ;
+    mu:uuid "f3c1f62e-0fc6-4440-8208-7a0ef49fb28c" ;
+    sh:name "Differentiatie [hidden input]" ;
+    sh:order 5002 ;
+    sh:path lblodBesluit:hasAdditionalTaxRate ;
+    sh:group fields:aDynamicPropertyGroup .
+
+fields:eaf71eec-6ca8-4f63-b4a6-adfe4f21651b a form:Field ;
+    mu:uuid "eaf71eec-6ca8-4f63-b4a6-adfe4f21651b" ;
+    sh:name "TaxType type [hidden input]" ;
+    sh:order 5003 ;
+    sh:path ( lblodBesluit:taxRate rdf:type );
+    sh:group fields:aDynamicPropertyGroup .
+
+##########################################################
+#  END VLABEL [First version]
+##########################################################
 
 ###########Advies-bij-jaarrekening-AGB###########
 
@@ -1691,6 +1723,12 @@ fieldGroups:ea903e93-a1c9-4542-ab11-8a274af5ee1c a form:FieldGroup ;
     form:hasField 
                       ###Soort Belasting###
                       fields:7cd14dfd-81ff-4a5d-8374-5879c5877c4c,
+
+                      ###Differentiatie###
+                      fields:f3c1f62e-0fc6-4440-8208-7a0ef49fb28c,
+
+                      ###TaxRate Type###
+                      fields:eaf71eec-6ca8-4f63-b4a6-adfe4f21651b,
 
                       ###Vlabel opcentiem###
                       fields:1ee5132e-28c0-4292-9fe6-24c7be456580.
