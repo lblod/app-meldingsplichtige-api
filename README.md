@@ -10,6 +10,21 @@ docker-compose up
 
 The stack is built starting from [mu-project](https://github.com/mu-semtech/mu-project).
 
+
+### Cleaning the database
+
+  At some times you may want te clean the database and make sure it's in a pristine state.
+
+      # Bring down our current setup
+      docker-compose -f docker-compose.yml -f docker-compose.dev.yml down
+      # Keep only required database files
+      rm -Rf data/db
+      git checkout data/db
+      # Bring the stack back up
+      docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
+
+  Make sure to wait for the migrations to run.
+
 ## Features
 
 The stack provides an endpoint to submit publications as specified in the [Loket meldingsplicht API](https://lblod.github.io/pages-vendors/#/reporting-obligation). After submission one can verify the processing of the submission using the [verify-submission-service](https://github.com/lblod/verify-submission-service).
