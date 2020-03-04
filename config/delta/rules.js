@@ -111,4 +111,25 @@ export default [
       ignoreFromSelf: true
     }
   },
+  {
+    match: {
+      predicate: {
+        type: "uri",
+        value: "http://www.w3.org/ns/adms#status"
+      },
+      object: {
+        type: "uri",
+        value: "http://lblod.data.gift/automatische-melding-statuses/successful-concept"
+      }
+    },
+    callback: {
+      method: "POST",
+      url: "http://toezicht-flattened-form-data-generator/delta"
+    },
+    options: {
+      resourceFormat: "v0.0.1",
+      gracePeriod: 1000,
+      ignoreFromSelf: true
+    }
+  }
 ];
