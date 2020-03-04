@@ -333,7 +333,27 @@ fields:1ee5132e-28c0-4292-9fe6-24c7be456580 a form:Field ;
     sh:name "Opcentiem" ;
     sh:order 5001 ;
     sh:path lblodBesluit:taxRate ;
-    #form:validations [];
+    form:validations [
+      a form:VlabelExtraTaxRateOrAmountConstraint ;
+      form:grouping form:Bag ;
+      sh:path lblodBesluit:taxRate;
+      sh:resultMessage "Differentiatie en bedrag opcentiem kunnen niet tegelijk ingevuld worden."
+    ],
+    [ a form:ValidBoolean ;
+        form:grouping form:MatchEvery ;
+        sh:path lblodBesluit:hasAdditionalTaxRate ;
+        sh:resultMessage "Geen geldige waarde voor differentiatie."@nl
+    ],
+    [ a form:VlabelSingleInstanceTaxRateOrExtraTaxRate ;
+        form:grouping form:Bag ;
+        sh:path lblodBesluit:hasAdditionalTaxRate ;
+        sh:resultMessage "Slechts één waarde voor differentiatie wordt aanvaard."@nl
+    ],
+    [ a form:VlabelSingleInstanceTaxRateOrExtraTaxRate ;
+        form:grouping form:Bag ;
+        sh:path lblodBesluit:taxRate ;
+        sh:resultMessage "Slechts één instantie van opcentiem wordt aanvaard"@nl
+    ];
     form:displayType displayTypes:vLabelOpcentiem ;
     sh:group fields:aDynamicPropertyGroup .
 
