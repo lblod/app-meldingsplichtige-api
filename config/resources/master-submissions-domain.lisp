@@ -14,7 +14,7 @@
              (vendor :via ,(s-prefix "pav:providedBy")
                      :as "publisher")
              (submission-document :via ,(s-prefix "dct:subject")
-                                  :as "submitted-resource")
+                                  :as "submission-document")
              (submission-document-status :via ,(s-prefix "adms:status")
                                          :as "status")
              (automatic-submission-task :via ,(s-prefix "prov:generated")
@@ -26,11 +26,11 @@
   :features `(include-uri)
   :on-path "submissions")
 
-;;TODO: not entirly clear what the added value of the resource now.
 (define-resource submission-document ()
   :class (s-prefix "ext:SubmissionDocument")
-  :has-many `((file :via ,(s-prefix "nfo:FileDataObject")
-                    :as "file"))
+  :has-one `((submission-document :via ,(s-prefix "dct:subject")
+                                  :inverse t
+                                  :as "submission"))
   :resource-base (s-url "http://data.lblod.info/submission-documents/")
   :features `(include-uri)
   :on-path "submission-documents")
