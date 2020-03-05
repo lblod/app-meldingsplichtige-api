@@ -139,6 +139,6 @@ services:
     volumes:
       - ./data/static-files:/data
   toezicht-flattened-form-data-generator:
-    image: lblod/toezicht-flattened-form-data-generator:0.2.0
+    image: lblod/toezicht-flattened-form-data-generator:0.2.1
     volumes:
       - ./data/files/submissions:/share/submissions

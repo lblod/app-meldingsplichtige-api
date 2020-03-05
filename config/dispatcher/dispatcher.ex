@@ -78,9 +78,6 @@ defmodule Dispatcher do
   match "/submissions/*path" do
     Proxy.forward conn, path, "http://cache/submissions/"
   end
-  match "/submission-documents/*path" do
-    Proxy.forward conn, path, "http://cache/submission-documents/"
-  end
   match "/vendors/*path" do
     Proxy.forward conn, path, "http://cache/vendors/"
   end
@@ -136,11 +133,15 @@ defmodule Dispatcher do
   end
 
   #################################################################
-  # flatten submissions
+  # flatten submissions-documents
   #################################################################
 
-  post "/submission-forms/:id/flatten" do
+  put "/submission-documents/:id/flatten" do
     Proxy.forward conn, [], "http://toezicht-flattened-form-data-generator/submission-documents/" <> id <> "/flatten"
+  end
+
+  match "/submission-documents/*path" do
+    Proxy.forward conn, path, "http://cache/submission-documents/"
   end
 
   #################################################################
