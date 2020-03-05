@@ -114,7 +114,7 @@ defmodule Dispatcher do
   end
 
   #################################################################
-  # verify submission
+  # verify submission (to be removed)
   #################################################################
   get "/verify/bestuurseenheid/*path" do
     Proxy.forward conn, path, "http://verify-submission/bestuurseenheid"
@@ -124,36 +124,24 @@ defmodule Dispatcher do
   end
 
   #################################################################
-  # validate submission
+  # manual submission
   #################################################################
 
+  post "/submission-forms/:id/submit" do
+    Proxy.forward conn, [], "http://validate-submission/submission-documents/" <> id <> "/submit"
+  end
+
   match "/submission-forms/*path" do
-    Proxy.forward conn, path, "http://validate-submission/submission-forms/"
+    Proxy.forward conn, path, "http://enrich-submission/submission-documents/"
   end
 
   #################################################################
-  # dummy publications
+  # dummy publications (to be removed)
   #################################################################
 
   get "/publications/*path" do
     Proxy.forward conn, path, "http://static-file/publications/"
   end
-
-  #################################################################
-  # end dummy publications
-  #################################################################
-
-  #################################################################
-  # static semantic-forms-data
-  #################################################################
-
-  get "/semantic-forms-data/*path" do
-    Proxy.forward conn, path, "http://static-file/semantic-forms-data/"
-  end
-
-  #################################################################
-  # end static semantic-forms-data
-  #################################################################
 
   match _ do
     send_resp( conn, 404, "Route not found.  See config/dispatcher.ex" )

@@ -33,7 +33,7 @@ services:
     restart: always
     logging: *default-logging
   database:
-    image: semtech/mu-authorization:0.6.0-beta.2
+    image: semtech/mu-authorization:0.6.0-beta.4
     environment:
       MU_SPARQL_ENDPOINT: "http://virtuoso:8890/sparql"
     volumes:
@@ -109,15 +109,20 @@ services:
     restart: always
     logging: *default-logging
   import-submission:
-    image: lblod/import-submission-service:0.2.0
+    image: lblod/import-submission-service:0.3.0
     volumes:
       - ./data/files:/share
     labels:
       - "logging=true"
     restart: always
     logging: *default-logging
+  enrich-submission:
+    image: lblod/enrich-submission-service:0.1.0
+    volumes:
+      - ./data/files/submissions:/share/submissions
+      - ./data/static-files/semantic-forms-data:/data/semantic-forms
   validate-submission:
-    image: lblod/validate-submission-service:0.3.4
+    image: lblod/validate-submission-service:0.4.2
     volumes:
       - ./data/files/submissions:/share/submissions
       - ./data/static-files/semantic-forms-data:/data/semantic-forms
