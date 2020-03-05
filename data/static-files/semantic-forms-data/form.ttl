@@ -125,9 +125,12 @@ fields:bffbea8d-e55b-4e3d-86e8-ba7aaee7863d a form:Field ;
     sh:order 2000 ;
     sh:path eli:passed_by ;
     form:validations
-      [ a form:AdminstrativeUnitCodelistConstraint ; #TODO
-        form:grouping form:MatchEvery ;
-        sh:path eli:passed_by ],
+      [ a form:ConceptSchemeConstraint ; #TODO
+        form:grouping form:Bag ;
+        sh:path eli:passed_by ;
+        form:conceptScheme <http://data.lblod.info/concept-schemes/481c03f0-d07f-424e-9c2b-8d4cfb141c72> ;
+        sh:resultMessage "De waarde komt niet uit de opgegeven codelijst."@nl
+      ],
       [ a form:RequiredConstraint ;
         form:grouping form:Bag ;
         sh:resultMessage "Dit veld is verplicht."@nl;
