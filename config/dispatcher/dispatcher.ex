@@ -136,6 +136,14 @@ defmodule Dispatcher do
   end
 
   #################################################################
+  # flatten submissions
+  #################################################################
+
+  post "/submission-forms/:id/flatten" do
+    Proxy.forward conn, [], "http://toezicht-flattened-form-data-generator/submission-documents/" <> id <> "/flatten"
+  end
+
+  #################################################################
   # dummy publications (to be removed)
   #################################################################
 
