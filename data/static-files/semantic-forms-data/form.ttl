@@ -135,8 +135,10 @@ fields:bffbea8d-e55b-4e3d-86e8-ba7aaee7863d a form:Field ;
         form:grouping form:Bag ;
         sh:resultMessage "Dit veld is verplicht."@nl;
         sh:path eli:passed_by ] ;
-    form:displayType displayTypes:bestuursorgaanSelect ;
+    form:options  """{"conceptScheme":"http://data.lblod.info/concept-schemes/481c03f0-d07f-424e-9c2b-8d4cfb141c72"}""" ;
+    form:displayType displayTypes:conceptSchemeSelector ;
     sh:group fields:aDynamicPropertyGroup .
+
 
 fields:3dd6ed93-40f7-4d70-a6cb-f4de53dc8bfb a form:Field ;
     mu:uuid "3dd6ed93-40f7-4d70-a6cb-f4de53dc8bfb" ;
