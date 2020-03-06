@@ -144,6 +144,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/submission-documents/"
   end
 
+  match "/form-data/*path" do
+    Proxy.forward conn, path, "http://resource/form-data/"
+  end
+
   #################################################################
   # dummy publications (to be removed)
   #################################################################

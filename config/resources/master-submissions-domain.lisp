@@ -80,3 +80,15 @@
   :features `(include-uri)
   :on-path "chart-of-accounts")
 
+(define-resource form-data ()
+  :class (s-prefix "melding:FormData") ;
+  :properties `((:type :string ,(s-prefix "dct:type"))
+                (:datePublication :datetime ,(s-prefix "eli:date_publication"))
+                (:passedBy :url ,(s-prefix "eli:passed_by"))
+                (:isAbout :url ,(s-prefix "eli:is_about"))
+                (:financialYear :string ,(s-prefix "elod:financialYear"))
+                (:description :string ,(s-prefix "dct:description"))
+                (:comment :string ,(s-prefix "dct:comment")))
+  :resource-base (s-url "http://data.lblod.info/form-data/")
+  :features `(include-uri)
+  :on-path "form-data")
