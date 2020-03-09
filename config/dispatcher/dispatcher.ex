@@ -124,20 +124,20 @@ defmodule Dispatcher do
   # manual submission
   #################################################################
 
-  post "/submission-forms/:id/submit" do
-    Proxy.forward conn, [], "http://validate-submission/submission-documents/" <> id <> "/submit"
-  end
-
-  match "/submission-forms/*path" do
+  get "/submission-forms/*path" do
     Proxy.forward conn, path, "http://enrich-submission/submission-documents/"
   end
 
-  #################################################################
-  # flatten submissions-documents
-  #################################################################
-
-  put "/submission-documents/:id/flatten" do
+  put "/submission-forms/:id/flatten" do
     Proxy.forward conn, [], "http://toezicht-flattened-form-data-generator/submission-documents/" <> id <> "/flatten"
+  end
+
+  put "/submission-forms/:id" do
+    Proxy.forward conn, [], "http://validate-submission/submission-documents/" <> id
+  end
+
+  post "/submission-forms/:id/submit" do
+    Proxy.forward conn, [], "http://validate-submission/submission-documents/" <> id <> "/submit"
   end
 
   match "/submission-documents/*path" do
