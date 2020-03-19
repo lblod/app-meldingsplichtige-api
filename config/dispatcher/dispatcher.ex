@@ -128,6 +128,10 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://enrich-submission/submission-documents/"
   end
 
+  delete "/submission-forms/*path" do
+    Proxy.forward conn, path, "http://enrich-submission/submission-documents/"
+  end
+
   put "/submission-forms/:id/flatten" do
     Proxy.forward conn, [], "http://toezicht-flattened-form-data-generator/submission-documents/" <> id <> "/flatten"
   end
