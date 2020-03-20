@@ -152,6 +152,12 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://resource/form-data/"
   end
 
+  match "/concept-schemes/*path" do
+    Proxy.forward conn, path, "http://resource/concept-schemes/"
+  end
+  match "/concepts/*path" do
+    Proxy.forward conn, path, "http://resource/concepts/"
+  end
   #################################################################
   # dummy publications (to be removed)
   #################################################################

@@ -21,3 +21,4 @@
 (add-prefix "elod" "http://linkedeconomy.org/ontology#")
 (add-prefix "rdfs" "https://www.w3.org/2000/01/rdf-schema#")
 (add-prefix "org" "http://www.w3.org/ns/org#")
+(add-prefix "nmo" "http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#")
