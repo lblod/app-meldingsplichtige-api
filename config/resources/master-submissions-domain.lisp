@@ -27,7 +27,7 @@
              (gebruiker :via ,(s-prefix "ext:lastModifiedBy")
                         :as "last-modifier")
              (form-data :via ,(s-prefix "prov:generated")
-                        :as "form-data")                            
+                        :as "form-data")
             )
   :has-many `((file :via ,(s-prefix "nfo:FileDataObject")
                     :as "file"))
@@ -114,7 +114,7 @@
                 (:financial-year :string ,(s-prefix "elod:financialYear"))
                 (:description :string ,(s-prefix "dct:description"))
                 (:comment :string ,(s-prefix "rdfs:comment"))
-                
+
                 (:first-date-in-force :date ,(s-prefix "eli:first_date_entry_in_force"))
                 (:date-no-longer-in-force :date ,(s-prefix "eli:date_no_longer_in_force"))
                 (:authenticity-type :url ,(s-prefix "lblodBesluit:authenticityType"))
@@ -123,7 +123,7 @@
                 (:tax-rate :url ,(s-prefix "lblodBesluit:taxRate"))
                 (:has-additional-tax-rate :boolean ,(s-prefix "lblodBesluit:hasAdditionalTaxRate"))
                 (:link :url ,(s-prefix "dct:hasPart"))
-                
+
                 (:tax-rate-amount :number ,(s-prefix "ext:taxRateAmount"))
                 (:session-started-at-time :datetime ,(s-prefix "ext:sessionStartedAtTime"))
                 )
@@ -135,7 +135,7 @@
              (bestuursorgaan :via ,(s-prefix "eli:passed_by")
                              :as "passed-by"))
   :has-many `((concept :via ,(s-prefix "dct:type")
-                       :as "type"))           
+                       :as "type"))
   :resource-base (s-url "http://data.lblod.info/form-data/")
   :features `(include-uri)
   :on-path "form-data")
