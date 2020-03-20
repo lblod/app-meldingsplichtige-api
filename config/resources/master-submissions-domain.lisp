@@ -91,7 +91,7 @@
 
 (define-resource concept-scheme ()
   :class (s-prefix "skos:ConceptScheme")
-  :properties `((:uuid :string ,(s-prefix "mu:uuid")))
+  :properties `((:label :string ,(s-prefix "skos:prefLabel")))
   :has-many `((concept :via ,(s-prefix "skos:inScheme")
                        :inverse t
                        :as "concepts"))
