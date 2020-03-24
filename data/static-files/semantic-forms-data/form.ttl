@@ -370,7 +370,7 @@ fields:c955d641-b9b3-4ec7-9838-c2a477c7e95b a form:Field ;
     mu:uuid "c955d641-b9b3-4ec7-9838-c2a477c7e95b" ;
     sh:name "Links naar documenten" ;
     sh:order 10000 ;
-    sh:path dct:hasPart;
+    sh:path (dct:hasPart nie:url);
     form:validations
      [ a form:UriConstraint ;
         form:grouping form:MatchEvery ;
@@ -378,7 +378,7 @@ fields:c955d641-b9b3-4ec7-9838-c2a477c7e95b a form:Field ;
          sh:path ( dct:hasPart nie:url ) ],
      [ a form:RequiredConstraint ;
          form:grouping form:Bag ;
-         sh:path dct:hasPart;
+         sh:path ( dct:hasPart nie:url);
          sh:resultMessage "Gelieve minstens één url of bestand op te geven."@nl
      ];
     form:displayType displayTypes:remoteUrls;
