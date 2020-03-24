@@ -28,7 +28,7 @@
                         :as "last-modifier")
              (form-data :via ,(s-prefix "prov:generated")
                         :as "form-data"))
-  :has-many `((file :via ,(s-prefix "nfo:FileDataObject")
+  :has-many `((file :via ,(s-prefix "dct:hasPart")
                     :as "file"))
   :resource-base (s-url "http://data.lblod.info/submissions/")
   :features `(include-uri)
