@@ -23,7 +23,7 @@
  :has-one `(
    (file :via ,(s-prefix "nie:dataSource")
                   :inverse t
-                  :as "replicated-file")
+                  :as "download")
                   )
  :resource-base (s-url "http://lblod.data.gift/id/remote-urls/")
  :features `(include-uri)
