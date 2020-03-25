@@ -379,7 +379,7 @@ fields:c955d641-b9b3-4ec7-9838-c2a477c7e95b a form:Field ;
      [ a form:RequiredConstraint ;
          form:grouping form:Bag ;
          sh:path ( dct:hasPart nie:url);
-         sh:resultMessage "Gelieve minstens één url of bestand op te geven."@nl
+         sh:resultMessage "Gelieve minstens één URL of bestand op te geven."@nl
      ];
     form:displayType displayTypes:remoteUrls;
     sh:group fields:aDynamicPropertyGroup .
@@ -393,7 +393,7 @@ fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a a form:Field ;
      [ a  form:RequiredConstraint ;
           form:grouping form:Bag ;
           sh:path dct:hasPart;
-          sh:resultMessage "Gelieve minstens één url of bestand op te geven."@nl # TODO: later custom validator
+          sh:resultMessage "Gelieve minstens één URL of bestand op te geven."@nl # TODO: later custom validator
      ];
     form:displayType displayTypes:files;
     sh:group fields:aDynamicPropertyGroup .
