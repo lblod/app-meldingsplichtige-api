@@ -110,11 +110,13 @@ fields:41737f90-02d6-4036-8d60-5d5b6ccf939c a form:Field ;
         form:grouping form:Bag ;
         sh:path elod:financialYear ;
         sh:resultMessage "Dit veld is verplicht."@nl
-      ],
-      [ a form:ValidYear ;
-        form:grouping form:MatchEvery ;
-        sh:path elod:financialYear ;
-        sh:resultMessage "Geef een geldig jaar op."@n ] ;
+      ];
+      #TODO: For current version of the forms we disable this,
+      # since during the migration of the old forms, we saw there was no validation. So it fails a lot
+      # [ a form:ValidYear ;
+      #   form:grouping form:MatchEvery ;
+      #   sh:path elod:financialYear ;
+      #   sh:resultMessage "Geef een geldig jaar op."@n ] ;
     form:displayType displayTypes:defaultInput ;
     sh:group fields:aDynamicPropertyGroup .
 
@@ -142,15 +144,15 @@ fields:3dd6ed93-40f7-4d70-a6cb-f4de53dc8bfb a form:Field ;
     mu:uuid "3dd6ed93-40f7-4d70-a6cb-f4de53dc8bfb" ;
     sh:name "Datum zitting/besluit" ;
     sh:order 2600 ;
-    sh:path ( [ sh:inversePath besluit:heeftUittreksel ] prov:startedAtTime ) ;  # see https://www.w3.org/TR/shacl/#property-paths for syntax
+    sh:path ( [ sh:inversePath prov:generated ] dct:subject [ sh:inversePath besluit:behandelt ]  prov:startedAtTime ) ;  # see https://www.w3.org/TR/shacl/#property-paths for syntax
     form:validations
       [ a form:RequiredConstraint ;
         form:grouping form:Bag ;
         sh:resultMessage "Dit is een verplicht veld.";
-        sh:path ( [ sh:inversePath besluit:heeftUittreksel ] prov:startedAtTime ) ],
+        sh:path ( [ sh:inversePath prov:generated ] dct:subject [ sh:inversePath besluit:behandelt ]  prov:startedAtTime ) ],
       [ a form:ValidDateTime ;
         form:grouping form:MatchEvery ;
-        sh:path ( [ sh:inversePath besluit:heeftUittreksel ] prov:startedAtTime ) ;
+        sh:path ( [ sh:inversePath prov:generated ] dct:subject [ sh:inversePath besluit:behandelt ]  prov:startedAtTime ) ;
         sh:resultMessage "Geeft een geldige datum en tijd op."] ;
     form:displayType displayTypes:dateTime ;
     sh:group fields:aDynamicPropertyGroup .
@@ -378,7 +380,7 @@ fields:c955d641-b9b3-4ec7-9838-c2a477c7e95b a form:Field ;
          sh:path ( dct:hasPart nie:url ) ],
      [ a form:RequiredConstraint ;
          form:grouping form:Bag ;
-         sh:path ( dct:hasPart nie:url);
+         sh:path (dct:hasPart nie:url);
          sh:resultMessage "Gelieve minstens één URL of bestand op te geven."@nl
      ];
     form:displayType displayTypes:remoteUrls;
@@ -465,6 +467,7 @@ fields:eaf71eec-6ca8-4f63-b4a6-adfe4f21651b a form:Field ;
 ##########################################################
 #  END VLABEL [First version]
 ##########################################################
+
 
 ###########Advies-bij-jaarrekening-AGB###########
 
