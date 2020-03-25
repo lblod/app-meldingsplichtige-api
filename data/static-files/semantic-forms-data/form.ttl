@@ -372,7 +372,7 @@ fields:c955d641-b9b3-4ec7-9838-c2a477c7e95b a form:Field ;
     mu:uuid "c955d641-b9b3-4ec7-9838-c2a477c7e95b" ;
     sh:name "Links naar documenten" ;
     sh:order 10000 ;
-    sh:path (dct:hasPart nie:url);
+    sh:path dct:hasPart;
     form:validations
      [ a form:UriConstraint ;
         form:grouping form:MatchEvery ;
@@ -380,12 +380,15 @@ fields:c955d641-b9b3-4ec7-9838-c2a477c7e95b a form:Field ;
          sh:path ( dct:hasPart nie:url ) ],
      [ a form:RequiredConstraint ;
          form:grouping form:Bag ;
-         sh:path (dct:hasPart nie:url);
+         sh:path dct:hasPart ;
          sh:resultMessage "Gelieve minstens één URL of bestand op te geven."@nl
      ];
     form:displayType displayTypes:remoteUrls;
     sh:group fields:aDynamicPropertyGroup .
 
+#TODO: it seems backend validation of url is ignored.
+# The url value should be included in an hidden input AND the frontend-component logic would need
+# a small update.
 fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a a form:Field ;
     mu:uuid "c955d641-b9b3-4ec7-9838-c2a477c7e95a" ;
     sh:name "Bestanden" ;
