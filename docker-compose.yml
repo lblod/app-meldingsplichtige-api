@@ -142,3 +142,18 @@ services:
     image: lblod/toezicht-flattened-form-data-generator:0.2.3
     volumes:
       - ./data/files/submissions:/share/submissions
+  export-submissions:
+    image: lblod/mandaten-download-generator-service:0.3.4
+    links:
+      - virtuoso:database
+    environment:
+      EXPORT_CRON_PATTERN: "0 0 3 * * *"
+      EXPORT_FILE_BASE: "submissions"
+      MU_APPLICATION_GRAPH: "http://mu.semte.ch/graphs/system/export-submissions"
+    volumes:
+      - ./data/exports/submissions:/data/exports
+      - ./config/export/submissions:/config
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
