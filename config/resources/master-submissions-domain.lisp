@@ -58,6 +58,38 @@
   :features `(include-uri)
   :on-path "tax-rates")
 
+(define-resource form-data ()
+  :class (s-prefix "melding:FormData")
+  :properties `((:date-publication :datetime ,(s-prefix "eli:date_publication"))
+                (:financial-year :string ,(s-prefix "elod:financialYear"))
+                (:description :string ,(s-prefix "dct:description"))
+                (:comment :string ,(s-prefix "rdfs:comment"))
+
+                (:first-date-in-force :date ,(s-prefix "eli:first_date_entry_in_force"))
+                (:date-no-longer-in-force :date ,(s-prefix "eli:date_no_longer_in_force"))
+                (:authenticity-type :url ,(s-prefix "lblodBesluit:authenticityType"))
+                (:chart-of-account :url ,(s-prefix "lblodBesluit:chartOfAccount"))
+                (:tax-type :url ,(s-prefix "lblodBesluit:taxType"))
+                (:tax-rate :url ,(s-prefix "lblodBesluit:taxRate"))
+                (:has-additional-tax-rate :boolean ,(s-prefix "lblodBesluit:hasAdditionalTaxRate"))
+                (:link :url ,(s-prefix "dct:hasPart"))
+
+                (:tax-rate-amount :number ,(s-prefix "ext:taxRateAmount"))
+                (:session-started-at-time :datetime ,(s-prefix "ext:sessionStartedAtTime"))
+                )
+  :has-one `((submission :via ,(s-prefix "prov:generated")
+                         :inverse t
+                         :as "submission")
+             (bestuurseenheid :via ,(s-prefix "eli:is_about")
+                              :as "is-about")
+             (bestuursorgaan :via ,(s-prefix "eli:passed_by")
+                             :as "passed-by"))
+  :has-many `((concept :via ,(s-prefix "dct:type")
+                       :as "types"))
+  :resource-base (s-url "http://data.lblod.info/form-data/")
+  :features `(include-uri)
+  :on-path "form-data")
+
 ;; CODELISTS
 
 (define-resource submission-document-status () ;; subclass of skos:Concept
@@ -95,46 +127,16 @@
                        :inverse t
                        :as "concepts"))
   :resource-base (s-url "http://lblod.data.gift/concept-schemes/")
+  :features `(include-uri)
   :on-path "concept-schemes"
 )
 (define-resource concept ()
   :class (s-prefix "skos:Concept")
   :properties `((:label :string ,(s-prefix "skos:prefLabel")))
   :has-many `((concept-scheme :via ,(s-prefix "skos:inScheme")
-                    :as "concept-schemes"))
+                              :as "concept-schemes"))
   :resource-base (s-url "http://lblod.data.gift/concepts/")
+  :features `(include-uri)
   :on-path "concepts"
 )
 ;;END CODELISTS
-
-(define-resource form-data ()
-  :class (s-prefix "melding:FormData")
-  :properties `((:date-publication :datetime ,(s-prefix "eli:date_publication"))
-                (:financial-year :string ,(s-prefix "elod:financialYear"))
-                (:description :string ,(s-prefix "dct:description"))
-                (:comment :string ,(s-prefix "rdfs:comment"))
-
-                (:first-date-in-force :date ,(s-prefix "eli:first_date_entry_in_force"))
-                (:date-no-longer-in-force :date ,(s-prefix "eli:date_no_longer_in_force"))
-                (:authenticity-type :url ,(s-prefix "lblodBesluit:authenticityType"))
-                (:chart-of-account :url ,(s-prefix "lblodBesluit:chartOfAccount"))
-                (:tax-type :url ,(s-prefix "lblodBesluit:taxType"))
-                (:tax-rate :url ,(s-prefix "lblodBesluit:taxRate"))
-                (:has-additional-tax-rate :boolean ,(s-prefix "lblodBesluit:hasAdditionalTaxRate"))
-                (:link :url ,(s-prefix "dct:hasPart"))
-
-                (:tax-rate-amount :number ,(s-prefix "ext:taxRateAmount"))
-                (:session-started-at-time :datetime ,(s-prefix "ext:sessionStartedAtTime"))
-                )
-  :has-one `((submission :via ,(s-prefix "prov:generated")
-                         :inverse t
-                         :as "submission")
-             (bestuurseenheid :via ,(s-prefix "eli:is_about")
-                              :as "is-about")
-             (bestuursorgaan :via ,(s-prefix "eli:passed_by")
-                             :as "passed-by"))
-  :has-many `((concept :via ,(s-prefix "dct:type")
-                       :as "type"))
-  :resource-base (s-url "http://data.lblod.info/form-data/")
-  :features `(include-uri)
-  :on-path "form-data")
