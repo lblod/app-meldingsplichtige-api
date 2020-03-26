@@ -158,6 +158,11 @@ defmodule Dispatcher do
   match "/concepts/*path" do
     Proxy.forward conn, path, "http://resource/concepts/"
   end
+
+  match "/export-submissions/*path" do
+    Proxy.forward conn, path, "http://export-submissions/"
+  end
+
   #################################################################
   # dummy publications (to be removed)
   #################################################################
