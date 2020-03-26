@@ -148,15 +148,16 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/submission-documents/"
   end
 
-  match "/form-data/*path" do
-    Proxy.forward conn, path, "http://resource/form-data/"
+  get "/form-data/*path" do
+    Proxy.forward conn, path, "http://cache/form-data/"
   end
 
-  match "/concept-schemes/*path" do
-    Proxy.forward conn, path, "http://resource/concept-schemes/"
+  get "/concept-schemes/*path" do
+    Proxy.forward conn, path, "http://cache/concept-schemes/"
   end
-  match "/concepts/*path" do
-    Proxy.forward conn, path, "http://resource/concepts/"
+
+  get "/concepts/*path" do
+    Proxy.forward conn, path, "http://cache/concepts/"
   end
   #################################################################
   # dummy publications (to be removed)
