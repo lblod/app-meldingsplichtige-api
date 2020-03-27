@@ -12,6 +12,7 @@
                 (:created :datetime ,(s-prefix "dct:created"))
                 (:modified :datetime ,(s-prefix "dct:modified"))
                 (:sent-date :datetime ,(s-prefix "nmo:sentDate"))
+                (:source :url ,(s-prefix "dct:source"))
                 (:received-date :datetime ,(s-prefix "nmo:receivedDate")))
   :has-one `((bestuurseenheid :via ,(s-prefix "pav:createdBy")
                               :as "organization")
