@@ -117,7 +117,7 @@ services:
     restart: always
     logging: *default-logging
   enrich-submission:
-    image: lblod/enrich-submission-service:0.3.1
+    image: lblod/enrich-submission-service:0.3.3
     volumes:
       - ./data/files/submissions:/share/submissions
       - ./data/static-files/semantic-forms-data:/data/semantic-forms
