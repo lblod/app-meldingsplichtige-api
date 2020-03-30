@@ -17,7 +17,6 @@
     "prov": "http://www.w3.org/ns/prov#",
     "adms": "http://www.w3.org/ns/adms#",
     "mu": "http://mu.semte.ch/vocabularies/core/",
-    "toezicht": "http://mu.semte.ch/vocabularies/ext/supervision/",
     "pav": "http://purl.org/pav/",
     "dct": "http://purl.org/dc/terms/",
     "nmo": "http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#",
@@ -25,14 +24,14 @@
     "nie": "http://www.semanticdesktop.org/ontologies/2007/01/19/nie#",
     "dbpedia": "http://dbpedia.org/ontology/",
     "eli": "http://data.europa.eu/eli/ontology#",
-    "meb": "http://rdf.myexperiment.org/ontologies/base/"
+    "meb": "http://rdf.myexperiment.org/ontologies/base/",
+    "elod": "http://linkedeconomy.org/ontology#"
   },
   "types": [
     {
       "type": "besluit:Bestuurseenheid",
       "requiredProperties": [
-        "mu:uuid",
-        "rdf:type"
+        "mu:uuid"
       ],
       "optionalProperties": [
         "skos:prefLabel",
@@ -47,8 +46,7 @@
     {
       "type": "besluit:Bestuursorgaan",
       "requiredProperties": [
-        "mu:uuid",
-        "rdf:type"
+        "mu:uuid"
       ],
       "optionalProperties": [
         "skos:prefLabel",
@@ -63,8 +61,7 @@
     {
       "type": "prov:Location",
       "requiredProperties": [
-        "mu:uuid",
-        "rdf:type"
+        "mu:uuid"
       ],
       "optionalProperties": [
         "rdfs:label",
@@ -75,20 +72,18 @@
     {
       "type": "foaf:Person",
       "requiredProperties": [
-        "mu:uuid",
-        "rdf:type"
+        "mu:uuid"
       ],
       "optionalProperties": [
         "foaf:firstName",
         "foaf:familyName"
       ],
-      "additionalFilter": "?s a toezicht:InzendingVoorToezicht ; ext:lastModifiedBy ?resource ."
+      "additionalFilter": "?s a meb:Submission ; ext:lastModifiedBy ?resource ."
     },
     {
       "type": "melding:AutomaticSubmissionTask",
       "requiredProperties": [
-        "mu:uuid",
-        "rdf:type"
+        "mu:uuid"
       ],
       "optionalProperties": [
         "dct:created",
@@ -99,8 +94,7 @@
     {
       "type": "meb:Submission",
       "requiredProperties": [
-        "mu:uuid",
-        "rdf:type"
+        "mu:uuid"
       ],
       "optionalProperties": [
         "prov:atLocation",
@@ -112,13 +106,12 @@
         "pav:providedBy",
         "dct:subject"
       ],
-      "additionalFilter": "?resource adms:status <http://data.lblod.info/document-statuses/verstuurd>.  ?resource toezicht:decisionType ?typeBesluit .\n OPTIONAL {\n ?resource toezicht:decidedBy ?orgaan.\n ?orgaan besluit:classificatie ?orgaanClass .\n }\n BIND(\n IF(\n ?typeBesluit = <https://data.vlaanderen.be/id/concept/BesluitDocumentType/3fa67785-ffdc-4b30-8880-2b99d97b4dee>\n &&\n bound(?orgaan) &&\n ?orgaanClass IN (\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5733254e-73ff-4844-8d43-7afb7ec726e8>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0dbc70ec-6be9-4997-b8e1-11b6c0542382>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/17e76b36-64a1-4db1-8927-def3064b4bf1>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000009>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/53c0d8cd-f3a2-411d-bece-4bd83ae2bbc9>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/9314533e-891f-4d84-a492-0338af104065>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000b>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/180a2fba-6ca9-4766-9b94-82006bb9c709>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/e14fe683-e061-44a2-b7c8-e10cab4e6ed9>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000006>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/4c38734d-2cc1-4d33-b792-0bd493ae9fc2>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000d>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/4955bd72cd0e4eb895fdbfab08da0284>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000008>\n ),0,1)\n as ?allowedBesluitenlijstExport).\n FILTER(?allowedBesluitenlijstExport = 1)."
+      "additionalFilter": "?resource adms:status <http://lblod.data.gift/concepts/9bd8d86d-bb10-4456-a84e-91e9507c374c>.  ?resource prov:generated ?formData . ?formData dct:type ?typeBesluit .\n OPTIONAL {\n ?formData eli:passed_by/mandaat:isTijdspecialisatieVan ?orgaan.\n ?orgaan besluit:classificatie ?orgaanClass .\n }\n BIND(\n IF(\n ?typeBesluit = <https://data.vlaanderen.be/id/concept/BesluitDocumentType/3fa67785-ffdc-4b30-8880-2b99d97b4dee>\n &&\n bound(?orgaan) &&\n ?orgaanClass IN (\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5733254e-73ff-4844-8d43-7afb7ec726e8>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0dbc70ec-6be9-4997-b8e1-11b6c0542382>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/17e76b36-64a1-4db1-8927-def3064b4bf1>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000009>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/53c0d8cd-f3a2-411d-bece-4bd83ae2bbc9>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/9314533e-891f-4d84-a492-0338af104065>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000b>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/180a2fba-6ca9-4766-9b94-82006bb9c709>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/e14fe683-e061-44a2-b7c8-e10cab4e6ed9>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000006>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/4c38734d-2cc1-4d33-b792-0bd493ae9fc2>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000d>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/4955bd72cd0e4eb895fdbfab08da0284>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000008>\n ),0,1)\n as ?allowedBesluitenlijstExport).\n FILTER(?allowedBesluitenlijstExport = 1)."
     },
     {
       "type": "meb:Submission",
       "requiredProperties": [
-        "mu:uuid",
-        "rdf:type"
+        "mu:uuid"
       ],
       "optionalProperties": [
         "adms:status",
@@ -126,7 +119,7 @@
         "ext:lastModifiedBy",
         "dct:hasPart"
       ],
-      "additionalFilter": "?resource adms:status <http://data.lblod.info/document-statuses/verstuurd>.  ?resource toezicht:decisionType ?typeBesluit .\n OPTIONAL {\n ?resource toezicht:decidedBy ?orgaan.\n ?orgaan besluit:classificatie ?orgaanClass .\n }\n BIND(\n IF(\n ?typeBesluit = <https://data.vlaanderen.be/id/concept/BesluitDocumentType/3fa67785-ffdc-4b30-8880-2b99d97b4dee>\n &&\n bound(?orgaan) &&\n ?orgaanClass IN (\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5733254e-73ff-4844-8d43-7afb7ec726e8>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0dbc70ec-6be9-4997-b8e1-11b6c0542382>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/17e76b36-64a1-4db1-8927-def3064b4bf1>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000009>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/53c0d8cd-f3a2-411d-bece-4bd83ae2bbc9>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/9314533e-891f-4d84-a492-0338af104065>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000b>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/180a2fba-6ca9-4766-9b94-82006bb9c709>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/e14fe683-e061-44a2-b7c8-e10cab4e6ed9>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000006>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/4c38734d-2cc1-4d33-b792-0bd493ae9fc2>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000d>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/4955bd72cd0e4eb895fdbfab08da0284>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000008>\n ),0,1)\n as ?allowedBesluitenlijstExport).\n FILTER(?allowedBesluitenlijstExport = 1)."
+      "additionalFilter": "?resource adms:status <http://lblod.data.gift/concepts/9bd8d86d-bb10-4456-a84e-91e9507c374c>.  ?resource prov:generated ?formData . ?formData dct:type ?typeBesluit .\n OPTIONAL {\n ?formData eli:passed_by/mandaat:isTijdspecialisatieVan ?orgaan.\n ?orgaan besluit:classificatie ?orgaanClass .\n }\n BIND(\n IF(\n ?typeBesluit = <https://data.vlaanderen.be/id/concept/BesluitDocumentType/3fa67785-ffdc-4b30-8880-2b99d97b4dee>\n &&\n bound(?orgaan) &&\n ?orgaanClass IN (\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5733254e-73ff-4844-8d43-7afb7ec726e8>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0dbc70ec-6be9-4997-b8e1-11b6c0542382>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/17e76b36-64a1-4db1-8927-def3064b4bf1>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000009>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/53c0d8cd-f3a2-411d-bece-4bd83ae2bbc9>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/9314533e-891f-4d84-a492-0338af104065>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000b>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/180a2fba-6ca9-4766-9b94-82006bb9c709>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/e14fe683-e061-44a2-b7c8-e10cab4e6ed9>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000006>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/4c38734d-2cc1-4d33-b792-0bd493ae9fc2>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000d>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/4955bd72cd0e4eb895fdbfab08da0284>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000008>\n ),0,1)\n as ?allowedBesluitenlijstExport).\n FILTER(?allowedBesluitenlijstExport = 1)."
     },
     {
       "type": "ext:SubmissionDocument",
@@ -137,13 +130,12 @@
       "optionalProperties": [
         ""
       ],
-      "additionalFilter": "?submission dct:subject ?resource. ?submission adms:status <http://data.lblod.info/document-statuses/verstuurd>.  ?submission toezicht:decisionType ?typeBesluit .\n OPTIONAL {\n ?resource toezicht:decidedBy ?orgaan.\n ?orgaan besluit:classificatie ?orgaanClass .\n }\n BIND(\n IF(\n ?typeBesluit = <https://data.vlaanderen.be/id/concept/BesluitDocumentType/3fa67785-ffdc-4b30-8880-2b99d97b4dee>\n &&\n bound(?orgaan) &&\n ?orgaanClass IN (\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5733254e-73ff-4844-8d43-7afb7ec726e8>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0dbc70ec-6be9-4997-b8e1-11b6c0542382>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/17e76b36-64a1-4db1-8927-def3064b4bf1>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000009>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/53c0d8cd-f3a2-411d-bece-4bd83ae2bbc9>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/9314533e-891f-4d84-a492-0338af104065>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000b>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/180a2fba-6ca9-4766-9b94-82006bb9c709>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/e14fe683-e061-44a2-b7c8-e10cab4e6ed9>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000006>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/4c38734d-2cc1-4d33-b792-0bd493ae9fc2>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000d>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/4955bd72cd0e4eb895fdbfab08da0284>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000008>\n ),0,1)\n as ?allowedBesluitenlijstExport).\n FILTER(?allowedBesluitenlijstExport = 1)."
+      "additionalFilter": "?submission dct:subject ?resource. ?submission adms:status <http://lblod.data.gift/concepts/9bd8d86d-bb10-4456-a84e-91e9507c374c>. ?submission prov:generated ?formData . ?formData dct:type ?typeBesluit .\n OPTIONAL {\n ?formData eli:passed_by/mandaat:isTijdspecialisatieVan ?orgaan.\n ?orgaan besluit:classificatie ?orgaanClass .\n }\n BIND(\n IF(\n ?typeBesluit = <https://data.vlaanderen.be/id/concept/BesluitDocumentType/3fa67785-ffdc-4b30-8880-2b99d97b4dee>\n &&\n bound(?orgaan) &&\n ?orgaanClass IN (\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5733254e-73ff-4844-8d43-7afb7ec726e8>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0dbc70ec-6be9-4997-b8e1-11b6c0542382>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/17e76b36-64a1-4db1-8927-def3064b4bf1>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000009>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/53c0d8cd-f3a2-411d-bece-4bd83ae2bbc9>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/9314533e-891f-4d84-a492-0338af104065>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000b>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/180a2fba-6ca9-4766-9b94-82006bb9c709>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/e14fe683-e061-44a2-b7c8-e10cab4e6ed9>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000006>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/4c38734d-2cc1-4d33-b792-0bd493ae9fc2>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e00000d>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/4955bd72cd0e4eb895fdbfab08da0284>,\n <http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000008>\n ),0,1)\n as ?allowedBesluitenlijstExport).\n FILTER(?allowedBesluitenlijstExport = 1)."
     },
     {
       "type": "ext:SubmissionDocumentStatus",
       "requiredProperties": [
-        "mu:uuid",
-        "rdf:type"
+        "mu:uuid"
       ],
       "optionalProperties": [
         "skos:prefLabel"
@@ -153,8 +145,7 @@
     {
       "type": "lblodBesluit:TaxRate",
       "requiredProperties": [
-        "mu:uuid",
-        "rdf:type"
+        "mu:uuid"
       ],
       "optionalProperties": [
         "schema:price"
@@ -164,8 +155,7 @@
     {
       "type": "ext:AuthenticityType",
       "requiredProperties": [
-        "mu:uuid",
-        "rdf:type"
+        "mu:uuid"
       ],
       "optionalProperties": [
         "skos:prefLabel"
@@ -175,8 +165,7 @@
     {
       "type": "ext:TaxType",
       "requiredProperties": [
-        "mu:uuid",
-        "rdf:type"
+        "mu:uuid"
       ],
       "optionalProperties": [
         "skos:prefLabel"
@@ -186,8 +175,7 @@
     {
       "type": "ext:ChartOfAccount",
       "requiredProperties": [
-        "mu:uuid",
-        "rdf:type"
+        "mu:uuid"
       ],
       "optionalProperties": [
         "skos:prefLabel"
@@ -197,8 +185,7 @@
     {
       "type": "skos:ConceptScheme",
       "requiredProperties": [
-        "mu:uuid",
-        "rdf:type"
+        "mu:uuid"
       ],
       "optionalProperties": [
         "skos:prefLabel"
@@ -208,20 +195,18 @@
     {
       "type": "skos:Concept",
       "requiredProperties": [
-        "mu:uuid",
-        "rdf:type"
+        "mu:uuid"
       ],
       "optionalProperties": [
         "skos:prefLabel",
-        "skos:inSchema"
+        "skos:inScheme"
       ],
-      "additionalFilter": "?resource skos:inSchema ?conceptScheme. \nBIND(\nIF(\n?conceptScheme IN (\n<http://lblod.data.gift/concept-schemes/5cecec47-ba66-4d7a-ac9d-a1e7962ca4e2>,\n<http://lblod.data.gift/concept-schemes/ac9bc402-c8e6-41fd-ad57-fad15622e560>,\n<https://data.vlaanderen.be/id/conceptscheme/BesluitType>,\n<https://data.vlaanderen.be/id/conceptscheme/BesluitDocumentType>,\n<http://data.vlaanderen.be/id/conceptscheme/BestuurseenheidClassificatieCode>,\n<http://lblod.data.gift/concept-schemes/b65b15ba-6755-4cd2-bd07-2c2cf3c0e4d3>,\n<http://lblod.data.gift/concept-schemes/c93ccd41-aee7-488f-86d3-038de890d05a>,\n<http://lblod.data.gift/concept-schemes/ac9bc402-c8e6-41fd-ad57-fad15622e560>,\n<http://lblod.data.gift/concept-schemes/71e6455e-1204-46a6-abf4-87319f58eaa5>\n),0,1) as ?allowedConecptSchemes).\nFILTER(?allowedConecptSchemes = 1).\n"
+      "additionalFilter": "?resource skos:inScheme ?conceptScheme. FILTER ( ?conceptScheme IN (\n <http://lblod.data.gift/concept-schemes/5cecec47-ba66-4d7a-ac9d-a1e7962ca4e2>,\n <http://lblod.data.gift/concept-schemes/ac9bc402-c8e6-41fd-ad57-fad15622e560>,\n <https://data.vlaanderen.be/id/conceptscheme/BesluitType>,\n <https://data.vlaanderen.be/id/conceptscheme/BesluitDocumentType>,\n <http://data.vlaanderen.be/id/conceptscheme/BestuurseenheidClassificatieCode>,\n <http://lblod.data.gift/concept-schemes/b65b15ba-6755-4cd2-bd07-2c2cf3c0e4d3>,\n <http://lblod.data.gift/concept-schemes/c93ccd41-aee7-488f-86d3-038de890d05a>,\n <http://lblod.data.gift/concept-schemes/ac9bc402-c8e6-41fd-ad57-fad15622e560>,\n <http://lblod.data.gift/concept-schemes/71e6455e-1204-46a6-abf4-87319f58eaa5>\n ) )"
     },
     {
       "type": "melding:FormData",
       "requiredProperties": [
-        "mu:uuid",
-        "rdf:type"
+        "mu:uuid"
       ],
       "optionalProperties": [
         "eli:date_publication",
@@ -230,29 +215,37 @@
         "rdfs:comment",
         "eli:first_date_entry_in_force",
         "eli:date_no_longer_in_force",
-        "lblodBesluit:authenticityType",
-        "lblodBesluit:chartOfAccount",
-        "lblodBesluit:taxType",
-        "lblodBesluit:taxRate"
+        "eli:is_about",
+        "eli:passed_by"
       ],
-      "additionalFilter": "?s prov:generated ?resource; adms:status <http://data.lblod.info/document-statuses/verstuurd>."
+      "additionalFilter": "?s prov:generated ?resource; adms:status <http://lblod.data.gift/concepts/9bd8d86d-bb10-4456-a84e-91e9507c374c>."
     },
     {
       "type": "melding:FormData",
       "requiredProperties": [
-        "mu:uuid",
-        "rdf:type"
+        "mu:uuid"
       ],
       "optionalProperties": [
         "lblodBesluit:hasAdditionalTaxRate",
+        "lblodBesluit:authenticityType",
+        "lblodBesluit:chartOfAccount",
+        "lblodBesluit:taxType",
+        "lblodBesluit:taxRate",
+        "ext:sessionStartedAtTime"
+      ],
+      "additionalFilter": "?s prov:generated ?resource; adms:status <http://lblod.data.gift/concepts/9bd8d86d-bb10-4456-a84e-91e9507c374c>."
+    },
+    {
+      "type": "melding:FormData",
+      "requiredProperties": [
+        "mu:uuid"
+      ],
+      "optionalProperties": [
         "dct:hasPart",
         "ext:taxRateAmount",
-        "ext:sessionStartedAtTime",
-        "eli:is_about",
-        "eli:passed_by",
         "dct:type"
       ],
-      "additionalFilter": "?s prov:generated ?resource; adms:status <http://data.lblod.info/document-statuses/verstuurd>."
+      "additionalFilter": "?s prov:generated ?resource; adms:status <http://lblod.data.gift/concepts/9bd8d86d-bb10-4456-a84e-91e9507c374c>."
     },
     {
       "type": "nfo:FileDataObject",
@@ -265,9 +258,10 @@
         "dct:format",
         "nfo:fileSize",
         "dbpedia:fileExtension",
-        "nfo:fileCreated"
+        "dct:created",
+        "dct:modified"
       ],
-      "additionalFilter": "?s dct:hasPart ?resource.\n?s a ext:SubmittedDocument."
+      "additionalFilter": "?s nie:hasPart ?resource. ?s a meb:Submission."
     },
     {
       "type": "nfo:FileDataObject",
@@ -280,25 +274,28 @@
         "dct:format",
         "nfo:fileSize",
         "dbpedia:fileExtension",
-        "nfo:fileCreated"
-      ],
-      "additionalFilter": "?s nie:dataSource ?resource. ?prev dct:hasPart ?s. ?prev a ext:SubmittedDocument."
-    },
-    {
-      "type": "nfo:FileDataObject",
-      "requiredProperties": [
-        "mu:uuid",
-        "rdf:type"
-      ],
-      "optionalProperties": [
-        "nfo:fileName",
-        "dct:format",
-        "nfo:fileSize",
-        "dbpedia:fileExtension",
-        "nfo:fileCreated",
+        "dct:created",
+        "dct:modified",
         "dct:type"
       ],
-      "additionalFilter": "?s dct:source ?resource. ?s a ext:SubmittedDocument."
+      "additionalFilter": "?resource nie:dataSource+ ?remoteFile. ?submission nie:hasPart ?remoteFile. ?submission a meb:Submission."
+    },
+    {
+      "type": "nfo:FileDataObject",
+      "requiredProperties": [
+        "mu:uuid",
+        "rdf:type"
+      ],
+      "optionalProperties": [
+        "nfo:fileName",
+        "dct:format",
+        "nfo:fileSize",
+        "dbpedia:fileExtension",
+        "dct:created",
+        "dct:modified",
+        "dct:type"
+      ],
+      "additionalFilter": "?s dct:source ?resource. ?s a ext:SubmissionDocument."
     }
   ]
 }
