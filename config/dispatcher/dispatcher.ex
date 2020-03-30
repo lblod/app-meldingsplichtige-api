@@ -160,10 +160,6 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/concepts/"
   end
 
-  match "/export-submissions/*path" do
-    Proxy.forward conn, path, "http://export-submissions/"
-  end
-
   #################################################################
   # dummy publications (to be removed)
   #################################################################
