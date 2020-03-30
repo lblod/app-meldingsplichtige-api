@@ -103,7 +103,7 @@ services:
     labels:
       - "logging=true"
   automatic-submission:
-    image: lblod/automatic-submission-service:0.6.0
+    image: lblod/automatic-submission-service:0.6.1
     labels:
       - "logging=true"
     restart: always
@@ -117,12 +117,12 @@ services:
     restart: always
     logging: *default-logging
   enrich-submission:
-    image: lblod/enrich-submission-service:0.3.1
+    image: lblod/enrich-submission-service:0.3.3
     volumes:
       - ./data/files/submissions:/share/submissions
       - ./data/static-files/semantic-forms-data:/data/semantic-forms
   validate-submission:
-    image: lblod/validate-submission-service:0.6.1
+    image: lblod/validate-submission-service:0.6.3
     volumes:
       - ./data/files/submissions:/share/submissions
       - ./data/static-files/semantic-forms-data:/data/semantic-forms

@@ -110,11 +110,13 @@ fields:41737f90-02d6-4036-8d60-5d5b6ccf939c a form:Field ;
         form:grouping form:Bag ;
         sh:path elod:financialYear ;
         sh:resultMessage "Dit veld is verplicht."@nl
-      ],
-      [ a form:ValidYear ;
-        form:grouping form:MatchEvery ;
-        sh:path elod:financialYear ;
-        sh:resultMessage "Geef een geldig jaar op."@n ] ;
+      ];
+      #TODO: For current version of the forms we disable this,
+      # since during the migration of the old forms, we saw there was no validation. So it fails a lot
+      # [ a form:ValidYear ;
+      #   form:grouping form:MatchEvery ;
+      #   sh:path elod:financialYear ;
+      #   sh:resultMessage "Geef een geldig jaar op."@n ] ;
     form:displayType displayTypes:defaultInput ;
     sh:group fields:aDynamicPropertyGroup .
 
@@ -142,15 +144,15 @@ fields:3dd6ed93-40f7-4d70-a6cb-f4de53dc8bfb a form:Field ;
     mu:uuid "3dd6ed93-40f7-4d70-a6cb-f4de53dc8bfb" ;
     sh:name "Datum zitting/besluit" ;
     sh:order 2600 ;
-    sh:path ( [ sh:inversePath besluit:heeftUittreksel ] prov:startedAtTime ) ;  # see https://www.w3.org/TR/shacl/#property-paths for syntax
+    sh:path ( [ sh:inversePath prov:generated ] dct:subject [ sh:inversePath besluit:behandelt ]  prov:startedAtTime ) ;  # see https://www.w3.org/TR/shacl/#property-paths for syntax
     form:validations
       [ a form:RequiredConstraint ;
         form:grouping form:Bag ;
         sh:resultMessage "Dit is een verplicht veld.";
-        sh:path ( [ sh:inversePath besluit:heeftUittreksel ] prov:startedAtTime ) ],
+        sh:path ( [ sh:inversePath prov:generated ] dct:subject [ sh:inversePath besluit:behandelt ]  prov:startedAtTime ) ],
       [ a form:ValidDateTime ;
         form:grouping form:MatchEvery ;
-        sh:path ( [ sh:inversePath besluit:heeftUittreksel ] prov:startedAtTime ) ;
+        sh:path ( [ sh:inversePath prov:generated ] dct:subject [ sh:inversePath besluit:behandelt ]  prov:startedAtTime ) ;
         sh:resultMessage "Geeft een geldige datum en tijd op."] ;
     form:displayType displayTypes:dateTime ;
     sh:group fields:aDynamicPropertyGroup .
@@ -370,7 +372,7 @@ fields:c955d641-b9b3-4ec7-9838-c2a477c7e95b a form:Field ;
     mu:uuid "c955d641-b9b3-4ec7-9838-c2a477c7e95b" ;
     sh:name "Links naar documenten" ;
     sh:order 10000 ;
-    sh:path (dct:hasPart nie:url);
+    sh:path dct:hasPart;
     form:validations
      [ a form:UriConstraint ;
         form:grouping form:MatchEvery ;
@@ -378,7 +380,7 @@ fields:c955d641-b9b3-4ec7-9838-c2a477c7e95b a form:Field ;
          sh:path ( dct:hasPart nie:url ) ],
      [ a form:RequiredConstraint ;
          form:grouping form:Bag ;
-         sh:path ( dct:hasPart nie:url);
+         sh:path dct:hasPart ;
          sh:resultMessage "Gelieve minstens één URL of bestand op te geven."@nl
      ];
     form:displayType displayTypes:remoteUrls;
@@ -404,6 +406,19 @@ fields:355fe001-cdca-48cc-8a6e-88b3aab09874 a form:Field ;
     sh:order 10001 ;
     sh:path ( dct:hasPart rdf:type );
     sh:group fields:aDynamicPropertyGroup .
+
+fields:d0052f0d-90bc-4543-a6b0-e90a1c1117db a form:Field ;
+    mu:uuid "d0052f0d-90bc-4543-a6b0-e90a1c1117db" ;
+    sh:name "RemoteDataObject/url [hidden input]" ;
+    sh:order 10001 ;
+    sh:path ( dct:hasPart nie:url );
+    form:validations
+     [ a form:UriConstraint ;
+        form:grouping form:MatchEvery ;
+        sh:resultMessage "Gelieve een geldige URL op te geven."; # TODO: later custom validator
+        sh:path ( dct:hasPart nie:url )
+     ];
+     sh:group fields:aDynamicPropertyGroup .
 ##########################################################
 #  Files and links  [First version]
 ##########################################################
@@ -466,6 +481,7 @@ fields:eaf71eec-6ca8-4f63-b4a6-adfe4f21651b a form:Field ;
 #  END VLABEL [First version]
 ##########################################################
 
+
 ###########Advies-bij-jaarrekening-AGB###########
 
 fieldGroups:b8c40ca1-b2c4-416c-bc3f-e0e4bd50a493 a form:FieldGroup ;
@@ -490,7 +506,10 @@ fieldGroups:b8c40ca1-b2c4-416c-bc3f-e0e4bd50a493 a form:FieldGroup ;
                       fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a,
 
                       ###Type RemoteDataObject or FileDataObject###
-                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874.
+                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874,
+
+                      ### RemoteDataObject/url ###
+                      fields:d0052f0d-90bc-4543-a6b0-e90a1c1117db.
 
 
 fields:0827fafe-ad19-49e1-8b2e-105d2c08a54a form:hasConditionalFieldGroup fields:c13981d3-33a2-4105-9ac0-9823aa52073a.
@@ -547,7 +566,10 @@ fieldGroups:70fe1278-738f-4edf-b1a1-94056579c7a4 a form:FieldGroup ;
                       fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a,
 
                       ###Type RemoteDataObject or FileDataObject###
-                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874.
+                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874,
+
+                      ### RemoteDataObject/url ###
+                      fields:d0052f0d-90bc-4543-a6b0-e90a1c1117db.
 
 fields:0827fafe-ad19-49e1-8b2e-105d2c08a54a form:hasConditionalFieldGroup fields:24e1615a-7ee1-4f55-9aab-baa9140c3024.
 
@@ -603,7 +625,10 @@ fieldGroups:91045004-2066-40f3-aac1-bf2309eb2b99 a form:FieldGroup ;
                       fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a,
 
                       ###Type RemoteDataObject or FileDataObject###
-                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874.
+                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874,
+
+                      ### RemoteDataObject/url ###
+                      fields:d0052f0d-90bc-4543-a6b0-e90a1c1117db.
 
 fields:0827fafe-ad19-49e1-8b2e-105d2c08a54a form:hasConditionalFieldGroup fields:d6fee4ff-91f7-4a8d-873f-5394eb43c017.
 
@@ -644,7 +669,10 @@ fieldGroups:e5d8713c-338a-4775-a745-f6f4bad7189e a form:FieldGroup ;
                       fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a,
 
                       ###Type RemoteDataObject or FileDataObject###
-                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874.
+                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874,
+
+                      ### RemoteDataObject/url ###
+                      fields:d0052f0d-90bc-4543-a6b0-e90a1c1117db.
 
 fields:0827fafe-ad19-49e1-8b2e-105d2c08a54a form:hasConditionalFieldGroup fields:22646d67-09ad-49ab-8f09-e9948c18cbec.
 
@@ -682,7 +710,10 @@ fieldGroups:53505d5d-d28c-49d2-afaf-910f673d34e1 a form:FieldGroup ;
                       fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a,
 
                       ###Type RemoteDataObject or FileDataObject###
-                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874.
+                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874,
+
+                      ### RemoteDataObject/url ###
+                      fields:d0052f0d-90bc-4543-a6b0-e90a1c1117db.
 
 fields:0827fafe-ad19-49e1-8b2e-105d2c08a54a form:hasConditionalFieldGroup fields:c2331741-8d43-4fcd-8aae-c2d102e714ff.
 
@@ -715,7 +746,10 @@ fieldGroups:0945ac20-fec2-4a08-8cb5-ddec808e0c4c a form:FieldGroup ;
                       fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a,
 
                       ###Type RemoteDataObject or FileDataObject###
-                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874.
+                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874,
+
+                      ### RemoteDataObject/url ###
+                      fields:d0052f0d-90bc-4543-a6b0-e90a1c1117db.
 
 fields:0827fafe-ad19-49e1-8b2e-105d2c08a54a form:hasConditionalFieldGroup fields:e14b7ae5-f527-4fb8-b1b8-84779bac960b.
 
@@ -755,7 +789,10 @@ fieldGroups:35396e31-45cf-4382-a254-e74bba37ae4c a form:FieldGroup ;
                       fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a,
 
                       ###Type RemoteDataObject or FileDataObject###
-                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874.
+                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874,
+
+                      ### RemoteDataObject/url ###
+                      fields:d0052f0d-90bc-4543-a6b0-e90a1c1117db.
 
 fields:0827fafe-ad19-49e1-8b2e-105d2c08a54a form:hasConditionalFieldGroup fields:17b66f1d-eb1f-4014-af8f-fe436e149662.
 
@@ -793,7 +830,10 @@ fieldGroups:c059770c-decd-49aa-abbe-82b29a286225 a form:FieldGroup ;
                       fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a,
 
                       ###Type RemoteDataObject or FileDataObject###
-                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874.
+                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874,
+
+                      ### RemoteDataObject/url ###
+                      fields:d0052f0d-90bc-4543-a6b0-e90a1c1117db.
 
 fields:0827fafe-ad19-49e1-8b2e-105d2c08a54a form:hasConditionalFieldGroup fields:c259ff82-08d7-4009-81db-28456c9f6e21 .
 
@@ -852,7 +892,10 @@ fieldGroups:0cb3ea99-0555-4529-a367-0a76de0fc448 a form:FieldGroup ;
                       fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a,
 
                       ###Type RemoteDataObject or FileDataObject###
-                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874.
+                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874,
+
+                      ### RemoteDataObject/url ###
+                      fields:d0052f0d-90bc-4543-a6b0-e90a1c1117db.
 
 fields:0827fafe-ad19-49e1-8b2e-105d2c08a54a form:hasConditionalFieldGroup fields:40384e53-5fa2-49a8-aa52-fabcae68bc62.
 
@@ -917,7 +960,10 @@ fieldGroups:c305e982-fbca-4142-b3d9-88f37aa5a9a0 a form:FieldGroup ;
                       fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a,
 
                       ###Type RemoteDataObject or FileDataObject###
-                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874.
+                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874,
+
+                      ### RemoteDataObject/url ###
+                      fields:d0052f0d-90bc-4543-a6b0-e90a1c1117db.
 
 fields:0827fafe-ad19-49e1-8b2e-105d2c08a54a form:hasConditionalFieldGroup fields:e6e3271a-a6c9-4a8e-82f2-606856b063c7.
 
@@ -979,7 +1025,10 @@ fieldGroups:09fd371f-2afe-4b14-81a9-e780876de077 a form:FieldGroup ;
                       fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a,
 
                       ###Type RemoteDataObject or FileDataObject###
-                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874.
+                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874,
+
+                      ### RemoteDataObject/url ###
+                      fields:d0052f0d-90bc-4543-a6b0-e90a1c1117db.
 
 fields:0827fafe-ad19-49e1-8b2e-105d2c08a54a form:hasConditionalFieldGroup fields:a262ac48-1511-4744-a332-164f471c150d.
 
@@ -1032,7 +1081,10 @@ fieldGroups:a0759a1e-ef65-4e39-8cc4-2787ff40d2c9 a form:FieldGroup ;
                       fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a,
 
                       ###Type RemoteDataObject or FileDataObject###
-                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874.
+                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874,
+
+                      ### RemoteDataObject/url ###
+                      fields:d0052f0d-90bc-4543-a6b0-e90a1c1117db.
 
 fields:0827fafe-ad19-49e1-8b2e-105d2c08a54a form:hasConditionalFieldGroup fields:fe5ba124-5298-473f-a74b-3fa1237c3520.
 
@@ -1094,7 +1146,10 @@ fieldGroups:ae168679-82cf-4df6-8803-cbcbc6610f47 a form:FieldGroup ;
                       fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a,
 
                       ###Type RemoteDataObject or FileDataObject###
-                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874.
+                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874,
+
+                      ### RemoteDataObject/url ###
+                      fields:d0052f0d-90bc-4543-a6b0-e90a1c1117db.
 
 fields:0827fafe-ad19-49e1-8b2e-105d2c08a54a form:hasConditionalFieldGroup fields:c5541662-1c03-446f-837c-8c56d3db5a27.
 
@@ -1147,7 +1202,10 @@ fieldGroups:deb4e777-eb33-4884-a2cd-859e20c9cf71 a form:FieldGroup ;
                       fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a,
 
                       ###Type RemoteDataObject or FileDataObject###
-                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874.
+                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874,
+
+                      ### RemoteDataObject/url ###
+                      fields:d0052f0d-90bc-4543-a6b0-e90a1c1117db.
 
 fields:0827fafe-ad19-49e1-8b2e-105d2c08a54a form:hasConditionalFieldGroup fields:7b7368be-3f98-4a56-993f-39443d92cc1d.
 
@@ -1185,7 +1243,10 @@ fieldGroups:64b712f3-c061-4368-919e-6ea6afb45192 a form:FieldGroup ;
                       fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a,
 
                       ###Type RemoteDataObject or FileDataObject###
-                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874.
+                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874,
+
+                      ### RemoteDataObject/url ###
+                      fields:d0052f0d-90bc-4543-a6b0-e90a1c1117db.
 
 fields:0827fafe-ad19-49e1-8b2e-105d2c08a54a form:hasConditionalFieldGroup fields:d75438e8-a4c5-4b39-a606-e198fdeb7aec.
 
@@ -1238,7 +1299,10 @@ fieldGroups:8e826b62-3bce-4a9c-b8c1-e84db510c6a3 a form:FieldGroup ;
                       fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a,
 
                       ###Type RemoteDataObject or FileDataObject###
-                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874.
+                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874,
+
+                      ### RemoteDataObject/url ###
+                      fields:d0052f0d-90bc-4543-a6b0-e90a1c1117db.
 
 fields:0827fafe-ad19-49e1-8b2e-105d2c08a54a form:hasConditionalFieldGroup fields:8640f3ff-2302-40eb-85c6-d932628250ed.
 
@@ -1276,7 +1340,10 @@ fieldGroups:7e841b1c-64a4-48a6-b39d-c18fe1a9394f a form:FieldGroup ;
                       fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a,
 
                       ###Type RemoteDataObject or FileDataObject###
-                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874.
+                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874,
+
+                      ### RemoteDataObject/url ###
+                      fields:d0052f0d-90bc-4543-a6b0-e90a1c1117db.
 
 fields:0827fafe-ad19-49e1-8b2e-105d2c08a54a form:hasConditionalFieldGroup fields:e929ed9d-3a37-4bf1-9b6c-d8285fa0ec0c.
 
@@ -1323,7 +1390,10 @@ fieldGroups:7d5f1a08-598c-4a67-a102-a8bc07ac2f13 a form:FieldGroup ;
                       fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a,
 
                       ###Type RemoteDataObject or FileDataObject###
-                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874.
+                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874,
+
+                      ### RemoteDataObject/url ###
+                      fields:d0052f0d-90bc-4543-a6b0-e90a1c1117db.
 
 fields:0827fafe-ad19-49e1-8b2e-105d2c08a54a form:hasConditionalFieldGroup fields:887f0b61-cbb6-41a9-a4d3-62d980760aa6.
 
@@ -1376,7 +1446,10 @@ fieldGroups:e0925be1-bdce-4890-b6e4-4f7640700581 a form:FieldGroup ;
                       fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a,
 
                       ###Type RemoteDataObject or FileDataObject###
-                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874.
+                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874,
+
+                      ### RemoteDataObject/url ###
+                      fields:d0052f0d-90bc-4543-a6b0-e90a1c1117db.
 
 fields:0827fafe-ad19-49e1-8b2e-105d2c08a54a form:hasConditionalFieldGroup fields:8ba3d4c6-022e-401f-a47f-847b1220f669.
 
@@ -1429,7 +1502,10 @@ fieldGroups:25818169-35e6-4798-bb78-c9bc4ea894d8 a form:FieldGroup ;
                       fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a,
 
                       ###Type RemoteDataObject or FileDataObject###
-                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874.
+                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874,
+
+                      ### RemoteDataObject/url ###
+                      fields:d0052f0d-90bc-4543-a6b0-e90a1c1117db.
 
 fields:0827fafe-ad19-49e1-8b2e-105d2c08a54a form:hasConditionalFieldGroup fields:66d433ec-7022-420b-8bf8-e718a8ecb795.
 
@@ -1464,7 +1540,10 @@ fieldGroups:2fb408e5-b38a-43fc-8ebe-7c38381312df a form:FieldGroup ;
                       fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a,
 
                       ###Type RemoteDataObject or FileDataObject###
-                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874.
+                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874,
+
+                      ### RemoteDataObject/url ###
+                      fields:d0052f0d-90bc-4543-a6b0-e90a1c1117db.
 
 fields:0827fafe-ad19-49e1-8b2e-105d2c08a54a form:hasConditionalFieldGroup fields:d441cb26-ea24-4ff7-b5fb-868e36e7d468.
 
@@ -1517,7 +1596,10 @@ fieldGroups:ba1888ea-8741-4a4c-911b-74e2335a1680 a form:FieldGroup ;
                       fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a,
 
                       ###Type RemoteDataObject or FileDataObject###
-                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874.
+                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874,
+
+                      ### RemoteDataObject/url ###
+                      fields:d0052f0d-90bc-4543-a6b0-e90a1c1117db.
 
 fields:0827fafe-ad19-49e1-8b2e-105d2c08a54a form:hasConditionalFieldGroup fields:0269fc98-4ba8-476a-b0d5-817f5f6928aa.
 
@@ -1576,7 +1658,10 @@ fieldGroups:dc8585b7-891d-465f-b2b5-aea3f5323b48 a form:FieldGroup ;
                       fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a,
 
                       ###Type RemoteDataObject or FileDataObject###
-                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874.
+                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874,
+
+                      ### RemoteDataObject/url ###
+                      fields:d0052f0d-90bc-4543-a6b0-e90a1c1117db.
 
 fields:0827fafe-ad19-49e1-8b2e-105d2c08a54a form:hasConditionalFieldGroup fields:f719b1da-c8c5-4a08-bc74-89c63de96961.
 
@@ -1635,7 +1720,10 @@ fieldGroups:6749f691-29b3-459c-8054-f78a3d816db2 a form:FieldGroup ;
                       fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a,
 
                       ###Type RemoteDataObject or FileDataObject###
-                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874.
+                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874,
+
+                      ### RemoteDataObject/url ###
+                      fields:d0052f0d-90bc-4543-a6b0-e90a1c1117db.
 
 fields:0827fafe-ad19-49e1-8b2e-105d2c08a54a form:hasConditionalFieldGroup fields:6a56792c-5a47-473d-9db3-3362f96a1cda.
 
@@ -1688,7 +1776,10 @@ fieldGroups:831b8af6-4ce7-4b5c-8261-97a3a9309239 a form:FieldGroup ;
                       fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a,
 
                       ###Type RemoteDataObject or FileDataObject###
-                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874.
+                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874,
+
+                      ### RemoteDataObject/url ###
+                      fields:d0052f0d-90bc-4543-a6b0-e90a1c1117db.
 
 fields:0827fafe-ad19-49e1-8b2e-105d2c08a54a form:hasConditionalFieldGroup fields:fbc56ed1-bb0d-44fe-9dee-75d64f722ada.
 
@@ -1741,7 +1832,10 @@ fieldGroups:479990ad-12a3-43b1-a3cf-3d9897e59357 a form:FieldGroup ;
                       fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a,
 
                       ###Type RemoteDataObject or FileDataObject###
-                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874.
+                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874,
+
+                      ### RemoteDataObject/url ###
+                      fields:d0052f0d-90bc-4543-a6b0-e90a1c1117db.
 
 fields:0827fafe-ad19-49e1-8b2e-105d2c08a54a form:hasConditionalFieldGroup fields:b13143f6-f547-4aa2-9ed0-485a0dc7a354.
 
@@ -1782,7 +1876,10 @@ fieldGroups:02ffc029-d60c-49f7-8b13-5250a41615a6 a form:FieldGroup ;
                       fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a,
 
                       ###Type RemoteDataObject or FileDataObject###
-                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874.
+                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874,
+
+                      ### RemoteDataObject/url ###
+                      fields:d0052f0d-90bc-4543-a6b0-e90a1c1117db.
 
 fields:0827fafe-ad19-49e1-8b2e-105d2c08a54a form:hasConditionalFieldGroup fields:d4a51632-72d3-459b-b6e5-0d87fbac188a.
 
@@ -1870,7 +1967,7 @@ fields:0c7d6a0d-146e-40bf-b834-12941feac885 a form:ConditionalFieldGroup ;
         form:grouping form:Bag ;
         sh:path lblodBesluit:taxType ;
         form:conceptScheme <http://lblod.data.gift/concept-schemes/3037c4f4-1c63-43ac-bfc4-b41d098b15a6> ;
-        form:customValue <https://data.vlaanderen.be/id/concept/BesluitType/efa4ec5a-b006-453f-985f-f986ebae11bc>
+        form:customValue <http://lblod.data.gift/concepts/332f06e0ac5a934407648281bf2564c8bc796bdb9c5e79ab6d928d0788770d4e>
       ] ;
     form:hasFieldGroup fieldGroups:577dcadb-89fb-4365-af2c-93a61c1b9264 .###########Belastingsreglement###########
 
@@ -1929,7 +2026,10 @@ fieldGroups:a5964067-defb-48ca-8cb2-04db3d6ecd13 a form:FieldGroup ;
                       fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a,
 
                       ###Type RemoteDataObject or FileDataObject###
-                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874.
+                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874,
+
+                      ### RemoteDataObject/url ###
+                      fields:d0052f0d-90bc-4543-a6b0-e90a1c1117db.
 
 fields:0827fafe-ad19-49e1-8b2e-105d2c08a54a form:hasConditionalFieldGroup fields:4f8e79e3-3b13-4a6a-b6e0-1909ab6cfa2a.
 
@@ -1979,7 +2079,10 @@ fieldGroups:6745c3c5-ed83-45e2-a9e7-ca77c18f0d05 a form:FieldGroup ;
                       fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a,
 
                       ###Type RemoteDataObject or FileDataObject###
-                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874.
+                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874,
+
+                      ### RemoteDataObject/url ###
+                      fields:d0052f0d-90bc-4543-a6b0-e90a1c1117db.
 
 fields:0827fafe-ad19-49e1-8b2e-105d2c08a54a form:hasConditionalFieldGroup fields:40f6d026-11f0-44b3-8594-58210f2860c5.
 
@@ -2032,7 +2135,10 @@ fieldGroups:81f3de49-f87b-46a7-97ad-8d3c1ba34f9d a form:FieldGroup ;
                       fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a,
 
                       ###Type RemoteDataObject or FileDataObject###
-                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874.
+                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874,
+
+                      ### RemoteDataObject/url ###
+                      fields:d0052f0d-90bc-4543-a6b0-e90a1c1117db.
 
 fields:0827fafe-ad19-49e1-8b2e-105d2c08a54a form:hasConditionalFieldGroup fields:8f4d113b-ac51-4579-a2d7-ac77caedc303.
 
@@ -2085,7 +2191,10 @@ fieldGroups:46888726-9bc4-49ac-a0ef-848e37731a13 a form:FieldGroup ;
                       fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a,
 
                       ###Type RemoteDataObject or FileDataObject###
-                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874.
+                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874,
+
+                      ### RemoteDataObject/url ###
+                      fields:d0052f0d-90bc-4543-a6b0-e90a1c1117db.
 
 fields:0827fafe-ad19-49e1-8b2e-105d2c08a54a form:hasConditionalFieldGroup fields:4d879983-4c39-4742-a3af-690ca3b84004.
 
@@ -2135,7 +2244,10 @@ fieldGroups:319fc495-408d-4b3d-b217-dcbdf6f414d5 a form:FieldGroup ;
                       fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a,
 
                       ###Type RemoteDataObject or FileDataObject###
-                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874.
+                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874,
+
+                      ### RemoteDataObject/url ###
+                      fields:d0052f0d-90bc-4543-a6b0-e90a1c1117db.
 
 fields:0827fafe-ad19-49e1-8b2e-105d2c08a54a form:hasConditionalFieldGroup fields:d99c663e-32ae-4865-bdeb-f961fda68d61.
 
@@ -2194,7 +2306,10 @@ fieldGroups:d450b149-4372-40d9-bd31-ee1f1402c630 a form:FieldGroup ;
                       fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a,
 
                       ###Type RemoteDataObject or FileDataObject###
-                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874.
+                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874,
+
+                      ### RemoteDataObject/url ###
+                      fields:d0052f0d-90bc-4543-a6b0-e90a1c1117db.
 
 fields:0827fafe-ad19-49e1-8b2e-105d2c08a54a form:hasConditionalFieldGroup fields:70be2b17-d91e-454b-8fda-a041432d94e8.
 
@@ -2247,7 +2362,10 @@ fieldGroups:8f69f627-e0f0-44e9-95f2-7db5e421f0fc a form:FieldGroup ;
                       fields:c955d641-b9b3-4ec7-9838-c2a477c7e95a,
 
                       ###Type RemoteDataObject or FileDataObject###
-                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874.
+                      fields:355fe001-cdca-48cc-8a6e-88b3aab09874,
+
+                      ### RemoteDataObject/url ###
+                      fields:d0052f0d-90bc-4543-a6b0-e90a1c1117db.
 
 fields:0827fafe-ad19-49e1-8b2e-105d2c08a54a form:hasConditionalFieldGroup fields:0ae400e4-6897-4d86-982a-e1f74ead1f93.
 
