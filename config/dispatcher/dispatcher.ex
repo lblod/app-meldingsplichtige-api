@@ -159,6 +159,7 @@ defmodule Dispatcher do
   get "/concepts/*path" do
     Proxy.forward conn, path, "http://cache/concepts/"
   end
+
   #################################################################
   # dummy publications (to be removed)
   #################################################################

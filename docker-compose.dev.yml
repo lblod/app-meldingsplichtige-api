@@ -38,5 +38,7 @@ services:
     restart: "no"
   toezicht-flattened-form-data-generator:
     restart: "no"
+  export-submissions:
+    restart: "no"
   mocklogin:
     image: lblod/mock-login-service:0.3.1

@@ -37,7 +37,7 @@
 
 (define-resource submission-document ()
   :class (s-prefix "ext:SubmissionDocument")
-  :has-one `((submission-document :via ,(s-prefix "dct:subject")
+  :has-one `((submission :via ,(s-prefix "dct:subject")
                                   :inverse t
                                   :as "submission"))
   :resource-base (s-url "http://data.lblod.info/submission-documents/")
