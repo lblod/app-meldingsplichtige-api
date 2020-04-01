@@ -50,7 +50,7 @@ services:
     volumes:
       - ./data/db:/data
       - ./config/db/:/opt/virtuoso-scripts
-      - ./config/db/virtuoso.ini:/data/virtuoso.ini
+#      - ./config/db/virtuoso.ini:/data/virtuoso.ini
     labels:
       - "logging=true"
     restart: always
@@ -123,7 +123,7 @@ services:
       - ./data/files/submissions:/share/submissions
       - ./data/static-files/semantic-forms-data:/data/semantic-forms
   validate-submission:
-    image: lblod/validate-submission-service:0.6.3
+    image: lblod/validate-submission-service:0.6.5
     volumes:
       - ./data/files/submissions:/share/submissions
       - ./data/static-files/semantic-forms-data:/data/semantic-forms
