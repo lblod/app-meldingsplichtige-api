@@ -50,7 +50,7 @@ services:
     volumes:
       - ./data/db:/data
       - ./config/db/:/opt/virtuoso-scripts
-#      - ./config/db/virtuoso.ini:/data/virtuoso.ini
+      - ./config/db/virtuoso.ini:/data/virtuoso.ini
     labels:
       - "logging=true"
     restart: always
@@ -140,7 +140,7 @@ services:
     volumes:
       - ./data/static-files:/data
   toezicht-flattened-form-data-generator:
-    image: lblod/toezicht-flattened-form-data-generator:0.2.3
+    image: lblod/toezicht-flattened-form-data-generator:0.2.4
     volumes:
       - ./data/files/submissions:/share/submissions
   export-submissions:
