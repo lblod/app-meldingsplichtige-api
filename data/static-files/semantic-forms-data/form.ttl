@@ -40,7 +40,7 @@ fields:0827fafe-ad19-49e1-8b2e-105d2c08a54a a form:Field ;
         form:grouping form:Bag ;
         sh:path rdf:type ;
         form:conceptScheme <http://lblod.data.gift/concept-schemes/71e6455e-1204-46a6-abf4-87319f58eaa5> ;
-        sh:resultMessage "Er dient exact 1 waarde voor type besluit te worden ingevuld."@nl
+        sh:resultMessage "Selecteer een waarde uit de lijst."@nl
       ] ;
     form:options  """{"conceptScheme":"http://lblod.data.gift/concept-schemes/71e6455e-1204-46a6-abf4-87319f58eaa5"}""" ;
     form:displayType displayTypes:conceptSchemeSelector ;
@@ -72,7 +72,7 @@ fields:a8f6a6cb-dbb8-488c-878d-05603791a9eb a form:Field ;
         form:grouping form:Bag ;
         sh:path lblodBesluit:authenticityType ;
         form:conceptScheme <http://lblod.data.gift/concept-schemes/5cecec47-ba66-4d7a-ac9d-a1e7962ca4e2> ;
-        sh:resultMessage "De waarde komt niet uit de opgegeven codelijst."@nl
+        sh:resultMessage "Selecteer een waarde uit de lijst."@nl
       ] ;
     form:options  """{"conceptScheme":"http://lblod.data.gift/concept-schemes/5cecec47-ba66-4d7a-ac9d-a1e7962ca4e2"}""" ;
     form:displayType displayTypes:conceptSchemeSelector ;
@@ -130,12 +130,34 @@ fields:bffbea8d-e55b-4e3d-86e8-ba7aaee7863d a form:Field ;
         form:grouping form:Bag ;
         sh:path eli:passed_by ;
         form:conceptScheme <http://data.lblod.info/concept-schemes/481c03f0-d07f-424e-9c2b-8d4cfb141c72> ;
-        sh:resultMessage "De waarde komt niet uit de opgegeven codelijst."@nl
+        sh:resultMessage "Selecteer een waarde uit de lijst."@nl
       ],
       [ a form:RequiredConstraint ;
         form:grouping form:Bag ;
         sh:resultMessage "Dit veld is verplicht."@nl;
         sh:path eli:passed_by ] ;
+    form:options  """{"conceptScheme":"http://data.lblod.info/concept-schemes/481c03f0-d07f-424e-9c2b-8d4cfb141c72"}""" ;
+    form:displayType displayTypes:conceptSchemeSelector ;
+    sh:group fields:aDynamicPropertyGroup .
+
+# For notulen, we want another path that is semantically correct
+fields:e24d533f-3e63-4b36-a6af-21c65357e258 a form:Field ;
+    mu:uuid "e24d533f-3e63-4b36-a6af-21c65357e258" ;
+    sh:name "Welk beslissingsorgaan nam het besluit?" ;
+    sh:order 2000 ;
+    sh:path ( [ sh:inversePath besluit:heeftNotulen ] besluit:isGehoudenDoor ) ;
+    form:validations
+      [ a form:ConceptSchemeConstraint ; #TODO
+        form:grouping form:Bag ;
+        sh:path ( [ sh:inversePath besluit:heeftNotulen ] besluit:isGehoudenDoor ) ;
+        form:conceptScheme <http://data.lblod.info/concept-schemes/481c03f0-d07f-424e-9c2b-8d4cfb141c72> ;
+        sh:resultMessage "De waarde komt niet uit de opgegeven codelijst."@nl
+      ],
+      [ a form:RequiredConstraint ;
+        form:grouping form:Bag ;
+        sh:resultMessage "Dit veld is verplicht."@nl;
+        sh:path ( [ sh:inversePath besluit:heeftNotulen ] besluit:isGehoudenDoor )
+      ] ;
     form:options  """{"conceptScheme":"http://data.lblod.info/concept-schemes/481c03f0-d07f-424e-9c2b-8d4cfb141c72"}""" ;
     form:displayType displayTypes:conceptSchemeSelector ;
     sh:group fields:aDynamicPropertyGroup .
@@ -148,12 +170,12 @@ fields:3dd6ed93-40f7-4d70-a6cb-f4de53dc8bfb a form:Field ;
     form:validations
       [ a form:RequiredConstraint ;
         form:grouping form:Bag ;
-        sh:resultMessage "Dit is een verplicht veld.";
+        sh:resultMessage "Dit veld is verplicht.";
         sh:path ( [ sh:inversePath prov:generated ] dct:subject [ sh:inversePath besluit:behandelt ]  prov:startedAtTime ) ],
       [ a form:ValidDateTime ;
         form:grouping form:MatchEvery ;
         sh:path ( [ sh:inversePath prov:generated ] dct:subject [ sh:inversePath besluit:behandelt ]  prov:startedAtTime ) ;
-        sh:resultMessage "Geeft een geldige datum en tijd op."] ;
+        sh:resultMessage "Geef een geldige datum en tijd op."] ;
     form:displayType displayTypes:dateTime ;
     sh:group fields:aDynamicPropertyGroup .
 
@@ -165,12 +187,12 @@ fields:ba965704-5a74-4a77-b283-4f97f3b7ddbc a form:Field ;
     form:validations
       [ a form:RequiredConstraint ;
         form:grouping form:Bag ;
-        sh:resultMessage "Dit is een verplicht veld.";
+        sh:resultMessage "Dit veld is verplicht.";
         sh:path ( [ sh:inversePath besluit:heeftBesluitenlijst ] prov:startedAtTime ) ],
       [ a form:ValidDateTime ;
         form:grouping form:MatchEvery ;
         sh:path ( [ sh:inversePath besluit:heeftBesluitenlijst ] prov:startedAtTime ) ;
-        sh:resultMessage "Geeft een geldige datum en tijd op."] ;
+        sh:resultMessage "Geef een geldige datum en tijd op."] ;
     form:displayType displayTypes:dateTime ;
     sh:group fields:aDynamicPropertyGroup .
 
@@ -182,12 +204,12 @@ fields:857d670f-9a25-4555-bfe5-ecc48c2ffde3 a form:Field ;
     form:validations
       [ a form:RequiredConstraint ;
         form:grouping form:Bag ;
-        sh:resultMessage "Dit is een verplicht veld.";
+        sh:resultMessage "Dit veld is verplicht.";
         sh:path ( [ sh:inversePath besluit:heeftNotulen ] prov:startedAtTime ) ],
       [ a form:ValidDateTime ;
         form:grouping form:MatchEvery ;
         sh:path ( [ sh:inversePath besluit:heeftNotulen ] prov:startedAtTime ) ;
-        sh:resultMessage "Geeft een geldige datum en tijd op."] ;
+        sh:resultMessage "Geef een geldige datum en tijd op."] ;
     form:displayType displayTypes:dateTime ;
     sh:group fields:aDynamicPropertyGroup .
 
@@ -199,12 +221,12 @@ fields:720c86f8-4537-44b0-850b-fb3452d8bb2d a form:Field ;
     form:validations
       [ a form:RequiredConstraint ;
         form:grouping form:Bag ;
-        sh:resultMessage "Dit is een verplicht veld.";
+        sh:resultMessage "Dit veld is verplicht.";
         sh:path ( [ sh:inversePath besluit:heeftAgenda ] prov:startedAtTime ) ],
       [ a form:ValidDateTime ;
         form:grouping form:MatchEvery ;
         sh:path ( [ sh:inversePath besluit:heeftAgenda ] prov:startedAtTime ) ;
-        sh:resultMessage "Geeft een geldige datum en tijd op."] ;
+        sh:resultMessage "Geef een geldige datum en tijd op."] ;
     form:displayType displayTypes:dateTime ;
     sh:group fields:aDynamicPropertyGroup .
 
@@ -218,7 +240,7 @@ fields:ef31b839-c461-4732-b35c-a8b6c7507cf1 a form:Field ;
         form:grouping form:Bag ;
         sh:path lblodBesluit:chartOfAccount ;
         form:conceptScheme  <http://lblod.data.gift/concept-schemes/b65b15ba-6755-4cd2-bd07-2c2cf3c0e4d3>;
-        sh:resultMessage "De waarde komt niet uit de opgegeven codelijst."@nl
+        sh:resultMessage "Selecteer een waarde uit de lijst."@nl
       ] ;
     form:options  """{"conceptScheme":"http://lblod.data.gift/concept-schemes/b65b15ba-6755-4cd2-bd07-2c2cf3c0e4d3"}""" ;
     form:displayType displayTypes:conceptSchemeSelector ;
@@ -232,13 +254,13 @@ fields:a1b6c2e1-c1c3-45fb-84e7-cdd241a3130d a form:Field ;
     form:validations
       [ a form:RequiredConstraint ;
         form:grouping form:Bag ;
-        sh:resultMessage "Dit is een verplicht veld.";
+        sh:resultMessage "Dit veld is verplicht.";
         sh:path lblodBesluit:chartOfAccount ],
       [ a form:ConceptSchemeConstraint ; #TODO
         form:grouping form:Bag ;
         sh:path lblodBesluit:chartOfAccount ;
         form:conceptScheme  <http://lblod.data.gift/concept-schemes/b65b15ba-6755-4cd2-bd07-2c2cf3c0e4d3>;
-        sh:resultMessage "De waarde komt niet uit de opgegeven codelijst."@nl
+        sh:resultMessage "Selecteer een waarde uit de lijst."@nl
       ] ;
     form:options  """{"conceptScheme":"http://lblod.data.gift/concept-schemes/b65b15ba-6755-4cd2-bd07-2c2cf3c0e4d3"}""" ;
     form:displayType displayTypes:conceptSchemeSelector ;
@@ -321,7 +343,7 @@ fields:7cd14dfd-81ff-4a5d-8374-5879c5877c4c a form:Field ;
         form:grouping form:Bag ;
         sh:path lblodBesluit:taxType ;
         form:conceptScheme <http://lblod.data.gift/concept-schemes/3037c4f4-1c63-43ac-bfc4-b41d098b15a6>  ;
-        sh:resultMessage "De waarde komt niet uit de opgegeven codelijst."@nl
+        sh:resultMessage "Selecteer een waarde uit de lijst."@nl
       ] ;
     form:options  """{"conceptScheme":"http://lblod.data.gift/concept-schemes/3037c4f4-1c63-43ac-bfc4-b41d098b15a6"}""" ;
     form:displayType displayTypes:conceptSchemeSelector ;
@@ -335,12 +357,12 @@ fields:49dbe1be-877a-4890-8465-1510ff18ce18 a form:Field ;
     form:validations
       [ a form:RequiredConstraint ;
         form:grouping form:Bag ;
-        sh:resultMessage "Dit is een verplicht veld.";
+        sh:resultMessage "Dit veld is verplicht.";
         sh:path eli:date_publication ],
       [ a form:ValidDate ;
         form:grouping form:MatchEvery ;
         sh:path eli:date_publication ;
-        sh:resultMessage "Geeft een geldige datum op."@nl ] ;
+        sh:resultMessage "Geef een geldige datum op."@nl ] ;
     form:displayType displayTypes:date ;
     sh:group fields:aDynamicPropertyGroup .
 
@@ -359,7 +381,7 @@ fields:e834ec56-2db3-43d8-8a54-baf6cc0463c6 a form:Field ;
         form:grouping form:Bag ;
         sh:path rdf:type ;
         form:conceptScheme <http://lblod.data.gift/concept-schemes/c93ccd41-aee7-488f-86d3-038de890d05a>  ;
-        sh:resultMessage "De waarde komt niet uit de opgegeven codelijst."@nl
+        sh:resultMessage "Selecteer een waarde uit de lijst."@nl
       ] ;
     form:options  """{"conceptScheme":"http://lblod.data.gift/concept-schemes/c93ccd41-aee7-488f-86d3-038de890d05a"}""" ;
     form:displayType displayTypes:conceptSchemeSelector ;
@@ -376,7 +398,7 @@ fields:c955d641-b9b3-4ec7-9838-c2a477c7e95b a form:Field ;
     form:validations
      [ a form:UriConstraint ;
         form:grouping form:MatchEvery ;
-        sh:resultMessage "Gelieve een geldige URL op te geven."; # TODO: later custom validator
+        sh:resultMessage "Gelieve een geldige URL op te geven. Zorg dat vooraan in de link altijd http://, https://, ftp:// of sftp:// staat."; # TODO: later custom validator
          sh:path ( dct:hasPart nie:url ) ],
      [ a form:RequiredConstraint ;
          form:grouping form:Bag ;
@@ -415,7 +437,7 @@ fields:d0052f0d-90bc-4543-a6b0-e90a1c1117db a form:Field ;
     form:validations
      [ a form:UriConstraint ;
         form:grouping form:MatchEvery ;
-        sh:resultMessage "Gelieve een geldige URL op te geven."; # TODO: later custom validator
+        sh:resultMessage "Gelieve een geldige URL op te geven. Zorg dat vooraan in de link altijd http://, https://, ftp:// of sftp:// staat."; # TODO: later custom validator
         sh:path ( dct:hasPart nie:url )
      ];
      sh:group fields:aDynamicPropertyGroup .
@@ -1905,8 +1927,6 @@ fields:205c1db4-f132-4e82-b707-48f703ac0d86 a form:ConditionalFieldGroup ;
         form:customValue <https://data.vlaanderen.be/id/concept/BesluitType/a7ea5d04-9af6-4b38-af5c-303756c34e42>
       ] ;
     form:hasFieldGroup fieldGroups:5f0ae173-ef30-445a-8411-5eee51fe1910 .
-
-
 ###########Notulen###########
 
 fieldGroups:2fb408e5-b38a-43fc-8ebe-7c38381312df a form:FieldGroup ;
@@ -1915,8 +1935,8 @@ fieldGroups:2fb408e5-b38a-43fc-8ebe-7c38381312df a form:FieldGroup ;
                       ###Datum-zitting/notulen###
                       fields:857d670f-9a25-4555-bfe5-ecc48c2ffde3,
 
-                      ###Welk-beslissingsorgaan-nam-het-besluit?###
-                      fields:bffbea8d-e55b-4e3d-86e8-ba7aaee7863d,
+                      ###Welk-beslissingsorgaan-nam-het-besluit? (Version for notulen) ###
+                      fields:e24d533f-3e63-4b36-a6af-21c65357e258,
 
                       ###Links-naar-documenten###
                       fields:c955d641-b9b3-4ec7-9838-c2a477c7e95b,
@@ -1942,7 +1962,6 @@ fields:d441cb26-ea24-4ff7-b5fb-868e36e7d468 a form:ConditionalFieldGroup ;
         form:customValue <https://data.vlaanderen.be/id/concept/BesluitDocumentType/8e791b27-7600-4577-b24e-c7c29e0eb773>
       ] ;
     form:hasFieldGroup fieldGroups:2fb408e5-b38a-43fc-8ebe-7c38381312df .
-
 
 
 ###########Oprichting-IGS###########
