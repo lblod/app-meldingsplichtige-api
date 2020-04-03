@@ -56,6 +56,8 @@ defmodule Acl.UserGroups.Config do
                         "http://data.vlaanderen.be/ns/besluit#BehandelingVanAgendapunt",
                         "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
                         "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RemoteDataObject",
+                        "http://www.w3.org/2004/02/skos/core#ConceptScheme",
+                        "http://www.w3.org/2004/02/skos/core#Concept"
                       ] } } ] },
       %GroupSpec{
         name: "public-wf",
@@ -83,7 +85,8 @@ defmodule Acl.UserGroups.Config do
                         "http://xmlns.com/foaf/0.1/Document",
                         "http://rdf.myexperiment.org/ontologies/base/Submission",
                         "http://mu.semte.ch/vocabularies/ext/SubmissionDocument",
-                        "http://lblod.data.gift/vocabularies/besluit/TaxRate"
+                        "http://lblod.data.gift/vocabularies/besluit/TaxRate",
+                        "http://lblod.data.gift/vocabularies/automatische-melding/FormData"
                       ] } } ] },
       %GroupSpec{
         name: "o-toezicht-vendor-rwf",
