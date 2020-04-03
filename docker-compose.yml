@@ -104,7 +104,7 @@ services:
     labels:
       - "logging=true"
   automatic-submission:
-    image: lblod/automatic-submission-service:0.6.1
+    image: lblod/automatic-submission-service:0.7.0
     labels:
       - "logging=true"
     restart: always
