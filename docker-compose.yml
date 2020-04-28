@@ -64,7 +64,7 @@ services:
     restart: always
     logging: *default-logging
   migrations:
-    image: semtech/mu-migrations-service:0.5.1
+    image: semtech/mu-migrations-service:0.6.0
     links:
       - virtuoso:database
     environment:
@@ -128,13 +128,13 @@ services:
   enrich-submission:
     image: lblod/enrich-submission-service:0.4.2
     volumes:
+      - ./config/semantic-forms:/data/semantic-forms
       - ./data/files/submissions:/share/submissions
-      - ./data/static-files/semantic-forms-data:/data/semantic-forms
   validate-submission:
-    image: lblod/validate-submission-service:0.6.5
+    image: lblod/validate-submission-service:0.7.1
     volumes:
+      - ./config/semantic-forms:/data/semantic-forms
       - ./data/files/submissions:/share/submissions
-      - ./data/static-files/semantic-forms-data:/data/semantic-forms
   verify-submission:
     image: lblod/verify-submission-service:0.1.0
     environment:
@@ -143,42 +143,7 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
-  static-file:
-    image: semtech/static-file-service:0.1.0
-    volumes:
-      - ./data/static-files:/data
   toezicht-flattened-form-data-generator:
-    image: lblod/toezicht-flattened-form-data-generator:0.3.0
+    image: lblod/toezicht-flattened-form-data-generator:0.4.0
     volumes:
       - ./data/files/submissions:/share/submissions
-  export-submissions:
-    image: lblod/mandaten-download-generator-service:0.3.4
-    links:
-      - virtuoso:database
-    environment:
-      EXPORT_CRON_PATTERN: "0 0 3 * * *"
-      EXPORT_FILE_BASE: "submissions"
-      MU_APPLICATION_GRAPH: "http://mu.semte.ch/graphs/system/export-submissions"
-    volumes:
-      - ./data/exports/submissions:/data/exports
-      - ./config/export/submissions:/config
-    labels:
-      - "logging=true"
-    restart: always
-    logging: *default-logging
-  berichtencentrum-sync-with-kalliope:
-    image: lblod/berichtencentrum-sync-with-kalliope-service:0.5.2
-    environment:
-      KALLIOPE_PS_UIT_ENDPOINT: "https://kalliope-svc-test.abb.vlaanderen.be/api/poststuk-uit"
-      KALLIOPE_PS_IN_ENDPOINT: "https://kalliope-svc-test.abb.vlaanderen.be/api/poststuk-in"
-      BERICHTEN_CRON_PATTERN: "*/5 * * * *"
-      INZENDINGEN_CRON_PATTERN: "0 22 * * *"
-      MAX_MESSAGE_AGE: 1
-      MAX_SENDING_ATTEMPTS: 20
-      INZENDING_BASE_URL: "https://besluiten.abb.lblod.info/toezicht/inzendingen"
-    volumes:
-      - ./data/files:/data/files
-    labels:
-      - "logging=true"
-    restart: always
-    logging: *default-logging
