@@ -147,7 +147,7 @@ services:
     image: lblod/toezicht-flattened-form-data-generator:0.4.0
     volumes:
       - ./data/files/submissions:/share/submissions
-  person-uri-for-social-security-number-service:
+  person-uri-for-social-security-number:
     image: lblod/person-uri-for-social-security-number-service:0.3.1
     restart: always
     logging: *default-logging
