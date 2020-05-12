@@ -40,7 +40,7 @@ services:
     restart: "no"
   toezicht-flattened-form-data-generator:
     restart: "no"
-  person-uri-for-social-security-number-service:
+  person-uri-for-social-security-number:
     restart: "no"
   mocklogin:
     image: lblod/mock-login-service:0.3.1
