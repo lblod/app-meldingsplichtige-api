@@ -153,7 +153,9 @@ services:
     image: lblod/person-uri-for-social-security-number-service:0.3.1
     restart: always
     logging: *default-logging
-  remove-submission:
-    image:  lblod/remove-submission-service:latest
+  clean-up-submission:
+    image:  lblod/clean-up-submission-service:latest
     volumes:
       - ./data/files:/share
+    restart: always
+    logging: *default-logging
