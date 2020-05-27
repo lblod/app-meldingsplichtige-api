@@ -76,7 +76,7 @@ defmodule Dispatcher do
 
 
   match "/submissions/*path" do
-    Proxy.forward conn, path, "http://cache/submissions/"
+    Proxy.forward conn, path, "http://resource/submissions/"
   end
   match "/vendors/*path" do
     Proxy.forward conn, path, "http://cache/vendors/"
@@ -129,7 +129,7 @@ defmodule Dispatcher do
   end
 
   delete "/submission-forms/*path" do
-    Proxy.forward conn, path, "http://enrich-submission/submission-documents/"
+    Proxy.forward conn, path, "http://remove-submission/submission-documents/"
   end
 
   put "/submission-forms/:id/flatten" do
