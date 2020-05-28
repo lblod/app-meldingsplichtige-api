@@ -154,7 +154,7 @@ services:
     restart: always
     logging: *default-logging
   clean-up-submission:
-    image:  lblod/clean-up-submission-service:latest
+    image:  lblod/clean-up-submission-service:0.1.0
     volumes:
       - ./data/files:/share
     restart: always
