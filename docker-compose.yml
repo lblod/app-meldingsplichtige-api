@@ -9,7 +9,7 @@ x-logging:
 
 services:
   frontend:
-    image: lblod/frontend-meldingsplichtige-api:0.3.0
+    image: lblod/frontend-meldingsplichtige-api:0.3.2
     links:
       - identifier:backend
     labels:
@@ -154,7 +154,7 @@ services:
     restart: always
     logging: *default-logging
   clean-up-submission:
-    image:  lblod/clean-up-submission-service:0.1.0
+    image:  lblod/clean-up-submission-service:0.2.0
     volumes:
       - ./data/files:/share
     restart: always
