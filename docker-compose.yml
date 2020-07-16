@@ -132,11 +132,19 @@ services:
     volumes:
       - ./config/semantic-forms:/share/semantic-forms
       - ./data/files/submissions:/share/submissions
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   validate-submission:
     image: lblod/validate-submission-service:0.8.1
     volumes:
       - ./config/semantic-forms:/share/semantic-forms
       - ./data/files/submissions:/share/submissions
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   verify-submission:
     image: lblod/verify-submission-service:0.1.0
     environment:
@@ -149,13 +157,22 @@ services:
     image: lblod/toezicht-flattened-form-data-generator:0.5.0
     volumes:
       - ./data/files/submissions:/share/submissions
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   person-uri-for-social-security-number:
     image: lblod/person-uri-for-social-security-number-service:0.3.1
+    labels:
+      - "logging=true"
     restart: always
     logging: *default-logging
   clean-up-submission:
     image:  lblod/clean-up-submission-service:0.2.0
     volumes:
       - ./data/files:/share
+    labels:
+      - "logging=true"
     restart: always
     logging: *default-logging
+
