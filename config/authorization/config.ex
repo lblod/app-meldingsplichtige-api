@@ -37,7 +37,7 @@ defmodule Acl.UserGroups.Config do
       # // PUBLIC
       %GroupSpec{
         name: "public",
-        useage: [:read],
+        useage: [:read, :write, :read_for_write],
         access: %AlwaysAccessible{}, # TODO: Should be only for logged in users
         graphs: [ %GraphSpec{
                     graph: "http://mu.semte.ch/graphs/public",
@@ -57,7 +57,8 @@ defmodule Acl.UserGroups.Config do
                         "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
                         "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RemoteDataObject",
                         "http://www.w3.org/2004/02/skos/core#ConceptScheme",
-                        "http://www.w3.org/2004/02/skos/core#Concept"
+                        "http://www.w3.org/2004/02/skos/core#Concept",
+                        "http://mu.semte.ch/vocabularies/ext/Vendor"
                       ] } } ] },
       %GroupSpec{
         name: "public-wf",
