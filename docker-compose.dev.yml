@@ -1,7 +1,5 @@
 version: '3.4'
 services:
-  frontend:
-    restart: "no"
   identifier:
     ports:
       - "80:80"
@@ -12,6 +10,7 @@ services:
     restart: "no"
   database:
     environment:
+      LOG_OUTGOING_SPARQL_QUERIES: "true"
       LOG_INCOMING_SPARQL_QUERIES: "true"
     restart: "no"
   virtuoso:
@@ -42,5 +41,3 @@ services:
     restart: "no"
   person-uri-for-social-security-number:
     restart: "no"
-  mocklogin:
-    image: lblod/mock-login-service:0.3.1
