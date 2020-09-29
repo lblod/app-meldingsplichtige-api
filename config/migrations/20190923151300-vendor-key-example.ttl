@@ -1,9 +1,0 @@
-@prefix muAccount: 	<http://mu.semte.ch/vocabularies/account/> .
-@prefix mu:   <http://mu.semte.ch/vocabularies/core/> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
-
-<http://example.com/vendor/d3c9e5e5-d50c-46c9-8f09-6af76712c277> a foaf:Agent;
-                              muAccount:key "my-super-secret-key";
-                              muAccount:canActOnBehalfOf <http://data.lblod.info/id/bestuurseenheden/a4fd24f3-cc6d-4ea5-91c7-efa02d3b970f>;
-                              foaf:name "Test vendor 1";
-                              mu:uuid "d3c9e5e5-d50c-46c9-8f09-6af76712c277".

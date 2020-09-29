@@ -3,7 +3,7 @@ PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 
 INSERT DATA {
-  GRAPH <http://mu.semte.ch/graphs/automatic-submission> {
+  GRAPH <http://mu.semte.ch/graphs/public> {
     <http://data.lblod.info/vendors/30881a2c-b758-4c19-bf4b-0094a5fdfc97> a ext:Vendor .
     <http://data.lblod.info/vendors/1a13ae8e-0f6a-4488-a6c0-2800bf8efa30> a ext:Vendor .
     <http://data.lblod.info/vendors/95f7531f-692b-44ad-b155-6a5e6210d811> a ext:Vendor .
