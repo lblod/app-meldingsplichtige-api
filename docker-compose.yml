@@ -167,4 +167,5 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
-
+  mocklogin:
+    image: lblod/mock-login-service
