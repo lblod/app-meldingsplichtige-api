@@ -3,10 +3,13 @@
   :properties `((:naam :string ,(s-prefix "skos:prefLabel"))
                 (:alternatieve-naam :string-set ,(s-prefix "skos:altLabel")))
   :has-one `((bestuurseenheid-classificatie-code :via ,(s-prefix "besluit:classificatie")
-                                                 :as "classificatie"))
+                                                  :as "classificatie"))
   :has-many `((bestuursorgaan :via ,(s-prefix "besluit:bestuurt")
                               :inverse t
-                              :as "bestuursorganen"))
+                              :as "bestuursorganen")
+              (vendor :via ,(s-prefix "muAccount:canActOnBehalfOf")
+                              :inverse t
+                              :as "vendors"))
   :resource-base (s-url "http://data.lblod.info/id/bestuurseenheden/")
   :features '(include-uri)
   :on-path "bestuurseenheden")
