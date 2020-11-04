@@ -47,11 +47,10 @@ defmodule Acl.UserGroups.Config do
     # many ways.  The useage of a GroupSpec and GraphCleanup are
     # common.
     [
-
       # // PUBLIC
       %GroupSpec{
         name: "public",
-        useage: [:read, :write, :read_for_write],
+        useage: [:read],
         access: %AlwaysAccessible{}, # TODO: Should be only for logged in users
         graphs: [ %GraphSpec{
                     graph: "http://mu.semte.ch/graphs/public",
@@ -71,8 +70,7 @@ defmodule Acl.UserGroups.Config do
                         "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
                         "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RemoteDataObject",
                         "http://www.w3.org/2004/02/skos/core#ConceptScheme",
-                        "http://www.w3.org/2004/02/skos/core#Concept",
-                        "http://mu.semte.ch/vocabularies/ext/Vendor"
+                        "http://www.w3.org/2004/02/skos/core#Concept"
                       ] } } ] },
       %GroupSpec{
         name: "public-wf",
@@ -88,7 +86,6 @@ defmodule Acl.UserGroups.Config do
           }
         }]
       },
-
       # // TOEZICHT
       %GroupSpec{
         name: "o-toez-rwf",
@@ -114,9 +111,8 @@ defmodule Acl.UserGroups.Config do
                     graph: "http://mu.semte.ch/graphs/automatic-submission",
                     constraint: %ResourceConstraint{
                       resource_types: [
-                        
-                      ] } } ] },
 
+                      ] } } ] },
 
       # // USER HAS NO DATA
       # this was moved to org instead.
