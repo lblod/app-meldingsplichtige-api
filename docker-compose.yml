@@ -9,7 +9,7 @@ x-logging:
 
 services:
   frontend:
-    image: lblod/frontend-meldingsplichtige-api:0.6.2
+    image: lblod/frontend-meldingsplichtige-api:0.6.4
     links:
       - identifier:backend
     labels:
