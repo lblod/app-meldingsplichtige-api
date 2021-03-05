@@ -9,7 +9,7 @@ x-logging:
 
 services:
   frontend:
-    image: lblod/frontend-meldingsplichtige-api:0.7.1
+    image: lblod/frontend-meldingsplichtige-api:0.7.2
     links:
       - identifier:backend
     labels:
@@ -137,7 +137,7 @@ services:
     restart: always
     logging: *default-logging
   validate-submission:
-    image: lblod/validate-submission-service:0.8.1
+    image: lblod/validate-submission-service:0.9.1
     volumes:
       - ./config/semantic-forms:/share/semantic-forms
       - ./data/files/submissions:/share/submissions
