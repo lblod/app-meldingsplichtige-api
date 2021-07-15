@@ -1,0 +1,13 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+DELETE DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.lblod.info/vendors/de046718-28cb-4d8e-999a-6f5e32c20734> foaf:name "Circle Software" .
+  }
+}
+;
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+    <http://data.lblod.info/vendors/de046718-28cb-4d8e-999a-6f5e32c20734> foaf:name "Visma - Circle" .
+  }
+}
