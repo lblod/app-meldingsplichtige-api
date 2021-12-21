@@ -104,7 +104,7 @@ services:
     links:
       - database:database
   download-url:
-    image: lblod/download-url-service:0.5.0
+    image: lblod/download-url-service:0.6.0
     volumes:
       - ./data/files:/share
     labels:
@@ -112,13 +112,13 @@ services:
     restart: always
     logging: *default-logging
   automatic-submission:
-    image: lblod/automatic-submission-service:0.10.0-beta.1
+    image: lblod/automatic-submission-service:0.11.1
     labels:
       - "logging=true"
     restart: always
     logging: *default-logging
   import-submission:
-    image: lblod/import-submission-service:0.7.1
+    image: lblod/import-submission-service:0.7.2
     volumes:
       - ./data/files:/share
     labels:
@@ -126,7 +126,7 @@ services:
     restart: always
     logging: *default-logging
   enrich-submission:
-    image: lblod/enrich-submission-service:0.7.5
+    image: lblod/enrich-submission-service:0.9.1
     environment:
       ACTIVE_FORM_FILE: "share://semantic-forms/20210706102126-forms.ttl"
     volumes:
@@ -137,7 +137,7 @@ services:
     restart: always
     logging: *default-logging
   validate-submission:
-    image: lblod/validate-submission-service:0.10.1
+    image: lblod/validate-submission-service:0.11.0
     environment:
       MAX_BODY_SIZE: "10000kb"
     volumes:
@@ -156,7 +156,7 @@ services:
     restart: always
     logging: *default-logging
   toezicht-flattened-form-data-generator:
-    image: lblod/toezicht-flattened-form-data-generator:0.5.0
+    image: lblod/toezicht-flattened-form-data-generator:0.6.1
     volumes:
       - ./data/files/submissions:/share/submissions
     labels:
