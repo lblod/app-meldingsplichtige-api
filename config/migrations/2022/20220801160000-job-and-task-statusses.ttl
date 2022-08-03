@@ -1,0 +1,32 @@
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <https://www.w3.org/2000/01/rdf-schema#> .
+@prefix cogs: <http://vocab.deri.ie/cogs#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix task: <http://redpencil.data.gift/vocabularies/tasks/> .
+@prefix mu:   <http://mu.semte.ch/vocabularies/core/> .
+@prefix js:   <http://redpencil.data.gift/id/concept/JobStatus/> .
+
+js:busy
+  a cogs:ExecutionStatus ,
+    skos:Concept ;
+  rdfs:label "Running" ;
+  rdfs:comment "Status of a job that is in the state of being operated." .
+
+js:scheduled
+  a cogs:ExecutionStatus ,
+    skos:Concept ;
+  rdfs:label "Scheduled" ;
+  rdfs:comment "Status of a job that is scheduled to be performed in the future." .
+
+js:success
+  a cogs:ExecutionStatus ,
+    skos:Concept ;
+  rdfs:label "Success" ;
+  rdfs:comment "Status of a job that had successful performance." .
+
+js:failed
+  a cogs:ExecutionStatus ,
+    skos:Concept ;
+  rdfs:label "Failed" ;
+  rdfs:comment "Status of a job that stops operating or functioning." .
+

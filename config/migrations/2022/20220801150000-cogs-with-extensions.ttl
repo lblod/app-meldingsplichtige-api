@@ -2,74 +2,22 @@
 @prefix rdfs: <https://www.w3.org/2000/01/rdf-schema#> .
 @prefix cogs: <http://vocab.deri.ie/cogs#> .
 @prefix owl:  <http://www.w3.org/2002/07/owl#> .
-@prefix job:  <http://lblod.data.gift/jobs/> .
+@prefix task: <http://redpencil.data.gift/vocabularies/tasks/> .
 @prefix mu:   <http://mu.semte.ch/vocabularies/core/> .
 
 # This file aims to include some static individuals from cogs and some useful extensions that are needed for this project.
 
-job:Status
-  a rdfs:Class ;
-  rdfs:label "Status" ;
-  rdfs:comment "Class used to add to statusses defined as classes in COGS to make the usable through mu-cl-resources." .
-
-job:Operation
+task:Operation
   a rdfs:Class ;
   rdfs:label "Operation" ;
   rdfs:comment "Class used to add to operations and transformation classes in COGS to make them usable through mu-cl-resources." .
-
-# As defined in COGS
-
-cogs:ExecutionStatus
-  a rdfs:Class,
-    owl:Class ;
-  rdfs:label "ExecutionStatus" ;
-  rdfs:comment "Provides the current execution status of a running process instance (a job). e.g. : fail, running, success. @en-us" .
-
-# As defined in COGS with added job:Status as a class and uuids
-
-cogs:Running
-  a rdfs:Class,
-    owl:Class ,
-    job:Status ;
-  mu:uuid "097628ce-4268-4c0b-9b7c-ffe5e9b1e47f" ;
-  rdfs:label "Running" ;
-  rdfs:comment "Status of a job that is in the state of being operated. @en-us" ;
-  rdfs:subClassOf cogs:ExecutionStatus .
-
-cogs:Fail
-  a rdfs:Class,
-    owl:Class ,
-    job:Status ;
-  mu:uuid "c4c5655c-ff01-4580-bf8e-d039c992784a" ;
-  rdfs:label "Fail" ;
-  rdfs:comment "Status of a job that stops operating or functioning. @en-us" ;
-  rdfs:subClassOf cogs:ExecutionStatus .
-
-cogs:Success
-  a rdfs:Class,
-    owl:Class ,
-    job:Status ;
-  mu:uuid "513aa482-cf9b-447b-bd58-9115c5ad1414" ;
-  rdfs:label "Success" ;
-  rdfs:comment "Status of a job that had successful  performance. @en-us" ;
-  rdfs:subClassOf cogs:ExecutionStatus .
-
-#This is an addition to COGS! This is not original!
-cogs:Pending
-  a rdfs:Class,
-    owl:Class ,
-    job:Status ;
-  mu:uuid "68e39a3c-cf33-4bd1-ac1d-00cfe274f582" ;
-  rdfs:label "Pending" ;
-  rdfs:comment "Status of a job that is pending. It might be waiting for another job to finish. @en-us" ;
-  rdfs:subClassOf cogs:ExecutionStatus .
 
 # As defined in COGS about transformations and operations (there is more than this in COGS) and added job:Operation for mu-cl-resources with uuids
 
 cogs:Lookup
   a rdfs:Class ,
     owl:Class ,
-    job:Operation ;
+    task:Operation ;
   mu:uuid "5ff3f55e-43a1-4a58-8b0f-f35777567759" ;
   rdfs:label "Lookup" ;
   rdfs:comment "A process used to look up data in a relational table, view or dictionary. @en-us" ;
@@ -78,7 +26,7 @@ cogs:Lookup
 cogs:RESTLookup
   a rdfs:Class ,
     owl:Class ,
-    job:Operation ;
+    task:Operation ;
   mu:uuid "61a07cac-ce1d-4e0e-9ab3-c6b2c3407755" ;
   rdfs:label "RESTLookup" ;
   rdfs:comment "Lookup on a REST service. @en-us" ;
@@ -87,7 +35,7 @@ cogs:RESTLookup
 cogs:WebServiceLookup
   a rdfs:Class ,
     owl:Class ,
-    job:Operation ;
+    task:Operation ;
   mu:uuid "ccf4d070-c2f4-4549-9033-609d3c393d62" ;
   rdfs:label "WebServiceLookup" ;
   rdfs:comment "Allows the retrieving of data from a web service and uses this during the form filling process.  @en-us" ;
@@ -96,7 +44,7 @@ cogs:WebServiceLookup
 cogs:Mapping
   a rdfs:Class ,
     owl:Class ,
-    job:Operation ;
+    task:Operation ;
   mu:uuid "fb960816-1296-4593-bdb5-62edebbaf51c" ;
   rdfs:label "Mapping" ;
   rdfs:comment "The definition of a semantic equivalence relationship between source and target objects. @en-us" ;
@@ -105,7 +53,7 @@ cogs:Mapping
 cogs:MappingProcess
   a rdfs:Class ,
     owl:Class ,
-    job:Operation ;
+    task:Operation ;
   mu:uuid "bc08743b-f17b-4452-aeff-b62adc9832ff" ;
   rdfs:label "MappingProcess" ;
   rdfs:comment "The process of mapping information from a source format to a destination format. @en-us" ;
@@ -114,7 +62,7 @@ cogs:MappingProcess
 cogs:Operation
   a rdfs:Class ,
     owl:Class ,
-    job:Operation ;
+    task:Operation ;
   mu:uuid "e865083c-b69e-4b93-84b8-465c58b38e99" ;
   rdfs:label "Operation" ;
   rdfs:comment "Functional operations that can be done by a computer. " ;
@@ -123,7 +71,7 @@ cogs:Operation
 cogs:ApplyScript
   a rdfs:Class ,
     owl:Class ,
-    job:Operation ;
+    task:Operation ;
   mu:uuid "993a042f-c4bb-4f0c-9288-c043caa78122" ;
   rdfs:label "ApplyScript" ;
   rdfs:comment "Execution of a script. @en-us" ;
@@ -132,7 +80,7 @@ cogs:ApplyScript
 cogs:Transformation
   a rdfs:Class ,
     owl:Class ,
-    job:Operation ;
+    task:Operation ;
   mu:uuid "da4819c4-44d2-49ca-b776-07855c2cf492" ;
   rdfs:label "Transformation" ;
   rdfs:comment "The process of manipulating data. @en-us" ;
@@ -141,7 +89,7 @@ cogs:Transformation
 cogs:TransformationProcess
   a rdfs:Class ,
     owl:Class ,
-    job:Operation ;
+    task:Operation ;
   mu:uuid "b5171583-590d-42dd-ad75-32c6d3936916" ;
   rdfs:label "TransformationProcess" ;
   rdfs:comment "Process that applies a series of rules or functions to the extracted data from the source to derive the data for loading into the end target. @en-us" ;
@@ -150,7 +98,7 @@ cogs:TransformationProcess
 cogs:Validation
   a rdfs:Class ,
     owl:Class ,
-    job:Operation ;
+    task:Operation ;
   mu:uuid "5ee69b00-48c1-4381-a9e9-c7ca249edf40" ;
   rdfs:label "Validation" ;
   rdfs:comment "The act of validating; finding or testing the truth of something. @en-us" ;
@@ -159,7 +107,7 @@ cogs:Validation
 cogs:AutomatedValidation
   a rdfs:Class ,
     owl:Class ,
-    job:Operation ;
+    task:Operation ;
   mu:uuid "3fe72330-c304-4369-93aa-2a00b18651d7" ;
   rdfs:label "AutomatedValidation" ;
   rdfs:comment "Validation performed by a computer. @en-us" ;

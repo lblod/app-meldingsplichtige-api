@@ -81,9 +81,8 @@ defmodule Acl.UserGroups.Config do
           constraint: %ResourceConstraint{
             resource_types: [
               "http://lblod.data.gift/services/Service",
-              "http://lblod.data.gift/jobs/Status",
-              "http://lblod.data.gift/jobs/Operation",
-              "http://lblod.data.gift/automatische-melding-statusses/AutomaticSubmissionStatus",
+              "http://redpencil.data.gift/vocabularies/tasks/Operation",
+              "http://redpencil.data.gift/id/concept/JobStatus/ExecutionStatus"
             ]
           }
         }]

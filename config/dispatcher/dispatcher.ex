@@ -119,6 +119,11 @@ defmodule Dispatcher do
   # Resources for Jobs and their metadata
   #################################################################
 
+  match "/tasks/*path" do
+    #Proxy.forward conn, path, "http://cache/tasks/"
+    Proxy.forward conn, path, "http://resource/tasks/"
+  end
+
   match "/services/*path" do
     #Proxy.forward conn, path, "http://cache/services/"
     Proxy.forward conn, path, "http://resource/services/"
@@ -129,14 +134,19 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://resource/statusses/"
   end
 
-  match "/automaticsubmissionstatusses/*path" do
-    #Proxy.forward conn, path, "http://cache/automaticsubmissionstatusses/"
-    Proxy.forward conn, path, "http://resource/automaticsubmissionstatusses/"
-  end
-
   match "/operations/*path" do
     #Proxy.forward conn, path, "http://cache/operations/"
     Proxy.forward conn, path, "http://resource/operations/"
+  end
+
+  match "/job-errors/*path" do
+    #Proxy.forward conn, path, "http://cache/job-errors/"
+    Proxy.forward conn, path, "http://resource/job-errors/"
+  end
+
+  match "/data-containers/*path" do
+    #Proxy.forward conn, path, "http://cache/data-containers/"
+    Proxy.forward conn, path, "http://resource/data-containers/"
   end
 
   #################################################################
