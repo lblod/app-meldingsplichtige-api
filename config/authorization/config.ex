@@ -73,6 +73,22 @@ defmodule Acl.UserGroups.Config do
                         "http://www.w3.org/2004/02/skos/core#Concept"
                       ] } } ] },
       %GroupSpec{
+        name: "public",
+        useage: [:read],
+        access: %AlwaysAccessible{},
+        graphs: [%GraphSpec{
+          graph: "http://mu.semte.ch/graphs/automatic-submission",
+          constraint: %ResourceConstraint{
+            resource_types: [
+              "http://lblod.data.gift/services/Service",
+              "http://lblod.data.gift/jobs/Status",
+              "http://lblod.data.gift/jobs/Operation",
+              "http://lblod.data.gift/automatische-melding-statusses/AutomaticSubmissionStatus",
+            ]
+          }
+        }]
+      },
+      %GroupSpec{
         name: "public-wf",
         useage: [:write, :read_for_write],
         access: %AlwaysAccessible{}, # TODO: Should be only for logged in users
@@ -111,7 +127,6 @@ defmodule Acl.UserGroups.Config do
                     graph: "http://mu.semte.ch/graphs/automatic-submission",
                     constraint: %ResourceConstraint{
                       resource_types: [
-
                       ] } } ] },
 
       # // USER HAS NO DATA

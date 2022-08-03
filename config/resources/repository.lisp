@@ -22,4 +22,11 @@
 (add-prefix "rdfs" "https://www.w3.org/2000/01/rdf-schema#")
 (add-prefix "org" "http://www.w3.org/ns/org#")
 (add-prefix "nmo" "http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#")
-
+(add-prefix "cogs" "http://vocab.deri.ie/cogs#")
+(add-prefix "rlog" "http://persistence.uni-leipzig.org/nlp2rdf/ontologies/rlog#")
+(add-prefix "oslc" "http://open-services.net/ns/core#")
+(add-prefix "task" "http://redpencil.data.gift/vocabularies/tasks/")
+(add-prefix "hrvst" "http://lblod.data.gift/vocabularies/harvesting/")
+(add-prefix "services" "http://lblod.data.gift/services/")
+(add-prefix "job" "http://lblod.data.gift/jobs/")
+(add-prefix "ams" "http://lblod.data.gift/automatische-melding-statusses/")

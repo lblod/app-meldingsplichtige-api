@@ -116,6 +116,65 @@ defmodule Dispatcher do
   end
 
   #################################################################
+  # Resources for Jobs and their metadata
+  #################################################################
+
+  match "/services/*path" do
+    #Proxy.forward conn, path, "http://cache/services/"
+    Proxy.forward conn, path, "http://resource/services/"
+  end
+
+  match "/statusses/*path" do
+    #Proxy.forward conn, path, "http://cache/statusses/"
+    Proxy.forward conn, path, "http://resource/statusses/"
+  end
+
+  match "/automaticsubmissionstatusses/*path" do
+    #Proxy.forward conn, path, "http://cache/automaticsubmissionstatusses/"
+    Proxy.forward conn, path, "http://resource/automaticsubmissionstatusses/"
+  end
+
+  match "/operations/*path" do
+    #Proxy.forward conn, path, "http://cache/operations/"
+    Proxy.forward conn, path, "http://resource/operations/"
+  end
+
+  #################################################################
+  # Dashboard routes
+  #################################################################
+
+  # Reports
+  match "/reports/*path" do
+    Proxy.forward conn, path, "http://resource/reports/"
+  end
+
+  # Logs
+  match "/log-entries/*path" do
+    Proxy.forward conn, path, "http://resource/log-entries/"
+  end
+
+  match "/log-levels/*path" do
+    Proxy.forward conn, path, "http://resource/log-levels/"
+  end
+
+  match "/status-codes/*path" do
+    Proxy.forward conn, path, "http://resource/status-codes/"
+  end
+
+  match "/log-sources/*path" do
+    Proxy.forward conn, path, "http://resource/log-sources/"
+  end
+
+  match "/status-codes/*path" do
+    Proxy.forward conn, path, "http://resource/acm-idm-service-log-entries/"
+  end
+  
+  # Jobs
+  match "/jobs/*path" do
+    Proxy.forward conn, path, "http://resource/jobs/"
+  end
+
+  #################################################################
   # automatic submission
   #################################################################
   match "/melding/*path" do
