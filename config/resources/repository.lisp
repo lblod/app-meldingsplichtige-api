@@ -29,4 +29,3 @@
 (add-prefix "hrvst" "http://lblod.data.gift/vocabularies/harvesting/")
 (add-prefix "services" "http://lblod.data.gift/services/")
 (add-prefix "job" "http://lblod.data.gift/jobs/")
-(add-prefix "ams" "http://lblod.data.gift/automatische-melding-statusses/")

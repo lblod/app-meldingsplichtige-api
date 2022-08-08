@@ -82,7 +82,7 @@ defmodule Acl.UserGroups.Config do
             resource_types: [
               "http://lblod.data.gift/services/Service",
               "http://redpencil.data.gift/vocabularies/tasks/Operation",
-              "http://redpencil.data.gift/id/concept/JobStatus/ExecutionStatus"
+              "http://vocab.deri.ie/cogs#ExecutionStatus"
             ]
           }
         }]

@@ -6,8 +6,8 @@
                       :as "creator")
              (job-status :via ,(s-prefix "adms:status")
                          :as "status")
-             (job-operation :via ,(s-prefix "job:operation")
-                            :as "jobType")
+             (job-operation :via ,(s-prefix "task:operation")
+                            :as "operation")
              ;Not sure about this model, dependsOn needs to refer to the parent as well? The following refers to the child:
              ;(job :via ,(s-prefix "cogs:dependsOn")
              ;     :inverse t
@@ -35,8 +35,8 @@
                 (:index     :string   ,(s-prefix "task:index")))
   :has-one `((job-status :via ,(s-prefix "adms:status")
                          :as "status")
-             (job-operation :via ,(s-prefix "job:operation")
-                            :as "jobType")
+             (job-operation :via ,(s-prefix "task:operation")
+                            :as "operation")
              (job-error :via ,(s-prefix "task:error")
                         :as "error")
              (job :via ,(s-prefix "dct:isPartOf")
@@ -62,23 +62,21 @@
   :on-path "services")
 
 (define-resource job-status ()
-  ;A class job:Status is defined and added to the cogs ExecutionStatus classes to make them visible for mu-cl-resources
-  :class (s-prefix "job:Status")
+  :class (s-prefix "cogs:ExecutionStatus")
   :properties `((:label   :string ,(s-prefix "rdfs:label"))
                 (:comment :string ,(s-prefix "rdfs:comment")))
   :resource-base (s-url "http://data.lblod.info/id/job-status")
   :features '(include-uri)
-  :on-path "statusses")
+  :on-path "statuses")
 
 (define-resource job-operation ()
-  ;Same as above, job:Operation added to Transformation and operation classes in COGS
-  :class (s-prefix "job:Operation")
-  :properties `((:label :string ,(s-prefix "rdfs:label"))
+  ;A task:Operation added to some Transformation and Operation classes in COGS
+  :class (s-prefix "task:Operation")
+  :properties `((:label   :string ,(s-prefix "rdfs:label"))
                 (:comment :string ,(s-prefix "rdfs:comment")))
   :resource-base (s-url "http://data.lblod.info/id/operations")
   :features '(include-uri)
   :on-path "operations")
-
 
 (define-resource job-error ()
   :class (s-prefix "oslc:Error")

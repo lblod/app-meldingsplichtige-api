@@ -184,3 +184,13 @@ services:
       - "82:80"
     links:
       - "identifier:backend"
+
+  job-controller:
+    image: lblod/job-controller-service:0.7.2
+    volumes:
+      - ./config/job-controller/config.json:/config/config.json
+    labels:
+      - "logging=true"
+    restart: "always"
+    logging: *default-logging
+
