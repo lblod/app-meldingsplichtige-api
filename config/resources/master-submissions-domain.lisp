@@ -1,11 +1,3 @@
-(define-resource automatic-submission-task ()
-  :class (s-prefix "melding:AutomaticSubmissionTask")
-  :properties `((:created :datetime ,(s-prefix "dct:created")))
-  :has-one `((submission :via ,(s-prefix "prov:generated")
-                         :as "submission"))
-  :resource-base (s-url "http://data.lblod.info/automatic-submission-tasks/")
-  :on-path "automatic-submission-tasks")
-
 (define-resource submission ()
   :class (s-prefix "meb:Submission")
   :properties `((:href :url ,(s-prefix "prov:atLocation"))

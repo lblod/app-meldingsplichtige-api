@@ -7,12 +7,14 @@
 
 # This file aims to include some static individuals from cogs and some useful extensions that are needed for this project.
 
-task:Operation
-  a rdfs:Class ;
-  rdfs:label "Operation" ;
-  rdfs:comment "Class used to add to operations and transformation classes in COGS to make them usable through mu-cl-resources." .
+task:cogsOperation
+  a rdf:Property ;
+  rdfs:label "COGS operation" ;
+  rdfs:comment "Links a task to an operation as described in COGS" ;
+  rdfs:domain task:Task ;
+  rdfs:range cogs:ExecutionStatus .
 
-# As defined in COGS about transformations and operations (there is more than this in COGS) and added job:Operation for mu-cl-resources with uuids
+# As defined in COGS about transformations and operations (there is more than this in COGS) and added task:Operation for mu-cl-resources with uuids
 
 cogs:Lookup
   a rdfs:Class ,
