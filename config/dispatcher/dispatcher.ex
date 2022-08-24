@@ -54,6 +54,9 @@ defmodule Dispatcher do
   patch "/files/*path" do
     Proxy.forward conn, path, "http://resource/files/"
   end
+  post "/files/*path" do
+    Proxy.forward conn, path, "http://file/files/"
+  end
   post "/file-service/files/*path" do
     Proxy.forward conn, path, "http://file/files/"
   end

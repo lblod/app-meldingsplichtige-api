@@ -27,7 +27,7 @@ services:
   dispatcher:
     image: semtech/mu-dispatcher:1.1.2
     volumes:
-      - ./config/dispatcher:/config
+      - ./config/dispatcher:/config:Z
     labels:
       - "logging=true"
     restart: always
@@ -35,7 +35,7 @@ services:
   deltanotifier:
     image: semtech/mu-delta-notifier:0.1.0
     volumes:
-      - ./config/delta:/config
+      - ./config/delta:/config:Z
     labels:
       - "logging=true"
     restart: always
@@ -45,7 +45,7 @@ services:
     environment:
       MU_SPARQL_ENDPOINT: "http://virtuoso:8890/sparql"
     volumes:
-      - ./config/authorization:/config
+      - ./config/authorization:/config:Z
     labels:
       - "logging=true"
     restart: always
@@ -56,9 +56,9 @@ services:
       SPARQL_UPDATE: "true"
       DEFAULT_GRAPH: "http://mu.semte.ch/application"
     volumes:
-      - ./data/db:/data
-      - ./config/db/:/opt/virtuoso-scripts
-      - ./config/db/virtuoso.ini:/data/virtuoso.ini
+      - ./data/db:/data:Z
+      - ./config/db/:/opt/virtuoso-scripts:Z
+      - ./config/db/virtuoso.ini:/data/virtuoso.ini:Z
     labels:
       - "logging=true"
     restart: always
@@ -70,13 +70,7 @@ services:
     environment:
       MU_SPARQL_TIMEOUT: '300'
     volumes:
-      - ./config/migrations:/data/migrations
-    labels:
-      - "logging=true"
-    restart: always
-    logging: *default-logging
-    links:
-      - resource:backend
+      - ./config/migrations:/data/migrations:Z
     labels:
       - "logging=true"
     restart: always
@@ -86,7 +80,7 @@ services:
     environment:
       CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
     volumes:
-      - ./config/resources:/config
+      - ./config/resources:/config:Z
     labels:
       - "logging=true"
     restart: always
@@ -94,7 +88,7 @@ services:
   file:
     image: cecemel/file-service:3.3.0
     volumes:
-      - ./data/files:/share
+      - ./data/files:/share:z
     labels:
       - "logging=true"
     restart: always
@@ -104,7 +98,7 @@ services:
   download-url:
     image: lblod/download-url-service:0.7.0
     volumes:
-      - ./data/files:/share
+      - ./data/files:/share:z
     labels:
       - "logging=true"
     restart: always
@@ -118,7 +112,7 @@ services:
   import-submission:
     image: lblod/import-submission-service:0.8.1
     volumes:
-      - ./data/files:/share
+      - ./data/files:/share:z
     labels:
       - "logging=true"
     restart: always
@@ -128,8 +122,8 @@ services:
     environment:
       ACTIVE_FORM_FILE: "share://semantic-forms/20220721150218-forms.ttl"
     volumes:
-      - ./config/semantic-forms:/share/semantic-forms
-      - ./data/files/submissions:/share/submissions
+      - ./config/semantic-forms:/share/semantic-forms:z
+      - ./data/files/submissions:/share/submissions:z
     labels:
       - "logging=true"
     restart: always
@@ -139,8 +133,8 @@ services:
     environment:
       MAX_BODY_SIZE: "10000kb"
     volumes:
-      - ./config/semantic-forms:/share/semantic-forms
-      - ./data/files/submissions:/share/submissions
+      - ./config/semantic-forms:/share/semantic-forms:z
+      - ./data/files/submissions:/share/submissions:z
     labels:
       - "logging=true"
     restart: always
@@ -156,7 +150,7 @@ services:
   toezicht-flattened-form-data-generator:
     image: lblod/toezicht-flattened-form-data-generator:0.7.0
     volumes:
-      - ./data/files/submissions:/share/submissions
+      - ./data/files/submissions:/share/submissions:z
     labels:
       - "logging=true"
     restart: always
@@ -170,7 +164,7 @@ services:
   clean-up-submission:
     image:  lblod/clean-up-submission-service:0.3.2
     volumes:
-      - ./data/files:/share
+      - ./data/files:/share:z
     labels:
       - "logging=true"
     restart: always
@@ -188,7 +182,7 @@ services:
   job-controller:
     image: lblod/job-controller-service:0.7.2
     volumes:
-      - ./config/job-controller/config.json:/config/config.json
+      - ./config/job-controller/config.json:/config/config.json:Z
     labels:
       - "logging=true"
     restart: "always"

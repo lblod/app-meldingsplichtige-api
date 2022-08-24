@@ -15,6 +15,11 @@
         "currentOperation": "http://lblod.data.gift/id/jobs/concept/TaskOperation/enrich",
         "nextOperation": "http://lblod.data.gift/id/jobs/concept/TaskOperation/validate",
         "nextIndex": "4"
+      },
+      {
+        "currentOperation": "http://lblod.data.gift/id/jobs/concept/TaskOperation/validate",
+        "nextOperation": "http://lblod.data.gift/id/jobs/concept/TaskOperation/form-data-generate",
+        "nextIndex": "5"
       }
     ]
   }

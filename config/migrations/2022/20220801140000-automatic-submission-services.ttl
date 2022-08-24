@@ -44,3 +44,9 @@ services:validate-submission-service
   rdfs:label "Validate submission service" ;
   rdfs:comment "Microservice to construct and validate a submission harvested from a published document." .
 
+servies:toezicht-flattened-form-data-generator
+  a services:Service ;
+  mu:uuid "4d51682f-7d35-4050-bd36-3569e9504a4e" ;
+  sch:codeRepository "https://github.com/lblod/toezicht-flattened-form-data-generator" ;
+  rdfs:label "Toezicht flattened form data generator" ;
+  rdfs:comment "Microservice that listens to the delta notifier and inserts/updates the form data as a flat object in the triple store." .

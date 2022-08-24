@@ -50,5 +50,11 @@ tasko:validate
   a task:Operation ;
   mu:uuid "c4c7a5dc-3d18-4e54-8e83-ddb72cd8ceec" ;
   rdfs:label "Validate" ;
-  rdfs:comment "Validat the document before sending submission" .
+  rdfs:comment "Validate the document before sending submission" .
+
+tasko:form-data-generate
+  a task:Operation ;
+  mu:uuid "38ac8a54-8db4-4db9-ac63-5d4f3464028c" ;
+  rdfs:label "Generate form data" ;
+  rdfs:comment "Inserts form data as a flat object in the triple store from a submission" .
 
