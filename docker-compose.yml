@@ -190,7 +190,7 @@ services:
   mocklogin:
     image: lblod/mock-login-service:0.4.0
   job-controller:
-    image: lblod/job-controller-service:0.7.2
+    image: lblod/job-controller-service:1.0.0
     volumes:
       - ./config/job-controller/config.json:/config/config.json
     labels:
