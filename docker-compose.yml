@@ -16,6 +16,14 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  dashboard:
+    image: lblod/frontend-dashboard:1.4.0
+    links:
+      - identifier:backend
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   identifier:
     image: semtech/mu-identifier:1.9.1
     environment:
@@ -179,14 +187,6 @@ services:
     logging: *default-logging
   mocklogin:
     image: lblod/mock-login-service:0.4.0
-
-  dashboard:
-    image: lblod/frontend-dashboard:1.4.0
-    ports:
-      - "82:80"
-    links:
-      - "identifier:backend"
-
   job-controller:
     image: lblod/job-controller-service:0.7.2
     volumes:

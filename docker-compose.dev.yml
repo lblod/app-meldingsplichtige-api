@@ -2,6 +2,9 @@ version: '3.4'
 services:
   frontend:
     restart: "no"
+  dashboard:
+    ports:
+      - "82:80"
   identifier:
     ports:
       - "80:80"
