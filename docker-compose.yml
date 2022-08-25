@@ -27,7 +27,7 @@ services:
   dispatcher:
     image: semtech/mu-dispatcher:1.1.2
     volumes:
-      - ./config/dispatcher:/config:Z
+      - ./config/dispatcher:/config
     labels:
       - "logging=true"
     restart: always
@@ -35,7 +35,7 @@ services:
   deltanotifier:
     image: semtech/mu-delta-notifier:0.1.0
     volumes:
-      - ./config/delta:/config:Z
+      - ./config/delta:/config
     labels:
       - "logging=true"
     restart: always
@@ -45,7 +45,7 @@ services:
     environment:
       MU_SPARQL_ENDPOINT: "http://virtuoso:8890/sparql"
     volumes:
-      - ./config/authorization:/config:Z
+      - ./config/authorization:/config
     labels:
       - "logging=true"
     restart: always
@@ -56,9 +56,9 @@ services:
       SPARQL_UPDATE: "true"
       DEFAULT_GRAPH: "http://mu.semte.ch/application"
     volumes:
-      - ./data/db:/data:Z
-      - ./config/db/:/opt/virtuoso-scripts:Z
-      - ./config/db/virtuoso.ini:/data/virtuoso.ini:Z
+      - ./data/db:/data
+      - ./config/db/:/opt/virtuoso-scripts
+      - ./config/db/virtuoso.ini:/data/virtuoso.ini
     labels:
       - "logging=true"
     restart: always
@@ -70,7 +70,7 @@ services:
     environment:
       MU_SPARQL_TIMEOUT: '300'
     volumes:
-      - ./config/migrations:/data/migrations:Z
+      - ./config/migrations:/data/migrations
     labels:
       - "logging=true"
     restart: always
@@ -88,7 +88,7 @@ services:
     environment:
       CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
     volumes:
-      - ./config/resources:/config:Z
+      - ./config/resources:/config
     labels:
       - "logging=true"
     restart: always
@@ -190,7 +190,7 @@ services:
   job-controller:
     image: lblod/job-controller-service:0.7.2
     volumes:
-      - ./config/job-controller/config.json:/config/config.json:Z
+      - ./config/job-controller/config.json:/config/config.json
     labels:
       - "logging=true"
     restart: "always"
