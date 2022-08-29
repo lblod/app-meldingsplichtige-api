@@ -106,7 +106,7 @@ services:
   file:
     image: cecemel/file-service:3.3.0
     volumes:
-      - ./data/files:/share:z
+      - ./data/files:/share
     labels:
       - "logging=true"
     restart: always
@@ -116,7 +116,7 @@ services:
   download-url:
     image: lblod/download-url-service:0.7.0
     volumes:
-      - ./data/files:/share:z
+      - ./data/files:/share
     labels:
       - "logging=true"
     restart: always
@@ -130,7 +130,7 @@ services:
   import-submission:
     image: lblod/import-submission-service:0.8.1
     volumes:
-      - ./data/files:/share:z
+      - ./data/files:/share
     labels:
       - "logging=true"
     restart: always
@@ -140,8 +140,8 @@ services:
     environment:
       ACTIVE_FORM_FILE: "share://semantic-forms/20220721150218-forms.ttl"
     volumes:
-      - ./config/semantic-forms:/share/semantic-forms:z
-      - ./data/files/submissions:/share/submissions:z
+      - ./config/semantic-forms:/share/semantic-forms
+      - ./data/files/submissions:/share/submissions
     labels:
       - "logging=true"
     restart: always
@@ -151,8 +151,8 @@ services:
     environment:
       MAX_BODY_SIZE: "10000kb"
     volumes:
-      - ./config/semantic-forms:/share/semantic-forms:z
-      - ./data/files/submissions:/share/submissions:z
+      - ./config/semantic-forms:/share/semantic-forms
+      - ./data/files/submissions:/share/submissions
     labels:
       - "logging=true"
     restart: always
@@ -168,7 +168,7 @@ services:
   toezicht-flattened-form-data-generator:
     image: lblod/toezicht-flattened-form-data-generator:0.7.0
     volumes:
-      - ./data/files/submissions:/share/submissions:z
+      - ./data/files/submissions:/share/submissions
     labels:
       - "logging=true"
     restart: always
@@ -182,7 +182,7 @@ services:
   clean-up-submission:
     image:  lblod/clean-up-submission-service:0.3.2
     volumes:
-      - ./data/files:/share:z
+      - ./data/files:/share
     labels:
       - "logging=true"
     restart: always
