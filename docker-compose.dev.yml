@@ -48,3 +48,14 @@ services:
     restart: "no"
   mocklogin:
     image: lblod/mock-login-service:0.3.1
+  yasgui:
+    image: erikap/yasgui:latest
+    restart: "no"
+    ports:
+      - "8891:80"
+    environment:
+      DEFAULT_SPARQL_ENDPOINT: "http://virtuoso/"
+      ENABLE_ENDPOINT_SELECTOR: "true"
+
+  job-controller:
+    restart: "no"
