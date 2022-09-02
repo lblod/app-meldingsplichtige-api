@@ -44,8 +44,6 @@ services:
     restart: "no"
   toezicht-flattened-form-data-generator:
     restart: "no"
-  person-uri-for-social-security-number:
-    restart: "no"
   mocklogin:
     restart: "no"
   yasgui:
