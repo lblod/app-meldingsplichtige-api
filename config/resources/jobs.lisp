@@ -1,11 +1,11 @@
 (define-resource job ()
   :class (s-prefix "cogs:Job")
-  :properties `((:created   :datetime ,(s-prefix "dct:created"))
-                (:modified  :datetime ,(s-prefix "dct:modified"))
+  :properties `((:created  :datetime ,(s-prefix "dct:created"))
+                (:modified :datetime ,(s-prefix "dct:modified"))
                 ;Old model, still in use
-                (:creator   :url      ,(s-prefix "dct:creator"))
-                (:status    :url      ,(s-prefix "adms:status"))
-                (:operation :string   ,(s-prefix "task:operation")))
+                (:creator  :url      ,(s-prefix "dct:creator"))
+                (:status   :url      ,(s-prefix "adms:status"))
+                (:operation  :string   ,(s-prefix "task:operation")))
  :has-one `(
             ;Proposed new model, also use migrations to supply data for these constant individuals
             ;(service :via ,(s-prefix "dct:creator")
