@@ -44,6 +44,9 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/zittingen/"
   end
 
+  match "/remote-data-objects/*path" do
+    Proxy.forward conn, path, "http://cache/remote-data-objects/"
+  end
 
   get "/files/:id/download" do
     Proxy.forward conn, [], "http://file/files/" <> id <> "/download"
