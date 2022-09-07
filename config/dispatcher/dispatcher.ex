@@ -52,10 +52,10 @@ defmodule Dispatcher do
     Proxy.forward conn, [], "http://file/files/" <> id <> "/download"
   end
   get "/files/*path" do
-    Proxy.forward conn, path, "http://resource/files/"
+    Proxy.forward conn, path, "http://cache/files/"
   end
   patch "/files/*path" do
-    Proxy.forward conn, path, "http://resource/files/"
+    Proxy.forward conn, path, "http://cache/files/"
   end
   post "/files/*path" do
     Proxy.forward conn, path, "http://file/files/"
@@ -85,16 +85,16 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://clean-up-submission/submissions/"
   end
   put "/submissions/*path" do
-    Proxy.forward conn, path, "http://resource/submissions/"
+    Proxy.forward conn, path, "http://cache/submissions/"
   end
   patch "/submissions/*path" do
-    Proxy.forward conn, path, "http://resource/submissions/"
+    Proxy.forward conn, path, "http://cache/submissions/"
   end
   post "/submissions/*path" do
-    Proxy.forward conn, path, "http://resource/submissions/"
+    Proxy.forward conn, path, "http://cache/submissions/"
   end
   get "/submissions/*path" do
-    Proxy.forward conn, path, "http://resource/submissions/"
+    Proxy.forward conn, path, "http://cache/submissions/"
   end
   match "/vendors/*path" do
     Proxy.forward conn, path, "http://cache/vendors/"
@@ -118,7 +118,7 @@ defmodule Dispatcher do
   # TODO redirect to cache instead of resource remote-urls
 
   match "/remote-urls/*path" do
-    Proxy.forward conn, path, "http://resource/remote-urls/"
+    Proxy.forward conn, path, "http://cache/remote-urls/"
   end
 
   #################################################################
@@ -126,33 +126,28 @@ defmodule Dispatcher do
   #################################################################
 
   match "/tasks/*path" do
-    #Proxy.forward conn, path, "http://cache/tasks/"
-    Proxy.forward conn, path, "http://resource/tasks/"
+    Proxy.forward conn, path, "http://cache/tasks/"
   end
 
   match "/services/*path" do
-    #Proxy.forward conn, path, "http://cache/services/"
-    Proxy.forward conn, path, "http://resource/services/"
+    Proxy.forward conn, path, "http://cache/services/"
   end
 
   match "/statusses/*path" do
-    #Proxy.forward conn, path, "http://cache/statusses/"
-    Proxy.forward conn, path, "http://resource/statusses/"
+    Proxy.forward conn, path, "http://cache/statusses/"
   end
 
   match "/operations/*path" do
-    #Proxy.forward conn, path, "http://cache/operations/"
-    Proxy.forward conn, path, "http://resource/operations/"
+    Proxy.forward conn, path, "http://cache/operations/"
   end
 
   match "/job-errors/*path" do
-    #Proxy.forward conn, path, "http://cache/job-errors/"
-    Proxy.forward conn, path, "http://resource/job-errors/"
+    Proxy.forward conn, path, "http://cache/job-errors/"
   end
 
   match "/data-containers/*path" do
     #Proxy.forward conn, path, "http://cache/data-containers/"
-    Proxy.forward conn, path, "http://resource/data-containers/"
+    Proxy.forward conn, path, "http://cache/data-containers/"
   end
 
   #################################################################
@@ -160,7 +155,7 @@ defmodule Dispatcher do
   #################################################################
   # Jobs
   match "/jobs/*path" do
-    Proxy.forward conn, path, "http://resource/jobs/"
+    Proxy.forward conn, path, "http://cache/jobs/"
   end
 
   #################################################################
