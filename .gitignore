@@ -1,10 +1,5 @@
-# Virtuoso files /data/db
-/data/db/*
-!/data/db/virtuoso.ini
-!/data/db/toLoad
-!/data/db/toLoad/*
-/data/files/*
-/data/exports/submissions/*
+# This repo does not come with any data
+/data/*
 
 !**/*/.gitkeep
 
