@@ -115,8 +115,6 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/submission-document-statuses/"
   end
 
-  # TODO redirect to cache instead of resource remote-urls
-
   match "/remote-urls/*path" do
     Proxy.forward conn, path, "http://cache/remote-urls/"
   end
@@ -146,7 +144,6 @@ defmodule Dispatcher do
   end
 
   match "/data-containers/*path" do
-    #Proxy.forward conn, path, "http://cache/data-containers/"
     Proxy.forward conn, path, "http://cache/data-containers/"
   end
 
