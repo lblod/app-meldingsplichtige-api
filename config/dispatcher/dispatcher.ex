@@ -85,16 +85,16 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://clean-up-submission/submissions/"
   end
   put "/submissions/*path" do
-    Proxy.forward conn, path, "http://cache/submissions/"
+    Proxy.forward conn, path, "http://resource/submissions/"
   end
   patch "/submissions/*path" do
-    Proxy.forward conn, path, "http://cache/submissions/"
+    Proxy.forward conn, path, "http://resource/submissions/"
   end
   post "/submissions/*path" do
-    Proxy.forward conn, path, "http://cache/submissions/"
+    Proxy.forward conn, path, "http://resource/submissions/"
   end
   get "/submissions/*path" do
-    Proxy.forward conn, path, "http://cache/submissions/"
+    Proxy.forward conn, path, "http://resource/submissions/"
   end
   match "/vendors/*path" do
     Proxy.forward conn, path, "http://cache/vendors/"
