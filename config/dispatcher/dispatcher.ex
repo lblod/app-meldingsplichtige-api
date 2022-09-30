@@ -217,13 +217,19 @@ defmodule Dispatcher do
   #################################################################
   # automatic submission
   #################################################################
+  
   match "/melding/*path" do
     Proxy.forward conn, path, "http://automatic-submission/melding"
+  end
+
+  post "/melding-status/*path" do
+    Proxy.forward conn, path, "http://automatic-submission/status"
   end
 
   #################################################################
   # verify submission (to be removed)
   #################################################################
+
   get "/verify/bestuurseenheid/*path" do
     Proxy.forward conn, path, "http://verify-submission/bestuurseenheid"
   end
