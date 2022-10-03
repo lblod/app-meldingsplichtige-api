@@ -9,7 +9,7 @@ x-logging:
 
 services:
   frontend:
-    image: lblod/frontend-meldingsplichtige-api:0.10.0
+    image: lblod/frontend-meldingsplichtige-api:0.11.0
     links:
       - identifier:backend
     labels:
@@ -17,7 +17,7 @@ services:
     restart: always
     logging: *default-logging
   dashboard:
-    image: lblod/frontend-dashboard:1.4.0
+    image: lblod/frontend-dashboard:1.5.2
     environment:
       EMBER_LOGIN_ROUTE: 'mock-login'
     links:
@@ -85,14 +85,14 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
-  #cache:
-  #  image: semtech/mu-cache:2.0.2
-  #  links:
-  #    - resource:backend
-  #  labels:
-  #    - "logging=true"
-  #  restart: always
-  #  logging: *default-logging
+  cache:
+   image: semtech/mu-cache:2.0.2
+   links:
+     - resource:backend
+   labels:
+     - "logging=true"
+   restart: always
+   logging: *default-logging
   resource:
     image: semtech/mu-cl-resources:1.21.0
     environment:
@@ -114,7 +114,7 @@ services:
     links:
       - database:database
   download-url:
-    image: lblod/download-url-service:0.7.0
+    image: lblod/download-url-service:0.7.2
     volumes:
       - ./data/files:/share
     labels:
@@ -122,13 +122,13 @@ services:
     restart: always
     logging: *default-logging
   automatic-submission:
-    image: lblod/automatic-submission-service:0.12.1
+    image: lblod/automatic-submission-service:1.0.0
     labels:
       - "logging=true"
     restart: always
     logging: *default-logging
   import-submission:
-    image: lblod/import-submission-service:0.8.1
+    image: lblod/import-submission-service:1.0.0
     volumes:
       - ./data/files:/share
     labels:
@@ -136,7 +136,7 @@ services:
     restart: always
     logging: *default-logging
   enrich-submission:
-    image: lblod/enrich-submission-service:0.12.0
+    image: lblod/enrich-submission-service:1.0.0
     environment:
       ACTIVE_FORM_FILE: "share://semantic-forms/20220721150218-forms.ttl"
     volumes:
@@ -147,7 +147,7 @@ services:
     restart: always
     logging: *default-logging
   validate-submission:
-    image: lblod/validate-submission-service:0.13.0
+    image: lblod/validate-submission-service:1.0.0
     environment:
       MAX_BODY_SIZE: "10000kb"
     volumes:
@@ -166,7 +166,7 @@ services:
     restart: always
     logging: *default-logging
   toezicht-flattened-form-data-generator:
-    image: lblod/toezicht-flattened-form-data-generator:0.7.0
+    image: lblod/toezicht-flattened-form-data-generator:1.0.0
     volumes:
       - ./data/files/submissions:/share/submissions
     labels:

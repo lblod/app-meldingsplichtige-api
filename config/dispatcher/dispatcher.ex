@@ -51,6 +51,9 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://resource/zittingen/"
   end
 
+  match "/remote-data-objects/*path" do
+    Proxy.forward conn, path, "http://cache/remote-data-objects/"
+  end
 
   get "/files/:id/download" do
     Proxy.forward conn, [], "http://file/files/" <> id <> "/download"
@@ -143,38 +146,36 @@ defmodule Dispatcher do
   #################################################################
 
   match "/tasks/*path" do
-    #Proxy.forward conn, path, "http://cache/tasks/"
-    Proxy.forward conn, path, "http://resource/tasks/"
+    Proxy.forward conn, path, "http://cache/tasks/"
   end
 
   match "/services/*path" do
-    #Proxy.forward conn, path, "http://cache/services/"
-    Proxy.forward conn, path, "http://resource/services/"
+    Proxy.forward conn, path, "http://cache/services/"
   end
 
   match "/statusses/*path" do
-    #Proxy.forward conn, path, "http://cache/statusses/"
-    Proxy.forward conn, path, "http://resource/statusses/"
+    Proxy.forward conn, path, "http://cache/statusses/"
   end
 
   match "/operations/*path" do
-    #Proxy.forward conn, path, "http://cache/operations/"
-    Proxy.forward conn, path, "http://resource/operations/"
+    Proxy.forward conn, path, "http://cache/operations/"
   end
 
   match "/job-errors/*path" do
-    #Proxy.forward conn, path, "http://cache/job-errors/"
-    Proxy.forward conn, path, "http://resource/job-errors/"
+    Proxy.forward conn, path, "http://cache/job-errors/"
   end
 
   match "/data-containers/*path" do
-    #Proxy.forward conn, path, "http://cache/data-containers/"
-    Proxy.forward conn, path, "http://resource/data-containers/"
+    Proxy.forward conn, path, "http://cache/data-containers/"
   end
 
   #################################################################
   # Dashboard routes
   #################################################################
+  # Jobs
+  match "/jobs/*path" do
+    Proxy.forward conn, path, "http://cache/jobs/"
+  end
 
   # Reports
   match "/reports/*path" do
@@ -207,7 +208,7 @@ defmodule Dispatcher do
     #Proxy.forward conn, path, "http://cache/acm-idm-service-log-entries/"
     Proxy.forward conn, path, "http://resource/acm-idm-service-log-entries/"
   end
-  
+
   # Jobs
   match "/jobs/*path" do
     #Proxy.forward conn, path, "http://cache/jobs/"
