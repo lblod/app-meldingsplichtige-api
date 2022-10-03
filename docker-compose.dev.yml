@@ -24,8 +24,8 @@ services:
     restart: "no"
   migrations:
     restart: "no"
-  cache:
-    restart: "no"
+  #cache:
+  #  restart: "no"
   resource:
     restart: "no"
   file:
