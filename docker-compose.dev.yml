@@ -2,6 +2,9 @@ version: '3.4'
 services:
   frontend:
     restart: "no"
+  dashboard:
+    ports:
+      - "82:80"
   identifier:
     ports:
       - "80:80"
@@ -22,7 +25,7 @@ services:
   migrations:
     restart: "no"
   cache:
-    restart: "no"
+   restart: "no"
   resource:
     restart: "no"
   file:
@@ -44,4 +47,15 @@ services:
   person-uri-for-social-security-number:
     restart: "no"
   mocklogin:
-    image: lblod/mock-login-service:0.3.1
+    restart: "no"
+  yasgui:
+    image: erikap/yasgui:latest
+    restart: "no"
+    ports:
+      - "8891:80"
+    environment:
+      DEFAULT_SPARQL_ENDPOINT: "http://virtuoso/"
+      ENABLE_ENDPOINT_SELECTOR: "true"
+
+  job-controller:
+    restart: "no"

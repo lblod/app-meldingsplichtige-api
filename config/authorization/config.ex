@@ -72,20 +72,6 @@ defmodule Acl.UserGroups.Config do
                         "http://www.w3.org/2004/02/skos/core#ConceptScheme",
                         "http://www.w3.org/2004/02/skos/core#Concept"
                       ] } } ] },
-      %GroupSpec{
-        name: "public-wf",
-        useage: [:write, :read_for_write],
-        access: %AlwaysAccessible{}, # TODO: Should be only for logged in users
-        graphs: [%GraphSpec{
-          graph: "http://mu.semte.ch/graphs/public",
-          constraint: %ResourceConstraint{
-            resource_types: [
-              "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
-              "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RemoteDataObject"
-            ]
-          }
-        }]
-      },
       # // TOEZICHT
       %GroupSpec{
         name: "o-toez-rwf",
@@ -99,7 +85,12 @@ defmodule Acl.UserGroups.Config do
                         "http://rdf.myexperiment.org/ontologies/base/Submission",
                         "http://mu.semte.ch/vocabularies/ext/SubmissionDocument",
                         "http://lblod.data.gift/vocabularies/besluit/TaxRate",
-                        "http://lblod.data.gift/vocabularies/automatische-melding/FormData"
+                        "http://lblod.data.gift/vocabularies/automatische-melding/FormData",
+                        "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
+                        "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RemoteDataObject",
+                        "http://lblod.data.gift/services/Service",
+                        "http://redpencil.data.gift/vocabularies/tasks/Operation",
+                        "http://vocab.deri.ie/cogs#ExecutionStatus"
                       ] } } ] },
 
       # // VENDOR MANAGEMENT
@@ -111,7 +102,6 @@ defmodule Acl.UserGroups.Config do
                     graph: "http://mu.semte.ch/graphs/automatic-submission",
                     constraint: %ResourceConstraint{
                       resource_types: [
-
                       ] } } ] },
 
       # // USER HAS NO DATA

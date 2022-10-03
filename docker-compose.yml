@@ -9,7 +9,17 @@ x-logging:
 
 services:
   frontend:
-    image: lblod/frontend-meldingsplichtige-api:0.10.0
+    image: lblod/frontend-meldingsplichtige-api:0.11.0
+    links:
+      - identifier:backend
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  dashboard:
+    image: lblod/frontend-dashboard:1.5.2
+    environment:
+      EMBER_LOGIN_ROUTE: 'mock-login'
     links:
       - identifier:backend
     labels:
@@ -17,7 +27,7 @@ services:
     restart: always
     logging: *default-logging
   identifier:
-    image: semtech/mu-identifier:1.7.0
+    image: semtech/mu-identifier:1.9.1
     environment:
       DEFAULT_MU_AUTH_ALLOWED_GROUPS_HEADER: "[{\"variables\":[],\"name\":\"public\"}]"
     labels:
@@ -41,7 +51,7 @@ services:
     restart: always
     logging: *default-logging
   database:
-    image: semtech/mu-authorization:0.6.0-beta.4
+    image: semtech/mu-authorization:0.6.0-beta.6
     environment:
       MU_SPARQL_ENDPOINT: "http://virtuoso:8890/sparql"
     volumes:
@@ -64,7 +74,7 @@ services:
     restart: always
     logging: *default-logging
   migrations:
-    image: semtech/mu-migrations-service:0.6.0
+    image: semtech/mu-migrations-service:0.7.0
     links:
       - virtuoso:database
     environment:
@@ -76,15 +86,15 @@ services:
     restart: always
     logging: *default-logging
   cache:
-    image: semtech/mu-cache:2.0.1
-    links:
-      - resource:backend
-    labels:
-      - "logging=true"
-    restart: always
-    logging: *default-logging
+   image: semtech/mu-cache:2.0.2
+   links:
+     - resource:backend
+   labels:
+     - "logging=true"
+   restart: always
+   logging: *default-logging
   resource:
-    image: semtech/mu-cl-resources:1.19.0
+    image: semtech/mu-cl-resources:1.21.0
     environment:
       CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
     volumes:
@@ -104,7 +114,7 @@ services:
     links:
       - database:database
   download-url:
-    image: lblod/download-url-service:0.7.0
+    image: lblod/download-url-service:0.7.2
     volumes:
       - ./data/files:/share
     labels:
@@ -112,13 +122,13 @@ services:
     restart: always
     logging: *default-logging
   automatic-submission:
-    image: lblod/automatic-submission-service:0.12.1
+    image: lblod/automatic-submission-service:1.0.0
     labels:
       - "logging=true"
     restart: always
     logging: *default-logging
   import-submission:
-    image: lblod/import-submission-service:0.8.1
+    image: lblod/import-submission-service:1.0.0
     volumes:
       - ./data/files:/share
     labels:
@@ -126,7 +136,7 @@ services:
     restart: always
     logging: *default-logging
   enrich-submission:
-    image: lblod/enrich-submission-service:0.12.0
+    image: lblod/enrich-submission-service:1.0.0
     environment:
       ACTIVE_FORM_FILE: "share://semantic-forms/20220721150218-forms.ttl"
     volumes:
@@ -137,7 +147,7 @@ services:
     restart: always
     logging: *default-logging
   validate-submission:
-    image: lblod/validate-submission-service:0.12.0
+    image: lblod/validate-submission-service:1.0.0
     environment:
       MAX_BODY_SIZE: "10000kb"
     volumes:
@@ -156,7 +166,7 @@ services:
     restart: always
     logging: *default-logging
   toezicht-flattened-form-data-generator:
-    image: lblod/toezicht-flattened-form-data-generator:0.7.0
+    image: lblod/toezicht-flattened-form-data-generator:1.0.0
     volumes:
       - ./data/files/submissions:/share/submissions
     labels:
@@ -178,4 +188,12 @@ services:
     restart: always
     logging: *default-logging
   mocklogin:
-    image: lblod/mock-login-service
+    image: lblod/mock-login-service:0.4.0
+  job-controller:
+    image: lblod/job-controller-service:1.0.0
+    volumes:
+      - ./config/job-controller/config.json:/config/config.json
+    labels:
+      - "logging=true"
+    restart: "always"
+    logging: *default-logging

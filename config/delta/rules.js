@@ -1,18 +1,4 @@
 export default [
-  // {
-  //   match: {
-  //     subject: { }
-  //   },
-  //   callback: {
-  //     url: 'http://resource/.mu/delta',
-  //     method: 'POST'
-  //   },
-  //   options: {
-  //     resourceFormat: 'v0.0.1',
-  //     gracePeriod: 250,
-  //     ignoreFromSelf: true
-  //   }
-  // },
   {
     match: {
       subject: { }
@@ -44,7 +30,28 @@ export default [
     },
     options: {
       resourceFormat: 'v0.0.1',
-      gracePeriod: 1000,
+      gracePeriod: 0,
+      ignoreFromSelf: true
+    }
+  },
+  {
+    match: {
+      predicate: {
+        type: 'uri',
+        value: 'http://www.w3.org/ns/adms#status'
+      },
+      object: {
+        type: 'uri',
+        value: 'http://lblod.data.gift/file-download-statuses/ongoing'
+      }
+    },
+    callback: {
+      url: 'http://automatic-submission/download-status-update',
+      method: 'POST'
+    },
+    options: {
+      resourceFormat: 'v0.0.1',
+      gracePeriod: 0,
       ignoreFromSelf: true
     }
   },
@@ -57,6 +64,65 @@ export default [
       object: {
         type: 'uri',
         value: 'http://lblod.data.gift/file-download-statuses/success'
+      }
+    },
+    callback: {
+      url: 'http://automatic-submission/download-status-update',
+      method: 'POST'
+    },
+    options: {
+      resourceFormat: 'v0.0.1',
+      gracePeriod: 0,
+      ignoreFromSelf: true
+    }
+  },
+  {
+    match: {
+      predicate: {
+        type: 'uri',
+        value: 'http://www.w3.org/ns/adms#status'
+      },
+      object: {
+        type: 'uri',
+        value: 'http://lblod.data.gift/file-download-statuses/failure'
+      }
+    },
+    callback: {
+      url: 'http://automatic-submission/download-status-update',
+      method: 'POST'
+    },
+    options: {
+      resourceFormat: 'v0.0.1',
+      gracePeriod: 0,
+      ignoreFromSelf: true
+    }
+  },
+  {
+    match: {
+      predicate: {
+        type: 'uri',
+        value: 'http://www.w3.org/ns/adms#status'
+      }
+    },
+    callback: {
+      method: 'POST',
+      url: 'http://job-controller/delta'
+    },
+    options: {
+      resourceFormat: 'v0.0.1',
+      gracePeriod: 1000,
+      ignoreFromSelf: true
+    }
+  },
+  {
+    match: {
+      predicate: {
+        type: 'uri',
+        value: 'http://redpencil.data.gift/vocabularies/tasks/operation'
+      },
+      object: {
+        type: 'uri',
+        value: 'http://lblod.data.gift/id/jobs/concept/TaskOperation/import'
       }
     },
     callback: {
@@ -73,11 +139,11 @@ export default [
     match: {
       predicate: {
         type: 'uri',
-        value: 'http://www.w3.org/ns/adms#status'
+        value: 'http://redpencil.data.gift/vocabularies/tasks/operation'
       },
       object: {
         type: 'uri',
-        value: 'http://lblod.data.gift/automatische-melding-statuses/ready-for-enrichment'
+        value: 'http://lblod.data.gift/id/jobs/concept/TaskOperation/enrich'
       }
     },
     callback: {
@@ -94,15 +160,36 @@ export default [
     match: {
       predicate: {
         type: 'uri',
-        value: 'http://www.w3.org/ns/adms#status'
+        value: 'http://redpencil.data.gift/vocabularies/tasks/operation'
       },
       object: {
         type: 'uri',
-        value: 'http://lblod.data.gift/automatische-melding-statuses/ready-for-validation'
+        value: 'http://lblod.data.gift/id/jobs/concept/TaskOperation/validate'
       }
     },
     callback: {
       url: 'http://validate-submission/delta',
+      method: 'POST'
+    },
+    options: {
+      resourceFormat: 'v0.0.1',
+      gracePeriod: 1000,
+      ignoreFromSelf: true
+    }
+  },
+  {
+    match: {
+      predicate: {
+        type: 'uri',
+        value: 'http://redpencil.data.gift/vocabularies/tasks/operation'
+      },
+      object: {
+        type: 'uri',
+        value: 'http://lblod.data.gift/id/jobs/concept/TaskOperation/form-data-generate'
+      }
+    },
+    callback: {
+      url: 'http://toezicht-flattened-form-data-generator/automatic/delta',
       method: 'POST'
     },
     options: {
@@ -123,7 +210,7 @@ export default [
       }
     },
     callback: {
-      url: 'http://toezicht-flattened-form-data-generator/delta',
+      url: 'http://toezicht-flattened-form-data-generator/maual/delta',
       method: 'POST'
     },
     options: {
@@ -132,25 +219,4 @@ export default [
       ignoreFromSelf: true
     }
   },
-  {
-    match: {
-      predicate: {
-        type: "uri",
-        value: "http://www.w3.org/ns/adms#status"
-      },
-      object: {
-        type: "uri",
-        value: "http://lblod.data.gift/automatische-melding-statuses/successful-concept"
-      }
-    },
-    callback: {
-      method: "POST",
-      url: "http://toezicht-flattened-form-data-generator/delta"
-    },
-    options: {
-      resourceFormat: "v0.0.1",
-      gracePeriod: 1000,
-      ignoreFromSelf: true
-    }
-  }
 ];

@@ -14,3 +14,5 @@
 (read-domain-file "master-submissions-domain.lisp")
 (read-domain-file "slave-besluit-domain.lisp")
 (read-domain-file "master-users-domain.lisp")
+(read-domain-file "jobs.lisp")
+(read-domain-file "reports.lisp")
