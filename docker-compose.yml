@@ -115,6 +115,8 @@ services:
       - database:database
   download-url:
     image: lblod/download-url-service:0.7.2
+    environment:
+      CACHING_MAX_RETRIES: "3"
     volumes:
       - ./data/files:/share
     labels:
