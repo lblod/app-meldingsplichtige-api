@@ -9,9 +9,9 @@ INSERT DATA {
     <share://semantic-forms/20221013091443-forms.ttl> a nfo:FileDataObject ;
       dct:type <http://data.lblod.gift/concepts/form-file-type> ;
       mu:uuid "2706e812-4828-4b0d-8ffd-77c884eff90e" ;
-      nfo:fileName "20221013091443-forms.ttl" ;
-      dct:created "2022-10-13T09:14:43"^^xsd:dateTime ;
-      dct:modified "2022-10-13T09:14:43"^^xsd:dateTime ;
+      nfo:fileName "20221006135946-forms.ttl" ;
+      dct:created "2022-10-06T13:59:46"^^xsd:dateTime ;
+      dct:modified "2022-10-06T13:59:46"^^xsd:dateTime ;
       dct:format "text/turtle";
       nfo:fileSize "328922"^^xsd:integer;
       dbpedia:fileExtension "ttl" .
