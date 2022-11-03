@@ -199,3 +199,14 @@ services:
       - "logging=true"
     restart: "always"
     logging: *default-logging
+
+##############################################################################
+# Vendor endpoint
+##############################################################################
+
+  vendor-login:
+    image: lblod/vendor-login-service:latest
+  sparql-authorization-wrapper:
+    image: lblod/sparql-authorization-wrapper-service:latest
+    volumes:
+      - ./config/sparql-authorization-wrapper:/config

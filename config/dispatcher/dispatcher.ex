@@ -287,6 +287,31 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://person-uri-for-social-security-number/"
   end
 
+  #################################################################
+  # Vendor Login for SPARQL endpoint
+  #################################################################
+
+  post "/login/*path" do
+    Proxy.forward conn, path, "http://vendor-login/sessions"
+  end
+
+  delete "/logout" do
+    Proxy.forward conn, [], "http://vendor-login/sessions/current"
+  end
+
+  #################################################################
+  # Vendor SPARQL endpoint
+  #################################################################
+
+  # Not only POST. SPARQL via GET is also allowed, but need to find a way to also forward URL parameters.
+  match "/sparql" do
+    Proxy.forward conn, [], "http://sparql-authorization-wrapper/sparql"
+  end
+
+  #################################################################
+  # Catch all that is left
+  #################################################################
+
   match _ do
     send_resp( conn, 404, "Route not found.  See config/dispatcher.ex" )
   end
