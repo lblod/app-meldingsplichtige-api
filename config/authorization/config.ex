@@ -26,6 +26,22 @@ defmodule Acl.UserGroups.Config do
     }"
   end
 
+  defp access_for_vendor_api() do
+    %AccessByQuery{
+      vars: ["vendor_id", "session_group"],
+      query: sparql_query_for_access_vendor_api()
+    }
+  end
+
+  defp sparql_query_for_access_vendor_api() do
+    " PREFIX muAccount: <http://mu.semte.ch/vocabularies/account/>
+      PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+      SELECT DISTINCT ?vendor_id ?session_group WHERE {
+        <SESSION_ID> muAccount:canActOnBehalfOf/mu:uuid ?session_group;
+                     muAccount:account/mu:uuid ?vendor_id.
+      } "
+  end
+
   defp can_access_automatic_submission() do
     %AccessByQuery{
       vars: [],
@@ -91,6 +107,20 @@ defmodule Acl.UserGroups.Config do
                         "http://lblod.data.gift/services/Service",
                         "http://redpencil.data.gift/vocabularies/tasks/Operation",
                         "http://vocab.deri.ie/cogs#ExecutionStatus"
+                      ] } } ] },
+
+      # // TOEZICHT VENDOR API
+      %GroupSpec{
+        name: "o-vendor-api-r",
+        useage: [:read],
+        access: access_for_vendor_api(),
+        graphs: [ %GraphSpec{
+                    graph: "http://mu.semte.ch/graphs/vendors/",
+                    constraint: %ResourceConstraint{
+                      resource_types: [
+                        "http://rdf.myexperiment.org/ontologies/base/Submission",
+                        "http://mu.semte.ch/vocabularies/ext/SubmissionDocument",
+                        "http://lblod.data.gift/vocabularies/automatische-melding/FormData",
                       ] } } ] },
 
       # // VENDOR MANAGEMENT

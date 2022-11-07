@@ -223,6 +223,20 @@ defmodule Dispatcher do
   end
 
   #################################################################
+  # vendor-login
+  #################################################################
+  match "/vendor-api/sparql/*path" do
+    Proxy.forward conn, path, "http://sparql-wrapper/sparql"
+  end
+  post "/vendor-api/login/*path" do
+    Proxy.forward conn, path, "http://vendor-login/sessions"
+  end
+
+  delete "/vendor-api/logout" do
+    Proxy.forward conn, [], "http://vendor-login/sessions/current"
+  end
+
+  #################################################################
   # verify submission (to be removed)
   #################################################################
   get "/verify/bestuurseenheid/*path" do
