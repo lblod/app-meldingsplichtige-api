@@ -1,0 +1,2358 @@
+@prefix rdf:	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ns1:	<http://data.vlaanderen.be/ns/besluit#> .
+@prefix ns2:	<http://mu.semte.ch/vocabularies/core/> .
+@prefix skos:	<http://www.w3.org/2004/02/skos/core#> .
+@prefix ns4:	<http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/> .
+
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/470e6c2ae3bd23ff19627de3db5acb5d>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"470e6c2ae3bd23ff19627de3db5acb5d" ;
+	skos:prefLabel	"CKB Oosterzele" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/4c2f4b8767b40982182f4b58fd460c1f>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"4c2f4b8767b40982182f4b58fd460c1f" ;
+	skos:prefLabel	"CKB Wingene" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/57f23f6ae86d09f235ead68b96dbd37a>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"57f23f6ae86d09f235ead68b96dbd37a" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Brugge - 3" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/81ce1997d5c9348b5543d72c1a524546> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/81ce1997d5c9348b5543d72c1a524546>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"81ce1997d5c9348b5543d72c1a524546" ;
+	skos:prefLabel	"CKB Brugge - 3" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/6aaa98267978f353d1d89d92f218783f>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"6aaa98267978f353d1d89d92f218783f" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Meulebeke" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> .
+@prefix ns5:	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/> .
+<http://data.lblod.info/id/centraleBestuursorgaan/6aaa98267978f353d1d89d92f218783f>	ns1:bestuurt	ns5:aa540078b526c2b26fdb2cd64c6a23ca .
+@prefix ns6:	<http://data.lblod.info/id/centraleBestuursorgaan/> .
+ns6:acc080750743ce92ea576aa71535577e	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"acc080750743ce92ea576aa71535577e" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Dessel" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/065a05cc3b8375ffe4f0369f5fe1f08e> .
+<http://data.lblod.info/id/centraleBestuursorgaan/6024a5653eb6cdce93adc8e12b70d039>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"6024a5653eb6cdce93adc8e12b70d039" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Bree" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:a18dc4665f6fd62fe17b256f5a22e286 .
+ns5:a18dc4665f6fd62fe17b256f5a22e286	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"a18dc4665f6fd62fe17b256f5a22e286" ;
+	skos:prefLabel	"CKB Bree" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/013ed1520666ddbf11b1ad96a9508cca>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"013ed1520666ddbf11b1ad96a9508cca" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Temse" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/327ec658e6ff35911bbd20b0c61b44c1> .
+<http://data.lblod.info/id/centraleBestuursorgaan/7e2da73a5a06ac0b190043feae3723cc>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"7e2da73a5a06ac0b190043feae3723cc" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Koekelare" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/95af606b73d590024edb64a2506d4137> .
+<http://data.lblod.info/id/centraleBestuursorgaan/8ed0d00e4f60fbb630496babb8474c85>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"8ed0d00e4f60fbb630496babb8474c85" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Londerzeel" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/79f98e1ff1c0179885f12821cafdf8e6> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/79f98e1ff1c0179885f12821cafdf8e6>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"79f98e1ff1c0179885f12821cafdf8e6" ;
+	skos:prefLabel	"CKB Londerzeel" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/42a24c9c90de7ff5c3a5ca9222645029>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"42a24c9c90de7ff5c3a5ca9222645029" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Huldenberg" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:e52ba13f6d406f8d8b8516b7ae3457a8 .
+ns5:e52ba13f6d406f8d8b8516b7ae3457a8	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"e52ba13f6d406f8d8b8516b7ae3457a8" ;
+	skos:prefLabel	"CKB Huldenberg" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:ed315245a924a8849c39ac9236825bd1	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"ed315245a924a8849c39ac9236825bd1" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Brasschaat" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:d5cae1ae4afe37b22883eb47d6a45f63 .
+ns5:d5cae1ae4afe37b22883eb47d6a45f63	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"d5cae1ae4afe37b22883eb47d6a45f63" ;
+	skos:prefLabel	"CKB Brasschaat" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/22bbe15fd3497cea26804f8098d0f7d9>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"22bbe15fd3497cea26804f8098d0f7d9" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Kruisem" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:c5908a253d1aa2fccb75e6fff439c93a .
+<http://data.lblod.info/id/centraleBestuursorgaan/57fbbc8e400c6af77eb635fee9fb7637>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"57fbbc8e400c6af77eb635fee9fb7637" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Genk" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:d3db33b0a87518a0901529dfd381ef3c .
+ns6:ef13ca076f3371bc7a56e152be284aa3	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"ef13ca076f3371bc7a56e152be284aa3" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Lubbeek" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/6c8ed53924c8f453fac84cde0da67511> .
+ns6:caf9f732e5c9a50001de19bd9e3107e0	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"caf9f732e5c9a50001de19bd9e3107e0" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Staden" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/23a81c1caca0dd05be50606e130e1ffa> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/17b0501bf9632542e9b0475667171ef0>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"17b0501bf9632542e9b0475667171ef0" ;
+	skos:prefLabel	"CKB Zoersel" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:e624082fae8527b2c1a4f7737aeb0069	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"e624082fae8527b2c1a4f7737aeb0069" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Sint-Truiden" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/2d98ed47689ebe5f22f3e2e5d2850d0d> .
+<http://data.lblod.info/id/centraleBestuursorgaan/2817edbfd460f7d32ba44e7fcbe7b5f6>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"2817edbfd460f7d32ba44e7fcbe7b5f6" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Diest" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:be81b3003bfe0188c8f3bc21ef031bcc .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/4c03829486377310ada8bf402bb591be>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"4c03829486377310ada8bf402bb591be" ;
+	skos:prefLabel	"CKB Houthalen-Helchteren" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/97cab99594240eec18d05853e491f825>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"97cab99594240eec18d05853e491f825" ;
+	skos:prefLabel	"CKB Hoogstraten" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/32b951c3b0200e99cfc848b57134797c>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"32b951c3b0200e99cfc848b57134797c" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Koksijde" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:a1ff2293a29e4153e3f8ce45b5f35cc7 .
+ns5:a1ff2293a29e4153e3f8ce45b5f35cc7	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"a1ff2293a29e4153e3f8ce45b5f35cc7" ;
+	skos:prefLabel	"CKB Koksijde" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/46a3d47b55b878c640f10fdb7565bb49>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"46a3d47b55b878c640f10fdb7565bb49" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Kapellen" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:f5c4c42180a0832e2870c48fbd22c398 .
+<http://data.lblod.info/id/centraleBestuursorgaan/29e48e581c08e11f9f63986d4627578f>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"29e48e581c08e11f9f63986d4627578f" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Zaventem" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/975d75b0f7da715627977acbc22ff787> .
+<http://data.lblod.info/id/centraleBestuursorgaan/2f52050f8114f66a6aa8f95fb46aa508>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"2f52050f8114f66a6aa8f95fb46aa508" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Herent" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/203429fa110020c33f7e8ff59a47c5e5> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/203429fa110020c33f7e8ff59a47c5e5>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"203429fa110020c33f7e8ff59a47c5e5" ;
+	skos:prefLabel	"CKB Herent" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/01e8a0b0d6d4d2c6b426621d13f67a27>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"01e8a0b0d6d4d2c6b426621d13f67a27" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Liedekerke" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:f11ce4937c2ac92f8671b58e9ef06686 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/897d8d444870692b84355ba48cca2780>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"897d8d444870692b84355ba48cca2780" ;
+	skos:prefLabel	"CKB Schelle" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/305b2ec21dc7df65269c2976af9943cd>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"305b2ec21dc7df65269c2976af9943cd" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Antw-Zuid" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/686519e683a16ccbe788c1b7acc92740> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/3c3edf1656eb02ec2e1c94427ee96482>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"3c3edf1656eb02ec2e1c94427ee96482" ;
+	skos:prefLabel	"CKB Steenokkerzeel" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/257caddf244eeedf5f03d4f7a701e76e>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"257caddf244eeedf5f03d4f7a701e76e" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Maarkedal" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/51b9dfcc65b28446df67e9dde63c8f86> .
+ns5:be3ab3ae99e55f4e9afcdba360754ebf	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"be3ab3ae99e55f4e9afcdba360754ebf" ;
+	skos:prefLabel	"CKB Wichelen" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/33b7af72174edce58d3b255451cf5181>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"33b7af72174edce58d3b255451cf5181" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Stabroek" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/747adb4cc6e38669770483045a85fafe> .
+<http://data.lblod.info/id/centraleBestuursorgaan/5a61dd7b4a216d7e29983da4206355f0>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"5a61dd7b4a216d7e29983da4206355f0" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Tongeren" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:b0ffe0e981a7e887a0b949d7ff77096b .
+ns6:f682ca8a70b232480b1e205fbab71fa1	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"f682ca8a70b232480b1e205fbab71fa1" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Aalst" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/2b149a43d431b110132e2ab3b90a246e> .
+ns5:f4597237766ec48f09342376aa100ba6	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"f4597237766ec48f09342376aa100ba6" ;
+	skos:prefLabel	"CKB Houthulst" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/9bde6213ed1dff945fb57fb58c183b0c>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"9bde6213ed1dff945fb57fb58c183b0c" ;
+	skos:prefLabel	"CKB Hamme" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:f50ca23283882d99d839199fae4e567d	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"f50ca23283882d99d839199fae4e567d" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Kortemark" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/4a84f2aebf323fa94046c7cf70d7da11> .
+<http://data.lblod.info/id/centraleBestuursorgaan/5f4382595c01cc2e1a1ec5a6ec1fb51a>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"5f4382595c01cc2e1a1ec5a6ec1fb51a" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Geraardsbergen" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/70f48954f519c0df3bbc492b7a63a253> .
+<http://data.lblod.info/id/centraleBestuursorgaan/60811b9e95cab37f2ae57ca4b599cb8b>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"60811b9e95cab37f2ae57ca4b599cb8b" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Zandhoven" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/20cd95d5ff712b0ecb387183559d7225> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/20cd95d5ff712b0ecb387183559d7225>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"20cd95d5ff712b0ecb387183559d7225" ;
+	skos:prefLabel	"CKB Zandhoven" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:c24a05bbe19185690fb5e602173e64a1	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"c24a05bbe19185690fb5e602173e64a1" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Geel" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:fda278c449963ced5275dfd69ef8776e .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/74af6c24e0ade8a214d1eeca67907bc3>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"74af6c24e0ade8a214d1eeca67907bc3" ;
+	skos:prefLabel	"CKB Rotselaar" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:d0f16878142618c0e36c88433b553322	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"d0f16878142618c0e36c88433b553322" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Zedelgem" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/042781be03f2fa63ee1ccb27b4ada636> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/042781be03f2fa63ee1ccb27b4ada636>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"042781be03f2fa63ee1ccb27b4ada636" ;
+	skos:prefLabel	"CKB Zedelgem" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/1e79c9d4e55e620ab86d6557b581e4a5>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"1e79c9d4e55e620ab86d6557b581e4a5" ;
+	skos:prefLabel	"CKB Sint_Kat_Waver" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:e451786ef8b4c8a07f17026e7f1f2591	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"e451786ef8b4c8a07f17026e7f1f2591" ;
+	skos:prefLabel	"CKB Scherpenheuvel - Zichem" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:ca7a293e206073d39ff1b61ce6633e3e	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"ca7a293e206073d39ff1b61ce6633e3e" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Laarne" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:f781943151cb63210b54fbf7140e3490 .
+<http://data.lblod.info/id/centraleBestuursorgaan/2528128d1605abf4023b8bbde57cbbe6>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"2528128d1605abf4023b8bbde57cbbe6" ;
+	skos:prefLabel	"Centraal bestuur CB van de Islamitische gemeenschappen in Limburg" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/4393389e99127b68e7fc11936ba92e18> ;
+	ns1:bestuurt	ns5:e17dabfaf8f562ad181f422006c42e97 .
+ns5:e17dabfaf8f562ad181f422006c42e97	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"e17dabfaf8f562ad181f422006c42e97" ;
+	skos:prefLabel	"CB van de Islamitische gemeenschappen in Limburg" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/696dcc9d995d7b3d91de38553b6c3e84>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"696dcc9d995d7b3d91de38553b6c3e84" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Izegem" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/2e983d3542aa450ff510531a6a1865f0> .
+<http://data.lblod.info/id/centraleBestuursorgaan/23400e3b75ffdf8f58a84b801b6d00dd>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"23400e3b75ffdf8f58a84b801b6d00dd" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Sint_Kat_Waver" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/1e79c9d4e55e620ab86d6557b581e4a5> .
+ns6:fbacd318bbe3ce0caa4d1e23fb6cd77a	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"fbacd318bbe3ce0caa4d1e23fb6cd77a" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Berlare" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:a53967075b94252b6d26af42b34b62b9 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/1a6962ee2e6b79600a750e3e21d76b3d>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"1a6962ee2e6b79600a750e3e21d76b3d" ;
+	skos:prefLabel	"CKB Putte" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:b97d9cafe55a0abd2afd22463d3a974f	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"b97d9cafe55a0abd2afd22463d3a974f" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Mechelen" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/3c92ae3c97f8810b4dfbbfe8a2b0bc3c> .
+ns6:e7aba1a79b14f9df954d1f121492a646	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"e7aba1a79b14f9df954d1f121492a646" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Kontich" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/1a7cc9c0b2e125cd5f7a15f711b4e70e> .
+<http://data.lblod.info/id/centraleBestuursorgaan/7ce57265066d8dce91393373a6018f26>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"7ce57265066d8dce91393373a6018f26" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Lochristi" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/72b349af735a8a256be176372884565d> .
+<http://data.lblod.info/id/centraleBestuursorgaan/38746b11f0cf95c166db038f9dbd2bce>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"38746b11f0cf95c166db038f9dbd2bce" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Lier" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/2bd169e89ed45593f3e280fd791a407f> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/2bd169e89ed45593f3e280fd791a407f>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"2bd169e89ed45593f3e280fd791a407f" ;
+	skos:prefLabel	"CKB Lier" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:aa6976a5f6eed5901699a54b5d7e6487	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"aa6976a5f6eed5901699a54b5d7e6487" ;
+	skos:prefLabel	"CKB Sint-Genesius-Rode" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:d834ce4ea748821c8667feaf85bde09f	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"d834ce4ea748821c8667feaf85bde09f" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Gooik" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/70e058024a3cd58f76005d645b892e01> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/70e058024a3cd58f76005d645b892e01>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"70e058024a3cd58f76005d645b892e01" ;
+	skos:prefLabel	"CKB Gooik" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/9e1504c775f72761e3fbe54f42f13bf3>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"9e1504c775f72761e3fbe54f42f13bf3" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Zonhoven" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/62323be43c4384b45f9905419001fac4> .
+ns6:c44db1ed75b8c9a239787b722a094530	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"c44db1ed75b8c9a239787b722a094530" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Leuven" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/5200d338dbe39d5367fb1e76f6c30206> .
+ns6:ac2a22f8eb38328440f1cd3fe10036e4	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"ac2a22f8eb38328440f1cd3fe10036e4" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Oud_Turnhout" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:b1ed5ef1f421bc0c42aa29190d562286 .
+ns6:cd6d5592676c8a98d75b4f5c731b8b90	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"cd6d5592676c8a98d75b4f5c731b8b90" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB De Haan" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/5bd5798aaa8ee58aa34480e7125f25d8> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/975d75b0f7da715627977acbc22ff787>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"975d75b0f7da715627977acbc22ff787" ;
+	skos:prefLabel	"CKB Zaventem" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:f9c72a9ac7944ef7c6e5b36bb887c918	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"f9c72a9ac7944ef7c6e5b36bb887c918" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Alveringem" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:d6c6dd518cc5df076a35959d811fa67c .
+<http://data.lblod.info/id/centraleBestuursorgaan/84e4a826d96bed87cf7c84b5a29a9c8d>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"84e4a826d96bed87cf7c84b5a29a9c8d" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Ronse" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:dae560dd1aae31e6ca33450ae7799027 .
+<http://data.lblod.info/id/centraleBestuursorgaan/9a7d9670567f448b00ea4b097efa87a9>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"9a7d9670567f448b00ea4b097efa87a9" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Affligem" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/4af77b9dd26ba78d11d475d9a7271cc7> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/4af77b9dd26ba78d11d475d9a7271cc7>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"4af77b9dd26ba78d11d475d9a7271cc7" ;
+	skos:prefLabel	"CKB Affligem" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/2fd23bf0d5f568cc8127fd87cea4d650>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"2fd23bf0d5f568cc8127fd87cea4d650" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Balen" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:bdb1ae37a77888f20019c993d7a76f5c .
+<http://data.lblod.info/id/centraleBestuursorgaan/07bffe2416f6d71f21ed4e89ea592600>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"07bffe2416f6d71f21ed4e89ea592600" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Wezembeek-Oppem" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/620b14fc6901e59c49b3021ae1810d86> .
+<http://data.lblod.info/id/centraleBestuursorgaan/39bc2c1e10579e19335f669a565e8556>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"39bc2c1e10579e19335f669a565e8556" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Middelkerke" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/1303ba105368dfb4676789ba0bab3627> .
+<http://data.lblod.info/id/centraleBestuursorgaan/75c067970fe689a54a10e82bc4d3f323>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"75c067970fe689a54a10e82bc4d3f323" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Merelbeke" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:b93ae92a8eb4912125094d98b8b4841d .
+ns5:b93ae92a8eb4912125094d98b8b4841d	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"b93ae92a8eb4912125094d98b8b4841d" ;
+	skos:prefLabel	"CKB Merelbeke" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/8f62dfc1d963e12c1b17c28118a2ab7e>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"8f62dfc1d963e12c1b17c28118a2ab7e" ;
+	skos:prefLabel	"CKB Kinrooi" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/7f65997838b32f1127e5aa02f131fecd>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"7f65997838b32f1127e5aa02f131fecd" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Schoten" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/0a3d4c6033820af3cd9fd290357dcc80> .
+<http://data.lblod.info/id/centraleBestuursorgaan/9c432291598ace34058a31186fa8e3df>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"9c432291598ace34058a31186fa8e3df" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Moorslede" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/8a60f9b1086633558fa81426e142fd12> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/8a60f9b1086633558fa81426e142fd12>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"8a60f9b1086633558fa81426e142fd12" ;
+	skos:prefLabel	"CKB Moorslede" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/6f5cb6a2fe4fbd79a19fa7b407fca217>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"6f5cb6a2fe4fbd79a19fa7b407fca217" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Wevelgem" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/46394545d22b118af00ca47b458caaef> .
+ns6:b65374a5dfac906fd2080b28857cd38d	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"b65374a5dfac906fd2080b28857cd38d" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Kortessem" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:ea95493aefc01581e972145d49a402c8 .
+ns5:ea95493aefc01581e972145d49a402c8	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"ea95493aefc01581e972145d49a402c8" ;
+	skos:prefLabel	"CKB Kortessem" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:aceac0637c572d19a36a7fc3899a5688	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"aceac0637c572d19a36a7fc3899a5688" ;
+	skos:prefLabel	"CKB Bever" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:dff25b05b9f49e81f4ef2b82090da3a2	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"dff25b05b9f49e81f4ef2b82090da3a2" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Bilzen" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:d119dfe1d065867b6cf324d855667e87 .
+ns6:d9de377f323ceaa87c70c06adff4cfbe	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"d9de377f323ceaa87c70c06adff4cfbe" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Zuienkerke" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/710c7fb0b0ac58e1c90702e22a8998c8> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/08cbc05d4ea2763cac5cb3d89e398ba2>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"08cbc05d4ea2763cac5cb3d89e398ba2" ;
+	skos:prefLabel	"CKB Oudenburg" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:a53967075b94252b6d26af42b34b62b9	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"a53967075b94252b6d26af42b34b62b9" ;
+	skos:prefLabel	"CKB Berlare" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:e79c5c4ab8795855f1bdaae3222d50ca	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"e79c5c4ab8795855f1bdaae3222d50ca" ;
+	skos:prefLabel	"CKB Diksmuide" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/36a2d9e4351847d15ad7364795999cf1>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"36a2d9e4351847d15ad7364795999cf1" ;
+	skos:prefLabel	"CKB Tienen" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/42050d458ae7c177738c0f94d9e92760>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"42050d458ae7c177738c0f94d9e92760" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Roosdaal" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:c0916729a896db2a6947027182bb1128 .
+<http://data.lblod.info/id/centraleBestuursorgaan/8c6709e81253bd7ea02bd988ae0bfe7b>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"8c6709e81253bd7ea02bd988ae0bfe7b" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Zottegem" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:bf952a7aeaff9fce530e4ace0a3e2c45 .
+<http://data.lblod.info/id/centraleBestuursorgaan/374d93cd2bc7ac1581ac3961891ab4c8>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"374d93cd2bc7ac1581ac3961891ab4c8" ;
+	skos:prefLabel	"Centraal kerkbestuur CB Orthodoxe Kerkfabrieken Limburg" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:ecc95fff3d8cc7f89a72ffe116837d6e .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/2bb736a6ee74c6d3cc17a5bb6a58cf29>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"2bb736a6ee74c6d3cc17a5bb6a58cf29" ;
+	skos:prefLabel	"CKB Kortenberg" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/5f243e0329480ecfa16655b430c294b6>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"5f243e0329480ecfa16655b430c294b6" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Wervik" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/127e0ae361b620f3fb27cc80aee0cd9f> .
+ns6:bd04b70a2240b9072ec0e1c01ef2307a	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"bd04b70a2240b9072ec0e1c01ef2307a" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Knokke-Heist" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/5256576d2ebf92fbbf6e90c5281726cb> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/00034fce426a0d8b29c04f0083bebdbc>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"00034fce426a0d8b29c04f0083bebdbc" ;
+	skos:prefLabel	"CKB Roeselare" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:bbf46ee78bd13c80f204fee836bb6252	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"bbf46ee78bd13c80f204fee836bb6252" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Nazareth-Eke" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:c6a9da77af05772a230a65d3433b7bd1 .
+ns5:c6a9da77af05772a230a65d3433b7bd1	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"c6a9da77af05772a230a65d3433b7bd1" ;
+	skos:prefLabel	"CKB Nazareth-Eke" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/680cc5b70f88f72b9efc82ebefc22f3d>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"680cc5b70f88f72b9efc82ebefc22f3d" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Deurne" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:fd5d0ac7b41b6f0f564262a8b631d8a7 .
+ns5:fd5d0ac7b41b6f0f564262a8b631d8a7	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"fd5d0ac7b41b6f0f564262a8b631d8a7" ;
+	skos:prefLabel	"CKB Deurne" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/3c3cced058573001e2c895615618b4d1>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"3c3cced058573001e2c895615618b4d1" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Leopoldsburg" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/7b37addd68c8e6bc1f1cb4779c7acca1> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/7b37addd68c8e6bc1f1cb4779c7acca1>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"7b37addd68c8e6bc1f1cb4779c7acca1" ;
+	skos:prefLabel	"CKB Leopoldsburg" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/21511c98f64d710570da8b8a58b010f8>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"21511c98f64d710570da8b8a58b010f8" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Baarle_Hertog" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:aef7adf9b18862b95c3f0c32442f3b84 .
+ns5:aef7adf9b18862b95c3f0c32442f3b84	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"aef7adf9b18862b95c3f0c32442f3b84" ;
+	skos:prefLabel	"CKB Baarle_Hertog" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/31abfd32ca47b97c71e001ef27e62808>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"31abfd32ca47b97c71e001ef27e62808" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Grimbergen" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/255b2ece2955c30b9f5988675374368b> .
+<http://data.lblod.info/id/centraleBestuursorgaan/2673ac56f9d40bbb567b831cb8e9eabf>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"2673ac56f9d40bbb567b831cb8e9eabf" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Gent Rand" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/1ab85652faaddd4675b3e9f293e3534c> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/1ab85652faaddd4675b3e9f293e3534c>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"1ab85652faaddd4675b3e9f293e3534c" ;
+	skos:prefLabel	"CKB Gent Rand" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/1c96ca090a344a00e7c399448c539bff>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"1c96ca090a344a00e7c399448c539bff" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Tielt" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/96eac10ad5481ab620d4d6186bee6dd4> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/96eac10ad5481ab620d4d6186bee6dd4>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"96eac10ad5481ab620d4d6186bee6dd4" ;
+	skos:prefLabel	"CKB Tielt" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/2cae3bdbe0079c2185d48f5444d1f924>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"2cae3bdbe0079c2185d48f5444d1f924" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Wichelen" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:be3ab3ae99e55f4e9afcdba360754ebf .
+ns6:bba898e1ba08ce88688abae37c760d86	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"bba898e1ba08ce88688abae37c760d86" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Diksmuide" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:e79c5c4ab8795855f1bdaae3222d50ca .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/8ba8822c3b00f03944595c8162f292c7>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"8ba8822c3b00f03944595c8162f292c7" ;
+	skos:prefLabel	"CKB Oostkamp" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/6b95b02ae7402ae2330320bf5d91b90f>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"6b95b02ae7402ae2330320bf5d91b90f" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Halen" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/681d68e96a751e66aa9e5a660d5a659d> .
+<http://data.lblod.info/id/centraleBestuursorgaan/541ec429218c100349b8e2b04af7e444>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"541ec429218c100349b8e2b04af7e444" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Zonnebeke" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:c1691a136fe141a6311a746b046b36d9 .
+<http://data.lblod.info/id/centraleBestuursorgaan/29e44b330794331d664ca981d119f8f9>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"29e44b330794331d664ca981d119f8f9" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Wilrijk" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/6021207714f38ae3c7fe2d363c95f6d6> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/6021207714f38ae3c7fe2d363c95f6d6>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"6021207714f38ae3c7fe2d363c95f6d6" ;
+	skos:prefLabel	"CKB Wilrijk" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/3a72f28cb0547851b8d340330400bd8c>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"3a72f28cb0547851b8d340330400bd8c" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Vilvoorde" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:faef605c68c715df879b3e722fa42c5c .
+<http://data.lblod.info/id/centraleBestuursorgaan/3cdb54a51652b1edbfbada59cbcd60f5>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"3cdb54a51652b1edbfbada59cbcd60f5" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Wortegem-Petegem" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:f0806dfee551e542e1a19345039cce89 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/127e0ae361b620f3fb27cc80aee0cd9f>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"127e0ae361b620f3fb27cc80aee0cd9f" ;
+	skos:prefLabel	"CKB Wervik" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:d3db33b0a87518a0901529dfd381ef3c	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"d3db33b0a87518a0901529dfd381ef3c" ;
+	skos:prefLabel	"CKB Genk" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/0dd44299fc6d537591f30a4344603c20>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"0dd44299fc6d537591f30a4344603c20" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Veurne" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:f0d77710da9a4bd332db6b0e2f0f78e8 .
+ns5:f0d77710da9a4bd332db6b0e2f0f78e8	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"f0d77710da9a4bd332db6b0e2f0f78e8" ;
+	skos:prefLabel	"CKB Veurne" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/62323be43c4384b45f9905419001fac4>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"62323be43c4384b45f9905419001fac4" ;
+	skos:prefLabel	"CKB Zonhoven" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/29c4aca9ae3fc00896588f043933c313>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"29c4aca9ae3fc00896588f043933c313" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Brugge - Stad" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/5c59d93e7393ac84487853c177e8ac9e> .
+<http://data.lblod.info/id/centraleBestuursorgaan/2a8990d9907640e36643afcb011e8403>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"2a8990d9907640e36643afcb011e8403" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Meise" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:fcb5c0e6949dec963ee768d2d12e2aaf .
+ns5:aaedd771300131f4a5ae19222d13750c	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"aaedd771300131f4a5ae19222d13750c" ;
+	skos:prefLabel	"CKB Waasmunster" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/10ea9168cc4de18a34fe2e2e21b94fd4>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"10ea9168cc4de18a34fe2e2e21b94fd4" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Hoeselt" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:e54e073b8fa2ddb3c45a4e21eae67798 .
+ns5:e54e073b8fa2ddb3c45a4e21eae67798	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"e54e073b8fa2ddb3c45a4e21eae67798" ;
+	skos:prefLabel	"CKB Hoeselt" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:ae1c0a6c6e60ac71cb75248e3965262d	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"ae1c0a6c6e60ac71cb75248e3965262d" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Borsbeek" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/8228a9f0738d350cd5f9e1e6c786e2b7> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/8228a9f0738d350cd5f9e1e6c786e2b7>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"8228a9f0738d350cd5f9e1e6c786e2b7" ;
+	skos:prefLabel	"CKB Borsbeek" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/72b349af735a8a256be176372884565d>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"72b349af735a8a256be176372884565d" ;
+	skos:prefLabel	"CKB Lochristi" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:d8387aed567d3b57792649807ab82d12	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"d8387aed567d3b57792649807ab82d12" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Destelbergen" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:b9ad1b63c76033e90ed0a3b3b1903e01 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/22f4e67aafd774124e8b192f5301a25f>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"22f4e67aafd774124e8b192f5301a25f" ;
+	skos:prefLabel	"CKB Schilde" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:cac8f63843fd6894cf78e8e1a7097a52	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"cac8f63843fd6894cf78e8e1a7097a52" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Galmaarden" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/988321712204bd0104fb62e6f5dbe104> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/988321712204bd0104fb62e6f5dbe104>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"988321712204bd0104fb62e6f5dbe104" ;
+	skos:prefLabel	"CKB Galmaarden" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/7c199b6c355a1566e69256fce32473f5>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"7c199b6c355a1566e69256fce32473f5" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Berchem" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/7f5d5a122385bb566f88ceb2201260f0> .
+<http://data.lblod.info/id/centraleBestuursorgaan/75852c36b2f5604a065b13c2a64569f1>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"75852c36b2f5604a065b13c2a64569f1" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Zwevegem" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/5aa832a66faed51d2baaab795a47f367> .
+<http://data.lblod.info/id/centraleBestuursorgaan/0d1744e42ed4d4a0a27f45335893b15d>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"0d1744e42ed4d4a0a27f45335893b15d" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Heist_od_Berg" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/1afe711ae6253e8829b4007e92b32d24> .
+ns5:be81b3003bfe0188c8f3bc21ef031bcc	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"be81b3003bfe0188c8f3bc21ef031bcc" ;
+	skos:prefLabel	"CKB Diest" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:eec4d3d5547b92949e3402cabf5b5975	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"eec4d3d5547b92949e3402cabf5b5975" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Tessenderlo" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/5442c1374ed159347bc0c64518a9b1a9> .
+<http://data.lblod.info/id/centraleBestuursorgaan/59c4d13d6810a300fd7e41504e836ad1>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"59c4d13d6810a300fd7e41504e836ad1" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Tienen" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/36a2d9e4351847d15ad7364795999cf1> .
+ns6:eb40830cb854f6f6de18d70fa2b7f910	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"eb40830cb854f6f6de18d70fa2b7f910" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Avelgem" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:b0de52142409bb07460f83ca122a4065 .
+ns5:b0de52142409bb07460f83ca122a4065	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"b0de52142409bb07460f83ca122a4065" ;
+	skos:prefLabel	"CKB Avelgem" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/69b849c45582cebd5d990eefa4bdd056>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"69b849c45582cebd5d990eefa4bdd056" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Herzele" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:c6bd840990186e4e398a4b7fcb67fdc1 .
+ns5:c6bd840990186e4e398a4b7fcb67fdc1	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"c6bd840990186e4e398a4b7fcb67fdc1" ;
+	skos:prefLabel	"CKB Herzele" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/95af606b73d590024edb64a2506d4137>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"95af606b73d590024edb64a2506d4137" ;
+	skos:prefLabel	"CKB Koekelare" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:ad1d0ba1924629fb148d6de04910a511	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"ad1d0ba1924629fb148d6de04910a511" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Sint-Gillis-Waas" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/254b195cfd015e88cad0bf899fdd51c9> .
+<http://data.lblod.info/id/centraleBestuursorgaan/972a134f8008c8123009e984f6009251>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"972a134f8008c8123009e984f6009251" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Schilde" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/22f4e67aafd774124e8b192f5301a25f> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/7c87f8d06e9a1ea5eced78ba2f3607b4>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"7c87f8d06e9a1ea5eced78ba2f3607b4" ;
+	skos:prefLabel	"CKB Lanaken" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:a3ab3ba73f343a69f805c943c05997bf	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"a3ab3ba73f343a69f805c943c05997bf" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Ichtegem" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:f49164351a0e8082a6b78213a3c8c008 .
+ns5:f49164351a0e8082a6b78213a3c8c008	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"f49164351a0e8082a6b78213a3c8c008" ;
+	skos:prefLabel	"CKB Ichtegem" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:e671f09baa23380ad78ba43246d8ee28	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"e671f09baa23380ad78ba43246d8ee28" ;
+	skos:prefLabel	"CKB Holsbeek" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:c25f55216e06985a60e2e852173f5d36	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"c25f55216e06985a60e2e852173f5d36" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Heuvelland" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/3861f2b7f454cb802db4943b8ef09330> .
+ns5:c41c203121acfef30f65fe321da8b8a4	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"c41c203121acfef30f65fe321da8b8a4" ;
+	skos:prefLabel	"CKB Ieper" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/9df7f9ad0164a91b9ac5b3c6f9e6a0d2>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"9df7f9ad0164a91b9ac5b3c6f9e6a0d2" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Nijlen" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:e36f548efb073b0066baf5d2d3244a99 .
+ns5:e36f548efb073b0066baf5d2d3244a99	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"e36f548efb073b0066baf5d2d3244a99" ;
+	skos:prefLabel	"CKB Nijlen" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/36575586b89ef992397ae8acbb83ed79>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"36575586b89ef992397ae8acbb83ed79" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Boechout" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:ccf52a23fbdb6201661cc7aee20d3d8e .
+ns6:e96a2a6bc502bbfc790d433a12e32fe1	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"e96a2a6bc502bbfc790d433a12e32fe1" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Beersel" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/9a439921dbe783f7209d608346914c1e> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/9a439921dbe783f7209d608346914c1e>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"9a439921dbe783f7209d608346914c1e" ;
+	skos:prefLabel	"CKB Beersel" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:ff3b6b1f52b9203adeeda0e391ff8d65	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"ff3b6b1f52b9203adeeda0e391ff8d65" ;
+	skos:prefLabel	"CKB Alken" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/63ac5f911e043436306bcf72054dbb5d>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"63ac5f911e043436306bcf72054dbb5d" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Dentergem" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:dec3bf4eba431f27b43a5ae2acbf980f .
+ns5:dec3bf4eba431f27b43a5ae2acbf980f	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"dec3bf4eba431f27b43a5ae2acbf980f" ;
+	skos:prefLabel	"CKB Dentergem" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/1e047a4d2668b3f867d6af7a176e3e55>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"1e047a4d2668b3f867d6af7a176e3e55" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Gent-Stad" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:c14766b3f2e581d18a3cf6fd8d66cad0 .
+<http://data.lblod.info/id/centraleBestuursorgaan/5d508e64b99cdd3fa1888bcbdc403585>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"5d508e64b99cdd3fa1888bcbdc403585" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Essen" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:ff0ca0bc918f33f0b9ce7fe7973d2f67 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/5aa832a66faed51d2baaab795a47f367>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"5aa832a66faed51d2baaab795a47f367" ;
+	skos:prefLabel	"CKB Zwevegem" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/0c88eb2e5090db71890d10bb01cc6d74>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"0c88eb2e5090db71890d10bb01cc6d74" ;
+	skos:prefLabel	"CKB Antw-Centrum" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:c4c7bb411a2df9e0149afd0caf8d4c1a	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"c4c7bb411a2df9e0149afd0caf8d4c1a" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Roeselare" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/00034fce426a0d8b29c04f0083bebdbc> .
+ns5:f0806dfee551e542e1a19345039cce89	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"f0806dfee551e542e1a19345039cce89" ;
+	skos:prefLabel	"CKB Wortegem-Petegem" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:f6c252eb6fbdc9e40e55ac7294a5c5fd	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"f6c252eb6fbdc9e40e55ac7294a5c5fd" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Lille" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/42f99fa2e425580e6a539c2d24b0fa1a> .
+<http://data.lblod.info/id/centraleBestuursorgaan/22ced40d3ce98e851d1e15ac15aaaaf6>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"22ced40d3ce98e851d1e15ac15aaaaf6" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Kinrooi" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/8f62dfc1d963e12c1b17c28118a2ab7e> .
+<http://data.lblod.info/id/centraleBestuursorgaan/3590ab2a16c2a4a5bfe81ed671f56d32>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"3590ab2a16c2a4a5bfe81ed671f56d32" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Ham" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:e12c4f9f7167cd0074a97a2f658d1d51 .
+ns6:d8a028113ece74a00a490e820ec7ee24	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"d8a028113ece74a00a490e820ec7ee24" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Damme" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/9bdf13b476fc4514d8b116effd4225e2> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/1afe711ae6253e8829b4007e92b32d24>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"1afe711ae6253e8829b4007e92b32d24" ;
+	skos:prefLabel	"CKB Heist_od_Berg" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/53961df0eee94b387918624cac50f837>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"53961df0eee94b387918624cac50f837" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Gavere" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/4e6d2b248253087f888299ba975269fd> .
+ns6:d60363a06d0649017edb683e1075f555	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"d60363a06d0649017edb683e1075f555" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Halle" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/42dcb2faa3fb60b0fb2c4dde3b4f7049> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/959070eda47c03a190fd3e132ed80de7>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"959070eda47c03a190fd3e132ed80de7" ;
+	skos:prefLabel	"CKB Hulshout" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/8c7c559c6af6e12b7cf0e395cf025a75>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"8c7c559c6af6e12b7cf0e395cf025a75" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Harelbeke" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/36be04c052d2f62d97f46647acd5fe1b> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/36be04c052d2f62d97f46647acd5fe1b>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"36be04c052d2f62d97f46647acd5fe1b" ;
+	skos:prefLabel	"CKB Harelbeke" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:e29f62a7a90951f87d1dd60fe2e3e4e0	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"e29f62a7a90951f87d1dd60fe2e3e4e0" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Waregem" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:f22aa2b9fa5a48b3f8501d68191eb86b .
+ns5:f22aa2b9fa5a48b3f8501d68191eb86b	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"f22aa2b9fa5a48b3f8501d68191eb86b" ;
+	skos:prefLabel	"CKB Waregem" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/1a98a590b5bdf61dfd51bdbf4a3f4ff3>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"1a98a590b5bdf61dfd51bdbf4a3f4ff3" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Lokeren" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/4acb3358a747fb875c1017d1dc592ff2> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/4acb3358a747fb875c1017d1dc592ff2>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"4acb3358a747fb875c1017d1dc592ff2" ;
+	skos:prefLabel	"CKB Lokeren" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:dc3a8c176da4bc63961d66c5ee6f978e	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"dc3a8c176da4bc63961d66c5ee6f978e" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Overijse" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/2a6e769bcc2e3aceb62b6dadb15fb444> .
+ns5:d663bcc6cb58cbc280b52194e7125826	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"d663bcc6cb58cbc280b52194e7125826" ;
+	skos:prefLabel	"CKB Wommelgem" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/8873b803507f5ad9497e4a1c9ea27f01>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"8873b803507f5ad9497e4a1c9ea27f01" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Kluisbergen" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:e176c3b55e1e6e6a2a7ed515bb219982 .
+ns5:e176c3b55e1e6e6a2a7ed515bb219982	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"e176c3b55e1e6e6a2a7ed515bb219982" ;
+	skos:prefLabel	"CKB Kluisbergen" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/3f243788603b3b45af4041a25a127e89>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"3f243788603b3b45af4041a25a127e89" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Aartselaar" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/44e123c39fb439274be6727eca6e1880> .
+ns5:c981f51ab527babbb9d7952c02a78fa4	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"c981f51ab527babbb9d7952c02a78fa4" ;
+	skos:prefLabel	"CKB Oostende" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/8513ee2703aebb0caf9f2875d81479b9>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"8513ee2703aebb0caf9f2875d81479b9" ;
+	skos:prefLabel	"CKB Maldegem" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:c15147978ff780ba11b2428d5f40b2ab	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"c15147978ff780ba11b2428d5f40b2ab" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Ledegem" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/6988a68d98db71b193d1a9c2e8af6402> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/6988a68d98db71b193d1a9c2e8af6402>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"6988a68d98db71b193d1a9c2e8af6402" ;
+	skos:prefLabel	"CKB Ledegem" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:af5f089562c02c59aae228fb25f45d54	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"af5f089562c02c59aae228fb25f45d54" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Oosterzele" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/470e6c2ae3bd23ff19627de3db5acb5d> .
+ns6:abd10de802a0467d15921488d51cb95a	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"abd10de802a0467d15921488d51cb95a" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Sint-Niklaas" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/84fcba4c456333a57cec239825596ce2> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/84fcba4c456333a57cec239825596ce2>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"84fcba4c456333a57cec239825596ce2" ;
+	skos:prefLabel	"CKB Sint-Niklaas" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/7888c9d60f7580731b8098663d7e03fd>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"7888c9d60f7580731b8098663d7e03fd" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Borgerhout" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/3fa1183fb9a93266f0d6fdce3703f6ee> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/4e6d2b248253087f888299ba975269fd>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"4e6d2b248253087f888299ba975269fd" ;
+	skos:prefLabel	"CKB Gavere" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:fc69a55093b5d53c01c6cbddd9df9b0f	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"fc69a55093b5d53c01c6cbddd9df9b0f" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Jabbeke" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/0f0d22da247abc6b52cd30c3df26d884> .
+<http://data.lblod.info/id/centraleBestuursorgaan/6c5ef9db25a097cde16cf26fc46d8767>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"6c5ef9db25a097cde16cf26fc46d8767" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Hamme" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/9bde6213ed1dff945fb57fb58c183b0c> .
+<http://data.lblod.info/id/centraleBestuursorgaan/8c33d24fdd8bf791fa51d05169a05f38>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"8c33d24fdd8bf791fa51d05169a05f38" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Merksem" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/7bd10d1872f0b4828adef848f3ae4daa> .
+<http://data.lblod.info/id/centraleBestuursorgaan/1d300e54a51104a3c19cd5f8b759d43a>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"1d300e54a51104a3c19cd5f8b759d43a" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Gingelom" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:ab92fa8efd6b706e699d3f23e8bba499 .
+ns5:ecc95fff3d8cc7f89a72ffe116837d6e	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"ecc95fff3d8cc7f89a72ffe116837d6e" ;
+	skos:prefLabel	"CB Orthodoxe Kerkfabrieken Limburg (edit)" ,
+		"CB Orthodoxe Kerkfabrieken Limburg" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/7f5d5a122385bb566f88ceb2201260f0>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"7f5d5a122385bb566f88ceb2201260f0" ;
+	skos:prefLabel	"CKB Berchem" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:c8776c3f7a422c056027e3274e9ab43b	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"c8776c3f7a422c056027e3274e9ab43b" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB De Pinte" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/9e0e8f060ca954da6263243642433f44> .
+ns5:fb33941e06307ff7f7720e909a9f56be	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"fb33941e06307ff7f7720e909a9f56be" ;
+	skos:prefLabel	"CKB Ruiselede" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:f0081403a2194f5b3ff1688544564440	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"f0081403a2194f5b3ff1688544564440" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Gent Oost" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:c1d987352cd21c00872a3c5d6213564b .
+ns5:c1d987352cd21c00872a3c5d6213564b	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"c1d987352cd21c00872a3c5d6213564b" ;
+	skos:prefLabel	"CKB Gent Oost" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/8ff8c92862a2f0bc15e263c7ab0635dd>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"8ff8c92862a2f0bc15e263c7ab0635dd" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Herk-de-Stad" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:fae79bc3e07dcc8268cc54515fa15141 .
+ns6:c6117f76e35c56ac9beefc4fe259abe3	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"c6117f76e35c56ac9beefc4fe259abe3" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Holsbeek" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:e671f09baa23380ad78ba43246d8ee28 .
+<http://data.lblod.info/id/centraleBestuursorgaan/0482c750dfbf4e53aa88ad190409f0c6>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"0482c750dfbf4e53aa88ad190409f0c6" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Zemst" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:ab9c349ad86afa91354403ebc83a209f .
+ns5:e12c4f9f7167cd0074a97a2f658d1d51	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"e12c4f9f7167cd0074a97a2f658d1d51" ;
+	skos:prefLabel	"CKB Ham" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/8fb6a929b388b7514dfb4a13926f2c1c>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"8fb6a929b388b7514dfb4a13926f2c1c" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Hasselt" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:ea59523ed7c187de85a88b6f2cb4b8c9 .
+ns5:ea59523ed7c187de85a88b6f2cb4b8c9	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"ea59523ed7c187de85a88b6f2cb4b8c9" ;
+	skos:prefLabel	"CKB Hasselt" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:eecf014a2106f005378fcebd376512ba	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"eecf014a2106f005378fcebd376512ba" ;
+	skos:prefLabel	"CKB Asse" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/97c8dece1be52bd020a5e077d412d8d6>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"97c8dece1be52bd020a5e077d412d8d6" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Linter" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/7e8dd1a737cd74292b354d7462071967> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/7e8dd1a737cd74292b354d7462071967>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"7e8dd1a737cd74292b354d7462071967" ;
+	skos:prefLabel	"CKB Linter" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/3dfbb2e18e49a22cf8ae0a10aa19685f>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"3dfbb2e18e49a22cf8ae0a10aa19685f" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Rumst" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/89bddac0557f154bc1c8dad2a8a2c99c> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/08223304e42d99067f54a753f8c685fe>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"08223304e42d99067f54a753f8c685fe" ;
+	skos:prefLabel	"CKB Melle" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:dae560dd1aae31e6ca33450ae7799027	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"dae560dd1aae31e6ca33450ae7799027" ;
+	skos:prefLabel	"CKB Ronse" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/763f504a83d90dbbf3e9a8c14ebf3d53>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"763f504a83d90dbbf3e9a8c14ebf3d53" ;
+	skos:prefLabel	"CKB Turnhout" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/435715f4e669647de97264b7ff799254>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"435715f4e669647de97264b7ff799254" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Beveren" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:ed0914f40dfed83ca44af845a2bf4d81 .
+<http://data.lblod.info/id/centraleBestuursorgaan/8793f4686e9e7f69cfbaa642e34873df>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"8793f4686e9e7f69cfbaa642e34873df" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Lennik" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:b0b461ab7f4c02c56f575380b74111a1 .
+ns5:b0b461ab7f4c02c56f575380b74111a1	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"b0b461ab7f4c02c56f575380b74111a1" ;
+	skos:prefLabel	"CKB Lennik" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/2e24e3de5654a4ef51c935bc111d4ed2>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"2e24e3de5654a4ef51c935bc111d4ed2" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Brakel" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:f72d0ad2b8370122458bb034c8e9c92a .
+ns6:c388f34e8334971754d08900dba9e26d	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"c388f34e8334971754d08900dba9e26d" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Spiere-Helkijn" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/0b00afc27c26f56c3a0461da6edf85c6> .
+ns6:a1e07652e339dbb9fa683abe13196bd7	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"a1e07652e339dbb9fa683abe13196bd7" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Tervuren" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/6650ca39f706d085529db9117532854d> .
+ns6:e58d9cdcd45fec4cfcf6b62cc4dc1293	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"e58d9cdcd45fec4cfcf6b62cc4dc1293" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Kapelle-op-den-Bos" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:d1dde124fb4c0934c7ce4554f48f74f2 .
+ns5:d1dde124fb4c0934c7ce4554f48f74f2	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"d1dde124fb4c0934c7ce4554f48f74f2" ;
+	skos:prefLabel	"CKB Kapelle-op-den-Bos" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/4a84f2aebf323fa94046c7cf70d7da11>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"4a84f2aebf323fa94046c7cf70d7da11" ;
+	skos:prefLabel	"CKB Kortemark" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:a5ce11085e31c4137126f122a3f724e0	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"a5ce11085e31c4137126f122a3f724e0" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Heusden-Zolder" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/4086f388462840015ebf122dfa8f357b> .
+<http://data.lblod.info/id/centraleBestuursorgaan/6d1fd60f30657c5aa93d16c4add9d374>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"6d1fd60f30657c5aa93d16c4add9d374" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Zoutleeuw" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/7c397b883bf42c9bda2f9e34c598b81d> .
+<http://data.lblod.info/id/centraleBestuursorgaan/7fabf2e3d57cd46690e176e00956c221>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"7fabf2e3d57cd46690e176e00956c221" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Wommelgem" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:d663bcc6cb58cbc280b52194e7125826 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/653566b3d8701ef8469c3dc3b72306dd>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"653566b3d8701ef8469c3dc3b72306dd" ;
+	skos:prefLabel	"CKB Mortsel" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:e3e1ee0f4115bf94d86b247f0608fe2b	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"e3e1ee0f4115bf94d86b247f0608fe2b" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Opwijk" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:de884828657e9919fedb020020b89e5e .
+<http://data.lblod.info/id/centraleBestuursorgaan/3dcbc5f52e91a1c073fbb980566bbdd3>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"3dcbc5f52e91a1c073fbb980566bbdd3" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Haaltert" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/5d8280bbc6866d230786ac56a3d0d253> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/5d8280bbc6866d230786ac56a3d0d253>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"5d8280bbc6866d230786ac56a3d0d253" ;
+	skos:prefLabel	"CKB Haaltert" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/717246872ff8b5ce2ab52626ff9ad718>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"717246872ff8b5ce2ab52626ff9ad718" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Stekene" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:f6235732fffb2cca34d2a2d7e737680e .
+<http://data.lblod.info/id/centraleBestuursorgaan/054b4f6a9c7cf87f5ea2c8b76939dbfe>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"054b4f6a9c7cf87f5ea2c8b76939dbfe" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Oudenburg" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/08cbc05d4ea2763cac5cb3d89e398ba2> .
+<http://data.lblod.info/id/centraleBestuursorgaan/1fb13649787443b1699e67d7a2806c40>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"1fb13649787443b1699e67d7a2806c40" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Putte" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/1a6962ee2e6b79600a750e3e21d76b3d> .
+ns6:b8296f209e7a0e1789a467575eae9b8d	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"b8296f209e7a0e1789a467575eae9b8d" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Kampenhout" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/6dcc4f185d281bac86f33eb8e8d70ca5> .
+ns6:ccaf95f0f8cb7f5ec0f2feb17b25972d	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"ccaf95f0f8cb7f5ec0f2feb17b25972d" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Wuustwezel" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/8d7fb064535448b990505c8895bdc27e> .
+<http://data.lblod.info/id/centraleBestuursorgaan/3c220dc44da92826e0e8266b6534a3e0>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"3c220dc44da92826e0e8266b6534a3e0" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Eeklo" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:e4e5143dd31f18e6b08f9c8a441516f3 .
+ns5:e4e5143dd31f18e6b08f9c8a441516f3	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"e4e5143dd31f18e6b08f9c8a441516f3" ;
+	skos:prefLabel	"CKB Eeklo" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:ff0ca0bc918f33f0b9ce7fe7973d2f67	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"ff0ca0bc918f33f0b9ce7fe7973d2f67" ;
+	skos:prefLabel	"CKB Essen" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:f493ac253f93f5d26ee60913a51471ce	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"f493ac253f93f5d26ee60913a51471ce" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Schelle" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/897d8d444870692b84355ba48cca2780> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/12d5b21526cc13e0f93688f39d78a5c9>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"12d5b21526cc13e0f93688f39d78a5c9" ;
+	skos:prefLabel	"CKB Kortrijk Rand" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/495619ac7ab1ff79146e5965de3a42c9>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"495619ac7ab1ff79146e5965de3a42c9" ;
+	skos:prefLabel	"CKB Diepenbeek" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/7cf4f60dcb0f6d40f6cc2feb4a4a86fe>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"7cf4f60dcb0f6d40f6cc2feb4a4a86fe" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Duffel" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/971166dc370ef91d8abe58766602f61b> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/971166dc370ef91d8abe58766602f61b>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"971166dc370ef91d8abe58766602f61b" ;
+	skos:prefLabel	"CKB Duffel" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/524de40b8e8025257794dfece77b0820>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"524de40b8e8025257794dfece77b0820" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Steenokkerzeel" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/3c3edf1656eb02ec2e1c94427ee96482> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/5c59d93e7393ac84487853c177e8ac9e>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"5c59d93e7393ac84487853c177e8ac9e" ;
+	skos:prefLabel	"CKB Brugge - Stad" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:eb3d92cd27c3ee32898a5cd0ac6dcdd0	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"eb3d92cd27c3ee32898a5cd0ac6dcdd0" ;
+	skos:prefLabel	"CKB Menen" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:ae921822560969a109d365c387077ec8	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"ae921822560969a109d365c387077ec8" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Asse" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:eecf014a2106f005378fcebd376512ba .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/0a3d4c6033820af3cd9fd290357dcc80>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"0a3d4c6033820af3cd9fd290357dcc80" ;
+	skos:prefLabel	"CKB Schoten" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/0f6630edad219323ca55077e6c82b8d8>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"0f6630edad219323ca55077e6c82b8d8" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Bredene" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/9a7abcb272446809bcad1b4f9aa2d897> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/23a81c1caca0dd05be50606e130e1ffa>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"23a81c1caca0dd05be50606e130e1ffa" ;
+	skos:prefLabel	"CKB Staden" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/7d8343c785797d67746ae930d2519dd2>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"7d8343c785797d67746ae930d2519dd2" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Anzegem" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/708d3d50cb0d04b088c1d21300a45e3d> .
+ns5:aa540078b526c2b26fdb2cd64c6a23ca	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"aa540078b526c2b26fdb2cd64c6a23ca" ;
+	skos:prefLabel	"CKB Meulebeke" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/10af93993177f41cffb9741e23232a36>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"10af93993177f41cffb9741e23232a36" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Herselt" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/8bc752c3a306ef5a99a985e011bb3084> .
+<http://data.lblod.info/id/centraleBestuursorgaan/6b7846e9af6cadaff70c7327da1c2cc3>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"6b7846e9af6cadaff70c7327da1c2cc3" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Assenede" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/03e9a966a2ee34b82127a5f6576c0948> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/03e9a966a2ee34b82127a5f6576c0948>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"03e9a966a2ee34b82127a5f6576c0948" ;
+	skos:prefLabel	"CKB Assenede" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/51b9dfcc65b28446df67e9dde63c8f86>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"51b9dfcc65b28446df67e9dde63c8f86" ;
+	skos:prefLabel	"CKB Maarkedal" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/1664fd03363a8c8dffe3e15395d86793>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"1664fd03363a8c8dffe3e15395d86793" ;
+	skos:prefLabel	"CKB Sint-Laureins" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/42f99fa2e425580e6a539c2d24b0fa1a>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"42f99fa2e425580e6a539c2d24b0fa1a" ;
+	skos:prefLabel	"CKB Lille" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:fcb5c0e6949dec963ee768d2d12e2aaf	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"fcb5c0e6949dec963ee768d2d12e2aaf" ;
+	skos:prefLabel	"CKB Meise" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/2cf94633cdd0ec3bce5175c57a0ba8ea>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"2cf94633cdd0ec3bce5175c57a0ba8ea" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Ruiselede" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:fb33941e06307ff7f7720e909a9f56be .
+<http://data.lblod.info/id/centraleBestuursorgaan/4a7834fa630f9f702e1041393d420511>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"4a7834fa630f9f702e1041393d420511" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Sint-Lievens-Houtem" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/4b1a8c1cef81097034cfa1ca569ff2e2> .
+<http://data.lblod.info/id/centraleBestuursorgaan/6c521bb1f4e2511700a1d1b38eaca7eb>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"6c521bb1f4e2511700a1d1b38eaca7eb" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Beernem" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/51ad7859c97933282619dd172cf4216a> .
+ns6:edd1692b766154969ec4340919203778	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"edd1692b766154969ec4340919203778" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Houthalen-Helchteren" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/4c03829486377310ada8bf402bb591be> .
+ns6:fbbb14aab0e90e9d0ac1ec3b0e3b4ec7	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"fbbb14aab0e90e9d0ac1ec3b0e3b4ec7" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Oudsbergen" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/90204e358bb945737a4a48ae02907b3d> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/2e983d3542aa450ff510531a6a1865f0>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"2e983d3542aa450ff510531a6a1865f0" ;
+	skos:prefLabel	"CKB Izegem" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/680268c75a10a60f15fad0e320805487>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"680268c75a10a60f15fad0e320805487" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Hooglede" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:fcc582ce10c0275be72cbe8a3607f2d8 .
+<http://data.lblod.info/id/centraleBestuursorgaan/64ffab4efed1804900f6495e69e60b24>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"64ffab4efed1804900f6495e69e60b24" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Hamont-Achel" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/113b721f636fc02ae69db4182ae07430> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/113b721f636fc02ae69db4182ae07430>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"113b721f636fc02ae69db4182ae07430" ;
+	skos:prefLabel	"CKB Hamont-Achel" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:ba5b60199d553df751b060b631cfd613	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"ba5b60199d553df751b060b631cfd613" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Dilsen-Stokkem" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:dfb648f5a9efc1ba805a0c4bfe0a3a40 .
+<http://data.lblod.info/id/centraleBestuursorgaan/54092fdf3880140fefcf105a5ab6a7ba>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"54092fdf3880140fefcf105a5ab6a7ba" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Deerlijk" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:c58bc71404d1ac24f4e9a79bbd711412 .
+ns6:a72834895156542271fbc96b52516fb4	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"a72834895156542271fbc96b52516fb4" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Ternat" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:c5320eea40f5ce65da55e1a3e26cf497 .
+ns5:c5320eea40f5ce65da55e1a3e26cf497	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"c5320eea40f5ce65da55e1a3e26cf497" ;
+	skos:prefLabel	"CKB Ternat" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/04f8750e8922743c4cae1d31fca4f4f5>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"04f8750e8922743c4cae1d31fca4f4f5" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Moerbeke-Waas" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/2fe1c4a98f45e6910c61d8f4f70331a6> .
+ns6:a765619b65041b59a0612f872df254ae	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"a765619b65041b59a0612f872df254ae" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Alken" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:ff3b6b1f52b9203adeeda0e391ff8d65 .
+ns6:a423a5249ca4688096d09e5111a92ac9	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"a423a5249ca4688096d09e5111a92ac9" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Ieper" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:c41c203121acfef30f65fe321da8b8a4 .
+<http://data.lblod.info/id/centraleBestuursorgaan/718de941e02b3adb023fdecd418645ad>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"718de941e02b3adb023fdecd418645ad" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Hechtel-Eksel" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/29d12a3875be460c1efad5ec141c3a62> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/29d12a3875be460c1efad5ec141c3a62>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"29d12a3875be460c1efad5ec141c3a62" ;
+	skos:prefLabel	"CKB Hechtel-Eksel" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/11eb78e7063700deeac52f3216b04091>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"11eb78e7063700deeac52f3216b04091" ;
+	skos:prefLabel	"CKB Langemark-Poelkapelle" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/225ed0af8a544e57b0d52e954a92ec51>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"225ed0af8a544e57b0d52e954a92ec51" ;
+	skos:prefLabel	"CKB Kalmthout" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:d8e56c67610e154b6df7af09be7a5cc2	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"d8e56c67610e154b6df7af09be7a5cc2" ;
+	skos:prefLabel	"CKB Lebbeke" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/485c0f037f35de44212f3c0af42cd159>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"485c0f037f35de44212f3c0af42cd159" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Evergem" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/1c30ef6d2af97569088ad2a72b707ffa> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/1c30ef6d2af97569088ad2a72b707ffa>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"1c30ef6d2af97569088ad2a72b707ffa" ;
+	skos:prefLabel	"CKB Evergem" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:c0916729a896db2a6947027182bb1128	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"c0916729a896db2a6947027182bb1128" ;
+	skos:prefLabel	"CKB Roosdaal" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:f24e09d78e0541f37e03ced635022cc8	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"f24e09d78e0541f37e03ced635022cc8" ;
+	skos:prefLabel	"CKB Ardooie" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/1fd29e5dfd305e228ba1454d4db5b722>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"1fd29e5dfd305e228ba1454d4db5b722" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Lebbeke" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:d8e56c67610e154b6df7af09be7a5cc2 .
+ns5:c2090bfc094e364c067f114870d68970	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"c2090bfc094e364c067f114870d68970" ;
+	skos:prefLabel	"CKB Blankenberge" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:f6235732fffb2cca34d2a2d7e737680e	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"f6235732fffb2cca34d2a2d7e737680e" ;
+	skos:prefLabel	"CKB Stekene" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:f72d0ad2b8370122458bb034c8e9c92a	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"f72d0ad2b8370122458bb034c8e9c92a" ;
+	skos:prefLabel	"CKB Brakel" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/8b6855440ee26afa024b75ccc3b3938b>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"8b6855440ee26afa024b75ccc3b3938b" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Maldegem" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/8513ee2703aebb0caf9f2875d81479b9> .
+ns6:feb85f2aeb34822a8b4cceb73673a76d	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"feb85f2aeb34822a8b4cceb73673a76d" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Ranst" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:cb4a58c98fe794e9f52b9402c01ef9e3 .
+ns5:e2a89c5148497837231ca66f78c374e7	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"e2a89c5148497837231ca66f78c374e7" ;
+	skos:prefLabel	"CKB Oudenaarde" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/1a7cc9c0b2e125cd5f7a15f711b4e70e>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"1a7cc9c0b2e125cd5f7a15f711b4e70e" ;
+	skos:prefLabel	"CKB Kontich" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/3294f808eb864f50960fa7ef8fe60771>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"3294f808eb864f50960fa7ef8fe60771" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Kasterlee" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/6634a068558738b1c989a883a3b8b074> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/6634a068558738b1c989a883a3b8b074>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"6634a068558738b1c989a883a3b8b074" ;
+	skos:prefLabel	"CKB Kasterlee" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/2e729fc30fb0e8f216be723c9ddf7467>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"2e729fc30fb0e8f216be723c9ddf7467" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Hulshout" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/959070eda47c03a190fd3e132ed80de7> .
+ns5:ab9c349ad86afa91354403ebc83a209f	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"ab9c349ad86afa91354403ebc83a209f" ;
+	skos:prefLabel	"CKB Zemst" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/1303ba105368dfb4676789ba0bab3627>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"1303ba105368dfb4676789ba0bab3627" ;
+	skos:prefLabel	"CKB Middelkerke" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/0f0d22da247abc6b52cd30c3df26d884>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"0f0d22da247abc6b52cd30c3df26d884" ;
+	skos:prefLabel	"CKB Jabbeke" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/50ebb616473b66dace66930a8c475fd9>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"50ebb616473b66dace66930a8c475fd9" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Herne" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:cf4add06db226861767559753fb50206 .
+ns6:e98b6df85075097098504706caf40a5f	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"e98b6df85075097098504706caf40a5f" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Turnhout" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/763f504a83d90dbbf3e9a8c14ebf3d53> .
+ns6:ad7d878d2851ef4a4c666b1b867136ad	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"ad7d878d2851ef4a4c666b1b867136ad" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Erpe-Mere" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/3cb510ba831dc762f3a1bd39cafde84b> .
+<http://data.lblod.info/id/centraleBestuursorgaan/15a4c0dcd3e487fe96fd27b62d7a8a95>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"15a4c0dcd3e487fe96fd27b62d7a8a95" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Sint-Genesius-Rode" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:aa6976a5f6eed5901699a54b5d7e6487 .
+<http://data.lblod.info/id/centraleBestuursorgaan/995e320343a29003994ab8f8fa469a46>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"995e320343a29003994ab8f8fa469a46" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Dendermonde" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/07cd3481fd07e179b8861532560f4084> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/07cd3481fd07e179b8861532560f4084>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"07cd3481fd07e179b8861532560f4084" ;
+	skos:prefLabel	"CKB Dendermonde" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/03c1cd82f53f476d1c608dfc6ea8ba4e>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"03c1cd82f53f476d1c608dfc6ea8ba4e" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Oostkamp" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/8ba8822c3b00f03944595c8162f292c7> .
+<http://data.lblod.info/id/centraleBestuursorgaan/5b1819b014cb49c79f8564c9f38460fd>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"5b1819b014cb49c79f8564c9f38460fd" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Bever" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:aceac0637c572d19a36a7fc3899a5688 .
+ns6:ecdca790fc55cfcb73a6c03a3da5e146	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"ecdca790fc55cfcb73a6c03a3da5e146" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Wingene" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/4c2f4b8767b40982182f4b58fd460c1f> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/90204e358bb945737a4a48ae02907b3d>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"90204e358bb945737a4a48ae02907b3d" ;
+	skos:prefLabel	"CKB Oudsbergen" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/60e71f844295a0521f6fdd234b5ccb5a>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"60e71f844295a0521f6fdd234b5ccb5a" ;
+	skos:prefLabel	"CKB Wetteren" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:d119dfe1d065867b6cf324d855667e87	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"d119dfe1d065867b6cf324d855667e87" ;
+	skos:prefLabel	"CKB Bilzen" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/9bdf13b476fc4514d8b116effd4225e2>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"9bdf13b476fc4514d8b116effd4225e2" ;
+	skos:prefLabel	"CKB Damme" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/59e3be2746990528119d7d195932696e>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"59e3be2746990528119d7d195932696e" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Sint-Pieters-Leeuw" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:beb62d806eeba5a9f30f6bb8e09a82ce .
+ns5:beb62d806eeba5a9f30f6bb8e09a82ce	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"beb62d806eeba5a9f30f6bb8e09a82ce" ;
+	skos:prefLabel	"CKB Sint-Pieters-Leeuw" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/684be2ecee05c994b04a3f333799accb>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"684be2ecee05c994b04a3f333799accb" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Vleteren" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/60883d6a112f31548cfe324911c68f4f> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/983c09feafcd1cfd402e0dd34ef2ed1c>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"983c09feafcd1cfd402e0dd34ef2ed1c" ;
+	skos:prefLabel	"CKB Hoboken" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:f9d562b941d7a246134c5c70cae64713	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"f9d562b941d7a246134c5c70cae64713" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Antw-Centrum" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/0c88eb2e5090db71890d10bb01cc6d74> .
+<http://data.lblod.info/id/centraleBestuursorgaan/6fb2691b429a2a4d78a977e72c76ac95>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"6fb2691b429a2a4d78a977e72c76ac95" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Brecht" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/0345017c53333eab62bc5aa88c8e3d16> .
+ns6:e5c904decaee570331a2438d5d66ebde	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"e5c904decaee570331a2438d5d66ebde" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Scherpenheuvel - Zichem" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:e451786ef8b4c8a07f17026e7f1f2591 .
+<http://data.lblod.info/id/centraleBestuursorgaan/9130bab178bebc334495978ee182d246>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"9130bab178bebc334495978ee182d246" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Antw-Noord" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/57b73c030003b43a7d279b0b812a91ae> .
+<http://data.lblod.info/id/centraleBestuursorgaan/996f66cc8d36c942d363c58ce263ef98>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"996f66cc8d36c942d363c58ce263ef98" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Machelen" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:e8dd320a92500a374af54ff245814751 .
+<http://data.lblod.info/id/centraleBestuursorgaan/77f5bc0c0e304d3a2ed685fa20b5e4c6>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"77f5bc0c0e304d3a2ed685fa20b5e4c6" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Brugge - 2" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:bbd8ec9c417a099257552aaaccca86f8 .
+<http://data.lblod.info/id/centraleBestuursorgaan/5f6942bdd85d638d09c27fdd98b6d579>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"5f6942bdd85d638d09c27fdd98b6d579" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Beerse" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:d2d6bb67f6b1f782666ea1b569f3f5fb .
+ns5:d2d6bb67f6b1f782666ea1b569f3f5fb	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"d2d6bb67f6b1f782666ea1b569f3f5fb" ;
+	skos:prefLabel	"CKB Beerse" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:ccf52a23fbdb6201661cc7aee20d3d8e	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"ccf52a23fbdb6201661cc7aee20d3d8e" ;
+	skos:prefLabel	"CKB Boechout" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/3cb510ba831dc762f3a1bd39cafde84b>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"3cb510ba831dc762f3a1bd39cafde84b" ;
+	skos:prefLabel	"CKB Erpe-Mere" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:fcc582ce10c0275be72cbe8a3607f2d8	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"fcc582ce10c0275be72cbe8a3607f2d8" ;
+	skos:prefLabel	"CKB Hooglede" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:bb1525270b02d2563247746dec3663c0	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"bb1525270b02d2563247746dec3663c0" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Arendonk" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/5ed64ec4ad849d38ba0cc74fe57ccba1> .
+<http://data.lblod.info/id/centraleBestuursorgaan/90f10cde815e4a99e33293911e0fd36f>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"90f10cde815e4a99e33293911e0fd36f" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Lievegem" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/783c47ac1ccb71aa070ebe6203aa4b8b> .
+<http://data.lblod.info/id/centraleBestuursorgaan/29488cfa039ddf308737ad81ba078d3e>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"29488cfa039ddf308737ad81ba078d3e" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Kruibeke" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/51e3c4229f00c09f89fa0bf27498bdfd> .
+ns6:f8cf72295536bf900c2b95a92fbdcec1	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"f8cf72295536bf900c2b95a92fbdcec1" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Lanaken" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/7c87f8d06e9a1ea5eced78ba2f3607b4> .
+ns5:fa51c0cd4530f0db4caea031f75305d3	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"fa51c0cd4530f0db4caea031f75305d3" ;
+	skos:prefLabel	"CKB Sint-Martens-Latem" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/16457d08eaae2cd8e257c9e008cd09f2>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"16457d08eaae2cd8e257c9e008cd09f2" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Buggenhout" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:e2c87681854ea74f01cdbd7cacb03c5f .
+ns5:e2c87681854ea74f01cdbd7cacb03c5f	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"e2c87681854ea74f01cdbd7cacb03c5f" ;
+	skos:prefLabel	"CKB Buggenhout" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/44e123c39fb439274be6727eca6e1880>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"44e123c39fb439274be6727eca6e1880" ;
+	skos:prefLabel	"CKB Aartselaar" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/89bddac0557f154bc1c8dad2a8a2c99c>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"89bddac0557f154bc1c8dad2a8a2c99c" ;
+	skos:prefLabel	"CKB Rumst" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:fda278c449963ced5275dfd69ef8776e	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"fda278c449963ced5275dfd69ef8776e" ;
+	skos:prefLabel	"CKB Geel" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/710c7fb0b0ac58e1c90702e22a8998c8>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"710c7fb0b0ac58e1c90702e22a8998c8" ;
+	skos:prefLabel	"CKB Zuienkerke" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/2fe1c4a98f45e6910c61d8f4f70331a6>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"2fe1c4a98f45e6910c61d8f4f70331a6" ;
+	skos:prefLabel	"CKB Moerbeke-Waas" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/539c258518282061554ca396d40ce6f0>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"539c258518282061554ca396d40ce6f0" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Westerlo" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/7e5d43f4b342abad639f2bbe1cdb577f> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/7e5d43f4b342abad639f2bbe1cdb577f>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"7e5d43f4b342abad639f2bbe1cdb577f" ;
+	skos:prefLabel	"CKB Westerlo" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/3a6e3c90c946f7574e9d0325bbe07e2d>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"3a6e3c90c946f7574e9d0325bbe07e2d" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Zele" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:f7a23007e6facffd5a7e8ec1fb0d9ff9 .
+ns5:f7a23007e6facffd5a7e8ec1fb0d9ff9	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"f7a23007e6facffd5a7e8ec1fb0d9ff9" ;
+	skos:prefLabel	"CKB Zele" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/1afc7584c1785d5aff1364b8ea6655bf>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"1afc7584c1785d5aff1364b8ea6655bf" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Denderleeuw" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/7efe544dc9da3772ac86dc3e6e4a3ef4> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/7efe544dc9da3772ac86dc3e6e4a3ef4>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"7efe544dc9da3772ac86dc3e6e4a3ef4" ;
+	skos:prefLabel	"CKB Denderleeuw" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:e06d921aa59546324817dcafe0cc90ef	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"e06d921aa59546324817dcafe0cc90ef" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Oudenaarde" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:e2a89c5148497837231ca66f78c374e7 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/992cc01ac966ed85d3e6526c7a8c0d14>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"992cc01ac966ed85d3e6526c7a8c0d14" ;
+	skos:prefLabel	"CKB Pittem" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:faef605c68c715df879b3e722fa42c5c	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"faef605c68c715df879b3e722fa42c5c" ;
+	skos:prefLabel	"CKB Vilvoorde" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/802b6e8a40d5b830347183421a916c43>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"802b6e8a40d5b830347183421a916c43" ;
+	skos:prefLabel	"CKB Rijkevorsel" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:a198a8727bae339f5e8ee6ebd9849efd	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"a198a8727bae339f5e8ee6ebd9849efd" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Boom" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:c2263c3cd938a4ed1a72cefcba4ac200 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/0082b38f2a1d8a5581cccb379afcf6dc>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"0082b38f2a1d8a5581cccb379afcf6dc" ;
+	skos:prefLabel	"CKB Dilbeek" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/09b06c4195e42f314dec362d7cf0247e>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"09b06c4195e42f314dec362d7cf0247e" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Pittem" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/992cc01ac966ed85d3e6526c7a8c0d14> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/4086f388462840015ebf122dfa8f357b>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"4086f388462840015ebf122dfa8f357b" ;
+	skos:prefLabel	"CKB Heusden-Zolder" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:de54606308bc963d07fc0f386441ce78	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"de54606308bc963d07fc0f386441ce78" ;
+	skos:prefLabel	"CKB Kraainem" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/46394545d22b118af00ca47b458caaef>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"46394545d22b118af00ca47b458caaef" ;
+	skos:prefLabel	"CKB Wevelgem" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/6650ca39f706d085529db9117532854d>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"6650ca39f706d085529db9117532854d" ;
+	skos:prefLabel	"CKB Tervuren" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/6abee53bc538fc96a0e68fc3bb63d9de>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"6abee53bc538fc96a0e68fc3bb63d9de" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Edegem" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:a5926d5d5615d19d42516708e57d6f9e .
+ns5:f5c4c42180a0832e2870c48fbd22c398	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"f5c4c42180a0832e2870c48fbd22c398" ;
+	skos:prefLabel	"CKB Kapellen" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:c14766b3f2e581d18a3cf6fd8d66cad0	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"c14766b3f2e581d18a3cf6fd8d66cad0" ;
+	skos:prefLabel	"CKB Gent-Stad" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/2e19d34b91f4e6b8afae5affbae40199>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"2e19d34b91f4e6b8afae5affbae40199" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Gistel" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:a37d869d25f4f0771e035612a2386171 .
+ns5:a37d869d25f4f0771e035612a2386171	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"a37d869d25f4f0771e035612a2386171" ;
+	skos:prefLabel	"CKB Gistel" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/2a6e769bcc2e3aceb62b6dadb15fb444>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"2a6e769bcc2e3aceb62b6dadb15fb444" ;
+	skos:prefLabel	"CKB Overijse" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/40470de3d7750e3af2372322d4f2d781>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"40470de3d7750e3af2372322d4f2d781" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Hoboken" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/983c09feafcd1cfd402e0dd34ef2ed1c> .
+<http://data.lblod.info/id/centraleBestuursorgaan/504e05e41ca6b7f67dc6d9cbb123b01a>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"504e05e41ca6b7f67dc6d9cbb123b01a" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Rotselaar" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/74af6c24e0ade8a214d1eeca67907bc3> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/3d3109817aca699f3fcc6e2abc399e55>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"3d3109817aca699f3fcc6e2abc399e55" ;
+	skos:prefLabel	"CKB Kaprijke" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:da96f27b41616b4abc8dd516fcfb1dd1	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"da96f27b41616b4abc8dd516fcfb1dd1" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Sint-Laureins" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/1664fd03363a8c8dffe3e15395d86793> .
+<http://data.lblod.info/id/centraleBestuursorgaan/5f3696ce2c52ea14afb30df7ab0187af>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"5f3696ce2c52ea14afb30df7ab0187af" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Ninove" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/2a00aa9057f5c3d4c36b13f8b37e2642> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/2a00aa9057f5c3d4c36b13f8b37e2642>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"2a00aa9057f5c3d4c36b13f8b37e2642" ;
+	skos:prefLabel	"CKB Ninove" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:c2263c3cd938a4ed1a72cefcba4ac200	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"c2263c3cd938a4ed1a72cefcba4ac200" ;
+	skos:prefLabel	"CKB Boom" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/626d9d110a94b6dca5543751b3d664f7>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"626d9d110a94b6dca5543751b3d664f7" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Berlaar" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:a997d97be3b9c80f06a17c6ebe07a4a0 .
+ns5:a997d97be3b9c80f06a17c6ebe07a4a0	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"a997d97be3b9c80f06a17c6ebe07a4a0" ;
+	skos:prefLabel	"CKB Berlaar" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:c3ec85226d2675c07bb47459756fed02	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"c3ec85226d2675c07bb47459756fed02" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Kaprijke" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/3d3109817aca699f3fcc6e2abc399e55> .
+ns5:c0dbefab60a716897974cfc8c761234e	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"c0dbefab60a716897974cfc8c761234e" ;
+	skos:prefLabel	"CKB Kuurne" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/924ddb2bc66158f3131d7836e010aee3>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"924ddb2bc66158f3131d7836e010aee3" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Kortrijk Rand" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/12d5b21526cc13e0f93688f39d78a5c9> .
+ns5:de884828657e9919fedb020020b89e5e	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"de884828657e9919fedb020020b89e5e" ;
+	skos:prefLabel	"CKB Opwijk" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/96db14dbe2ae5f9b8f8651bbd67f6824>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"96db14dbe2ae5f9b8f8651bbd67f6824" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Meerhout" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:c3da61cd69677ef2e426844e47d1623b .
+ns5:c3da61cd69677ef2e426844e47d1623b	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"c3da61cd69677ef2e426844e47d1623b" ;
+	skos:prefLabel	"CKB Meerhout" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:dac7a6c44f33494417ed1ee3b8bc06e1	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"dac7a6c44f33494417ed1ee3b8bc06e1" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Herentals" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/75876d213202754f3f29769e32bd3004> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/75876d213202754f3f29769e32bd3004>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"75876d213202754f3f29769e32bd3004" ;
+	skos:prefLabel	"CKB Herentals" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/6221addb3667d94c0e209a29edfb4dc1>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"6221addb3667d94c0e209a29edfb4dc1" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Nieuwpoort" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/0197b8fc2782a6d3230e011d1a78df0e> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/0197b8fc2782a6d3230e011d1a78df0e>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"0197b8fc2782a6d3230e011d1a78df0e" ;
+	skos:prefLabel	"CKB Nieuwpoort" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/3c9e86c4e8bb96ebf62cb550ae27f8ec>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"3c9e86c4e8bb96ebf62cb550ae27f8ec" ;
+	skos:prefLabel	"CKB Poperinge" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:d6c6dd518cc5df076a35959d811fa67c	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"d6c6dd518cc5df076a35959d811fa67c" ;
+	skos:prefLabel	"CKB Alveringem" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:dbdc21ea47901538b541034df18e5400	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"dbdc21ea47901538b541034df18e5400" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Mol" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/4dce19011e5b534dc7ea461acf9493a7> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/4dce19011e5b534dc7ea461acf9493a7>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"4dce19011e5b534dc7ea461acf9493a7" ;
+	skos:prefLabel	"CKB Mol" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/6e30563d9208659b2286e15b70a59ce7>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"6e30563d9208659b2286e15b70a59ce7" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Bertem" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:cd892f00e74e6a5f6acd31a1a7807aec .
+ns5:cd892f00e74e6a5f6acd31a1a7807aec	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"cd892f00e74e6a5f6acd31a1a7807aec" ;
+	skos:prefLabel	"CKB Bertem" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:ef5f2f753acc3580195207da4775c61c	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"ef5f2f753acc3580195207da4775c61c" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Lo-Reninge" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:ac63ea7e74aeadaf1ba2dd975d3a8e17 .
+<http://data.lblod.info/id/centraleBestuursorgaan/16bfc227c0e48ba3406ccfb275af4697>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"16bfc227c0e48ba3406ccfb275af4697" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Ravels" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/5d9e649fde106e771ddcc451e39f56be> .
+<http://data.lblod.info/id/centraleBestuursorgaan/5301c71b8dc7f4db2c167bda04d8f4bb>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"5301c71b8dc7f4db2c167bda04d8f4bb" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Menen" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:eb3d92cd27c3ee32898a5cd0ac6dcdd0 .
+ns6:e308811ba260b449064d3b5532107f99	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"e308811ba260b449064d3b5532107f99" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Lierde" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:df5e0e0f87b547e668402d33dd6936be .
+ns5:f781943151cb63210b54fbf7140e3490	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"f781943151cb63210b54fbf7140e3490" ;
+	skos:prefLabel	"CKB Laarne" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/43c951024828d37f219936f5af25a338>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"43c951024828d37f219936f5af25a338" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Merchtem" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/776d0d0b71b0d55e10ac4a507897ba90> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/776d0d0b71b0d55e10ac4a507897ba90>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"776d0d0b71b0d55e10ac4a507897ba90" ;
+	skos:prefLabel	"CKB Merchtem" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:b0ffe0e981a7e887a0b949d7ff77096b	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"b0ffe0e981a7e887a0b949d7ff77096b" ;
+	skos:prefLabel	"CKB Tongeren" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/28b12519c4966c41ee978cd61998cf1d>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"28b12519c4966c41ee978cd61998cf1d" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Langemark-Poelkapelle" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/11eb78e7063700deeac52f3216b04091> .
+ns5:c5908a253d1aa2fccb75e6fff439c93a	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"c5908a253d1aa2fccb75e6fff439c93a" ;
+	skos:prefLabel	"CKB Kruisem" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/3fa1183fb9a93266f0d6fdce3703f6ee>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"3fa1183fb9a93266f0d6fdce3703f6ee" ;
+	skos:prefLabel	"CKB Borgerhout" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:a6fbde21842fc08547556063e9f148d1	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"a6fbde21842fc08547556063e9f148d1" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Hove" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:cafcd66194078483513960713fb54d1c .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/0b00afc27c26f56c3a0461da6edf85c6>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"0b00afc27c26f56c3a0461da6edf85c6" ;
+	skos:prefLabel	"CKB Spiere-Helkijn" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:dfb648f5a9efc1ba805a0c4bfe0a3a40	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"dfb648f5a9efc1ba805a0c4bfe0a3a40" ;
+	skos:prefLabel	"CKB Dilsen-Stokkem" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:a52810c3e7be605b201f97f4987cae8c	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"a52810c3e7be605b201f97f4987cae8c" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Wetteren" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/60e71f844295a0521f6fdd234b5ccb5a> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/80c48a10fef7d201a647fcab17c1faaf>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"80c48a10fef7d201a647fcab17c1faaf" ;
+	skos:prefLabel	"CKB Pepingen" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/742b788f58601af1d3f62c36bd4b6ffe>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"742b788f58601af1d3f62c36bd4b6ffe" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Laakdal" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/0cf41785e54b3e73cb241698e69a69e4> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/8bc752c3a306ef5a99a985e011bb3084>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"8bc752c3a306ef5a99a985e011bb3084" ;
+	skos:prefLabel	"CKB Herselt" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/065a05cc3b8375ffe4f0369f5fe1f08e>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"065a05cc3b8375ffe4f0369f5fe1f08e" ;
+	skos:prefLabel	"CKB Dessel" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:fae79bc3e07dcc8268cc54515fa15141	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"fae79bc3e07dcc8268cc54515fa15141" ;
+	skos:prefLabel	"CKB Herk-de-Stad" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/620b14fc6901e59c49b3021ae1810d86>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"620b14fc6901e59c49b3021ae1810d86" ;
+	skos:prefLabel	"CKB Wezembeek-Oppem" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/7bd10d1872f0b4828adef848f3ae4daa>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"7bd10d1872f0b4828adef848f3ae4daa" ;
+	skos:prefLabel	"CKB Merksem" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/6baf6c4c73b38b097568c62bf9042a57>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"6baf6c4c73b38b097568c62bf9042a57" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Zoersel" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/17b0501bf9632542e9b0475667171ef0> .
+<http://data.lblod.info/id/centraleBestuursorgaan/191cb723d2e4a495426c102b8db9980f>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"191cb723d2e4a495426c102b8db9980f" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Rijkevorsel" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/802b6e8a40d5b830347183421a916c43> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/42dcb2faa3fb60b0fb2c4dde3b4f7049>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"42dcb2faa3fb60b0fb2c4dde3b4f7049" ;
+	skos:prefLabel	"CKB Halle" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:e199e95bd115deb59a304ec44b24a9c4	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"e199e95bd115deb59a304ec44b24a9c4" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Aarschot" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:e0c7f21963b018698417ce44ef097582 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/686519e683a16ccbe788c1b7acc92740>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"686519e683a16ccbe788c1b7acc92740" ;
+	skos:prefLabel	"CKB Antw-Zuid" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/640c8d261aefaaec106b0d7aca7b68b1>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"640c8d261aefaaec106b0d7aca7b68b1" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Mortsel" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/653566b3d8701ef8469c3dc3b72306dd> .
+ns5:c58bc71404d1ac24f4e9a79bbd711412	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"c58bc71404d1ac24f4e9a79bbd711412" ;
+	skos:prefLabel	"CKB Deerlijk" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/81963915b1f78fe1da0face9c76c0b0e>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"81963915b1f78fe1da0face9c76c0b0e" ;
+	skos:prefLabel	"Centraal kerkbestuur CB orthodoxe parochies West-Vlaanderen" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:d689e774de665f48e80db2262b1bbd7a .
+ns5:d689e774de665f48e80db2262b1bbd7a	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"d689e774de665f48e80db2262b1bbd7a" ;
+	skos:prefLabel	"CB orthodoxe parochies West-Vlaanderen" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/5f3883f0b234166af89b19a03dcd5ea9>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"5f3883f0b234166af89b19a03dcd5ea9" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Grobbendonk" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/3e95fcbcdde9a46586f91b693985578f> .
+ns6:fc4e7e1d59fbce3a6bfd746d8d2b9cc9	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"fc4e7e1d59fbce3a6bfd746d8d2b9cc9" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Zulte" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/2ce1628f97d31705a703fbc699c71774> .
+<http://data.lblod.info/id/centraleBestuursorgaan/2085367a39cea027313d9db86c647584>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"2085367a39cea027313d9db86c647584" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Oud-Heverlee" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/9d9f40aed88926475f0c8374e5615ef5> .
+ns6:c26fd705ee0d753111e18e3ca388133e	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"c26fd705ee0d753111e18e3ca388133e" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Kuurne" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:c0dbefab60a716897974cfc8c761234e .
+ns5:bf952a7aeaff9fce530e4ace0a3e2c45	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"bf952a7aeaff9fce530e4ace0a3e2c45" ;
+	skos:prefLabel	"CKB Zottegem" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/3861f2b7f454cb802db4943b8ef09330>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"3861f2b7f454cb802db4943b8ef09330" ;
+	skos:prefLabel	"CKB Heuvelland" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:e476eed17dc5ad1de115b2729ffce6eb	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"e476eed17dc5ad1de115b2729ffce6eb" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Melle" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/08223304e42d99067f54a753f8c685fe> .
+<http://data.lblod.info/id/centraleBestuursorgaan/2bd3d60aa505d053398f4e7708d30aa0>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"2bd3d60aa505d053398f4e7708d30aa0" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Lede" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/551027a285f1a06b0733caec473ce054> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/551027a285f1a06b0733caec473ce054>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"551027a285f1a06b0733caec473ce054" ;
+	skos:prefLabel	"CKB Lede" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/708d3d50cb0d04b088c1d21300a45e3d>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"708d3d50cb0d04b088c1d21300a45e3d" ;
+	skos:prefLabel	"CKB Anzegem" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:ce63ee5d32276b201d35778a1ae9e8b1	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"ce63ee5d32276b201d35778a1ae9e8b1" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Pepingen" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/80c48a10fef7d201a647fcab17c1faaf> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/51e3c4229f00c09f89fa0bf27498bdfd>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"51e3c4229f00c09f89fa0bf27498bdfd" ;
+	skos:prefLabel	"CKB Kruibeke" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/37b995cf3082af7962beee7acc1935ac>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"37b995cf3082af7962beee7acc1935ac" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Diepenbeek" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/495619ac7ab1ff79146e5965de3a42c9> .
+<http://data.lblod.info/id/centraleBestuursorgaan/7e62f86fbdaef52ff5e6134d0e56e05e>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"7e62f86fbdaef52ff5e6134d0e56e05e" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Wellen" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/7f6d41112bc738c1e91de38b800b6ec1> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/7f6d41112bc738c1e91de38b800b6ec1>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"7f6d41112bc738c1e91de38b800b6ec1" ;
+	skos:prefLabel	"CKB Wellen" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/54d2990d37f7d780768da8e9a2786119>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"54d2990d37f7d780768da8e9a2786119" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Ekeren" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:a3aaa37623ea7a54b47a0316e852e903 .
+ns5:ab92fa8efd6b706e699d3f23e8bba499	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"ab92fa8efd6b706e699d3f23e8bba499" ;
+	skos:prefLabel	"CKB Gingelom" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/2d98ed47689ebe5f22f3e2e5d2850d0d>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"2d98ed47689ebe5f22f3e2e5d2850d0d" ;
+	skos:prefLabel	"CKB Sint-Truiden" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/255b2ece2955c30b9f5988675374368b>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"255b2ece2955c30b9f5988675374368b" ;
+	skos:prefLabel	"CKB Grimbergen" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/681d68e96a751e66aa9e5a660d5a659d>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"681d68e96a751e66aa9e5a660d5a659d" ;
+	skos:prefLabel	"CKB Halen" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/3e95fcbcdde9a46586f91b693985578f>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"3e95fcbcdde9a46586f91b693985578f" ;
+	skos:prefLabel	"CKB Grobbendonk" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/747adb4cc6e38669770483045a85fafe>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"747adb4cc6e38669770483045a85fafe" ;
+	skos:prefLabel	"CKB Stabroek" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/4b1a8c1cef81097034cfa1ca569ff2e2>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"4b1a8c1cef81097034cfa1ca569ff2e2" ;
+	skos:prefLabel	"CKB Sint-Lievens-Houtem" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/6a1d1e7f152344c1c607181cdb4438de>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"6a1d1e7f152344c1c607181cdb4438de" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Oostende" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:c981f51ab527babbb9d7952c02a78fa4 .
+ns5:c1691a136fe141a6311a746b046b36d9	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"c1691a136fe141a6311a746b046b36d9" ;
+	skos:prefLabel	"CKB Zonnebeke" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:c3f03bfc45a81409b3f8de8c5f88032c	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"c3f03bfc45a81409b3f8de8c5f88032c" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Hoogstraten" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/97cab99594240eec18d05853e491f825> .
+ns6:f0d54eb3653340e5c17f115464798bb2	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"f0d54eb3653340e5c17f115464798bb2" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Deinze" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/7f5475cfb202d12f54779f046441c9e1> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/7f5475cfb202d12f54779f046441c9e1>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"7f5475cfb202d12f54779f046441c9e1" ;
+	skos:prefLabel	"CKB Deinze" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:f157f5d548a557a0b3216a057cb7893f	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"f157f5d548a557a0b3216a057cb7893f" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Dilbeek" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/0082b38f2a1d8a5581cccb379afcf6dc> .
+<http://data.lblod.info/id/centraleBestuursorgaan/5844f8834ea687b6118278302ea3db50>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"5844f8834ea687b6118278302ea3db50" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Pelt" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/9f3736d8bac59e6f7fb4a134cf5ee325> .
+ns5:e8dd320a92500a374af54ff245814751	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"e8dd320a92500a374af54ff245814751" ;
+	skos:prefLabel	"CKB Machelen" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:a3aaa37623ea7a54b47a0316e852e903	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"a3aaa37623ea7a54b47a0316e852e903" ;
+	skos:prefLabel	"CKB Ekeren" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/5200d338dbe39d5367fb1e76f6c30206>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"5200d338dbe39d5367fb1e76f6c30206" ;
+	skos:prefLabel	"CKB Leuven" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:f11ce4937c2ac92f8671b58e9ef06686	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"f11ce4937c2ac92f8671b58e9ef06686" ;
+	skos:prefLabel	"CKB Liedekerke" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/8413e604e237de63067a30cd8c658f6b>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"8413e604e237de63067a30cd8c658f6b" ;
+	skos:prefLabel	"CKB Retie" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/9d9f40aed88926475f0c8374e5615ef5>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"9d9f40aed88926475f0c8374e5615ef5" ;
+	skos:prefLabel	"CKB Oud-Heverlee" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/70ecdd90a14ef5d2c724d7230df76cca>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"70ecdd90a14ef5d2c724d7230df76cca" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Waasmunster" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:aaedd771300131f4a5ae19222d13750c .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/3e3104151f00158c57143ee213c7c142>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"3e3104151f00158c57143ee213c7c142" ;
+	skos:prefLabel	"CKB Kortrijk Stad" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:cafcd66194078483513960713fb54d1c	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"cafcd66194078483513960713fb54d1c" ;
+	skos:prefLabel	"CKB Hove" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:c4c69b5d49f8a1979e43d4d17866f0e3	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"c4c69b5d49f8a1979e43d4d17866f0e3" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Retie" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/8413e604e237de63067a30cd8c658f6b> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/3c92ae3c97f8810b4dfbbfe8a2b0bc3c>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"3c92ae3c97f8810b4dfbbfe8a2b0bc3c" ;
+	skos:prefLabel	"CKB Mechelen" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:ac63ea7e74aeadaf1ba2dd975d3a8e17	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"ac63ea7e74aeadaf1ba2dd975d3a8e17" ;
+	skos:prefLabel	"CKB Lo-Reninge" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:a79ac1f9a8577f6cd5cd6f650e82815f	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"a79ac1f9a8577f6cd5cd6f650e82815f" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Ardooie" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:f24e09d78e0541f37e03ced635022cc8 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/9f3736d8bac59e6f7fb4a134cf5ee325>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"9f3736d8bac59e6f7fb4a134cf5ee325" ;
+	skos:prefLabel	"CKB Pelt" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:e0c7f21963b018698417ce44ef097582	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"e0c7f21963b018698417ce44ef097582" ;
+	skos:prefLabel	"CKB Aarschot" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns6:f1e4d34a53792000d5963339986b3be8	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"f1e4d34a53792000d5963339986b3be8" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Poperinge" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/3c9e86c4e8bb96ebf62cb550ae27f8ec> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/6dcc4f185d281bac86f33eb8e8d70ca5>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"6dcc4f185d281bac86f33eb8e8d70ca5" ;
+	skos:prefLabel	"CKB Kampenhout" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/254b195cfd015e88cad0bf899fdd51c9>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"254b195cfd015e88cad0bf899fdd51c9" ;
+	skos:prefLabel	"CKB Sint-Gillis-Waas" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/0cf41785e54b3e73cb241698e69a69e4>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"0cf41785e54b3e73cb241698e69a69e4" ;
+	skos:prefLabel	"CKB Laakdal" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/2d01fb8fc8429810994a32f3e8508bc4>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"2d01fb8fc8429810994a32f3e8508bc4" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Blankenberge" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:c2090bfc094e364c067f114870d68970 .
+ns5:bbd8ec9c417a099257552aaaccca86f8	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"bbd8ec9c417a099257552aaaccca86f8" ;
+	skos:prefLabel	"CKB Brugge - 2" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/8d7fb064535448b990505c8895bdc27e>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"8d7fb064535448b990505c8895bdc27e" ;
+	skos:prefLabel	"CKB Wuustwezel" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/0345017c53333eab62bc5aa88c8e3d16>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"0345017c53333eab62bc5aa88c8e3d16" ;
+	skos:prefLabel	"CKB Brecht" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:ed0914f40dfed83ca44af845a2bf4d81	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"ed0914f40dfed83ca44af845a2bf4d81" ;
+	skos:prefLabel	"CKB Beveren" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/9e520e691127eec6889a3d0da9209182>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"9e520e691127eec6889a3d0da9209182" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Landen" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/732c004dab61a434a06ffb3fb49faf41> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/732c004dab61a434a06ffb3fb49faf41>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"732c004dab61a434a06ffb3fb49faf41" ;
+	skos:prefLabel	"CKB Landen" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/783c47ac1ccb71aa070ebe6203aa4b8b>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"783c47ac1ccb71aa070ebe6203aa4b8b" ;
+	skos:prefLabel	"CKB Lievegem" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:cf4add06db226861767559753fb50206	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"cf4add06db226861767559753fb50206" ;
+	skos:prefLabel	"CKB Herne" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/9e0e8f060ca954da6263243642433f44>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"9e0e8f060ca954da6263243642433f44" ;
+	skos:prefLabel	"CKB De Pinte" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/8c33605cb031cc83d3eec5374486764f>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"8c33605cb031cc83d3eec5374486764f" ;
+	skos:prefLabel	"CKB Torhout" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/5ed64ec4ad849d38ba0cc74fe57ccba1>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"5ed64ec4ad849d38ba0cc74fe57ccba1" ;
+	skos:prefLabel	"CKB Arendonk" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:bdb1ae37a77888f20019c993d7a76f5c	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"bdb1ae37a77888f20019c993d7a76f5c" ;
+	skos:prefLabel	"CKB Balen" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/6c8ed53924c8f453fac84cde0da67511>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"6c8ed53924c8f453fac84cde0da67511" ;
+	skos:prefLabel	"CKB Lubbeek" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/521a21130ca8b422750dd93e8ae9993d>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"521a21130ca8b422750dd93e8ae9993d" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Kraainem" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:de54606308bc963d07fc0f386441ce78 .
+ns5:a5926d5d5615d19d42516708e57d6f9e	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"a5926d5d5615d19d42516708e57d6f9e" ;
+	skos:prefLabel	"CKB Edegem" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/427a538745aaf39a4869598021d7e690>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"427a538745aaf39a4869598021d7e690" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Aalter" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:e08a8bc5828bd44e735724a79b588b13 .
+<http://data.lblod.info/id/centraleBestuursorgaan/57e01ca649f5f3a7e00b4488e3db1a37>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"57e01ca649f5f3a7e00b4488e3db1a37" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Houthulst" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:f4597237766ec48f09342376aa100ba6 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/70f48954f519c0df3bbc492b7a63a253>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"70f48954f519c0df3bbc492b7a63a253" ;
+	skos:prefLabel	"CKB Geraardsbergen" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:df5e0e0f87b547e668402d33dd6936be	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"df5e0e0f87b547e668402d33dd6936be" ;
+	skos:prefLabel	"CKB Lierde" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/1bc4bdd10a04ef37956a99faa971b6d4>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"1bc4bdd10a04ef37956a99faa971b6d4" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Torhout" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/8c33605cb031cc83d3eec5374486764f> .
+ns6:a0e12c9bb0479620bc0935b4821d220e	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"a0e12c9bb0479620bc0935b4821d220e" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Kortrijk Stad" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/3e3104151f00158c57143ee213c7c142> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/60883d6a112f31548cfe324911c68f4f>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"60883d6a112f31548cfe324911c68f4f" ;
+	skos:prefLabel	"CKB Vleteren" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/5d9e649fde106e771ddcc451e39f56be>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"5d9e649fde106e771ddcc451e39f56be" ;
+	skos:prefLabel	"CKB Ravels" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/327ec658e6ff35911bbd20b0c61b44c1>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"327ec658e6ff35911bbd20b0c61b44c1" ;
+	skos:prefLabel	"CKB Temse" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:cb4a58c98fe794e9f52b9402c01ef9e3	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"cb4a58c98fe794e9f52b9402c01ef9e3" ;
+	skos:prefLabel	"CKB Ranst" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/5256576d2ebf92fbbf6e90c5281726cb>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"5256576d2ebf92fbbf6e90c5281726cb" ;
+	skos:prefLabel	"CKB Knokke-Heist" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/2ce1628f97d31705a703fbc699c71774>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"2ce1628f97d31705a703fbc699c71774" ;
+	skos:prefLabel	"CKB Zulte" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/168485188083a4d89ab9a6bf14676c5f>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"168485188083a4d89ab9a6bf14676c5f" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Kalmthout" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/225ed0af8a544e57b0d52e954a92ec51> .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/7c397b883bf42c9bda2f9e34c598b81d>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"7c397b883bf42c9bda2f9e34c598b81d" ;
+	skos:prefLabel	"CKB Zoutleeuw" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:b1ed5ef1f421bc0c42aa29190d562286	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"b1ed5ef1f421bc0c42aa29190d562286" ;
+	skos:prefLabel	"CKB Oud_Turnhout" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/2b149a43d431b110132e2ab3b90a246e>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"2b149a43d431b110132e2ab3b90a246e" ;
+	skos:prefLabel	"CKB Aalst" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:e08a8bc5828bd44e735724a79b588b13	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"e08a8bc5828bd44e735724a79b588b13" ;
+	skos:prefLabel	"CKB Aalter" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+ns5:cbe6c0b85901c6dec358d48edb61a673	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"cbe6c0b85901c6dec358d48edb61a673" ;
+	skos:prefLabel	"CKB Tremelo" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/2991b28cb8ea543dede1834898cb8765>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"2991b28cb8ea543dede1834898cb8765" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Kortenberg" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	<http://data.lblod.info/id/centraleBesturenVanDeEredienst/2bb736a6ee74c6d3cc17a5bb6a58cf29> .
+<http://data.lblod.info/id/centraleBestuursorgaan/0c2841481d9540e714e17ddd8869ccc3>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"0c2841481d9540e714e17ddd8869ccc3" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Sint-Martens-Latem" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:fa51c0cd4530f0db4caea031f75305d3 .
+ns5:b9ad1b63c76033e90ed0a3b3b1903e01	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"b9ad1b63c76033e90ed0a3b3b1903e01" ;
+	skos:prefLabel	"CKB Destelbergen" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBestuursorgaan/010dd8664de59648b8f8bc439d46fe1c>	rdf:type	ns1:Bestuursorgaan ;
+	ns2:uuid	"010dd8664de59648b8f8bc439d46fe1c" ;
+	skos:prefLabel	"Centraal kerkbestuur CKB Tremelo" ;
+	ns1:classificatie	<http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/0d985699479162198b889f10e4f1a8ce> ;
+	ns1:bestuurt	ns5:cbe6c0b85901c6dec358d48edb61a673 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/5442c1374ed159347bc0c64518a9b1a9>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"5442c1374ed159347bc0c64518a9b1a9" ;
+	skos:prefLabel	"CKB Tessenderlo" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/51ad7859c97933282619dd172cf4216a>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"51ad7859c97933282619dd172cf4216a" ;
+	skos:prefLabel	"CKB Beernem" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/5bd5798aaa8ee58aa34480e7125f25d8>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"5bd5798aaa8ee58aa34480e7125f25d8" ;
+	skos:prefLabel	"CKB De Haan" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/9a7abcb272446809bcad1b4f9aa2d897>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"9a7abcb272446809bcad1b4f9aa2d897" ;
+	skos:prefLabel	"CKB Bredene" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+<http://data.lblod.info/id/centraleBesturenVanDeEredienst/57b73c030003b43a7d279b0b812a91ae>	rdf:type	ns1:Bestuurseenheid ;
+	ns2:uuid	"57b73c030003b43a7d279b0b812a91ae" ;
+	skos:prefLabel	"CKB Antw-Noord" ;
+	ns1:classificatie	ns4:f9cac08a-13c1-49da-9bcb-f650b0604054 .
+@prefix ns7:	<http://mu.semte.ch/vocabularies/ext/> .
+ns4:f9cac08a-13c1-49da-9bcb-f650b0604054	rdf:type	ns7:BestuurseenheidClassificatieCode ,
+		skos:Concept ;
+	ns2:uuid	"f9cac08a-13c1-49da-9bcb-f650b0604054" ;
+	skos:prefLabel	"Centraal bestuur van de eredienst" .
+@prefix ns8:	<http://data.vlaanderen.be/id/conceptscheme/> .
+ns4:f9cac08a-13c1-49da-9bcb-f650b0604054	skos:inScheme	ns8:BestuurseenheidClassificatieCode ,
+		<http://lblod.data.gift/concept-schemes/06bad311-e964-48a4-9b6b-f765819e76e0> ;
+	skos:topConceptOf	ns8:BestuurseenheidClassificatieCode .
