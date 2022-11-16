@@ -294,11 +294,11 @@ defmodule Dispatcher do
   # Vendor Login for SPARQL endpoint
   #################################################################
 
-  post "/login/*path" do
+  post "/vendor/login/*path" do
     Proxy.forward conn, path, "http://vendor-login/sessions"
   end
 
-  delete "/logout" do
+  delete "/vendor/logout" do
     Proxy.forward conn, [], "http://vendor-login/sessions/current"
   end
 
@@ -307,7 +307,7 @@ defmodule Dispatcher do
   #################################################################
 
   # Not only POST. SPARQL via GET is also allowed.
-  match "/sparql" do
+  match "/vendor/sparql" do
     Proxy.forward conn, [], "http://sparql-authorization-wrapper/sparql"
   end
 
