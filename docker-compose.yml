@@ -210,3 +210,5 @@ services:
     image: lblod/sparql-authorization-wrapper-service:latest
     volumes:
       - ./config/sparql-authorization-wrapper:/config
+  vendor-data-distribution:
+    image: lblod/vendor-data-distribution-service:latest

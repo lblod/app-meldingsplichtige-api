@@ -218,6 +218,7 @@ defmodule Dispatcher do
   #################################################################
   # automatic submission
   #################################################################
+
   match "/melding/*path" do
     Proxy.forward conn, path, "http://automatic-submission/melding"
   end
@@ -225,9 +226,11 @@ defmodule Dispatcher do
   #################################################################
   # verify submission (to be removed)
   #################################################################
+
   get "/verify/bestuurseenheid/*path" do
     Proxy.forward conn, path, "http://verify-submission/bestuurseenheid"
   end
+
   get "/verify/inzending/*path" do
     Proxy.forward conn, path, "http://verify-submission/inzending"
   end
@@ -303,9 +306,19 @@ defmodule Dispatcher do
   # Vendor SPARQL endpoint
   #################################################################
 
-  # Not only POST. SPARQL via GET is also allowed, but need to find a way to also forward URL parameters.
+  # Not only POST. SPARQL via GET is also allowed.
   match "/sparql" do
     Proxy.forward conn, [], "http://sparql-authorization-wrapper/sparql"
+  end
+
+  #################################################################
+  # Vendor data distribution tests
+  #################################################################
+
+  # The service protects this route. If not running in development, this route
+  # in unavaliable. There should be no risk in exposing this route.
+  get "/vendor-data-distribution/test" do
+    Proxy.forward conn, [], "http://vendor-data-distribution/test"
   end
 
   #################################################################
