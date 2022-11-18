@@ -2,7 +2,6 @@
   :class (s-prefix "nfo:FileDataObject")
   :properties `((:filename      :string   ,(s-prefix "nfo:fileName"))
                 (:name      :string   ,(s-prefix "nfo:fileName"))
-                (:name      :string   ,(s-prefix "nfo:fileName"))
                 (:format    :string   ,(s-prefix "dct:format"))
                 (:size      :number   ,(s-prefix "nfo:fileSize"))
                 (:extension :string   ,(s-prefix "dbpedia:fileExtension"))
