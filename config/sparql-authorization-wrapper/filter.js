@@ -15,7 +15,7 @@ export async function isAuthorized(sessionUri) {
     PREFIX oslc: <http://open-services.net/ns/core#>
     PREFIX dct: <http://purl.org/dc/terms/>
 
-    SELECT ?uuid ?created ?account {
+    SELECT DISTINCT ?uuid ?created ?account {
       GRAPH ?g {
         ${mu.sparqlEscapeUri(sessionUri)}
           a session:Session ;
