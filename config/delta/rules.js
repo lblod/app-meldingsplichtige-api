@@ -210,7 +210,7 @@ export default [
       }
     },
     callback: {
-      url: 'http://toezicht-flattened-form-data-generator/maual/delta',
+      url: 'http://toezicht-flattened-form-data-generator/manual/delta',
       method: 'POST'
     },
     options: {
