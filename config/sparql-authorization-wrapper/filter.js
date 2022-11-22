@@ -22,7 +22,7 @@ export async function isAuthorized(sessionUri) {
           mu:uuid ?uuid ;
           dct:created ?created ;
           muAccount:account ?account ;
-         muAccount:canActOnBehalfOf ?org.
+          muAccount:canActOnBehalfOf ?org .
       }
     }
   `;
