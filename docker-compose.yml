@@ -205,10 +205,10 @@ services:
 ##############################################################################
 
   vendor-login:
-    image: lblod/vendor-login-service:latest
+    image: lblod/vendor-login-service:1.0.0
   sparql-authorization-wrapper:
-    image: lblod/sparql-authorization-wrapper-service:latest
+    image: lblod/sparql-authorization-wrapper-service:1.0.0
     volumes:
       - ./config/sparql-authorization-wrapper:/config
   vendor-data-distribution:
-    image: lblod/vendor-data-distribution-service:latest
+    image: lblod/vendor-data-distribution-service:1.0.0
