@@ -28,8 +28,7 @@ INSERT DATA {
 # convert failure state
 DELETE {
   GRAPH ?g {
-     ?task a <http://lblod.data.gift/vocabularies/automatische-melding/AutomaticSubmissionTask>;
-       <http://www.w3.org/ns/adms#status> <http://lblod.data.gift/automatische-melding-statuses/failure>.
+     ?task <http://www.w3.org/ns/adms#status> <http://lblod.data.gift/automatische-melding-statuses/failure>.
   }
 }
 INSERT {
@@ -53,8 +52,7 @@ WHERE {
 # convert 'busy' state
 DELETE {
   GRAPH ?g {
-     ?task a <http://lblod.data.gift/vocabularies/automatische-melding/AutomaticSubmissionTask>;
-       <http://www.w3.org/ns/adms#status> <http://lblod.data.gift/automatische-melding-statuses/ready-for-validation>.
+     ?task <http://www.w3.org/ns/adms#status> <http://lblod.data.gift/automatische-melding-statuses/ready-for-validation>.
   }
 }
 INSERT {
@@ -78,8 +76,7 @@ WHERE {
 # scheduled
 DELETE {
   GRAPH ?g {
-     ?task a <http://lblod.data.gift/vocabularies/automatische-melding/AutomaticSubmissionTask>;
-       <http://www.w3.org/ns/adms#status> <http://lblod.data.gift/automatische-melding-statuses/not-started>.
+     ?task <http://www.w3.org/ns/adms#status> <http://lblod.data.gift/automatische-melding-statuses/not-started>.
   }
 }
 INSERT {
@@ -101,8 +98,7 @@ WHERE {
 # success
 DELETE {
   GRAPH ?g {
-     ?task a <http://lblod.data.gift/vocabularies/automatische-melding/AutomaticSubmissionTask>;
-       <http://www.w3.org/ns/adms#status> ?status.
+     ?task <http://www.w3.org/ns/adms#status> ?status.
   }
 }
 INSERT {
