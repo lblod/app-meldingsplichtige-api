@@ -218,6 +218,7 @@ defmodule Dispatcher do
   #################################################################
   # automatic submission
   #################################################################
+
   match "/melding/*path" do
     Proxy.forward conn, path, "http://automatic-submission/melding"
   end
@@ -225,9 +226,11 @@ defmodule Dispatcher do
   #################################################################
   # verify submission (to be removed)
   #################################################################
+
   get "/verify/bestuurseenheid/*path" do
     Proxy.forward conn, path, "http://verify-submission/bestuurseenheid"
   end
+
   get "/verify/inzending/*path" do
     Proxy.forward conn, path, "http://verify-submission/inzending"
   end
@@ -286,6 +289,41 @@ defmodule Dispatcher do
   match "/rrn/*path" do
     Proxy.forward conn, path, "http://person-uri-for-social-security-number/"
   end
+
+  #################################################################
+  # Vendor Login for SPARQL endpoint
+  #################################################################
+
+  post "/vendor/login/*path" do
+    Proxy.forward conn, path, "http://vendor-login/sessions"
+  end
+
+  delete "/vendor/logout" do
+    Proxy.forward conn, [], "http://vendor-login/sessions/current"
+  end
+
+  #################################################################
+  # Vendor SPARQL endpoint
+  #################################################################
+
+  # Not only POST. SPARQL via GET is also allowed.
+  match "/vendor/sparql" do
+    Proxy.forward conn, [], "http://sparql-authorization-wrapper/sparql"
+  end
+
+  #################################################################
+  # Vendor data distribution tests
+  #################################################################
+
+  # The service protects this route. If not running in development, this route
+  # in unavaliable. There should be no risk in exposing this route.
+  get "/vendor-data-distribution/test" do
+    Proxy.forward conn, [], "http://vendor-data-distribution/test"
+  end
+
+  #################################################################
+  # Catch all that is left
+  #################################################################
 
   match _ do
     send_resp( conn, 404, "Route not found.  See config/dispatcher.ex" )

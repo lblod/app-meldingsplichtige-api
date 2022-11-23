@@ -56,6 +56,11 @@ services:
     environment:
       DEFAULT_SPARQL_ENDPOINT: "http://virtuoso/"
       ENABLE_ENDPOINT_SELECTOR: "true"
-
   job-controller:
+    restart: "no"
+  vendor-login:
+    restart: "no"
+  sparql-authorization-wrapper:
+    restart: "no"
+  vendor-data-distribution:
     restart: "no"
