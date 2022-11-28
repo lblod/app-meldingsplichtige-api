@@ -1,6 +1,7 @@
 (define-resource file ()
   :class (s-prefix "nfo:FileDataObject")
-  :properties `((:name      :string   ,(s-prefix "nfo:fileName"))
+  :properties `((:filename      :string   ,(s-prefix "nfo:fileName"))
+                (:name      :string   ,(s-prefix "nfo:fileName"))
                 (:format    :string   ,(s-prefix "dct:format"))
                 (:size      :number   ,(s-prefix "nfo:fileSize"))
                 (:extension :string   ,(s-prefix "dbpedia:fileExtension"))
