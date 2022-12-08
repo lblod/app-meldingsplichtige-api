@@ -44,5 +44,4 @@ The services in the flow are reactive and wired together using the [delta-notifi
 
 ## Roadmap
 The following services still needs to be added to the stack:
-* validate-submission-service
 * auto-submit-submission-service
