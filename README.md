@@ -1,4 +1,4 @@
-# Meldingsplichtige API teststack
+# Meldingsplichtige API test stack
 
 Test stack for the automatic submission API. This stack will be integrated in
 [app-digitaal-loket](https://github.com/lblod/app-digitaal-loket) in the near
