@@ -94,7 +94,7 @@ services:
    restart: always
    logging: *default-logging
   resource:
-    image: semtech/mu-cl-resources:1.21.0
+    image: semtech/mu-cl-resources:1.21.1
     environment:
       CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
     volumes:
@@ -114,7 +114,7 @@ services:
     links:
       - database:database
   download-url:
-    image: lblod/download-url-service:0.7.2
+    image: lblod/download-url-service:1.0.0
     environment:
       CACHING_MAX_RETRIES: "3"
     volumes:
