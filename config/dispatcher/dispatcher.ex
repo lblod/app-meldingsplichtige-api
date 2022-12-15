@@ -23,48 +23,37 @@ defmodule Dispatcher do
   # end
 
   match "/bestuurseenheden/*path" do
-    #Proxy.forward conn, path, "http://cache/bestuurseenheden/"
-    Proxy.forward conn, path, "http://resource/bestuurseenheden/"
+    Proxy.forward conn, path, "http://cache/bestuurseenheden/"
   end
   match "/bestuurseenheid-classificatie-codes/*path" do
-    #Proxy.forward conn, path, "http://cache/bestuurseenheid-classificatie-codes/"
-    Proxy.forward conn, path, "http://resource/bestuurseenheid-classificatie-codes/"
+    Proxy.forward conn, path, "http://cache/bestuurseenheid-classificatie-codes/"
   end
   match "/bestuursorganen/*path" do
-    #Proxy.forward conn, path, "http://cache/bestuursorganen/"
-    Proxy.forward conn, path, "http://resource/bestuursorganen/"
+    Proxy.forward conn, path, "http://cache/bestuursorganen/"
   end
   match "/bestuursorgaan-classificatie-codes/*path" do
-    #Proxy.forward conn, path, "http://cache/bestuursorgaan-classificatie-codes/"
-    Proxy.forward conn, path, "http://resource/bestuursorgaan-classificatie-codes/"
+    Proxy.forward conn, path, "http://cache/bestuursorgaan-classificatie-codes/"
   end
   match "/agendapunten/*path" do
-    #Proxy.forward conn, path, "http://cache/agendapunten/"
-    Proxy.forward conn, path, "http://resource/agendapunten/"
+    Proxy.forward conn, path, "http://cache/agendapunten/"
   end
   match "/behandelingen-van-agendapunten/*path" do
-    #Proxy.forward conn, path, "http://cache/behandelingen-van-agendapunten/"
-    Proxy.forward conn, path, "http://resource/behandelingen-van-agendapunten/"
+    Proxy.forward conn, path, "http://cache/behandelingen-van-agendapunten/"
   end
   match "/zittingen/*path" do
-    #Proxy.forward conn, path, "http://cache/zittingen/"
-    Proxy.forward conn, path, "http://resource/zittingen/"
+    Proxy.forward conn, path, "http://cache/zittingen/"
   end
-
   match "/remote-data-objects/*path" do
     Proxy.forward conn, path, "http://cache/remote-data-objects/"
   end
-
   get "/files/:id/download" do
     Proxy.forward conn, [], "http://file/files/" <> id <> "/download"
   end
   get "/files/*path" do
-    #Proxy.forward conn, path, "http://cache/files/"
-    Proxy.forward conn, path, "http://resource/files/"
+    Proxy.forward conn, path, "http://cache/files/"
   end
   patch "/files/*path" do
-    #Proxy.forward conn, path, "http://cache/files/"
-    Proxy.forward conn, path, "http://resource/files/"
+    Proxy.forward conn, path, "http://cache/files/"
   end
   post "/files/*path" do
     Proxy.forward conn, path, "http://file/files/"
@@ -83,62 +72,47 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://login/sessions/"
   end
   match "/gebruikers/*path" do
-    #Proxy.forward conn, path, "http://cache/gebruikers/"
-    Proxy.forward conn, path, "http://resource/gebruikers/"
+    Proxy.forward conn, path, "http://cache/gebruikers/"
   end
   match "/accounts/*path" do
-    #Proxy.forward conn, path, "http://cache/accounts/"
-    Proxy.forward conn, path, "http://resource/accounts/"
+    Proxy.forward conn, path, "http://cache/accounts/"
   end
-
-
   delete "/submissions/*path" do
     Proxy.forward conn, path, "http://clean-up-submission/submissions/"
   end
   put "/submissions/*path" do
-    #Proxy.forward conn, path, "http://cache/submissions/"
-    Proxy.forward conn, path, "http://resource/submissions/"
+    Proxy.forward conn, path, "http://cache/submissions/"
   end
   patch "/submissions/*path" do
-    #Proxy.forward conn, path, "http://cache/submissions/"
-    Proxy.forward conn, path, "http://resource/submissions/"
+    Proxy.forward conn, path, "http://cache/submissions/"
   end
   post "/submissions/*path" do
-    #Proxy.forward conn, path, "http://cache/submissions/"
-    Proxy.forward conn, path, "http://resource/submissions/"
+    Proxy.forward conn, path, "http://cache/submissions/"
   end
   get "/submissions/*path" do
-    #Proxy.forward conn, path, "http://cache/submissions/"
-    Proxy.forward conn, path, "http://resource/submissions/"
+    Proxy.forward conn, path, "http://cache/submissions/"
   end
   match "/vendors/*path" do
-    #Proxy.forward conn, path, "http://cache/vendors/"
-    Proxy.forward conn, path, "http://resource/vendors/"
+    Proxy.forward conn, path, "http://cache/vendors/"
   end
   match "/authenticity-types/*path" do
-    #Proxy.forward conn, path, "http://cache/authenticity-types/"
-    Proxy.forward conn, path, "http://resource/authenticity-types/"
+    Proxy.forward conn, path, "http://cache/authenticity-types/"
   end
   match "/tax-types/*path" do
-    #Proxy.forward conn, path, "http://cache/tax-types/"
-    Proxy.forward conn, path, "http://resource/tax-types/"
+    Proxy.forward conn, path, "http://cache/tax-types/"
   end
   match "/tax-rates/*path" do
-    #Proxy.forward conn, path, "http://cache/tax-rates/"
-    Proxy.forward conn, path, "http://resource/tax-rates/"
+    Proxy.forward conn, path, "http://cache/tax-rates/"
   end
   match "/chart-of-accounts/*path" do
-    #Proxy.forward conn, path, "http://cache/chart-of-accounts/"
-    Proxy.forward conn, path, "http://resource/chart-of-accounts/"
+    Proxy.forward conn, path, "http://cache/chart-of-accounts/"
   end
   match "/submission-document-statuses/*path" do
-    #Proxy.forward conn, path, "http://cache/submission-document-statuses/"
-    Proxy.forward conn, path, "http://resource/submission-document-statuses/"
+    Proxy.forward conn, path, "http://cache/submission-document-statuses/"
   end
 
   match "/remote-urls/*path" do
-    #Proxy.forward conn, path, "http://cache/remote-urls/"
-    Proxy.forward conn, path, "http://resource/remote-urls/"
+    Proxy.forward conn, path, "http://cache/remote-urls/"
   end
 
   #################################################################
@@ -179,40 +153,33 @@ defmodule Dispatcher do
 
   # Reports
   match "/reports/*path" do
-    #Proxy.forward conn, path, "http://cache/reports/"
-    Proxy.forward conn, path, "http://resource/reports/"
+    Proxy.forward conn, path, "http://cache/reports/"
   end
 
   # Logs
   match "/log-entries/*path" do
-    #Proxy.forward conn, path, "http://cache/log-entries/"
-    Proxy.forward conn, path, "http://resource/log-entries/"
+    Proxy.forward conn, path, "http://cache/log-entries/"
   end
 
   match "/log-levels/*path" do
-    #Proxy.forward conn, path, "http://cache/log-levels/"
-    Proxy.forward conn, path, "http://resource/log-levels/"
+    Proxy.forward conn, path, "http://cache/log-levels/"
   end
 
   match "/status-codes/*path" do
-    #Proxy.forward conn, path, "http://cache/status-codes/"
-    Proxy.forward conn, path, "http://resource/status-codes/"
+    Proxy.forward conn, path, "http://cache/status-codes/"
   end
 
   match "/log-sources/*path" do
-    #Proxy.forward conn, path, "http://cache/log-sources/"
-    Proxy.forward conn, path, "http://resource/log-sources/"
+    Proxy.forward conn, path, "http://cache/log-sources/"
   end
 
   match "/status-codes/*path" do
-    #Proxy.forward conn, path, "http://cache/acm-idm-service-log-entries/"
-    Proxy.forward conn, path, "http://resource/acm-idm-service-log-entries/"
+    Proxy.forward conn, path, "http://cache/acm-idm-service-log-entries/"
   end
 
   # Jobs
   match "/jobs/*path" do
-    #Proxy.forward conn, path, "http://cache/jobs/"
-    Proxy.forward conn, path, "http://resource/jobs/"
+    Proxy.forward conn, path, "http://cache/jobs/"
   end
 
   #################################################################
@@ -256,23 +223,19 @@ defmodule Dispatcher do
   end
 
   match "/submission-documents/*path" do
-    #Proxy.forward conn, path, "http://cache/submission-documents/"
-    Proxy.forward conn, path, "http://resource/submission-documents/"
+    Proxy.forward conn, path, "http://cache/submission-documents/"
   end
 
   get "/form-data/*path" do
-    #Proxy.forward conn, path, "http://cache/form-data/"
-    Proxy.forward conn, path, "http://resource/form-data/"
+    Proxy.forward conn, path, "http://cache/form-data/"
   end
 
   get "/concept-schemes/*path" do
-    #Proxy.forward conn, path, "http://cache/concept-schemes/"
-    Proxy.forward conn, path, "http://resource/concept-schemes/"
+    Proxy.forward conn, path, "http://cache/concept-schemes/"
   end
 
   get "/concepts/*path" do
-    #Proxy.forward conn, path, "http://cache/concepts/"
-    Proxy.forward conn, path, "http://resource/concepts/"
+    Proxy.forward conn, path, "http://cache/concepts/"
   end
 
   #################################################################
