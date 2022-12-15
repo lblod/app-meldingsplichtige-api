@@ -1,4 +1,7 @@
 # Changelog
+## 1.23.0 (2022-12-12)
+- converted automatic submission model to cogs:Job
+- experimental support vendor sparql endpoint
 ## 1.22.0 (2022-11-08)
 - added erediensten data
 ## 1.21.0 (2022-11-08)
