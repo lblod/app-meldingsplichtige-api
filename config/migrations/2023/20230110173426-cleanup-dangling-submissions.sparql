@@ -1,0 +1,20 @@
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX meb: <http://rdf.myexperiment.org/ontologies/base/>
+
+DELETE {
+   GRAPH ?g {
+     ?submissionDocument a ext:SubmissionDocument;
+       ?p ?o
+   }
+}
+WHERE {
+   GRAPH ?g {
+     ?submissionDocument a ext:SubmissionDocument;
+       ?p ?o
+   }
+   FILTER NOT EXISTS {
+     ?submission dct:subject ?submissionDocument;
+       a meb:Submission.
+   }
+}
