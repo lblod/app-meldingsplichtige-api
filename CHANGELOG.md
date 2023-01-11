@@ -1,4 +1,7 @@
 # Changelog
+## 1.23.1 (2023-01-11)
+- bugfix on remove submissions since introduction of vendor-api
+- cleanup dangling submissions
 ## 1.23.0 (2022-12-12)
 - converted automatic submission model to cogs:Job
 - experimental support vendor sparql endpoint
