@@ -1,4 +1,6 @@
 # Changelog
+## 1.24.0 (2023-01-25)
+- syncing forms and data to be in sync with loket (prepare erediensten)
 ## 1.23.1 (2023-01-11)
 - bugfix on remove submissions since introduction of vendor-api
 - cleanup dangling submissions
