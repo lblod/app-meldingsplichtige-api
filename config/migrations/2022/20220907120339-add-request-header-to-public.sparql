@@ -1,0 +1,12 @@
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/public> {
+  <http://data.lblod.info/request-headers/accept/text/html>
+    rdf:type  <http://www.w3.org/2011/http#RequestHeader> ;
+    <http://www.w3.org/2011/http#hdrName>   <http://www.w3.org/2011/http-headers#accept> ;
+    <http://www.w3.org/2011/http#fieldValue>  "text/html" ;
+    <http://www.w3.org/2011/http#fieldName>   "Accept" .
+  }
+
+}

@@ -3620,7 +3620,7 @@ fieldGroups:b1143874-884d-4ffd-8d69-97383870a42e a form:FieldGroup ;
     mu:uuid "b1143874-884d-4ffd-8d69-97383870a42e" ; 
     form:hasField 
                       ### Infolabel 
-                      #ields:2bb6c63d-2cb7-4e82-839f-5c1e0a4f6a5e,
+                      fields:2bb6c63d-2cb7-4e82-839f-5c1e0a4f6a5e,
                       
                       ### climateTable Date
                       fields:2bc38df5-dc28-4d4d-a6e1-b6d95644c8d7,
@@ -3653,7 +3653,7 @@ fieldGroups:da491d56-4f98-4f9d-8c34-71ba617cfa64 a form:FieldGroup ;
     form:hasField 
 
                       ### Infolabel 
-                      #fields:2bb6c63d-2cb7-4e82-839f-5c1e0a4f6a5e,
+                      fields:2bb6c63d-2cb7-4e82-839f-5c1e0a4f6a5e,
                       
                       ### Authentieke bron
                       fields:7ebdf368-fe63-45d7-9d44-030ec0cd9ab9,
@@ -3687,7 +3687,7 @@ fieldGroups:ed8260d7-6150-490f-a3df-afba07ae7014 a form:FieldGroup ;
     mu:uuid "ed8260d7-6150-490f-a3df-afba07ae7014" ; 
     form:hasField 
                       ### Infolabel 
-                      #fields:2bb6c63d-2cb7-4e82-839f-5c1e0a4f6a5e,
+                      fields:2bb6c63d-2cb7-4e82-839f-5c1e0a4f6a5e,
                       
                       ### doelstelling
                       fields:b2813526-d400-4cba-bdc4-bf64b2e21a80,
