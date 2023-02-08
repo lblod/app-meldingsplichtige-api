@@ -1,4 +1,6 @@
 # Changelog
+## 1.25.0 (2023-02-08)
+ - update forms
 ## 1.24.1 (2023-01-25)
  - update access vendor RO
 ## 1.24.0 (2023-01-25)
