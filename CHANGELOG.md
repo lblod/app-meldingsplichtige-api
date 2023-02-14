@@ -1,4 +1,7 @@
 # Changelog
+## 1.26.0 (2023-02-14)
+ - Multiple service update related to automatic-submission
+   for correct exposure of data
 ## 1.25.0 (2023-02-08)
  - update forms
 ## 1.24.1 (2023-01-25)
