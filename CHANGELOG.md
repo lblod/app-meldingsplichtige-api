@@ -1,5 +1,9 @@
 # Changelog
-## 1.26.0 (2023-02-14)
+## 1.26.1 (2023-02-20)
+ - Bump the same services as previous release to solve a common issue with
+   failing builds because of an incompatibility with the `env-var` library and
+   an old JavaScript template.
+# 1.26.0 (2023-02-14)
  - Multiple service update related to automatic-submission
    for correct exposure of data
 ## 1.25.0 (2023-02-08)
