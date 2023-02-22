@@ -1,4 +1,7 @@
 # Changelog
+## 1.26.2 (2023-02-22)
+  - Bump automatic-submission, which should have been
+    included in 1.26.0
 ## 1.26.1 (2023-02-20)
  - Bump the same services as previous release to solve a common issue with
    failing builds because of an incompatibility with the `env-var` library and
