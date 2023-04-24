@@ -1,4 +1,6 @@
 # Changelog
+## 1.27.0 (2023-04-24)
+- update forms
 ## 1.26.3 (2023-04-08)
   - Bump automatic-submission
   - Adjusted schorsing beslissing eredienstbesturen form for deputatie
