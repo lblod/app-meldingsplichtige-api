@@ -211,4 +211,4 @@ services:
     volumes:
       - ./config/sparql-authorization-wrapper:/config
   vendor-data-distribution:
-    image: lblod/vendor-data-distribution-service:1.0.0
+    image: lblod/vendor-data-distribution-service:1.0.1-rc1
