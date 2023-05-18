@@ -1,4 +1,11 @@
 # Changelog
+## 1.28.0 (2023-05-18)
+- fix vendor api + migration to correct issues
+- import submission bump
+### deploy instructions
+```
+drc up -d; drc restart migrations
+```
 ## 1.27.0 (2023-04-24)
 - update forms
 ## 1.26.3 (2023-04-08)
