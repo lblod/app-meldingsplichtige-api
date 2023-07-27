@@ -186,8 +186,12 @@ defmodule Dispatcher do
   # automatic submission
   #################################################################
 
-  match "/melding/*path" do
+  post "/melding/*path" do
     Proxy.forward conn, path, "http://automatic-submission/melding"
+  end
+
+  post "/delete-melding" do
+    Proxy.forward conn, [], "http://clean-up-submission/delete-melding"
   end
 
   #################################################################
