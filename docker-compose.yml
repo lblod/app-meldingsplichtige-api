@@ -124,7 +124,7 @@ services:
     restart: always
     logging: *default-logging
   automatic-submission:
-    image: lblod/automatic-submission-service:1.2.1
+    image: lblod/automatic-submission-service:1.3.0
     labels:
       - "logging=true"
     restart: always
@@ -182,7 +182,7 @@ services:
     restart: always
     logging: *default-logging
   clean-up-submission:
-    image:  lblod/clean-up-submission-service:1.0.1
+    image:  lblod/clean-up-submission-service:1.1.0
     volumes:
       - ./data/files:/share
     labels:
@@ -211,4 +211,4 @@ services:
     volumes:
       - ./config/sparql-authorization-wrapper:/config
   vendor-data-distribution:
-    image: lblod/vendor-data-distribution-service:1.0.1-rc1
+    image: lblod/vendor-data-distribution-service:1.1.0

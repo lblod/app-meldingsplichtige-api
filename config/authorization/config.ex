@@ -103,10 +103,15 @@ defmodule Acl.UserGroups.Config do
                         "http://lblod.data.gift/vocabularies/besluit/TaxRate",
                         "http://lblod.data.gift/vocabularies/automatische-melding/FormData",
                         "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
+                        "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#LocalFileDataObject",
                         "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RemoteDataObject",
                         "http://lblod.data.gift/services/Service",
                         "http://redpencil.data.gift/vocabularies/tasks/Operation",
-                        "http://vocab.deri.ie/cogs#ExecutionStatus"
+                        "http://vocab.deri.ie/cogs#ExecutionStatus",
+                        "http://redpencil.data.gift/vocabularies/tasks/Task",
+                        "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#DataContainer",
+                        "http://lblod.data.gift/vocabularies/harvesting/HarvestingCollection",
+                        "http://vocab.deri.ie/cogs#Job"
                       ] } } ] },
 
       # // TOEZICHT VENDOR API
