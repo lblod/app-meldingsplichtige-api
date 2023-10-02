@@ -175,6 +175,12 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  berichten-melding:
+    image: lblod/berichten-melding-service:1.0.0
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   person-uri-for-social-security-number:
     image: lblod/person-uri-for-social-security-number-service:0.4.0
     labels:

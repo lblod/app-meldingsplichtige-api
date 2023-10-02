@@ -195,6 +195,14 @@ defmodule Dispatcher do
   end
 
   #################################################################
+  # Berichten Melding
+  #################################################################
+
+  post "/melding-bericht/" do
+    Proxy.forward conn, [], "http://berichten-melding-service/melding"
+  end
+
+  #################################################################
   # verify submission (to be removed)
   #################################################################
 
