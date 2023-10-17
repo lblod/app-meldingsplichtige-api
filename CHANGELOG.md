@@ -1,4 +1,9 @@
 # Changelog
+## 1.34.0 (2023-10-17)
+- bump mu-identifier
+- update forms
+### deploy instructions
+- drc up -d; drc restart migrations
 ## 1.33.0 (2023-09-18)
 - release some upgraded versions of services
 ## 1.29.0 (2023-06-30)
