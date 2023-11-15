@@ -1,4 +1,8 @@
 # Changelog
+## 1.35.0 (2023-11-15)
+- update forms
+### deploy instructions
+- drc up -d enrich-submission; drc restart migrations resource cache
 ## 1.34.0 (2023-10-17)
 - bump mu-identifier
 - update forms
