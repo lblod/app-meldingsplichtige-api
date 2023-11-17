@@ -1,0 +1,119 @@
+<https://data.vlaanderen.be/id/concept/BesluitDocumentType/24743b26-e0fb-4c14-8c82-5cd271289b0e> a <http://www.w3.org/2000/01/rdf-schema#Class>,<http://www.w3.org/2004/02/skos/core#Concept> ;
+    <http://mu.semte.ch/vocabularies/core/uuid> "24743b26-e0fb-4c14-8c82-5cd271289b0e" ;
+    <http://www.w3.org/2004/02/skos/core#prefLabel> "Opvragen bijkomende inlichtingen eredienstbesturen (met als gevolg stuiting termijn)" ;
+    <http://lblod.data.gift/vocabularies/besluit/decidableBy> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000000>, <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> ;
+    <http://www.w3.org/2004/02/skos/core#definition> "Opvragen bijkomende inlichtingen eredienstbesturen (met als gevolg stuiting termijn)." ;
+    <http://www.w3.org/2004/02/skos/core#topConceptOf> <http://lblod.data.gift/concept-schemes/71e6455e-1204-46a6-abf4-87319f58eaa5> ;
+    <http://www.w3.org/2004/02/skos/core#topConceptOf> <https://data.vlaanderen.be/id/conceptscheme/BesluitDocumentType> ;
+    <http://www.w3.org/2004/02/skos/core#inScheme> <http://lblod.data.gift/concept-schemes/71e6455e-1204-46a6-abf4-87319f58eaa5> ;
+    <http://www.w3.org/2004/02/skos/core#inScheme> <https://data.vlaanderen.be/id/conceptscheme/BesluitDocumentType> .
+
+<https://data.vlaanderen.be/id/concept/BesluitDocumentType/365d561c-57c7-4523-af04-6e3c91426c56> a <http://www.w3.org/2000/01/rdf-schema#Class>,<http://www.w3.org/2004/02/skos/core#Concept> ;
+    <http://mu.semte.ch/vocabularies/core/uuid> "365d561c-57c7-4523-af04-6e3c91426c56" ;
+    <http://www.w3.org/2004/02/skos/core#prefLabel> "Overzicht vergoedingen en presentiegelden" ;
+    <http://lblod.data.gift/vocabularies/besluit/decidableBy> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/cd93f147-3ece-4308-acab-5c5ada3ec63d>, <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/d01bb1f6-2439-4e33-9c25-1fc295de2e71> ;
+    <http://www.w3.org/2004/02/skos/core#definition> "Tabel met een per mandataris geïndividualiseerd overzicht van de vergoedingen en de presentiegelden." ;
+    <http://www.w3.org/2004/02/skos/core#topConceptOf> <http://lblod.data.gift/concept-schemes/71e6455e-1204-46a6-abf4-87319f58eaa5> ;
+    <http://www.w3.org/2004/02/skos/core#topConceptOf> <https://data.vlaanderen.be/id/conceptscheme/BesluitDocumentType> ;
+    <http://www.w3.org/2004/02/skos/core#inScheme> <http://lblod.data.gift/concept-schemes/71e6455e-1204-46a6-abf4-87319f58eaa5> ;
+    <http://www.w3.org/2004/02/skos/core#inScheme> <https://data.vlaanderen.be/id/conceptscheme/BesluitDocumentType> .
+
+<https://data.vlaanderen.be/id/concept/BesluitDocumentType/3a3ea43f-6631-4a7d-94c6-3a77a445d450> a <http://www.w3.org/2000/01/rdf-schema#Class>,<http://www.w3.org/2004/02/skos/core#Concept> ;
+    <http://mu.semte.ch/vocabularies/core/uuid> "3a3ea43f-6631-4a7d-94c6-3a77a445d450" ;
+    <http://www.w3.org/2004/02/skos/core#prefLabel> "Reactie op opvragen bijkomende inlichtingen door de toezichthouder (gemeente/provincie) aan de eredienstbesturen" ;
+    <http://lblod.data.gift/vocabularies/besluit/decidableBy> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/f9cac08a-13c1-49da-9bcb-f650b0604054>, <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/66ec74fd-8cfc-4e16-99c6-350b35012e86> ;
+    <http://www.w3.org/2004/02/skos/core#definition> "Reactie op opvragen bijkomende inlichtingen door de toezichthouder (gemeente/provincie) aan de eredienstbesturen." ;
+    <http://www.w3.org/2004/02/skos/core#topConceptOf> <http://lblod.data.gift/concept-schemes/71e6455e-1204-46a6-abf4-87319f58eaa5> ;
+    <http://www.w3.org/2004/02/skos/core#topConceptOf> <https://data.vlaanderen.be/id/conceptscheme/BesluitDocumentType> ;
+    <http://www.w3.org/2004/02/skos/core#inScheme> <http://lblod.data.gift/concept-schemes/71e6455e-1204-46a6-abf4-87319f58eaa5> ;
+    <http://www.w3.org/2004/02/skos/core#inScheme> <https://data.vlaanderen.be/id/conceptscheme/BesluitDocumentType> .
+
+<https://data.vlaanderen.be/id/concept/BesluitDocumentType/4f938e44-8bce-4d3a-b5a7-b84754fe981a> a <http://www.w3.org/2000/01/rdf-schema#Class>,<http://www.w3.org/2004/02/skos/core#Concept> ;
+    <http://mu.semte.ch/vocabularies/core/uuid> "4f938e44-8bce-4d3a-b5a7-b84754fe981a" ;
+    <http://www.w3.org/2004/02/skos/core#prefLabel> "Aanvraag desaffectatie presbyteria/kerken" ;
+    <http://lblod.data.gift/vocabularies/besluit/decidableBy> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> ;
+    <http://www.w3.org/2004/02/skos/core#definition> "Aanvraag desaffectatie presbyteria/kerken." ;
+    <http://www.w3.org/2004/02/skos/core#topConceptOf> <http://lblod.data.gift/concept-schemes/71e6455e-1204-46a6-abf4-87319f58eaa5> ;
+    <http://www.w3.org/2004/02/skos/core#topConceptOf> <https://data.vlaanderen.be/id/conceptscheme/BesluitDocumentType> ;
+    <http://www.w3.org/2004/02/skos/core#inScheme> <http://lblod.data.gift/concept-schemes/71e6455e-1204-46a6-abf4-87319f58eaa5> ;
+    <http://www.w3.org/2004/02/skos/core#inScheme> <https://data.vlaanderen.be/id/conceptscheme/BesluitDocumentType> .
+
+<https://data.vlaanderen.be/id/concept/BesluitDocumentType/cc831628-95a0-4874-bad5-cdf563896032> a <http://www.w3.org/2000/01/rdf-schema#Class>,<http://www.w3.org/2004/02/skos/core#Concept> ;
+    <http://mu.semte.ch/vocabularies/core/uuid> "cc831628-95a0-4874-bad5-cdf563896032" ;
+    <http://www.w3.org/2004/02/skos/core#prefLabel> "Afwijking principes regiovorming" ;
+    <http://lblod.data.gift/vocabularies/besluit/decidableBy> <https://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/d01bb1f6-2439-4e33-9c25-1fc295de2e71>, <https://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/cd93f147-3ece-4308-acab-5c5ada3ec63d>, <https://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/b156b67f-c5f4-4584-9b30-4c090be02fdc>, <https://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> ;
+    <http://www.w3.org/2004/02/skos/core#definition> "Afwijking principes regiovorming." ;
+    <http://www.w3.org/2004/02/skos/core#topConceptOf> <http://lblod.data.gift/concept-schemes/71e6455e-1204-46a6-abf4-87319f58eaa5> ;
+    <http://www.w3.org/2004/02/skos/core#topConceptOf> <https://data.vlaanderen.be/id/conceptscheme/BesluitDocumentType> ;
+    <http://www.w3.org/2004/02/skos/core#inScheme> <http://lblod.data.gift/concept-schemes/71e6455e-1204-46a6-abf4-87319f58eaa5> ;
+    <http://www.w3.org/2004/02/skos/core#inScheme> <https://data.vlaanderen.be/id/conceptscheme/BesluitDocumentType> .
+
+<https://data.vlaanderen.be/id/concept/BesluitDocumentType/ce569d3d-25ff-4ce9-a194-e77113597e29> a <http://www.w3.org/2000/01/rdf-schema#Class>,<http://www.w3.org/2004/02/skos/core#Concept> ;
+    <http://mu.semte.ch/vocabularies/core/uuid> "ce569d3d-25ff-4ce9-a194-e77113597e29" ;
+    <http://www.w3.org/2004/02/skos/core#prefLabel> "Budgetten(wijzigingen) - Indiening bij toezichthoudende gemeente of provincie" ;
+    <http://lblod.data.gift/vocabularies/besluit/decidableBy> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/f9cac08a-13c1-49da-9bcb-f650b0604054> ;
+    <http://www.w3.org/2004/02/skos/core#definition> "Budgetten(wijzigingen) - Indiening bij toezichthoudende gemeente of provincie." ;
+    <http://www.w3.org/2004/02/skos/core#topConceptOf> <http://lblod.data.gift/concept-schemes/71e6455e-1204-46a6-abf4-87319f58eaa5> ;
+    <http://www.w3.org/2004/02/skos/core#topConceptOf> <https://data.vlaanderen.be/id/conceptscheme/BesluitDocumentType> ;
+    <http://www.w3.org/2004/02/skos/core#inScheme> <http://lblod.data.gift/concept-schemes/71e6455e-1204-46a6-abf4-87319f58eaa5> ;
+    <http://www.w3.org/2004/02/skos/core#inScheme> <https://data.vlaanderen.be/id/conceptscheme/BesluitDocumentType> .
+
+<https://data.vlaanderen.be/id/concept/BesluitType/41a09f6c-7964-4777-8375-437ef61ed946> a <http://www.w3.org/2000/01/rdf-schema#Class>,<http://www.w3.org/2004/02/skos/core#Concept> ;
+    <http://mu.semte.ch/vocabularies/core/uuid> "41a09f6c-7964-4777-8375-437ef61ed946" ;
+    <http://www.w3.org/2004/02/skos/core#prefLabel> "Besluit handhaven na ontvangst schorsingsbesluit" ;
+    <http://lblod.data.gift/vocabularies/besluit/decidableBy> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/f9cac08a-13c1-49da-9bcb-f650b0604054>, <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/66ec74fd-8cfc-4e16-99c6-350b35012e86> ;
+    <http://www.w3.org/2004/02/skos/core#definition> "Een bestuur van de eredienst of een centraal bestuur van de eredienst kan een geschorst besluit gemotiveerd handhaven." ;
+    <http://www.w3.org/2004/02/skos/core#topConceptOf> <http://lblod.data.gift/concept-schemes/71e6455e-1204-46a6-abf4-87319f58eaa5> ;
+    <http://www.w3.org/2004/02/skos/core#topConceptOf> <https://data.vlaanderen.be/id/conceptscheme/BesluitType> ;
+    <http://www.w3.org/2004/02/skos/core#inScheme> <http://lblod.data.gift/concept-schemes/71e6455e-1204-46a6-abf4-87319f58eaa5> ;
+    <http://www.w3.org/2004/02/skos/core#inScheme> <https://data.vlaanderen.be/id/conceptscheme/BesluitType> .
+
+<https://data.vlaanderen.be/id/concept/BesluitType/4511f992-2b52-42fe-9cb6-feae6241ad26> a <http://www.w3.org/2000/01/rdf-schema#Class>, <http://www.w3.org/2004/02/skos/core#Concept> ;
+    <http://mu.semte.ch/vocabularies/core/uuid> "4511f992-2b52-42fe-9cb6-feae6241ad26" ;
+    <http://www.w3.org/2004/02/skos/core#prefLabel> "Saneringsplan - Plan vrijwaring continuïteit (art. 457 DLB)" ;
+    <http://lblod.data.gift/vocabularies/besluit/decidableBy> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/cd93f147-3ece-4308-acab-5c5ada3ec63d>, <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/d01bb1f6-2439-4e33-9c25-1fc295de2e71> ;
+    <http://www.w3.org/2004/02/skos/core#definition> "Voorstellen van de raad van bestuur van de dienstverlenende en opdrachthoudende verenigingen ter vrijwaring van de continuïteit." ;
+    <http://www.w3.org/2004/02/skos/core#topConceptOf> <http://lblod.data.gift/concept-schemes/71e6455e-1204-46a6-abf4-87319f58eaa5> ;
+    <http://www.w3.org/2004/02/skos/core#topConceptOf> <https://data.vlaanderen.be/id/conceptscheme/BesluitType> ;
+    <http://www.w3.org/2004/02/skos/core#inScheme> <http://lblod.data.gift/concept-schemes/71e6455e-1204-46a6-abf4-87319f58eaa5> ;
+    <http://www.w3.org/2004/02/skos/core#inScheme> <https://data.vlaanderen.be/id/conceptscheme/BesluitType> .
+
+<https://data.vlaanderen.be/id/concept/BesluitType/b04bc642-c892-4aae-ac1f-f6ff21362704> a <http://www.w3.org/2000/01/rdf-schema#Class>, <http://www.w3.org/2004/02/skos/core#Concept> ;
+    <http://mu.semte.ch/vocabularies/core/uuid> "b04bc642-c892-4aae-ac1f-f6ff21362704" ;
+    <http://www.w3.org/2004/02/skos/core#prefLabel> "Code van goed bestuur" ;
+    <http://lblod.data.gift/vocabularies/besluit/decidableBy> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/cd93f147-3ece-4308-acab-5c5ada3ec63d>, <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/d01bb1f6-2439-4e33-9c25-1fc295de2e71> ;
+    <http://www.w3.org/2004/02/skos/core#definition> "De algemene vergadering stelt een code van goed bestuur vast." ;
+    <http://www.w3.org/2004/02/skos/core#topConceptOf> <http://lblod.data.gift/concept-schemes/71e6455e-1204-46a6-abf4-87319f58eaa5> ;
+    <http://www.w3.org/2004/02/skos/core#topConceptOf> <https://data.vlaanderen.be/id/conceptscheme/BesluitType> ;
+    <http://www.w3.org/2004/02/skos/core#inScheme> <http://lblod.data.gift/concept-schemes/71e6455e-1204-46a6-abf4-87319f58eaa5> ;
+    <http://www.w3.org/2004/02/skos/core#inScheme> <https://data.vlaanderen.be/id/conceptscheme/BesluitType> .
+
+<https://data.vlaanderen.be/id/concept/BesluitType/cb361927-1aab-4016-bd8a-1a84841391ba> a <http://www.w3.org/2000/01/rdf-schema#Class>, <http://www.w3.org/2004/02/skos/core#Concept> ;
+    <http://mu.semte.ch/vocabularies/core/uuid> "cb361927-1aab-4016-bd8a-1a84841391ba" ;
+    <http://www.w3.org/2004/02/skos/core#prefLabel> "Collectieve motie van wantrouwen" ;
+    <http://lblod.data.gift/vocabularies/besluit/decidableBy> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000003>, <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001> ;
+    <http://www.w3.org/2004/02/skos/core#topConceptOf> <http://lblod.data.gift/concept-schemes/71e6455e-1204-46a6-abf4-87319f58eaa5> ;
+    <http://www.w3.org/2004/02/skos/core#topConceptOf> <https://data.vlaanderen.be/id/conceptscheme/BesluitType> ;
+    <http://www.w3.org/2004/02/skos/core#inScheme> <http://lblod.data.gift/concept-schemes/71e6455e-1204-46a6-abf4-87319f58eaa5> ;
+    <http://www.w3.org/2004/02/skos/core#inScheme> <https://data.vlaanderen.be/id/conceptscheme/BesluitType> .
+
+<https://data.vlaanderen.be/id/concept/BesluitType/d463b6d1-c207-4c1a-8c08-f2c7dd1fa53b> a <http://www.w3.org/2000/01/rdf-schema#Class>, <http://www.w3.org/2004/02/skos/core#Concept> ;
+    <http://mu.semte.ch/vocabularies/core/uuid> "d463b6d1-c207-4c1a-8c08-f2c7dd1fa53b" ;
+    <http://www.w3.org/2004/02/skos/core#prefLabel> "Budget(wijziging) - Indiening bij centraal bestuur of representatief orgaan" ;
+    <http://lblod.data.gift/vocabularies/besluit/decidableBy> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/66ec74fd-8cfc-4e16-99c6-350b35012e86> ;
+    <http://www.w3.org/2004/02/skos/core#definition> "Budget(wijziging) - Indiening bij centraal bestuur of representatief orgaan." ;
+    <http://www.w3.org/2004/02/skos/core#topConceptOf> <http://lblod.data.gift/concept-schemes/71e6455e-1204-46a6-abf4-87319f58eaa5> ;
+    <http://www.w3.org/2004/02/skos/core#topConceptOf> <https://data.vlaanderen.be/id/conceptscheme/BesluitType> ;
+    <http://www.w3.org/2004/02/skos/core#inScheme> <http://lblod.data.gift/concept-schemes/71e6455e-1204-46a6-abf4-87319f58eaa5> ;
+    <http://www.w3.org/2004/02/skos/core#inScheme> <https://data.vlaanderen.be/id/conceptscheme/BesluitType> .
+
+<https://data.vlaanderen.be/id/concept/BesluitType/d85218e2-a75f-4a30-9182-512b5c9dd1b2> a <http://www.w3.org/2000/01/rdf-schema#Class>, <http://www.w3.org/2004/02/skos/core#Concept> ;
+    <http://mu.semte.ch/vocabularies/core/uuid> "d85218e2-a75f-4a30-9182-512b5c9dd1b2" ;
+    <http://www.w3.org/2004/02/skos/core#prefLabel> "Budget(wijziging) - Indiening bij toezichthoudende gemeente of provincie" ;
+    <http://lblod.data.gift/vocabularies/besluit/decidableBy> <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/66ec74fd-8cfc-4e16-99c6-350b35012e86> ;
+    <http://www.w3.org/2004/02/skos/core#definition> "Budget(wijziging) - Indiening bij toezichthoudende gemeente of provincie." ;
+    <http://www.w3.org/2004/02/skos/core#topConceptOf> <http://lblod.data.gift/concept-schemes/71e6455e-1204-46a6-abf4-87319f58eaa5> ;
+    <http://www.w3.org/2004/02/skos/core#topConceptOf> <https://data.vlaanderen.be/id/conceptscheme/BesluitType> ;
+    <http://www.w3.org/2004/02/skos/core#inScheme> <http://lblod.data.gift/concept-schemes/71e6455e-1204-46a6-abf4-87319f58eaa5> ;
+    <http://www.w3.org/2004/02/skos/core#inScheme> <https://data.vlaanderen.be/id/conceptscheme/BesluitType> .
+
