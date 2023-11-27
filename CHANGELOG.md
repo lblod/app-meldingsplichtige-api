@@ -1,4 +1,9 @@
 # Changelog
+## 1.36.0 (2023-11-27)
+- Adding missing data for besluitTypes and BesluitDocumentTypes
+- Adjusting label for "Budgetten(wijzigingen) van besturen van de eredienst"
+### deploy instructions
+- drc restart migrations resource cache
 ## 1.35.0 (2023-11-15)
 - update forms
 ### deploy instructions
