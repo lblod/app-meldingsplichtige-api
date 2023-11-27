@@ -1,0 +1,15 @@
+DELETE {
+    GRAPH ?g {
+        <https://data.vlaanderen.be/id/concept/BesluitDocumentType/18833df2-8c9e-4edd-87fd-b5c252337349> <http://www.w3.org/2004/02/skos/core#prefLabel> "Budgetten(wijzigingen) van besturen van de eredienst"@nl .
+    }
+}
+INSERT {
+    GRAPH ?g {
+        <https://data.vlaanderen.be/id/concept/BesluitDocumentType/18833df2-8c9e-4edd-87fd-b5c252337349> <http://www.w3.org/2004/02/skos/core#prefLabel> "Budgetten(wijzigingen) - Indiening bij representatief orgaan" .
+    }
+}
+WHERE {
+    GRAPH ?g {
+        <https://data.vlaanderen.be/id/concept/BesluitDocumentType/18833df2-8c9e-4edd-87fd-b5c252337349> <http://www.w3.org/2004/02/skos/core#prefLabel> "Budgetten(wijzigingen) van besturen van de eredienst"@nl .
+    }
+}
