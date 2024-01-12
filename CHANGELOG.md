@@ -1,4 +1,11 @@
 # Changelog
+## 1.37.0 (2024-01-12)
+- Update forms
+    - New forms LEKP Collectieve Energiebesparende Renovatie, Fietspaden, Sloopbeleidsplan
+    - New forms Niet-bindend advies op statuten and Niet-bindend advies op oprichting
+    - Change form LEKP Melding correctie authentieke bron, removed field "type correctie"
+### Deploy instructions
+- drc up -d enrich-submission; drc restart migrations resource cache
 ## 1.36.0 (2023-11-27)
 - Adding missing data for besluitTypes and BesluitDocumentTypes
 - Adjusting label for "Budgetten(wijzigingen) van besturen van de eredienst"
