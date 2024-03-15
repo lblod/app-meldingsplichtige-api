@@ -49,13 +49,12 @@ services:
   mocklogin:
     restart: "no"
   yasgui:
-    image: erikap/yasgui:latest
+    image: redpencil/yasgui:latest
     restart: "no"
     ports:
       - "8891:80"
     environment:
-      DEFAULT_SPARQL_ENDPOINT: "http://virtuoso/"
-      ENABLE_ENDPOINT_SELECTOR: "true"
+      DEFAULT_SPARQL_ENDPOINT: "http://localhost:8890/sparql"
   job-controller:
     restart: "no"
   vendor-login:
