@@ -220,12 +220,7 @@ export default [
     }
   },
   {
-    match: {
-      predicate: {
-        type: 'uri',
-        value: 'http://www.w3.org/ns/adms#status'
-      }
-    },
+    match: {},
     callback: {
       url: 'http://vendor-data-distribution/delta',
       method: 'POST'
