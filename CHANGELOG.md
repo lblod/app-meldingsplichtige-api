@@ -1,4 +1,13 @@
 # Changelog
+## Unreleased
+
+### General
+- Update forms
+  - Adjust LEKP rapport Klimaattafels (DL-5832)
+  - Add new LEKP rapport Wijkverbeteringscontract (DL-5829)
+
+### Deploy Notes
+- `drc up -d enrich-submission; drc restart migrations resource cache`
 ## 1.38.0 (2024-03-14)
 - Update forms
   - Adding new form Aanduiding en eedaflegging van de aangewezen burgemeester (DL-5669)
