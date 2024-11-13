@@ -1,4 +1,6 @@
 # Changelog
+## 1.40.2 (2024-11-13)
+ - bugfix: forgot to add form
 ## 1.40.1 (2024-11-13)
 ### Toezicht
  - Update URI form "Aangewezen Burgemeester" [DL-6298]
