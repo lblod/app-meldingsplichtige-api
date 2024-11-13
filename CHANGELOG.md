@@ -1,4 +1,12 @@
 # Changelog
+## 1.40.1 (2024-11-13)
+### Toezicht
+ - Update URI form "Aangewezen Burgemeester" [DL-6298]
+
+### Deploy notes
+```
+drc restart migrations; drc up -d enrich-submission
+```
 
 ## 1.40.0 (2024-10-09)
 
