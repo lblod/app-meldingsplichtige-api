@@ -25,7 +25,7 @@ services:
   migrations:
     restart: "no"
   cache:
-   restart: "no"
+    restart: "no"
   resource:
     restart: "no"
   file:
@@ -62,4 +62,6 @@ services:
   sparql-authorization-wrapper:
     restart: "no"
   vendor-data-distribution:
+    restart: "no"
+  worship-decisions-cross-reference:
     restart: "no"
