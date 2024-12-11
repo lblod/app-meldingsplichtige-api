@@ -1,4 +1,28 @@
 # Changelog
+
+## Unreleased
+
+### General
+- Add submissions cross referencing components and service
+
+### Deploy notes
+
+#### docker-compose.override.yml
+
+##### worship-decisions-cross-reference
+
+Ensure the environment variables are correctly set for `worship-decisions-cross-reference`, e.g. :
+
+```
+worship-decisions-cross-reference:
+  environment;
+    WORSHIP_DECISIONS_BASE_URL: "https://databankerediensten.lokaalbestuur.vlaanderen.be/search/submissions/"
+```
+The following links;
+- DEV: "https://dev.databankerediensten.lokaalbestuur.lblod.info/search/submissions/"
+- QA: "https://databankerediensten.lokaalbestuur.lblod.info/search/submissions/"
+- PROD: "https://databankerediensten.lokaalbestuur.vlaanderen.be/search/submissions/"
+
 ## 1.40.3 (2024-11-13
 - update forms [DL-5977] -> "Toezicht: make form "Besluit APB over retributies" available for AGB"
 ## 1.40.2 (2024-11-13)
