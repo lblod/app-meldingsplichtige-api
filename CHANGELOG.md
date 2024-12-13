@@ -1,5 +1,5 @@
 # Changelog
-## Unreleased
+## 1.40.4 (2024-12-13)
 - New semantic form `Kerkenbeleidsplan`
 - New semantic forms for cross referencing
 ## 1.40.3 (2024-11-13
