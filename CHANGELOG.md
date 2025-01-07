@@ -15,7 +15,7 @@ Ensure the environment variables are correctly set for `worship-decisions-cross-
 
 ```
 worship-decisions-cross-reference:
-  environment;
+  environment:
     WORSHIP_DECISIONS_BASE_URL: "https://databankerediensten.lokaalbestuur.vlaanderen.be/search/submissions/"
 ```
 The following links;
