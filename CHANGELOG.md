@@ -23,6 +23,13 @@ The following links;
 - QA: "https://databankerediensten.lokaalbestuur.lblod.info/search/submissions/"
 - PROD: "https://databankerediensten.lokaalbestuur.vlaanderen.be/search/submissions/"
 
+docker commands
+
+```
+drc restart migrations
+drc up -d worship-decisions-cross-reference frontend
+```
+
 ## 1.40.3 (2024-11-13
 - update forms [DL-5977] -> "Toezicht: make form "Besluit APB over retributies" available for AGB"
 ## 1.40.2 (2024-11-13)
