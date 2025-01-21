@@ -1,13 +1,11 @@
 # Changelog
-## Unreleased
+## 1.41.0 (2024-01-21)
 
 ### General
 - Add submissions cross referencing components and service
 
 ### Deploy notes
-
 #### docker-compose.override.yml
-
 ##### worship-decisions-cross-reference
 
 Ensure the environment variables are correctly set for `worship-decisions-cross-reference`, e.g. :
