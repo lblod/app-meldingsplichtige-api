@@ -1,4 +1,34 @@
 # Changelog
+## Unreleased
+
+### General
+- Add submissions cross referencing components and service
+
+### Deploy notes
+
+#### docker-compose.override.yml
+
+##### worship-decisions-cross-reference
+
+Ensure the environment variables are correctly set for `worship-decisions-cross-reference`, e.g. :
+
+```
+worship-decisions-cross-reference:
+  environment:
+    WORSHIP_DECISIONS_BASE_URL: "https://databankerediensten.lokaalbestuur.vlaanderen.be/search/submissions/"
+```
+The following links;
+- DEV: "https://dev.databankerediensten.lokaalbestuur.lblod.info/search/submissions/"
+- QA: "https://databankerediensten.lokaalbestuur.lblod.info/search/submissions/"
+- PROD: "https://databankerediensten.lokaalbestuur.vlaanderen.be/search/submissions/"
+
+docker commands
+
+```
+drc restart migrations
+drc up -d worship-decisions-cross-reference frontend
+```
+
 ## 1.40.4 (2024-12-13)
 - New semantic form `Kerkenbeleidsplan`
 - New semantic forms for cross referencing
