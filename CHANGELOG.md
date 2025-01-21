@@ -1,5 +1,4 @@
 # Changelog
-
 ## Unreleased
 
 ### General
@@ -30,6 +29,9 @@ drc restart migrations
 drc up -d worship-decisions-cross-reference frontend
 ```
 
+## 1.40.4 (2024-12-13)
+- New semantic form `Kerkenbeleidsplan`
+- New semantic forms for cross referencing
 ## 1.40.3 (2024-11-13
 - update forms [DL-5977] -> "Toezicht: make form "Besluit APB over retributies" available for AGB"
 ## 1.40.2 (2024-11-13)
