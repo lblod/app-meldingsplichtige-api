@@ -1,4 +1,6 @@
 # Changelog
+## 1.40.5 (2025-01-22)
+- Add Jaarrekening PEVA form [DL-6284]
 ## 1.40.4 (2024-12-13)
 - New semantic form `Kerkenbeleidsplan`
 - New semantic forms for cross referencing
