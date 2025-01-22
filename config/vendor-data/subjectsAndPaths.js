@@ -29,17 +29,6 @@ export const subjects = [
   {
     type: 'http://rdf.myexperiment.org/ontologies/base/Submission',
     trigger: `
-
-    
-        
-          
-    
-
-        
-        Expand All
-    
-    @@ -22,22 +40,259 @@ export const subjects = [
-  
       ?subject a <http://rdf.myexperiment.org/ontologies/base/Submission> .
     `,
     path: `
@@ -306,23 +295,6 @@ export const subjects = [
   {
     type: 'http://vocab.deri.ie/cogs#Job',
     trigger: `
-
-    
-          
-            
-    
-
-          
-          Expand Down
-          
-            
-    
-
-          
-          Expand Up
-    
-    @@ -77,7 +332,11 @@ export const subjects = [
-  
       ?subject
         <http://www.w3.org/ns/adms#status>
           <http://redpencil.data.gift/id/concept/JobStatus/failed> ;
@@ -367,23 +339,6 @@ export const subjects = [
   {
     type: 'http://vocab.deri.ie/cogs#Job',
     trigger: `
-
-    
-          
-            
-    
-
-          
-          Expand Down
-          
-            
-    
-
-          
-          Expand Up
-    
-    @@ -160,7 +419,11 @@ export const subjects = [
-  
       ?subject
         <http://www.w3.org/ns/adms#status>
           <http://redpencil.data.gift/id/concept/JobStatus/success> ;
@@ -468,23 +423,6 @@ export const subjects = [
   {
     type: 'http://schema.org/Message',
     trigger: `
-
-    
-          
-            
-    
-
-          
-          Expand Down
-          
-            
-    
-
-          
-          Expand Up
-    
-    @@ -237,7 +500,11 @@ export const subjects = [
-  
       ?subject
         <http://www.w3.org/ns/adms#status>
           <http://data.lblod.info/id/status/berichtencentrum/sync-with-kalliope/delivered/confirmed> .
@@ -562,23 +500,6 @@ export const subjects = [
   {
     type: 'http://schema.org/Message',
     trigger: `
-
-    
-          
-            
-    
-
-          
-          Expand Down
-          
-            
-    
-
-          
-          Expand Up
-    
-    @@ -311,7 +578,11 @@ export const subjects = [
-  
       ?subject
         <http://mu.semte.ch/vocabularies/ext/creator>
           <https://github.com/lblod/frontend-loket> .
@@ -653,17 +574,6 @@ export const subjects = [
   {
     type: 'http://schema.org/Message',
     trigger: `
-
-    
-          
-            
-    
-
-          
-          Expand Down
-    
-    
-  
       ?subject
         <http://mu.semte.ch/vocabularies/ext/creator>
           <https://github.com/lblod/frontend-loket> ;
