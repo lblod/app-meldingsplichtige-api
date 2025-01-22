@@ -1,5 +1,4 @@
 import envvar from 'env-var';
-
 const HOSTNAME = envvar
   .get('HOSTNAME')
   .required()
@@ -7,8 +6,26 @@ const HOSTNAME = envvar
   .asUrlString();
 
 export const subjects = [
-  //For Submissions via Automatic Submission Flow
-  //TODO could use some improvements (maybe add some more things like a Job)
+  /////////////////////////////////////////////////////////////////////////////
+  // Submissions
+  // via Automatic Submission flow (not Loket)
+  /////////////////////////////////////////////////////////////////////////////
+  //
+  // The following queries always copy the whole model at once. E.g. if there
+  // is a Submission to be copied to the vendor graph, also copy the FormData,
+  // SubmissionDocument, Artikel (for cross referencing), ... if they exist.
+  // All data is also deleted before copied again. This is to make sure changes
+  // are correctly updated. Otherwise you would see multiple values for the
+  // same predicate because the old values are never deleted.
+  // Note: Submissions via Loket are not copied to the vendor graphs. This is
+  // because there is no vendor linked to the Submissions from Loket, and
+  // vendors don't need to see Submission they haven't posted themselves. It is
+  // possible to add them anyway, if needed.
+
+  /**
+   * Submission
+   */
+
   {
     type: 'http://rdf.myexperiment.org/ontologies/base/Submission',
     trigger: `
@@ -22,22 +39,259 @@ export const subjects = [
     remove: {
       delete: `
         ?subject ?p ?o .
+        ?submissionDocument ?sdp ?sdo .
+        ?formdata ?fp ?fo .
+        ?artikel ?ap ?ao .
       `,
       where: `
-        ?subject ?p ?o .
+        {
+          ?subject ?p ?o .
+        } UNION {
+          ?subject <http://purl.org/dc/terms/subject> ?submissionDocument .
+          ?submissionDocument ?sdp ?sdo .
+        } UNION {
+          ?subject <http://www.w3.org/ns/prov#generated> ?formdata .
+          ?formdata ?fp ?fo .
+        } UNION {
+          ?subject <http://www.w3.org/ns/prov#generated> ?formdata .
+          ?submissionDocument <http://data.europa.eu/eli/ontology#has_part> ?artikel .
+          ?artikel ?ap ?ao .
+        }
       `,
     },
     copy: {
       insert: `
         ?subject ?p ?o .
+        ?submissionDocument ?sdp ?sdo .
+        ?formdata ?fp ?fo .
+        ?artikel ?ap ?ao .
       `,
       where: `
-        ?subject ?p ?o .
+        {
+          ?subject ?p ?o .
+        } UNION {
+          ?subject <http://purl.org/dc/terms/subject> ?submissionDocument .
+          ?submissionDocument ?sdp ?sdo .
+        } UNION {
+          ?subject <http://www.w3.org/ns/prov#generated> ?formdata .
+          ?formdata ?fp ?fo .
+        } UNION {
+          ?subject <http://www.w3.org/ns/prov#generated> ?formdata .
+          ?submissionDocument <http://data.europa.eu/eli/ontology#has_part> ?artikel .
+          ?artikel ?ap ?ao .
+        }
       `,
     },
   },
-  //For the Berichten Melding via berichten-melding-service
-  //Failed jobs
+
+  /**
+   * SubmissionDocument
+   */
+
+  {
+    type: 'http://mu.semte.ch/vocabularies/ext/SubmissionDocument',
+    trigger: `
+      ?subject a <http://mu.semte.ch/vocabularies/ext/SubmissionDocument> .
+    `,
+    path: `
+      ?submission <http://purl.org/dc/terms/subject> ?subject .
+      ?submission
+        pav:createdBy ?organisation ;
+        pav:providedBy ?vendor .
+    `,
+    remove: {
+      delete: `
+        ?submission ?sp ?so .
+        ?subject ?sdp ?sdo .
+        ?formdata ?fp ?fo .
+        ?artikel ?ap ?ao .
+      `,
+      where: `
+        {
+          ?submission <http://purl.org/dc/terms/subject> ?subject .
+          ?submission ?p ?o .
+        } UNION {
+          ?subject ?p ?o .
+        } UNION {
+          ?submission <http://purl.org/dc/terms/subject> ?subject .
+          ?submission <http://www.w3.org/ns/prov#generated> ?formdata .
+          ?formdata ?fp ?fo .
+        } UNION {
+          ?subject <http://data.europa.eu/eli/ontology#has_part> ?artikel .
+          ?artikel ?ap ?ao .
+        }
+      `,
+    },
+    copy: {
+      insert: `
+        ?submission ?sp ?so .
+        ?subject ?sdp ?sdo .
+        ?formdata ?fp ?fo .
+        ?artikel ?ap ?ao .
+      `,
+      where: `
+        {
+          ?submission <http://purl.org/dc/terms/subject> ?subject .
+          ?submission ?sp ?so .
+        } UNION {
+          ?subject ?sdp ?sdo .
+        } UNION {
+          ?submission <http://purl.org/dc/terms/subject> ?subject .
+          ?submission <http://www.w3.org/ns/prov#generated> ?formdata .
+          ?formdata ?fp ?fo .
+        } UNION {
+          ?subject <http://data.europa.eu/eli/ontology#has_part> ?artikel .
+          ?artikel ?ap ?ao .
+        }
+      `,
+    },
+  },
+
+  /**
+   * Artikel
+   * This is a cross-referenced document
+   */
+
+  {
+    type: 'http://data.vlaanderen.be/ns/besluit#Artikel',
+    trigger: `
+      ?subject a <http://data.vlaanderen.be/ns/besluit#Artikel> .
+    `,
+    path: `
+      ?submission <http://purl.org/dc/terms/subject> ?submissionDocument .
+      ?submissionDocument <http://data.europa.eu/eli/ontology#has_part> ?subject .
+      ?submission
+        pav:createdBy ?organisation ;
+        pav:providedBy ?vendor .
+    `,
+    remove: {
+      delete: `
+        ?submission ?p ?o .
+        ?submissionDocument ?sdp ?sdo .
+        ?formdata ?fp ?fo .
+        ?subject ?ap ?ao .
+      `,
+      where: `
+        {
+          ?submission <http://purl.org/dc/terms/subject> ?submissionDocument .
+          ?submissionDocument <http://data.europa.eu/eli/ontology#has_part> ?subject .
+          ?submission ?p ?o .
+        } UNION {
+          ?submissionDocument <http://data.europa.eu/eli/ontology#has_part> ?subject .
+          ?submissionDocument ?sdp ?sdo .
+        } UNION {
+          ?submission <http://purl.org/dc/terms/subject> ?submissionDocument .
+          ?submissionDocument <http://data.europa.eu/eli/ontology#has_part> ?subject .
+          ?submission <http://www.w3.org/ns/prov#generated> ?formdata .
+          ?formdata ?fp ?fo .
+        } UNION {
+          ?subject ?ap ?ao .
+        }
+      `,
+    },
+    copy: {
+      insert: `
+        ?submission ?p ?o .
+        ?submissionDocument ?sdp ?sdo .
+        ?formdata ?fp ?fo .
+        ?subject ?ap ?ao .
+      `,
+      where: `
+        {
+          ?submission <http://purl.org/dc/terms/subject> ?submissionDocument .
+          ?submissionDocument <http://data.europa.eu/eli/ontology#has_part> ?subject .
+          ?submission ?p ?o .
+        } UNION {
+          ?submissionDocument <http://data.europa.eu/eli/ontology#has_part> ?subject .
+          ?submissionDocument ?sdp ?sdo .
+        } UNION {
+          ?submission <http://purl.org/dc/terms/subject> ?submissionDocument .
+          ?submissionDocument <http://data.europa.eu/eli/ontology#has_part> ?subject .
+          ?submission <http://www.w3.org/ns/prov#generated> ?formdata .
+          ?formdata ?fp ?fo .
+        } UNION {
+          ?subject ?ap ?ao .
+        }
+      `,
+    },
+  },
+
+  /**
+   * FormData
+   */
+
+  {
+    type: 'http://lblod.data.gift/vocabularies/automatische-melding/FormData',
+    trigger: `
+      ?subject a <http://lblod.data.gift/vocabularies/automatische-melding/FormData> .
+    `,
+    path: `
+      ?submission <http://www.w3.org/ns/prov#generated> ?subject .
+      ?submission
+        pav:createdBy ?organisation ;
+        pav:providedBy ?vendor .
+    `,
+    remove: {
+      delete: `
+        ?submission ?p ?o .
+        ?submissionDocument ?sdp ?sdo .
+        ?subject ?fp ?fo .
+        ?artikel ?ap ?ao .
+      `,
+      where: `
+        {
+          ?submission <http://www.w3.org/ns/prov#generated> ?subject .
+          ?submission ?p ?o .
+        } UNION {
+          ?submission <http://www.w3.org/ns/prov#generated> ?subject .
+          ?submission <http://purl.org/dc/terms/subject> ?submissionDocument .
+          ?submissionDocument ?sdp ?sdo .
+        } UNION {
+          ?subject ?fp ?fo .
+        } UNION {
+          ?submission <http://www.w3.org/ns/prov#generated> ?subject .
+          ?submission <http://purl.org/dc/terms/subject> ?submissionDocument .
+          ?submissionDocument <http://data.europa.eu/eli/ontology#has_part> ?artikel .
+          ?artikel ?ap ?ao .
+        }
+      `,
+    },
+    copy: {
+      insert: `
+        ?submission ?p ?o .
+        ?submissionDocument ?sdp ?sdo .
+        ?subject ?fp ?fo .
+        ?artikel ?ap ?ao .
+      `,
+      where: `
+        {
+          ?submission <http://www.w3.org/ns/prov#generated> ?subject .
+          ?submission ?p ?o .
+        } UNION {
+          ?submission <http://www.w3.org/ns/prov#generated> ?subject .
+          ?submission <http://purl.org/dc/terms/subject> ?submissionDocument .
+          ?submissionDocument ?sdp ?sdo .
+        } UNION {
+          ?subject ?fp ?fo .
+        } UNION {
+          ?submission <http://www.w3.org/ns/prov#generated> ?subject .
+          ?submission <http://purl.org/dc/terms/subject> ?submissionDocument .
+          ?submissionDocument <http://data.europa.eu/eli/ontology#has_part> ?artikel .
+          ?artikel ?ap ?ao .
+        }
+      `,
+    },
+  },
+
+  /////////////////////////////////////////////////////////////////////////////
+  // Berichten
+  // via berichten-melding-service
+  /////////////////////////////////////////////////////////////////////////////
+
+  /*
+   * Failed jobs
+   */
+
   {
     type: 'http://vocab.deri.ie/cogs#Job',
     trigger: `
@@ -77,7 +331,11 @@ export const subjects = [
           `
       }
   },
-  //Success jobs
+
+  /*
+   * Success jobs
+   */
+
   {
     type: 'http://vocab.deri.ie/cogs#Job',
     trigger: `
@@ -116,7 +374,6 @@ export const subjects = [
         ?bericht ?pa ?ca .
         ?bijlage ?pb ?ob .
         ?physicalBijlage ?pp ?op .
-
         ?bijlage
           <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#url>
             ?bijlageDownloadLink .
@@ -141,9 +398,7 @@ export const subjects = [
             a <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject> ;
             <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource>
               ?bijlage .
-
           BIND (CONCAT("${HOSTNAME}files/", STR(?bijlageUUID), "/download") AS ?bijlageDownloadLink)
-
            {
              ?subject ?p ?o .
            } UNION {
@@ -160,7 +415,11 @@ export const subjects = [
       `,
     },
   },
-  //For Berichten en Conversaties synced from Kaliope
+
+  /*
+   * For Berichten en Conversaties synced from Kaliope
+   */
+
   {
     type: 'http://schema.org/Message',
     trigger: `
@@ -171,7 +430,6 @@ export const subjects = [
     path: `
       ?subject <http://schema.org/recipient> ?organisation.
       ?organisation a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid>.
-
       ?vendor <http://mu.semte.ch/vocabularies/account/canActOnBehalfOf> ?organisation;
         a <http://xmlns.com/foaf/0.1/Agent>.
     `,
@@ -197,7 +455,6 @@ export const subjects = [
         ?conversatie ?pc ?co .
         ?bijlage ?pb ?ob .
         ?physicalBijlage ?pp ?op .
-
         ?bijlage
           <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#url>
             ?bijlageDownloadLink .
@@ -220,9 +477,7 @@ export const subjects = [
             a <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject> ;
             <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource>
               ?bijlage .
-
           BIND (CONCAT("${HOSTNAME}files/", STR(?bijlageUUID), "/download") AS ?bijlageDownloadLink)
-
            {
              ?subject ?p ?o .
            } UNION {
@@ -237,7 +492,11 @@ export const subjects = [
       `,
     }
   },
-  //For Berichten saved in Loket
+
+  /*
+   * For Berichten saved in Loket
+   */
+
   {
     type: 'http://schema.org/Message',
     trigger: `
@@ -248,7 +507,6 @@ export const subjects = [
     path: `
       ?subject <http://schema.org/sender> ?organisation.
       ?organisation a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid>.
-
       ?vendor <http://mu.semte.ch/vocabularies/account/canActOnBehalfOf> ?organisation;
         a <http://xmlns.com/foaf/0.1/Agent>.
     `,
@@ -271,7 +529,6 @@ export const subjects = [
         ?conversatie ?pc ?co .
         ?bijlage ?pb ?ob .
         ?physicalBijlage ?pp ?op .
-
         ?bijlage
           <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#url>
             ?bijlageDownloadLink .
@@ -294,9 +551,7 @@ export const subjects = [
             a <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject> ;
             <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource>
               ?bijlage .
-
           BIND (CONCAT("${HOSTNAME}files/", STR(?bijlageUUID), "/download") AS ?bijlageDownloadLink)
-
            {
              ?subject ?p ?o .
            } UNION {
@@ -311,7 +566,11 @@ export const subjects = [
       `,
     }
   },
-  //For Berichten saved in Loket, but via Controle as if you were ABB
+
+  /*
+   * For Berichten saved in Loket, but via Controle as if you were ABB
+   */
+
   {
     type: 'http://schema.org/Message',
     trigger: `
@@ -324,7 +583,6 @@ export const subjects = [
     path: `
       ?subject <http://schema.org/recipient> ?organisation.
       ?organisation a <http://data.vlaanderen.be/ns/besluit#Bestuurseenheid>.
-
       ?vendor <http://mu.semte.ch/vocabularies/account/canActOnBehalfOf> ?organisation;
         a <http://xmlns.com/foaf/0.1/Agent>.
     `,
@@ -347,7 +605,6 @@ export const subjects = [
         ?conversatie ?pc ?co .
         ?bijlage ?pb ?ob .
         ?physicalBijlage ?pp ?op .
-
         ?bijlage
           <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#url>
             ?bijlageDownloadLink .
@@ -370,9 +627,7 @@ export const subjects = [
             a <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject> ;
             <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#dataSource>
               ?bijlage .
-
           BIND (CONCAT("${HOSTNAME}files/", STR(?bijlageUUID), "/download") AS ?bijlageDownloadLink)
-
            {
              ?subject ?p ?o .
            } UNION {

@@ -9,7 +9,7 @@ x-logging:
 
 services:
   frontend:
-    image: lblod/frontend-meldingsplichtige-api:1.0.0
+    image: lblod/frontend-meldingsplichtige-api:1.1.0
     links:
       - identifier:backend
     labels:
@@ -114,7 +114,7 @@ services:
     links:
       - database:database
   download-url:
-    image: lblod/download-url-service:1.0.0
+    image: lblod/download-url-service:1.0.3
     environment:
       CACHING_MAX_RETRIES: "3"
     volumes:
@@ -124,7 +124,7 @@ services:
     restart: always
     logging: *default-logging
   automatic-submission:
-    image: lblod/automatic-submission-service:1.3.1
+    image: lblod/automatic-submission-service:1.4.0
     labels:
       - "logging=true"
     restart: always
@@ -168,7 +168,7 @@ services:
     restart: always
     logging: *default-logging
   toezicht-flattened-form-data-generator:
-    image: lblod/toezicht-flattened-form-data-generator:1.3.0
+    image: lblod/toezicht-flattened-form-data-generator:1.4.2
     volumes:
       - ./data/files/submissions:/share/submissions
     labels:
@@ -199,19 +199,23 @@ services:
       - "logging=true"
     restart: "always"
     logging: *default-logging
-
+  worship-decisions-cross-reference:
+    image: lblod/worship-decisions-cross-reference-service:0.4.6
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
 ##############################################################################
 # Vendor endpoint
 ##############################################################################
-
   vendor-login:
-    image: lblod/vendor-login-service:1.0.0
+    image: lblod/vendor-login-service:1.1.0
   sparql-authorization-wrapper:
-    image: lblod/sparql-authorization-wrapper-service:1.0.0
+    image: lblod/sparql-authorization-wrapper-service:1.1.0
     volumes:
       - ./config/sparql-authorization-wrapper:/config
   vendor-data-distribution:
-    image: lblod/vendor-data-distribution-service:1.3.3
+    image: lblod/vendor-data-distribution-service:1.6.1
     environment:
       LOGLEVEL: "error"
       WRITE_ERRORS: "true"
@@ -219,4 +223,3 @@ services:
       - ./config/vendor-data:/config
     restart: always
     logging: *default-logging
-

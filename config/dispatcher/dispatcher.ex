@@ -242,6 +242,14 @@ defmodule Dispatcher do
     Proxy.forward conn, path, "http://cache/concepts/"
   end
 
+  get "/worship-decisions-cross-reference/search-documents/*path" do
+    Proxy.forward conn, path, "http://worship-decisions-cross-reference/search-documents/"
+  end
+
+  get "/worship-decisions-cross-reference/document-information/*path" do
+    Proxy.forward conn, path, "http://worship-decisions-cross-reference/document-information/"
+  end
+
   #################################################################
   # dummy publications (to be removed)
   #################################################################
