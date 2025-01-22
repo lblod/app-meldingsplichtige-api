@@ -1,4 +1,14 @@
 # Changelog
+## 1.41.1 (2024-01-22)
+### General
+- Fix configuration in subjectsAndPaths.js
+
+### Deploy notes
+#### docker commands
+```
+drc restart vendor-data-distribution
+```
+
 ## 1.41.0 (2024-01-21)
 
 ### General
