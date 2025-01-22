@@ -1,5 +1,7 @@
 # Changelog
-## 1.41.1 (2024-01-22)
+## 1.41.2 (2025-01-22)
+- Add Jaarrekening PEVA form [DL-6284]
+## 1.41.1 (2025-01-22)
 ### General
 - Fix configuration in subjectsAndPaths.js
 
@@ -9,7 +11,7 @@
 drc restart vendor-data-distribution
 ```
 
-## 1.41.0 (2024-01-21)
+## 1.41.0 (2025-01-21)
 
 ### General
 - Add submissions cross referencing components and service
@@ -36,7 +38,6 @@ docker commands
 drc restart migrations
 drc up -d worship-decisions-cross-reference frontend
 ```
-
 ## 1.40.4 (2024-12-13)
 - New semantic form `Kerkenbeleidsplan`
 - New semantic forms for cross referencing
