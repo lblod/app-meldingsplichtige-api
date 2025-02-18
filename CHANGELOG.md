@@ -1,4 +1,17 @@
 # Changelog
+## Unreleased
+- Update semantic forms with `Opdrachthoudende vereniging met private deelname` classification. [DL-6447]
+### Deploy Notes
+#### Update Semantic Forms
+```
+drc restart migrations && drc logs -ft --tail=200 migrations
+```
+```
+drc restart resource cache
+```
+```
+drc up -d enrich-submission
+```
 ## 1.41.2 (2025-01-22)
 - Add Jaarrekening PEVA form [DL-6284]
 ## 1.41.1 (2025-01-22)
