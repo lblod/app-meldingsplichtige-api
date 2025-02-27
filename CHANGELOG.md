@@ -1,5 +1,5 @@
 # Changelog
-## Unreleased
+## 1.41.3 (2025-02-27)
 - Update semantic forms with `Opdrachthoudende vereniging met private deelname` classification. [DL-6447]
 ### Deploy Notes
 #### Update Semantic Forms
