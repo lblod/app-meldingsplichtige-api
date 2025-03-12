@@ -10,7 +10,10 @@ export default [
     options: {
       resourceFormat: "v0.0.1",
       gracePeriod: 250,
-      ignoreFromSelf: true
+      ignoreFromSelf: true,
+      optOutMuScopeIds: [
+        "http://redpencil.data.gift/id/concept/muScope/deltas/vendor-data",
+      ],
     }
   },
   {
