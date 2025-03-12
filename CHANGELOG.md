@@ -1,4 +1,14 @@
 # Changelog
+## 1.41.4 (2025-03-12)
+- Change `deltanotifier` image to `image: cecemel/delta-notifier:0.2.0-beta.6`. [DL-6484]
+  - This allows us to use `optOutMuScopeIds` for `resources` and opt out of receiving VDDS deltas.
+### Deploy Notes
+```
+drc up -d deltanotifier
+```
+```
+drc restart deltanotifier
+```
 ## 1.41.3 (2025-02-27)
 - Update semantic forms with `Opdrachthoudende vereniging met private deelname` classification. [DL-6447]
 ### Deploy Notes
