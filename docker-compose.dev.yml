@@ -63,5 +63,7 @@ services:
     restart: "no"
   vendor-data-distribution:
     restart: "no"
+    environment:
+      HOSTNAME: "http://localhost"
   worship-decisions-cross-reference:
     restart: "no"
