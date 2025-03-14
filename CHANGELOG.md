@@ -1,4 +1,10 @@
 # Changelog
+## 1.41.5 (2025-03-14)
+- Opt out of `vendor-data-distribution` deltas for `toezicht-flattened-form-data-generator`. [DL-6484]
+### Deploy Notes
+```
+drc restart deltanotifier
+```
 ## 1.41.4 (2025-03-12)
 - Change `deltanotifier` image to `image: cecemel/delta-notifier:0.2.0-beta.6`. [DL-6484]
   - This allows us to use `optOutMuScopeIds` for `resources` and opt out of receiving VDDS deltas.
