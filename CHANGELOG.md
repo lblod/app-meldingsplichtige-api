@@ -1,5 +1,5 @@
 # Changelog
-## Unreleased
+## 1.41.6 (2025-03-18)
 - Bump some services.
 ### Deploy Notes
 ```
