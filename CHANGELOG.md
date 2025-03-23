@@ -1,4 +1,8 @@
 # Changelog
+## 1.42.0 (2025-03-23)
+- Bump `virtuoso` to `v1.3.0-rc.1`.
+### Deploy Notes
+Follow the steps listed here: [https://github.com/Riadabd/upgrade-virtuoso](https://github.com/Riadabd/upgrade-virtuoso).
 ## 1.41.6 (2025-03-18)
 - Bump some services.
 ### Deploy Notes
