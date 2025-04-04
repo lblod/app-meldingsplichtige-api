@@ -1,4 +1,10 @@
 # Changelog
+## 1.42.1 (2025-04-04)
+- Bump `virtuoso` memory to 4GB.
+### Deploy Notes
+```
+drc restart virtuoso && drc logs -ft --tail=200 virtuoso
+```
 ## 1.42.0 (2025-03-23)
 - Bump `virtuoso` to `v1.3.0-rc.1`.
 ### Deploy Notes
