@@ -221,5 +221,7 @@ services:
       WRITE_ERRORS: "true"
     volumes:
       - ./config/vendor-data:/config
+    labels:
+      - "logging=true"
     restart: always
     logging: *default-logging
