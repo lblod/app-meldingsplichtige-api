@@ -1,4 +1,25 @@
 # Changelog
+
+## Unreleased
+
+- Bump VDDS (vendor-data-distribution-service) for more async processing and
+  reduced load on database/Virtuoso. [DL-6595]
+
+### Deploy Instructions
+
+**Bump of the VDDS and to run healing**
+
+Set the VDDS healing operations directly onto Virtuoso. See the environment
+variable config here:
+https://github.com/lblod/vendor-data-distribution-service?tab=readme-ov-file#environment-variables,
+and run the new deploy and (full) healing commands. This healing can take a
+while; perhaps something for after work hours?
+
+```
+docker compose up -d vendor-data-distribution
+docker compose exec vendor-data-distribution curl -X POST http://localhost/healing
+```
+
 ## 1.42.1 (2025-04-04)
 - Bump `virtuoso` memory to 4GB.
 ### Deploy Notes
