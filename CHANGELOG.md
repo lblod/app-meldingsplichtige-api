@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.42.2 (2025-04-15)
 
 - Bump VDDS (vendor-data-distribution-service) for more async processing and
   reduced load on database/Virtuoso. [DL-6595]
