@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.42.3 (2025-04-16)
+
+- Change `mu-auth` to `mu-authorization:feature-service-roam-r1.1` feature branch.
+
+### Deploy Notes
+
+```
+drc up -d database && drc logs -ft --tail=200 database
+```
+
 ## 1.42.2 (2025-04-15)
 
 - Bump VDDS (vendor-data-distribution-service) for more async processing and
