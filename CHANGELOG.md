@@ -1,5 +1,18 @@
 # Changelog
 
+## Unreleased
+
+- Update multiple forms. [DL-6602] [DL-6486] [DL-6487] [DL-6488]
+
+### Deploy Notes
+
+**For updating the forms**
+
+```
+drc restart migrations && drc logs -ft --tail=200 migrations
+drc up -d enrich-submission
+```
+
 ## 1.42.3 (2025-04-16)
 
 - Change `mu-auth` to `mu-authorization:feature-service-roam-r1.1` feature branch.
