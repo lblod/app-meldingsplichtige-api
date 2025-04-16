@@ -1,0 +1,19 @@
+DELETE {
+  GRAPH ?g {
+    ?besluitType <http://www.w3.org/2004/02/skos/core#prefLabel> ?oldPrefLabel .
+  }
+}
+INSERT {
+  GRAPH ?g {
+    ?besluitType <http://www.w3.org/2004/02/skos/core#prefLabel> ?newPrefLabel .
+  }
+}
+WHERE {
+  VALUES (?besluitType ?newPrefLabel) {
+    (<https://data.vlaanderen.be/id/concept/BesluitType/d9c3d177-6dc6-4775-8c6a-1055a9cbdcc6> "Wijziging vereniging of vennootschap voor maatschappelijk welzijn") # Previously: "Wijziging ocmw-vereniging"
+  }
+
+  GRAPH ?g {
+    ?besluitType <http://www.w3.org/2004/02/skos/core#prefLabel> ?oldPrefLabel .
+  }
+}
