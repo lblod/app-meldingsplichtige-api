@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 1.43.0 (2025-04-24)
 
 - Update multiple forms. [DL-6602] [DL-6486] [DL-6487] [DL-6488]
 
