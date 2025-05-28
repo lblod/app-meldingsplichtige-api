@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.44.1 (2025-05-28)
+
+### General
+
+- Fix municipalities not able to reference worship service document when the CKB is inactive [DL-6614]
+
+### Deploy instructions
+
+```
+drc up -d worship-decisions-cross-reference
+```
+
 ## 1.44.0 (2025-05-07)
 
 - Add new form 'melding interne beslissing tot samenvoeging' [DL-6361]
