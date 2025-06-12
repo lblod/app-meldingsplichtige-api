@@ -1,6 +1,6 @@
 # Changelog
 
-## unreleased
+## 1.45.0 (2025-06-12)
 
 - Update form of LEKP - Fietspaden [DL-6612]
 
