@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased
+- Update URI form "Afwijking principes regiovorming" [DL-6775]
+
+### Deploy Notes
+
+```
+drc restart migrations && drc logs -ft --tail=200 migrations
+drc up -d enrich-submission
+```
+
 ## 1.45.0 (2025-06-12)
 
 - Update form of LEKP - Fietspaden [DL-6612]
