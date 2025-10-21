@@ -57,6 +57,8 @@ services:
       DEFAULT_SPARQL_ENDPOINT: "http://localhost:8890/sparql"
   job-controller:
     restart: "no"
+  op-public-consumer:
+    restart: "no"
   vendor-login:
     restart: "no"
   sparql-authorization-wrapper:
