@@ -1,5 +1,52 @@
 # Changelog
 
+## Unreleased
+
+- Introduce an op-public-consumer as a follow-up of [DL-6986]
+
+### Deploy instructions
+
+Restart virtuoso for its updated config:
+
+```
+docker compose restart virtuoso
+```
+
+Add the following to `docker-compose.override.yml` for fast initialSync:
+
+```
+  op-public-consumer:
+    environment:
+      DCR_SYNC_BASE_URL: "https://organisaties.abb.vlaanderen.be"
+      DCR_CRON_PATTERN_DELTA_SYNC: '* * * * *' # this is every minute
+      DCR_LANDING_ZONE_DATABASE: "virtuoso"
+      DCR_REMAPPING_DATABASE: "virtuoso"
+      DCR_DISABLE_DELTA_INGEST: "false"
+      DCR_DISABLE_INITIAL_SYNC: "false"
+      SLEEP_BETWEEN_BATCHES: 0
+```
+
+Start the consumer and the rest of the new services:
+
+```
+docker compose up -d
+```
+
+then inspect the logs and make sure the consumer is finished:
+
+```
+docker compose logs --tail 1000 -f op-public-consumer
+```
+
+then remove the `DCR_CRON_PATTERN_DELTA_SYNC` and remove the database overrides
+or set them to `database` instead of `virtuoso`, and restart. It might also be
+necessary to restart `resources` and `cache`.
+
+```
+docker compose up -d
+docker compose restart resource cache
+```
+
 ## v1.46.1 (2025-09-19)
 
 - Hotfix 'afwijking principes regiovorming' from BesluitDocumentType to BesluitType [DL-6775]
