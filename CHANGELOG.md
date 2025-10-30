@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## v1.47.0 (2025-10-30)
 
 - Introduce an op-public-consumer as a follow-up of [DL-6986]
 
