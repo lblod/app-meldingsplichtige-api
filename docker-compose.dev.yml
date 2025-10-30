@@ -48,6 +48,8 @@ services:
     restart: "no"
   mocklogin:
     restart: "no"
+  update-bestuurseenheid-mock-login:
+    restart: "no"
   yasgui:
     image: redpencil/yasgui:latest
     restart: "no"
@@ -56,6 +58,8 @@ services:
     environment:
       DEFAULT_SPARQL_ENDPOINT: "http://localhost:8890/sparql"
   job-controller:
+    restart: "no"
+  op-public-consumer:
     restart: "no"
   vendor-login:
     restart: "no"
