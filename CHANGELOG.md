@@ -1,4 +1,14 @@
 # Changelog
+## Unreleased
+
+- Update forms [DL-6612]
+
+### Deploy Notes
+
+```
+drc restart migrations && drc logs -ft --tail=200 migrations
+drc up -d enrich-submission
+```
 
 ## v1.47.0 (2025-10-30)
 
