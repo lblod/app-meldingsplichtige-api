@@ -1,5 +1,5 @@
 # Changelog
-## Unreleased
+## v1.48.0 (2025-11-07)
 
 - Update forms [DL-6988]
 
