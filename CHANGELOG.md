@@ -1,4 +1,6 @@
 # Changelog
+## v1.48.2 (2026-01-15)
+- Bufix [DL-7105]
 ## v1.48.1 (2026-01-15)
 - Ensure VGC workarounds are applied. [DL-7105]
 ## v1.48.0 (2025-11-07)
