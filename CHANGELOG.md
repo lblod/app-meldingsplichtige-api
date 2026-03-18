@@ -1,4 +1,23 @@
 # Changelog
+
+## Unreleased
+
+- New version of the `vendor-data-distribution-service` [DL-7231]
+
+### Deploy instrucations
+
+**For the new VDDS:**
+
+```
+drc up -d vendor-data-distribution
+```
+
+You could potentially start a healing process:
+
+```
+drc exec vendor-data-distribution-service curl -X POST 'http://localhost/heal'
+```
+
 ## v1.48.2 (2026-01-15)
 - Bufix [DL-7105]
 ## v1.48.1 (2026-01-15)
