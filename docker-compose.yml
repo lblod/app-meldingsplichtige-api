@@ -254,7 +254,7 @@ services:
     volumes:
       - ./config/sparql-authorization-wrapper:/config
   vendor-data-distribution:
-    image: lblod/vendor-data-distribution-service:1.7.1
+    image: lblod/vendor-data-distribution-service:2.0.0
     environment:
       LOGLEVEL: "error"
       WRITE_ERRORS: "true"
