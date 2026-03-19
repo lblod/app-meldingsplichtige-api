@@ -19,6 +19,7 @@
 @prefix cogs:    <http://vocab.deri.ie/cogs#> .
 @prefix osc:     <http://open-services.net/ns/core#> .
 @prefix task:    <http://redpencil.data.gift/vocabularies/tasks/> .
+@prefix eli:     <http://data.europa.eu/eli/ontology#> .
 
 # Extra prefixes for use in queries
 
