@@ -1,10 +1,10 @@
 # Changelog
 
-## Unreleased
+## v1.50.0 (2026-03-30)
 
 - New version of the `vendor-data-distribution-service` [DL-7231]
 
-### Deploy instrucations
+### Deploy instructions
 
 **For the new VDDS:**
 
