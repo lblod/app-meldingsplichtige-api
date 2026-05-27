@@ -36,7 +36,7 @@
 
 meb:Submission
   rdf:type vdds:Class ;
-  vdds:targetGraphQuery """
+  vdds:graphQuery """
     SELECT DISTINCT ?organisationUuid ?vendorUuid
     WHERE {
       ${subject}
@@ -49,6 +49,7 @@ meb:Submission
         mu:uuid ?organisationUuid .
     }
   """ ;
+  vdds:sourceGraphTemplate "http://mu.semte.ch/graphs/organizations/${organisationUuid}/LoketLB-toezichtGebruiker" ;
   vdds:targetGraphTemplate "http://mu.semte.ch/graphs/vendors/${vendorUuid}/${organisationUuid}" .
 
 ext:SubmissionDocument
@@ -92,7 +93,7 @@ eli:has_part
       adms:status <http://redpencil.data.gift/id/concept/JobStatus/failed> ;
       task:operation <http://lblod.data.gift/id/jobs/concept/JobOperation/harvestBericht> .
   """ ;
-  vdds:targetGraphQuery """
+  vdds:graphQuery """
     SELECT DISTINCT ?organisationUuid ?vendorUuid
     WHERE {
       ${subject}
@@ -105,6 +106,7 @@ eli:has_part
         mu:uuid ?organisationUuid .
     }
   """ ;
+  vdds:sourceGraphTemplate "http://mu.semte.ch/graphs/organizations/${organisationUuid}/LoketLB-toezichtGebruiker" ;
   vdds:targetGraphTemplate "http://mu.semte.ch/graphs/vendors/${vendorUuid}/${organisationUuid}" .
 
 osc:Error
@@ -126,7 +128,7 @@ task:error
       adms:status <http://redpencil.data.gift/id/concept/JobStatus/success> ;
       task:operation <http://lblod.data.gift/id/jobs/concept/JobOperation/harvestBericht> .
   """ ;
-  vdds:targetGraphQuery """
+  vdds:graphQuery """
     SELECT DISTINCT ?organisationUuid ?vendorUuid
     WHERE {
       ${subject}
@@ -139,6 +141,7 @@ task:error
         mu:uuid ?organisationUuid .
     }
   """ ;
+  vdds:sourceGraphTemplate "http://mu.semte.ch/graphs/organizations/${organisationUuid}/LoketLB-toezichtGebruiker" ;
   vdds:targetGraphTemplate "http://mu.semte.ch/graphs/vendors/${vendorUuid}/${organisationUuid}" .
 
 schema:Conversation
@@ -197,7 +200,7 @@ nie:dataSource
     ${subject}
       adms:status <http://data.lblod.info/id/status/berichtencentrum/sync-with-kalliope/delivered/confirmed> .
   """ ;
-  vdds:targetGraphQuery """
+  vdds:graphQuery """
     SELECT DISTINCT ?organisationUuid ?vendorUuid
     WHERE {
       ${subject} schema:recipient ?organisation .
@@ -210,6 +213,7 @@ nie:dataSource
         mu:uuid ?organisationUuid .
     }
   """ ;
+  vdds:sourceGraphTemplate "http://mu.semte.ch/graphs/organizations/${organisationUuid}/LoketLB-toezichtGebruiker" ;
   vdds:targetGraphTemplate "http://mu.semte.ch/graphs/vendors/${vendorUuid}/${organisationUuid}" .
 
 <RelConversationMessageKaliope>
@@ -234,7 +238,7 @@ nie:dataSource
     ${subject}
       ext:creator <https://github.com/lblod/frontend-loket> .
   """ ;
-  vdds:targetGraphQuery """
+  vdds:graphQuery """
     SELECT DISTINCT ?organisationUuid ?vendorUuid
     WHERE {
       ${subject}
@@ -246,6 +250,7 @@ nie:dataSource
         mu:uuid ?organisationUuid .
     }
   """ ;
+  vdds:sourceGraphTemplate "http://mu.semte.ch/graphs/organizations/${organisationUuid}/LoketLB-toezichtGebruiker" ;
   vdds:targetGraphTemplate "http://mu.semte.ch/graphs/vendors/${vendorUuid}/${organisationUuid}" .
 
 <RelConversationMessageLoket>
@@ -271,7 +276,7 @@ nie:dataSource
       ext:creator <https://github.com/lblod/frontend-loket> ;
       schema:sender <http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b> .
   """ ;
-  vdds:targetGraphQuery """
+  vdds:graphQuery """
     SELECT DISTINCT ?organisationUuid ?vendorUuid
     WHERE {
       ${subject}
@@ -283,6 +288,7 @@ nie:dataSource
         mu:uuid ?organisationUuid .
     }
   """ ;
+  vdds:sourceGraphTemplate "http://mu.semte.ch/graphs/organizations/${organisationUuid}/LoketLB-toezichtGebruiker" ;
   vdds:targetGraphTemplate "http://mu.semte.ch/graphs/vendors/${vendorUuid}/${organisationUuid}" .
 
 <RelConversationMessageLoketControle>
