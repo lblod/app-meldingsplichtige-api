@@ -42,11 +42,15 @@ meb:Submission
       ${subject}
         pav:createdBy ?organisation ;
         pav:providedBy ?vendor .
-      ?vendor
-        muAccount:canActOnBehalfOf ?organisation ;
-        mu:uuid ?vendorUuid .
       ?organisation
+        a besluit:Bestuurseenheid ;
         mu:uuid ?organisationUuid .
+      GRAPH <http://mu.semte.ch/graphs/automatic-submission> {
+        ?vendor
+          a foaf:Agent ;
+          muAccount:canActOnBehalfOf ?organisation ;
+          mu:uuid ?vendorUuid .
+      }
     }
   """ ;
   vdds:sourceGraphTemplate "http://mu.semte.ch/graphs/organizations/${organisationUuid}/LoketLB-toezichtGebruiker" ;
@@ -99,11 +103,14 @@ eli:has_part
       ${subject}
         schema:sender ?organisation ;
         pav:providedBy ?vendor .
-      ?vendor
-        muAccount:canActOnBehalfOf ?organisation ;
-        mu:uuid ?vendorUuid .
       ?organisation
         mu:uuid ?organisationUuid .
+      GRAPH <http://mu.semte.ch/graphs/automatic-submission> {
+        ?vendor
+          a foaf:Agent ;
+          muAccount:canActOnBehalfOf ?organisation ;
+          mu:uuid ?vendorUuid .
+      }
     }
   """ ;
   vdds:sourceGraphTemplate "http://mu.semte.ch/graphs/organizations/${organisationUuid}/LoketLB-toezichtGebruiker" ;
@@ -134,11 +141,14 @@ task:error
       ${subject}
         schema:sender ?organisation ;
         pav:providedBy ?vendor .
-      ?vendor
-        muAccount:canActOnBehalfOf ?organisation ;
-        mu:uuid ?vendorUuid .
       ?organisation
         mu:uuid ?organisationUuid .
+      GRAPH <http://mu.semte.ch/graphs/automatic-submission> {
+        ?vendor
+          a foaf:Agent ;
+          muAccount:canActOnBehalfOf ?organisation ;
+          mu:uuid ?vendorUuid .
+      }
     }
   """ ;
   vdds:sourceGraphTemplate "http://mu.semte.ch/graphs/organizations/${organisationUuid}/LoketLB-toezichtGebruiker" ;
@@ -204,13 +214,15 @@ nie:dataSource
     SELECT DISTINCT ?organisationUuid ?vendorUuid
     WHERE {
       ${subject} schema:recipient ?organisation .
-      ?vendor
-        a foaf:Agent ;
-        muAccount:canActOnBehalfOf ?organisation ;
-        mu:uuid ?vendorUuid .
       ?organisation
         a besluit:Bestuurseenheid ;
         mu:uuid ?organisationUuid .
+      GRAPH <http://mu.semte.ch/graphs/automatic-submission> {
+        ?vendor
+          a foaf:Agent ;
+          muAccount:canActOnBehalfOf ?organisation ;
+          mu:uuid ?vendorUuid .
+      }
     }
   """ ;
   vdds:sourceGraphTemplate "http://mu.semte.ch/graphs/organizations/${organisationUuid}/LoketLB-toezichtGebruiker" ;
@@ -243,11 +255,14 @@ nie:dataSource
     WHERE {
       ${subject}
         schema:sender ?organisation .
-      ?vendor
-        muAccount:canActOnBehalfOf ?organisation ;
-        mu:uuid ?vendorUuid .
       ?organisation
         mu:uuid ?organisationUuid .
+      GRAPH <http://mu.semte.ch/graphs/automatic-submission> {
+        ?vendor
+          a foaf:Agent ;
+          muAccount:canActOnBehalfOf ?organisation ;
+          mu:uuid ?vendorUuid .
+      }
     }
   """ ;
   vdds:sourceGraphTemplate "http://mu.semte.ch/graphs/organizations/${organisationUuid}/LoketLB-toezichtGebruiker" ;
@@ -281,11 +296,14 @@ nie:dataSource
     WHERE {
       ${subject}
         schema:recipient ?organisation .
-      ?vendor
-        muAccount:canActOnBehalfOf ?organisation ;
-        mu:uuid ?vendorUuid .
       ?organisation
         mu:uuid ?organisationUuid .
+      GRAPH <http://mu.semte.ch/graphs/automatic-submission> {
+        ?vendor
+          a foaf:Agent ;
+          muAccount:canActOnBehalfOf ?organisation ;
+          mu:uuid ?vendorUuid .
+      }
     }
   """ ;
   vdds:sourceGraphTemplate "http://mu.semte.ch/graphs/organizations/${organisationUuid}/LoketLB-toezichtGebruiker" ;
