@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.50.2 (2026-07-02)
+
+- VDDS: get vendor info from single graph
+
 ## v1.50.1 (2026-05-28)
 
 - New version of the `vendor-data-distribution-service` [DL-7378] for source
