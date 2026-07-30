@@ -1,4 +1,13 @@
 # Changelog
+## v1.52.0 (2026-07-30)
+ - bump vendor-login service [DL-7466]
+ - added restart directives
+
+### Deploy Notes
+```
+drc up -d
+```
+
 ## v1.51.0 (2026-07-14)
 
 - Update forms [DL-7470]
