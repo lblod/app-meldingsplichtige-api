@@ -5,6 +5,7 @@ services:
   dashboard:
     ports:
       - "82:80"
+    restart: "no"
   identifier:
     ports:
       - "80:80"
@@ -45,6 +46,8 @@ services:
   toezicht-flattened-form-data-generator:
     restart: "no"
   person-uri-for-social-security-number:
+    restart: "no"
+  clean-up-submission:
     restart: "no"
   mocklogin:
     restart: "no"

@@ -191,6 +191,10 @@ services:
     logging: *default-logging
   mocklogin:
     image: lblod/mock-login-service:0.4.0
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   job-controller:
     image: lblod/job-controller-service:1.0.0
     volumes:
@@ -248,7 +252,7 @@ services:
 # Vendor endpoint
 ##############################################################################
   vendor-login:
-    image: lblod/vendor-login-service:1.1.0
+    image: lblod/vendor-login-service:2.1.0
     labels:
       - "logging=true"
     restart: always
