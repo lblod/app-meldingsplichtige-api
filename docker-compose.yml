@@ -191,6 +191,10 @@ services:
     logging: *default-logging
   mocklogin:
     image: lblod/mock-login-service:0.4.0
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   job-controller:
     image: lblod/job-controller-service:1.0.0
     volumes:
@@ -249,10 +253,18 @@ services:
 ##############################################################################
   vendor-login:
     image: lblod/vendor-login-service:1.1.0
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   sparql-authorization-wrapper:
     image: lblod/sparql-authorization-wrapper-service:1.1.0
     volumes:
       - ./config/sparql-authorization-wrapper:/config
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   vendor-data-distribution:
     image: lblod/vendor-data-distribution-service:2.2.0
     environment:
