@@ -1,4 +1,12 @@
 # Changelog
+## v1.53.0 (2026-07-31)
+ - added explicit healtchecks [DL-7466]
+
+### Deploy Notes
+```
+drc restart dispatcher
+```
+
 ## v1.52.0 (2026-07-30)
  - bump vendor-login service [DL-7466]
  - added restart directives
