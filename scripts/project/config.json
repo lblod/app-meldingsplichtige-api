@@ -1,0 +1,19 @@
+{
+  "version": "0.1",
+  "scripts": [
+    {
+      "documentation": {
+        "command": "test-automatic-submission",
+        "description": "Smoke test: publish a besluitenlijst for gemeente Mechelen and follow the automatic submission flow",
+        "arguments": ["[vendor-uri]", "[vendor-key]"]
+      },
+      "environment": {
+        "image": "semtech/mu-javascript-template:1.9.1",
+        "interactive": true,
+        "join_networks": true,
+        "script": "test-automatic-submission/run.sh"
+      },
+      "mounts": { "app": "/data/app/" }
+    }
+  ]
+}
