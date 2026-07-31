@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <title>Besluitenlijst — Smoke test {{RUN_ID}}</title>
+</head>
+<body>
+<div vocab="http://data.vlaanderen.be/ns/besluit#" prefix="eli: http://data.europa.eu/eli/ontology# prov: http://www.w3.org/ns/prov# mandaat: http://data.vlaanderen.be/ns/mandaat# besluit: http://data.vlaanderen.be/ns/besluit# skos: http://www.w3.org/2004/02/skos/core# foaf: http://xmlns.com/foaf/0.1/ dct: http://purl.org/dc/terms/ xsd: http://www.w3.org/2001/XMLSchema#">
+
+  <div typeof="foaf:Document {{BESLUITENLIJST_TYPE}}" resource="{{DOC_URI}}">
+    <span property="dct:type" resource="{{BESLUITENLIJST_TYPE}}"></span>
+    <span property="eli:passed_by" resource="{{ORGAN_IN_TIJD}}"></span>
+    <span property="eli:date_publication" datatype="xsd:date" content="{{DATE_PUBLICATION}}"></span>
+
+    <div typeof="besluit:Zitting" resource="http://smoke.test.local/zittingen/{{RUN_ID}}">
+      <span property="besluit:heeftBesluitenlijst" typeof="foaf:Document" resource="{{DOC_URI}}"></span>
+      <span property="besluit:isGehoudenDoor" typeof="besluit:Bestuursorgaan" resource="{{ORGAN_IN_TIJD}}">
+        <span property="mandaat:isTijdspecialisatieVan" typeof="besluit:Bestuursorgaan" resource="{{ORGAN_ABSTRACT}}">
+          <span property="skos:prefLabel">{{ORGAN_LABEL}}</span>
+        </span>
+      </span>
+      <span property="besluit:geplandeStart" datatype="xsd:dateTime" content="{{ZITTING_GEPLANDE_START}}"></span>
+      <span property="prov:startedAtTime" datatype="xsd:dateTime" content="{{ZITTING_START}}"></span>
+      <span property="prov:endedAtTime" datatype="xsd:dateTime" content="{{ZITTING_END}}"></span>
+
+      <div property="besluit:behandelt" typeof="besluit:Agendapunt" resource="http://smoke.test.local/agendapunten/{{RUN_ID}}-1">
+        <span property="dct:title" datatype="xsd:string">{{AGENDAPUNT_TITLE}}</span>
+        <span property="besluit:geplandOpenbaar" datatype="xsd:boolean" content="true"></span>
+      </div>
+
+      <div typeof="besluit:BehandelingVanAgendapunt" resource="http://smoke.test.local/behandelingen-van-agendapunten/{{RUN_ID}}-1">
+        <span property="dct:subject" resource="http://smoke.test.local/agendapunten/{{RUN_ID}}-1"></span>
+        <span property="besluit:openbaar" datatype="xsd:boolean" content="true"></span>
+        <div property="prov:generated" typeof="besluit:Besluit" resource="http://smoke.test.local/besluiten/{{RUN_ID}}-1">
+          <span property="eli:title" datatype="xsd:string">{{BESLUIT_TITLE}}</span>
+          <span property="eli:description" datatype="xsd:string">{{BESLUIT_DESCRIPTION}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

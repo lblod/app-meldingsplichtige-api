@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "stub reached, args: $@"
+exec node /script/smoke.mjs "$@"
