@@ -6,8 +6,6 @@ import {
   ORGAN_LABEL,
 } from "./config.js";
 
-// Render the template by plain {{PLACEHOLDER}} substitution; assert nothing
-// unreplaced remains.
 export function renderTemplate(runId, derived, datumPublicatie) {
   const subs = {
     BESLUITENLIJST_TYPE: BESLUITENLIJST_TYPE,

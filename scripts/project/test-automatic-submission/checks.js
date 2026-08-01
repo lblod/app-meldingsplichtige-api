@@ -12,7 +12,9 @@ import {
 } from "./config.js";
 import { sparql, postJson } from "./sparql.js";
 
-// check collector: { id, label, ok, detail, ms }. Catches throws as ok:false.
+const mu = await import("/usr/src/app/helpers/mu/sparql.js");
+const { sparqlEscapeUri } = mu;
+
 export const checks = [];
 export async function check(id, label, fn) {
   const t0 = Date.now();
@@ -54,16 +56,16 @@ PREFIX task: <http://redpencil.data.gift/vocabularies/tasks/>
 SELECT ?dlStatus ?jobStatus ?submissionStatus ?sentDate ?formData
        (GROUP_CONCAT(DISTINCT CONCAT(STR(?taskIndex), "=", STR(?taskStatus)); separator=",") AS ?tasks)
 WHERE {
-  BIND(<${submissionUri}> AS ?submission)
+  BIND(${sparqlEscapeUri(submissionUri)} AS ?submission)
   ?job a cogs:Job ;
-       task:operation <${JOB_OPERATION}> ;
+       task:operation ${sparqlEscapeUri(JOB_OPERATION)} ;
        adms:status ?jobStatus ;
        prov:generated ?submission .
   ?submission adms:status ?submissionStatus .
   OPTIONAL { ?submission nmo:sentDate ?sentDate }
   OPTIONAL { ?submission prov:generated ?formData . ?formData a melding:FormData }
   OPTIONAL { ?task dct:isPartOf ?job ; task:index ?taskIndex ; adms:status ?taskStatus }
-  OPTIONAL { ?submission nie:hasPart ?rdo . ?rdo nie:url <${pageUrl}> ; adms:status ?dlStatus }
+  OPTIONAL { ?submission nie:hasPart ?rdo . ?rdo nie:url ${sparqlEscapeUri(pageUrl)} ; adms:status ?dlStatus }
 }
 GROUP BY ?dlStatus ?jobStatus ?submissionStatus ?sentDate ?formData`;
 }
@@ -75,13 +77,11 @@ PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX oslc: <http://open-services.net/ns/core#>
 PREFIX task: <http://redpencil.data.gift/vocabularies/tasks/>
 SELECT ?task ?op ?status ?msg WHERE {
-  ?task dct:isPartOf <${jobUri}> ; task:operation ?op ; adms:status ?status .
+  ?task dct:isPartOf ${sparqlEscapeUri(jobUri)} ; task:operation ?op ; adms:status ?status .
   OPTIONAL { ?task task:error ?err . ?err oslc:message ?msg }
 }`;
 }
 
-// Mirrors the enricher's own join (only absence is a verdict;
-// bindingEinde does NOT disqualify an organ).
 function organDiagnosticQuery() {
   return `
 PREFIX besluit:  <http://data.vlaanderen.be/ns/besluit#>
@@ -90,13 +90,13 @@ PREFIX skos:    <http://www.w3.org/2004/02/skos/core#>
 PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
 SELECT ?organ ?start ?einde WHERE {
   GRAPH <http://mu.semte.ch/graphs/public> {
-    <${ORGAN_ABSTRACT}> besluit:bestuurt <${ORG_UNIT}> ;
+    ${sparqlEscapeUri(ORGAN_ABSTRACT)} besluit:bestuurt ${sparqlEscapeUri(ORG_UNIT)} ;
                       skos:prefLabel ?abstractLabel ;
                       besluit:classificatie ?classificatie .
     ?classificatie skos:prefLabel ?classificatieLabel .
-    <${ORG_UNIT}> besluit:classificatie ?unitClassificatie .
+    ${sparqlEscapeUri(ORG_UNIT)} besluit:classificatie ?unitClassificatie .
     ?unitClassificatie skos:prefLabel ?unitClassificatieLabel .
-    ?organ mandaat:isTijdspecialisatieVan <${ORGAN_ABSTRACT}> ;
+    ?organ mandaat:isTijdspecialisatieVan ${sparqlEscapeUri(ORGAN_ABSTRACT)} ;
            mandaat:bindingStart ?start .
     OPTIONAL { ?organ mandaat:bindingEinde ?einde }
     FILTER NOT EXISTS { ?organ lblodlg:heeftBestuursfunctie ?lg }
@@ -112,14 +112,12 @@ SELECT ?s ?p ?o ?msg WHERE {
   GRAPH <http://mu.semte.ch/graphs/error> {
     ?s ?p ?o .
     OPTIONAL { ?s oslc:message ?msg }
-    FILTER(?s = <${jobUri}> || ?s = <${submissionUri}> ||
-           ?o = <${jobUri}> || ?o = <${submissionUri}>)
+    FILTER(?s = ${sparqlEscapeUri(jobUri)} || ?s = ${sparqlEscapeUri(submissionUri)} ||
+           ?o = ${sparqlEscapeUri(jobUri)} || ?o = ${sparqlEscapeUri(submissionUri)})
   }
 }`;
 }
 
-// Poll the job until it reaches success/failed or timeout. Returns the final
-// row plus a timeout flag.
 export async function pollJob(submissionUri, jobUri, pageUrl, pollInterval, pollTimeout) {
   const pollStart = Date.now();
   while (true) {
@@ -127,8 +125,7 @@ export async function pollJob(submissionUri, jobUri, pageUrl, pollInterval, poll
       return { pollFinal: null, pollTimedOut: true };
     }
     const rows = await sparql(pollQuery(submissionUri, jobUri, pageUrl));
-    if (rows && rows.error) {
-      // transient — keep polling
+      if (rows && rows.error) {
     } else if (Array.isArray(rows) && rows.length > 0) {
       const row = rows[0];
       const jobStatus = row.jobStatus ? row.jobStatus.value : null;
@@ -153,7 +150,6 @@ export async function collectDiagnostics(jobUri, submissionUri) {
   return diagnostics;
 }
 
-// Run all 5 checks. Returns { submissionUri, jobUri } on success path.
 export async function runChecks(
   runState,
   derived,
@@ -165,7 +161,6 @@ export async function runChecks(
   let submissionUri = null;
   let jobUri = null;
 
-  // Check 1 — POST /melding → 201 with uri/submission/job.
   await check(1, "melding accepted", async () => {
     const body = {
       organization: ORG_UNIT,
@@ -205,7 +200,6 @@ export async function runChecks(
     return res.status + " — submission " + submissionUri + ", job " + jobUri;
   });
 
-  // Checks 2–5 are meaningless without a job. Skip them if check 1 failed.
   if (!checks[checks.length - 1].ok) {
     for (let id = 2; id <= 5; id++) {
       pushSkippedCheck(id, CHECK_LABELS[id], "check 1 did not return 201");
@@ -217,12 +211,10 @@ export async function runChecks(
     submissionUri, jobUri, pageUrl, pollInterval, pollTimeout
   );
 
-  // Collect diagnostics if the job did not reach success.
   if (!pollFinal || pollFinal.jobStatus.value !== JOB_SUCCESS || pollTimedOut) {
     runState.diagnostics = await collectDiagnostics(jobUri, submissionUri);
   }
 
-  // Check 2 — RemoteDataObject reached download status success.
   await check(2, "publication downloaded", async () => {
     if (pollTimedOut) throw new Error("timed out before job finished");
     const dl = pollFinal.dlStatus ? pollFinal.dlStatus.value : null;
@@ -241,7 +233,6 @@ export async function runChecks(
     );
   });
 
-  // Check 3 — all 6 task indices 0–5 present and success.
   await check(3, "all tasks succeeded", async () => {
     if (pollTimedOut) throw new Error("timed out before job finished");
     const raw = pollFinal.tasks ? pollFinal.tasks.value : "";
@@ -269,7 +260,6 @@ export async function runChecks(
     return "6/6 success";
   });
 
-  // Check 4 — job reached success.
   await check(4, "job succeeded", async () => {
     if (pollTimedOut) throw new Error("timed out before job finished");
     const js = pollFinal.jobStatus ? pollFinal.jobStatus.value : null;
@@ -277,9 +267,6 @@ export async function runChecks(
     throw new Error("job status is " + (js || "<none>") + " (expected success)");
   });
 
-  // Check 5 — submission reached Verstuurd + sentDate + FormData.
-  // Skipped (not-applicable) when the user chose Concept: the flow keeps it
-  // Concept, validate never promotes it. Inzendbaar triggers the promotion.
   const usedConcept = input.statusChoice === "1";
   if (usedConcept) {
     pushSkippedCheck(5, "submission sent", "run used Concept status");
@@ -291,10 +278,8 @@ export async function runChecks(
     const ss = pollFinal.submissionStatus ? pollFinal.submissionStatus.value : null;
     const sentDate = pollFinal.sentDate ? pollFinal.sentDate.value : null;
     const formData = pollFinal.formData ? pollFinal.formData.value : null;
-    if (ss !== STATUS_VERSTUURD) {
-      // Most common cause: eli:passed_by points at an organ the enricher
-      // never puts in the meta concept scheme. Run the diagnostic.
-      let diag = "submission stayed " + (ss || "<none>") + " (expected Verstuurd)";
+        if (ss !== STATUS_VERSTUURD) {
+          let diag = "submission stayed " + (ss || "<none>") + " (expected Verstuurd)";
       let organs = null;
       let diagErr = null;
       try {

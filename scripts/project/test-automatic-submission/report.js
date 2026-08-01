@@ -13,17 +13,14 @@ function verdictLine(verdict, passed, total) {
   );
 }
 
-// Per-check console line, readable for someone who didn't write the test.
 function checkLine(c) {
   const tag = c.ok ? "ok  " : "FAIL";
   const idx = "[" + c.id + "/5]";
   const detail = c.detail || "";
   const ms = c.ms ? " " + c.ms + "ms" : "";
-  // Keep detail on one line; replace newlines so the verdict line stays last.
   return idx.padEnd(6) + " " + tag + "  " + c.label + " — " + detail + ms;
 }
 
-// Render diagnostics (task errors + error-graph rows) to readable lines.
 function diagnosticsLines(diagnostics) {
   const lines = [];
   if (diagnostics && diagnostics.tasks && diagnostics.tasks.length) {
@@ -47,8 +44,6 @@ function diagnosticsLines(diagnostics) {
   return lines;
 }
 
-// Print per-check lines, diagnostics, the verdict, and (on success) a hint to
-// verify the submission in the dashboard by logging in as the bestuurseenheid.
 export function report(checks, runState, startedAt) {
   const passed = checks.filter((c) => c.ok).length;
   const total = 5;
@@ -57,7 +52,6 @@ export function report(checks, runState, startedAt) {
   for (const c of checks) console.log(checkLine(c));
   for (const l of diagnosticsLines(runState.diagnostics)) console.log(l);
 
-  // The POST /melding response body — for backtracking the submission/job.
   if (runState.response && Object.keys(runState.response).length) {
     console.log("POST /melding response:");
     console.log("  status: " + runState.response.status);

@@ -47,12 +47,9 @@ async function promptValidated(rl, label, def, ok, hint) {
   }
 }
 
-// Collect vendor credentials (prompted or from args) and the submission status.
-// All other values use defaults — no prompting.
 export async function collectInput(argv, runId) {
   const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
   try {
-    // Production guard — this test submits a besluitenlijst into the real flow.
     console.log("");
     console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     console.log("!!  WARNING: this script submits a test submission into the   !!");
@@ -86,9 +83,6 @@ export async function collectInput(argv, runId) {
       vendorKey = await prompt(rl, "Vendor key", "");
     }
 
-    // The API accepts "concept" or "inzendbaar" on POST (see
-    // automatic-submission-service/jsonld-input.js). "Inzendbaar" triggers the
-    // full chain; validate then promotes the submission to "verstuurd".
     const statusChoice = await promptValidated(
       rl,
       "Status (1=Concept, 2=Inzendbaar)",
@@ -97,7 +91,6 @@ export async function collectInput(argv, runId) {
       "enter 1 or 2"
     );
 
-    // Defaults for everything else.
     const today = todayStr();
     return {
       vendorUri,

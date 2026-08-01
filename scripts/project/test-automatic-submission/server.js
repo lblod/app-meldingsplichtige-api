@@ -2,8 +2,6 @@ import http from "node:http";
 import os from "node:os";
 import { PAGE_PORT } from "./config.js";
 
-// Pick the single non-internal IPv4. The script container joins exactly one
-// compose network, so this should yield exactly one address.
 function pickOwnIp() {
   const ipv4s = [];
   for (const [, addrs] of Object.entries(os.networkInterfaces())) {
@@ -21,9 +19,6 @@ function pickOwnIp() {
   return ipv4s[0];
 }
 
-// Serve the rendered HTML from memory for the lifetime of the run. Returns
-// the URL download-url-service will fetch. Self-fetch proves the server
-// answers before the submission is posted.
 export async function startPageServer(html, docUri, runId) {
   const ownIp = pickOwnIp();
   const pageUrl =
