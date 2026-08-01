@@ -1,2 +1,2 @@
 #!/bin/bash
-exec node /script/smoke.mjs "$@"
+exec node /script/main.js "$@"
