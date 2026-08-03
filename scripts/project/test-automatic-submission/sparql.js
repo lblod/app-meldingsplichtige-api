@@ -5,6 +5,8 @@ export function sparqlEscapeUri(value) {
 }
 
 export async function sparql(query) {
+  console.log("SPARQL query:");
+  console.log(query);
   try {
     const res = await fetch(
       SPARQL_ENDPOINT + "?query=" + encodeURIComponent(query),
