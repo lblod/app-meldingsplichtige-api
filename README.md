@@ -58,7 +58,7 @@ Key: "my-super-secret-key"
 
 ## Smoke test the automatic submission flow
 
-A `mu script` is available to smoke-test the automatic submission flow end to
+A `mu script` is available to test the automatic submission flow end to
 end: it publishes a besluitenlijst for gemeente Mechelen, posts it, and follows
 the job to completion.
 
