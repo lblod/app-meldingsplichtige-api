@@ -66,16 +66,15 @@ the job to completion.
 mu script project-scripts test-automatic-submission
 ```
 
-It prompts for vendor credentials and the variable parts of the besluitenlijst.
-Pass the vendor URI and key as arguments to skip the first two prompts:
+It prompts for vendor credentials and a status (1=Concept, 2=Inzendbaar);
+all other besluitenlijst fields use defaults. Pass the vendor URI and key as
+arguments to skip the first two prompts:
 
 ```sh
 mu script project-scripts test-automatic-submission <vendor-uri> <vendor-key>
 ```
 
-Prerequisites: the stack is up, `docker compose up -d project-scripts` has been
-run once, and `jq` is on the host PATH. See
-`test-automatic-submission/plan.md` for the full design.
+Prerequisites: the stack is up.
 
 ## Technical flow
 
