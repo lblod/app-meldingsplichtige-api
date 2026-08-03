@@ -1,7 +1,5 @@
 import {
   ORG_UNIT,
-  ORGAN_ABSTRACT,
-  ORGAN_IN_TIJD,
   MELDING_ENDPOINT,
   JOB_SUCCESS,
   JOB_FAILED,
@@ -13,13 +11,22 @@ import {
   DOC_URI_BASE,
 } from "./config.js";
 import { sparql, postJson } from "./sparql.js";
-import { pollQuery, organDiagnosticQuery } from "./queries.js";
+import { pollQuery, tasksQuery, jobStatusQuery, submissionStatusQuery } from "./queries.js";
+
+const EXPECTED_OPS = [
+  ["register", "http://lblod.data.gift/id/jobs/concept/TaskOperation/register"],
+  ["download", "http://lblod.data.gift/id/jobs/concept/TaskOperation/download"],
+  ["import", "http://lblod.data.gift/id/jobs/concept/TaskOperation/import"],
+  ["enrich", "http://lblod.data.gift/id/jobs/concept/TaskOperation/enrich"],
+  ["validate", "http://lblod.data.gift/id/jobs/concept/TaskOperation/validate"],
+  ["form-data-generate", "http://lblod.data.gift/id/jobs/concept/TaskOperation/form-data-generate"],
+];
 
 export async function runChecks(runId, input, pageUrl, pollInterval, pollTimeout) {
   const r1 = await checkMeldingAccepted(runId, input, pageUrl);
   logCheck(1, "melding accepted", r1);
   if (!r1.ok) return;
-  const { submissionUri } = r1;
+  const { submissionUri, jobUri } = r1;
 
   const { pollFinal, pollTimedOut } = await pollJob(
     submissionUri, pageUrl, pollInterval, pollTimeout
@@ -28,10 +35,10 @@ export async function runChecks(runId, input, pageUrl, pollInterval, pollTimeout
   const r2 = checkPublicationDownloaded(pollFinal, pollTimedOut, pageUrl);
   logCheck(2, "publication downloaded", r2);
 
-  const r3 = checkAllTasksSucceeded(pollFinal, pollTimedOut);
+  const r3 = await checkAllTasksSucceeded(jobUri, pollTimedOut);
   logCheck(3, "all tasks succeeded", r3);
 
-  const r4 = checkJobSucceeded(pollFinal, pollTimedOut);
+  const r4 = await checkJobSucceeded(jobUri, pollTimedOut);
   logCheck(4, "job succeeded", r4);
 
   if (input.statusChoice === "1") {
@@ -39,7 +46,7 @@ export async function runChecks(runId, input, pageUrl, pollInterval, pollTimeout
     return;
   }
 
-  const r5 = await checkSubmissionSent(pollFinal, pollTimedOut);
+  const r5 = await checkSubmissionSent(submissionUri, pollTimedOut);
   logCheck(5, "submission sent", r5);
 }
 
@@ -62,13 +69,6 @@ async function pollJob(submissionUri, pageUrl, pollInterval, pollTimeout) {
     }
     await new Promise((r) => setTimeout(r, pollInterval));
   }
-}
-
-async function runOrganDiagnostic() {
-  const r = await sparql(organDiagnosticQuery());
-  if (r && r.error) throw new Error(r.error);
-  if (!Array.isArray(r)) return null;
-  return r;
 }
 
 function logCheck(id, label, r) {
@@ -117,6 +117,7 @@ async function checkMeldingAccepted(runId, input, pageUrl) {
       detail: res.status + " - submission " + submissionUri + ", job " + jobUri,
       ms: Date.now() - t0,
       submissionUri,
+      jobUri,
     };
   } catch (e) {
     return { ok: false, detail: e && e.message ? e.message : String(e), ms: Date.now() - t0 };
@@ -144,28 +145,26 @@ function checkPublicationDownloaded(pollFinal, pollTimedOut, pageUrl) {
   }
 }
 
-function checkAllTasksSucceeded(pollFinal, pollTimedOut) {
+async function checkAllTasksSucceeded(jobUri, pollTimedOut) {
   const t0 = Date.now();
   try {
     if (pollTimedOut) throw new Error("timed out before job finished");
-    const raw = pollFinal.tasks ? pollFinal.tasks.value : "";
-    const map = {};
-    if (raw) {
-      for (const part of raw.split(",")) {
-        const [idx, st] = part.split("=");
-        map[idx] = st;
-      }
+    const rows = await sparql(tasksQuery(jobUri));
+    if (rows && rows.error) throw new Error(rows.error);
+    if (!Array.isArray(rows)) throw new Error("task query returned no rows");
+    const statusByOp = {};
+    for (const row of rows) {
+      statusByOp[row.operation.value] = row.status.value;
     }
-    const opNames = ["register", "download", "import", "enrich", "validate", "form-data-generate"];
     const missing = [];
     const failed = [];
-    for (let i = 0; i < 6; i++) {
-      const st = map[String(i)];
-      if (!st) missing.push(i);
-      else if (st !== JOB_SUCCESS) failed.push(i + " (" + opNames[i] + ": " + st + ")");
+    for (const [name, uri] of EXPECTED_OPS) {
+      const st = statusByOp[uri];
+      if (!st) missing.push(name);
+      else if (st !== JOB_SUCCESS) failed.push(name + ": " + st.split("/").pop());
     }
     if (missing.length || failed.length) {
-      let detail = Object.keys(map).length + "/6 present";
+      let detail = rows.length + "/6 present";
       if (missing.length) detail += " - missing: " + missing.join(", ");
       if (failed.length) detail += " - failed: " + failed.join(", ");
       throw new Error(detail);
@@ -176,58 +175,34 @@ function checkAllTasksSucceeded(pollFinal, pollTimedOut) {
   }
 }
 
-function checkJobSucceeded(pollFinal, pollTimedOut) {
+async function checkJobSucceeded(jobUri, pollTimedOut) {
   const t0 = Date.now();
   try {
     if (pollTimedOut) throw new Error("timed out before job finished");
-    const js = pollFinal.jobStatus ? pollFinal.jobStatus.value : null;
+    const rows = await sparql(jobStatusQuery(jobUri));
+    if (rows && rows.error) throw new Error(rows.error);
+    if (!Array.isArray(rows) || rows.length === 0) throw new Error("job not found");
+    const js = rows[0].status.value;
     if (js === JOB_SUCCESS) return { ok: true, detail: "success", ms: Date.now() - t0 };
-    throw new Error("job status is " + (js || "<none>") + " (expected success)");
+    throw new Error("job status is " + js.split("/").pop() + " (expected success)");
   } catch (e) {
     return { ok: false, detail: e && e.message ? e.message : String(e), ms: Date.now() - t0 };
   }
 }
 
-async function checkSubmissionSent(pollFinal, pollTimedOut) {
+async function checkSubmissionSent(submissionUri, pollTimedOut) {
   const t0 = Date.now();
   try {
     if (pollTimedOut) throw new Error("timed out before job finished");
-    const ss = pollFinal.submissionStatus ? pollFinal.submissionStatus.value : null;
-    const sentDate = pollFinal.sentDate ? pollFinal.sentDate.value : null;
-    const formData = pollFinal.formData ? pollFinal.formData.value : null;
+    const rows = await sparql(submissionStatusQuery(submissionUri));
+    if (rows && rows.error) throw new Error(rows.error);
+    if (!Array.isArray(rows) || rows.length === 0) throw new Error("submission not found");
+    const row = rows[0];
+    const ss = row.status.value;
+    const sentDate = row.sentDate ? row.sentDate.value : null;
+    const formData = row.formData ? row.formData.value : null;
     if (ss !== STATUS_VERSTUURD) {
-      let diag = "submission stayed " + (ss || "<none>") + " (expected Verstuurd)";
-      let organs = null;
-      let diagErr = null;
-      try {
-        organs = await runOrganDiagnostic();
-      } catch (e) {
-        diagErr = e && e.message ? e.message : String(e);
-      }
-      if (diagErr) {
-        diag += " - organ diagnostic query failed: " + diagErr;
-      } else if (organs === null) {
-        diag += " - organ diagnostic returned no rows";
-      } else {
-        const used = ORGAN_IN_TIJD;
-        const found = organs.some((r) => r.organ && r.organ.value === used);
-        if (!found) {
-          diag +=
-            " - eli:passed_by points at " + used + ", an organ the enricher " +
-            "never puts in the meta concept scheme; validation cannot pass. " +
-            "Actual tijdspecialisaties of " + ORGAN_ABSTRACT + ": " +
-            (organs.length
-              ? organs
-                  .map((r) =>
-                    r.organ ? r.organ.value + " (start " + (r.start ? r.start.value : "?") + ")" : "?"
-                  )
-                  .join("; ")
-              : "(none)");
-        } else {
-          diag += " - organ " + used + " is in the concept scheme; check the RDFa template.";
-        }
-      }
-      throw new Error(diag);
+      throw new Error("submission stayed " + ss.split("/").pop() + " (expected Verstuurd)");
     }
     if (!sentDate) throw new Error("Verstuurd but nmo:sentDate is missing");
     if (!formData) throw new Error("Verstuurd but no melding:FormData");
