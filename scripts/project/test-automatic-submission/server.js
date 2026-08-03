@@ -2,6 +2,13 @@ import http from "node:http";
 import os from "node:os";
 import { PAGE_PORT } from "./config.js";
 
+// The automatic submission flow starts with POST /melding pointing at a public
+// URL. download-url-service then fetches that URL and harvests the RDFa inside.
+// For a test we don't have a real publication server, so this container serves
+// the rendered besluitenlijst HTML on its own IP and hands that URL to the flow.
+// The URL must be reachable from other containers on the same docker network,
+// hence we bind 0.0.0.0 and use the container's non-internal IPv4 (not localhost).
+
 function pickOwnIp() {
   const ipv4s = [];
   for (const [, addrs] of Object.entries(os.networkInterfaces())) {
@@ -30,6 +37,10 @@ export async function startPageServer(html, docUri, runId) {
   });
   await new Promise((r) => server.listen(PAGE_PORT, "0.0.0.0", r));
 
+  // Self-fetch before returning: confirms the page is actually reachable at
+  // the URL we're about to hand to download-url-service, and that the rendered
+  // HTML contains the docUri we expect. Catches wiring mistakes early instead
+  // of letting the job time out ~96s into the download step.
   const selfRes = await fetch(pageUrl);
   const selfBody = await selfRes.text();
   if (selfRes.status !== 200) {
