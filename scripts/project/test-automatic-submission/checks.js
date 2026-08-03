@@ -15,6 +15,35 @@ import {
 import { sparql, postJson } from "./sparql.js";
 import { pollQuery, organDiagnosticQuery } from "./queries.js";
 
+export async function runChecks(runId, input, pageUrl, pollInterval, pollTimeout) {
+  const r1 = await checkMeldingAccepted(runId, input, pageUrl);
+  logCheck(1, "melding accepted", r1);
+  if (!r1.ok) return;
+  const { submissionUri } = r1;
+
+  const { pollFinal, pollTimedOut } = await pollJob(
+    submissionUri, pageUrl, pollInterval, pollTimeout
+  );
+
+  const r2 = checkPublicationDownloaded(pollFinal, pollTimedOut, pageUrl);
+  logCheck(2, "publication downloaded", r2);
+
+  const r3 = checkAllTasksSucceeded(pollFinal, pollTimedOut);
+  logCheck(3, "all tasks succeeded", r3);
+
+  const r4 = checkJobSucceeded(pollFinal, pollTimedOut);
+  logCheck(4, "job succeeded", r4);
+
+  if (input.statusChoice === "1") {
+    logCheck(5, "submission sent", { ok: false, detail: "skipped - run used Concept status", ms: 0 });
+    return;
+  }
+
+  const r5 = await checkSubmissionSent(pollFinal, pollTimedOut);
+  logCheck(5, "submission sent", r5);
+}
+
+// --------------------------------------------------------------- HELPERS
 async function pollJob(submissionUri, pageUrl, pollInterval, pollTimeout) {
   const pollStart = Date.now();
   while (true) {
@@ -210,32 +239,4 @@ async function checkSubmissionSent(pollFinal, pollTimedOut) {
   } catch (e) {
     return { ok: false, detail: e && e.message ? e.message : String(e), ms: Date.now() - t0 };
   }
-}
-
-export async function runChecks(runId, input, pageUrl, pollInterval, pollTimeout) {
-  const r1 = await checkMeldingAccepted(runId, input, pageUrl);
-  logCheck(1, "melding accepted", r1);
-  if (!r1.ok) return;
-  const { submissionUri } = r1;
-
-  const { pollFinal, pollTimedOut } = await pollJob(
-    submissionUri, pageUrl, pollInterval, pollTimeout
-  );
-
-  const r2 = checkPublicationDownloaded(pollFinal, pollTimedOut, pageUrl);
-  logCheck(2, "publication downloaded", r2);
-
-  const r3 = checkAllTasksSucceeded(pollFinal, pollTimedOut);
-  logCheck(3, "all tasks succeeded", r3);
-
-  const r4 = checkJobSucceeded(pollFinal, pollTimedOut);
-  logCheck(4, "job succeeded", r4);
-
-  if (input.statusChoice === "1") {
-    logCheck(5, "submission sent", { ok: false, detail: "skipped - run used Concept status", ms: 0 });
-    return;
-  }
-
-  const r5 = await checkSubmissionSent(pollFinal, pollTimedOut);
-  logCheck(5, "submission sent", r5);
 }
