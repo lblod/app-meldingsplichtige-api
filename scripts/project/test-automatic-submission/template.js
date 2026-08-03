@@ -7,27 +7,27 @@ import {
   DOC_URI_BASE,
 } from "./config.js";
 
-function todayStr() {
-  const d = new Date();
-  const p = (n) => String(n).padStart(2, "0");
-  return d.getFullYear() + "-" + p(d.getMonth() + 1) + "-" + p(d.getDate());
+function todayString() {
+  const date = new Date();
+  const pad = (number) => String(number).padStart(2, "0");
+  return date.getFullYear() + "-" + pad(date.getMonth() + 1) + "-" + pad(date.getDate());
 }
 
-function dateTime(dateStr, h, m, s, ms) {
+function toDateTime(dateString, hours, minutes, seconds, milliseconds) {
   return (
-    dateStr +
+    dateString +
     "T" +
-    String(h).padStart(2, "0") + ":" +
-    String(m).padStart(2, "0") + ":" +
-    String(s).padStart(2, "0") + "." +
-    String(ms).padStart(3, "0") + "Z"
+    String(hours).padStart(2, "0") + ":" +
+    String(minutes).padStart(2, "0") + ":" +
+    String(seconds).padStart(2, "0") + "." +
+    String(milliseconds).padStart(3, "0") + "Z"
   );
 }
 
 export function renderTemplate(runId) {
   const docUri = DOC_URI_BASE + runId;
-  const today = todayStr();
-  const subs = {
+  const today = todayString();
+  const substitutions = {
     BESLUITENLIJST_TYPE,
     RUN_ID: runId,
     DOC_URI: docUri,
@@ -35,17 +35,17 @@ export function renderTemplate(runId) {
     ORGAN_ABSTRACT,
     ORGAN_LABEL,
     DATE_PUBLICATION: today,
-    ZITTING_GEPLANDE_START: dateTime(today, 18, 0, 0, 0),
-    ZITTING_START: dateTime(today, 18, 5, 0, 0),
-    ZITTING_END: dateTime(today, 20, 0, 0, 0),
+    ZITTING_GEPLANDE_START: toDateTime(today, 18, 0, 0, 0),
+    ZITTING_START: toDateTime(today, 18, 5, 0, 0),
+    ZITTING_END: toDateTime(today, 20, 0, 0, 0),
     AGENDAPUNT_TITLE: "Test agendapunt " + runId,
     BESLUIT_TITLE: "Test besluit " + runId,
     BESLUIT_DESCRIPTION: "Beschrijving van Test besluit " + runId + ".",
   };
-  const tpl = fs.readFileSync("/script/besluitenlijst.template.html", "utf8");
-  let html = tpl;
-  for (const [k, v] of Object.entries(subs)) {
-    html = html.split("{{" + k + "}}").join(v);
+  const template = fs.readFileSync("/script/besluitenlijst.template.html", "utf8");
+  let html = template;
+  for (const [placeholder, value] of Object.entries(substitutions)) {
+    html = html.split("{{" + placeholder + "}}").join(value);
   }
   if (html.indexOf("{{") !== -1) {
     throw new Error("unreplaced {{...}} remains in rendered HTML - check template placeholders");

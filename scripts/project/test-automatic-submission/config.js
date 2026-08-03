@@ -28,6 +28,43 @@ export const DL_FAILURE = "http://lblod.data.gift/file-download-statuses/failure
 export const JOB_OPERATION =
   "http://lblod.data.gift/id/jobs/concept/JobOperation/automaticSubmissionFlow";
 
+export const TASK_REGISTER = "http://lblod.data.gift/id/jobs/concept/TaskOperation/register";
+export const TASK_DOWNLOAD = "http://lblod.data.gift/id/jobs/concept/TaskOperation/download";
+export const TASK_IMPORT = "http://lblod.data.gift/id/jobs/concept/TaskOperation/import";
+export const TASK_ENRICH = "http://lblod.data.gift/id/jobs/concept/TaskOperation/enrich";
+export const TASK_VALIDATE = "http://lblod.data.gift/id/jobs/concept/TaskOperation/validate";
+export const TASK_FORM_DATA_GENERATE = "http://lblod.data.gift/id/jobs/concept/TaskOperation/form-data-generate";
+
+export const TASK_OPS = [
+  TASK_REGISTER,
+  TASK_DOWNLOAD,
+  TASK_IMPORT,
+  TASK_ENRICH,
+  TASK_VALIDATE,
+  TASK_FORM_DATA_GENERATE,
+];
+
+export const LABELS = {
+  [JOB_SUCCESS]: "success",
+  [JOB_FAILED]: "failed",
+  [STATUS_CONCEPT]: "concept",
+  [STATUS_INZENDBAAR]: "inzendbaar",
+  [STATUS_VERSTUURD]: "verstuurd",
+  [DL_SUCCESS]: "success",
+  [DL_FAILURE]: "failure",
+  [JOB_OPERATION]: "automaticSubmissionFlow",
+  [TASK_REGISTER]: "register",
+  [TASK_DOWNLOAD]: "download",
+  [TASK_IMPORT]: "import",
+  [TASK_ENRICH]: "enrich",
+  [TASK_VALIDATE]: "validate",
+  [TASK_FORM_DATA_GENERATE]: "form-data-generate",
+  "http://redpencil.data.gift/id/concept/JobStatus/scheduled": "scheduled",
+  "http://redpencil.data.gift/id/concept/JobStatus/busy": "busy",
+  "http://lblod.data.gift/file-download-statuses/ready-to-be-cached": "ready-to-be-cached",
+  "http://lblod.data.gift/file-download-statuses/ongoing": "ongoing",
+};
+
 export const DOC_URI_BASE = "http://test.local/besluitenlijsten/";
 export const PAGE_PORT = 8888;
 export const POLL_INTERVAL = 2000;

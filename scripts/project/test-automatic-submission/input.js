@@ -1,32 +1,32 @@
 import readline from "node:readline/promises";
 
-async function prompt(rl, label, def) {
-  const suffix = def === "" || def == null ? "" : " [" + def + "]";
+async function prompt(reader, label, defaultValue) {
+  const suffix = defaultValue === "" || defaultValue == null ? "" : " [" + defaultValue + "]";
   while (true) {
-    const raw = (await rl.question(label + suffix + ": ")).trim();
-    const val = raw === "" ? def : raw;
-    if (val == null || val === "") {
+    const raw = (await reader.question(label + suffix + ": ")).trim();
+    const value = raw === "" ? defaultValue : raw;
+    if (value == null || value === "") {
       console.error("  required, try again");
       continue;
     }
-    return val;
+    return value;
   }
 }
 
-async function promptValidated(rl, label, def, ok, hint) {
+async function promptValidated(reader, label, defaultValue, isValid, hint) {
   while (true) {
-    const raw = (await rl.question(label + " [" + def + "]: ")).trim();
-    const val = raw === "" ? def : raw;
-    if (!ok(val)) {
+    const raw = (await reader.question(label + " [" + defaultValue + "]: ")).trim();
+    const value = raw === "" ? defaultValue : raw;
+    if (!isValid(value)) {
       console.error("  " + hint);
       continue;
     }
-    return val;
+    return value;
   }
 }
 
 export async function collectInput(argv) {
-  const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+  const reader = readline.createInterface({ input: process.stdin, output: process.stdout });
   try {
     console.log("");
     console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
@@ -35,7 +35,7 @@ export async function collectInput(argv) {
     console.log("!!  DO NOT run this against a production stack.               !!");
     console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     console.log("");
-    const safety = (await rl.question("Are you in production? [yes/NO] ")).trim();
+    const safety = (await reader.question("Are you in production? [yes/NO] ")).trim();
     if (safety !== "NO" && safety !== "") {
       console.log("Aborting - this script is not safe for production. It's a CAPS NO.");
       process.exit(0);
@@ -47,10 +47,10 @@ export async function collectInput(argv) {
       console.log("Vendor URI: " + vendorUri + " (from arg)");
     } else {
       vendorUri = await promptValidated(
-        rl,
+        reader,
         "Vendor URI",
         "",
-        (v) => { try { new URL(v); return true; } catch (e) { return false; } },
+        (value) => { try { new URL(value); return true; } catch (error) { return false; } },
         "must be a valid URL"
       );
     }
@@ -58,19 +58,19 @@ export async function collectInput(argv) {
       vendorKey = argv[1];
       console.log("Vendor key: <from arg>");
     } else {
-      vendorKey = await prompt(rl, "Vendor key", "");
+      vendorKey = await prompt(reader, "Vendor key", "");
     }
 
     const statusChoice = await promptValidated(
-      rl,
+      reader,
       "Status (1=Concept, 2=Inzendbaar)",
       "1",
-      (v) => v === "1" || v === "2",
+      (value) => value === "1" || value === "2",
       "enter 1 or 2"
     );
 
     return { vendorUri, vendorKey, statusChoice };
   } finally {
-    rl.close();
+    reader.close();
   }
 }

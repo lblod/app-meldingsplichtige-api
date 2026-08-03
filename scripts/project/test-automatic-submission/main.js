@@ -20,10 +20,10 @@ try {
   console.log("page server listening at " + started.pageUrl);
 
   await runChecks(runId, input, started.pageUrl, POLL_INTERVAL, POLL_TIMEOUT);
-} catch (e) {
-  console.error("FATAL: " + (e && e.stack ? e.stack : e));
+} catch (error) {
+  console.error("FATAL: " + (error && error.stack ? error.stack : error));
 } finally {
-  if (server) try { server.close(); } catch (e) {}
+  if (server) try { server.close(); } catch (closeError) {}
 }
 
 console.log("Automatic submission test run " + runId + " - please check logs to see how it went.");

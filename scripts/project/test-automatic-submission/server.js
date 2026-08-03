@@ -11,9 +11,9 @@ import { PAGE_PORT } from "./config.js";
 
 function pickOwnIp() {
   const ipv4s = [];
-  for (const [, addrs] of Object.entries(os.networkInterfaces())) {
-    for (const a of addrs) {
-      if (a.family === "IPv4" && !a.internal) ipv4s.push(a.address);
+  for (const [, addresses] of Object.entries(os.networkInterfaces())) {
+    for (const address of addresses) {
+      if (address.family === "IPv4" && !address.internal) ipv4s.push(address.address);
     }
   }
   if (ipv4s.length !== 1) {
@@ -31,20 +31,20 @@ export async function startPageServer(html, docUri, runId) {
   const pageUrl =
     "http://" + ownIp + ":" + PAGE_PORT + "/besluitenlijst-" + runId + ".html";
 
-  const server = http.createServer((req, res) => {
-    res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
-    res.end(html);
+  const server = http.createServer((request, response) => {
+    response.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+    response.end(html);
   });
-  await new Promise((r) => server.listen(PAGE_PORT, "0.0.0.0", r));
+  await new Promise((resolve) => server.listen(PAGE_PORT, "0.0.0.0", resolve));
 
   // Self-fetch before returning: confirms the page is actually reachable at
   // the URL we're about to hand to download-url-service, and that the rendered
   // HTML contains the docUri we expect. Catches wiring mistakes early instead
   // of letting the job time out ~96s into the download step.
-  const selfRes = await fetch(pageUrl);
-  const selfBody = await selfRes.text();
-  if (selfRes.status !== 200) {
-    throw new Error("page server self-fetch returned " + selfRes.status + " (expected 200)");
+  const selfResponse = await fetch(pageUrl);
+  const selfBody = await selfResponse.text();
+  if (selfResponse.status !== 200) {
+    throw new Error("page server self-fetch returned " + selfResponse.status + " (expected 200)");
   }
   if (selfBody.indexOf(docUri) === -1) {
     throw new Error("page server self-fetch body does not contain docUri " + docUri);

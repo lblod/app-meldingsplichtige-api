@@ -9,45 +9,38 @@ import {
   DL_SUCCESS,
   DL_FAILURE,
   DOC_URI_BASE,
+  LABELS,
+  TASK_OPS,
 } from "./config.js";
 import { sparql, postJson } from "./sparql.js";
 import { pollQuery, tasksQuery, jobStatusQuery, submissionStatusQuery } from "./queries.js";
 
-const EXPECTED_OPS = [
-  ["register", "http://lblod.data.gift/id/jobs/concept/TaskOperation/register"],
-  ["download", "http://lblod.data.gift/id/jobs/concept/TaskOperation/download"],
-  ["import", "http://lblod.data.gift/id/jobs/concept/TaskOperation/import"],
-  ["enrich", "http://lblod.data.gift/id/jobs/concept/TaskOperation/enrich"],
-  ["validate", "http://lblod.data.gift/id/jobs/concept/TaskOperation/validate"],
-  ["form-data-generate", "http://lblod.data.gift/id/jobs/concept/TaskOperation/form-data-generate"],
-];
-
 export async function runChecks(runId, input, pageUrl, pollInterval, pollTimeout) {
-  const r1 = await checkMeldingAccepted(runId, input, pageUrl);
-  logCheck(1, "melding accepted", r1);
-  if (!r1.ok) return;
-  const { submissionUri, jobUri } = r1;
+  const meldingResult = await checkMeldingAccepted(runId, input, pageUrl);
+  logCheck(1, "melding accepted", meldingResult);
+  if (!meldingResult.ok) return;
+  const { submissionUri, jobUri } = meldingResult;
 
   const { pollFinal, pollTimedOut } = await pollJob(
     submissionUri, pageUrl, pollInterval, pollTimeout
   );
 
-  const r2 = checkPublicationDownloaded(pollFinal, pollTimedOut, pageUrl);
-  logCheck(2, "publication downloaded", r2);
+  const downloadResult = checkPublicationDownloaded(pollFinal, pollTimedOut, pageUrl);
+  logCheck(2, "publication downloaded", downloadResult);
 
-  const r3 = await checkAllTasksSucceeded(jobUri, pollTimedOut);
-  logCheck(3, "all tasks succeeded", r3);
+  const tasksResult = await checkAllTasksSucceeded(jobUri, pollTimedOut);
+  logCheck(3, "all tasks succeeded", tasksResult);
 
-  const r4 = await checkJobSucceeded(jobUri, pollTimedOut);
-  logCheck(4, "job succeeded", r4);
+  const jobResult = await checkJobSucceeded(jobUri, pollTimedOut);
+  logCheck(4, "job succeeded", jobResult);
 
   if (input.statusChoice === "1") {
     logCheck(5, "submission sent", { ok: false, detail: "skipped - run used Concept status", ms: 0 });
     return;
   }
 
-  const r5 = await checkSubmissionSent(submissionUri, pollTimedOut);
-  logCheck(5, "submission sent", r5);
+  const submissionResult = await checkSubmissionSent(submissionUri, pollTimedOut);
+  logCheck(5, "submission sent", submissionResult);
 }
 
 // --------------------------------------------------------------- HELPERS
@@ -67,18 +60,18 @@ async function pollJob(submissionUri, pageUrl, pollInterval, pollTimeout) {
         return { pollFinal: row, pollTimedOut: false };
       }
     }
-    await new Promise((r) => setTimeout(r, pollInterval));
+    await new Promise((resolve) => setTimeout(resolve, pollInterval));
   }
 }
 
-function logCheck(id, label, r) {
-  const tag = r.ok ? "ok  " : "FAIL";
-  const ms = r.ms ? " " + r.ms + "ms" : "";
-  console.log("[" + id + "/5] " + tag + "  " + label + " - " + (r.detail || "") + ms);
+function logCheck(id, label, result) {
+  const tag = result.ok ? "ok  " : "FAIL";
+  const elapsed = result.ms ? " " + result.ms + "ms" : "";
+  console.log("[" + id + "/5] " + tag + "  " + label + " - " + (result.detail || "") + elapsed);
 }
 
 async function checkMeldingAccepted(runId, input, pageUrl) {
-  const t0 = Date.now();
+  const startTime = Date.now();
   try {
     const body = {
       organization: ORG_UNIT,
@@ -87,131 +80,130 @@ async function checkMeldingAccepted(runId, input, pageUrl) {
       status: input.statusChoice === "1" ? STATUS_CONCEPT : STATUS_INZENDBAAR,
       publisher: { uri: input.vendorUri, key: input.vendorKey },
     };
-    const res = await postJson(MELDING_ENDPOINT, body);
-    if (res.status !== 201) {
-      let detail = "expected 201, got " + res.status;
-      if (res.status === 401) {
+    const response = await postJson(MELDING_ENDPOINT, body);
+    if (response.status !== 201) {
+      let detail = "expected 201, got " + response.status;
+      if (response.status === 401) {
         detail +=
           " - vendor not authorised: no match for this URI + key + organization in " +
           "GRAPH <http://mu.semte.ch/graphs/automatic-submission>";
       }
-      if (res.status === 400 && res.body && typeof res.body === "object") {
-        const b = JSON.stringify(res.body);
-        if (b.indexOf("publisher") !== -1) {
+      if (response.status === 400 && response.body && typeof response.body === "object") {
+        const bodyString = JSON.stringify(response.body);
+        if (bodyString.indexOf("publisher") !== -1) {
           detail +=
             " - 400 mentions 'publisher': check that publisher is an object " +
             "{uri,key}, not a bare string";
         }
       }
-      if (res.body) detail += " - body: " + JSON.stringify(res.body);
+      if (response.body) detail += " - body: " + JSON.stringify(response.body);
       throw new Error(detail);
     }
-    const b = res.body || {};
-    const submissionUri = b.submission || b.uri;
-    const jobUri = b.job;
+    const responseBody = response.body || {};
+    const submissionUri = responseBody.submission || responseBody.uri;
+    const jobUri = responseBody.job;
     if (!submissionUri || !jobUri) {
-      throw new Error("201 but missing uri/submission/job: " + JSON.stringify(b));
+      throw new Error("201 but missing uri/submission/job: " + JSON.stringify(responseBody));
     }
     return {
       ok: true,
-      detail: res.status + " - submission " + submissionUri + ", job " + jobUri,
-      ms: Date.now() - t0,
+      detail: response.status + " - submission " + submissionUri + ", job " + jobUri,
+      ms: Date.now() - startTime,
       submissionUri,
       jobUri,
     };
-  } catch (e) {
-    return { ok: false, detail: e && e.message ? e.message : String(e), ms: Date.now() - t0 };
+  } catch (error) {
+    return { ok: false, detail: error && error.message ? error.message : String(error), ms: Date.now() - startTime };
   }
 }
 
 function checkPublicationDownloaded(pollFinal, pollTimedOut, pageUrl) {
-  const t0 = Date.now();
+  const startTime = Date.now();
   try {
     if (pollTimedOut) throw new Error("timed out before job finished");
-    const dl = pollFinal.dlStatus ? pollFinal.dlStatus.value : null;
-    if (dl === DL_SUCCESS) return { ok: true, detail: "success", ms: Date.now() - t0 };
-    if (dl === DL_FAILURE) {
+    const downloadStatus = pollFinal.dlStatus ? pollFinal.dlStatus.value : null;
+    if (downloadStatus === DL_SUCCESS) return { ok: true, detail: "success", ms: Date.now() - startTime };
+    if (downloadStatus === DL_FAILURE) {
       throw new Error(
         "download-url-service could not fetch " + pageUrl +
           " - the script's page server was unreachable"
       );
     }
     throw new Error(
-      "download status is " + (dl || "<none>") +
+      "download status is " + (downloadStatus || "<none>") +
         " (expected success); job may not have reached the download step"
     );
-  } catch (e) {
-    return { ok: false, detail: e && e.message ? e.message : String(e), ms: Date.now() - t0 };
+  } catch (error) {
+    return { ok: false, detail: error && error.message ? error.message : String(error), ms: Date.now() - startTime };
   }
 }
 
 async function checkAllTasksSucceeded(jobUri, pollTimedOut) {
-  const t0 = Date.now();
+  const startTime = Date.now();
   try {
     if (pollTimedOut) throw new Error("timed out before job finished");
     const rows = await sparql(tasksQuery(jobUri));
     if (rows && rows.error) throw new Error(rows.error);
     if (!Array.isArray(rows)) throw new Error("task query returned no rows");
-    const statusByOp = {};
-    for (const row of rows) {
-      statusByOp[row.operation.value] = row.status.value;
-    }
+    const statusByOperation = new Map(rows.map((row) => [row.operation.value, row.status.value]));
     const missing = [];
     const failed = [];
-    for (const [name, uri] of EXPECTED_OPS) {
-      const st = statusByOp[uri];
-      if (!st) missing.push(name);
-      else if (st !== JOB_SUCCESS) failed.push(name + ": " + st.split("/").pop());
+    for (const operationUri of TASK_OPS) {
+      const statusUri = statusByOperation.get(operationUri);
+      if (!statusUri) missing.push(LABELS[operationUri] || operationUri);
+      else if (statusUri !== JOB_SUCCESS) {
+        failed.push((LABELS[operationUri] || operationUri) + ": " + (LABELS[statusUri] || statusUri));
+      }
     }
     if (missing.length || failed.length) {
-      let detail = rows.length + "/6 present";
-      if (missing.length) detail += " - missing: " + missing.join(", ");
-      if (failed.length) detail += " - failed: " + failed.join(", ");
-      throw new Error(detail);
+      const parts = [rows.length + "/6 present"];
+      if (missing.length) parts.push("missing: " + missing.join(", "));
+      if (failed.length) parts.push("failed: " + failed.join(", "));
+      throw new Error(parts.join(" - "));
     }
-    return { ok: true, detail: "6/6 success", ms: Date.now() - t0 };
-  } catch (e) {
-    return { ok: false, detail: e && e.message ? e.message : String(e), ms: Date.now() - t0 };
+    return { ok: true, detail: "6/6 success", ms: Date.now() - startTime };
+  } catch (error) {
+    return { ok: false, detail: error && error.message ? error.message : String(error), ms: Date.now() - startTime };
   }
 }
 
 async function checkJobSucceeded(jobUri, pollTimedOut) {
-  const t0 = Date.now();
+  const startTime = Date.now();
   try {
     if (pollTimedOut) throw new Error("timed out before job finished");
     const rows = await sparql(jobStatusQuery(jobUri));
     if (rows && rows.error) throw new Error(rows.error);
     if (!Array.isArray(rows) || rows.length === 0) throw new Error("job not found");
-    const js = rows[0].status.value;
-    if (js === JOB_SUCCESS) return { ok: true, detail: "success", ms: Date.now() - t0 };
-    throw new Error("job status is " + js.split("/").pop() + " (expected success)");
-  } catch (e) {
-    return { ok: false, detail: e && e.message ? e.message : String(e), ms: Date.now() - t0 };
+    const jobStatusUri = rows[0].status.value;
+    if (jobStatusUri === JOB_SUCCESS) return { ok: true, detail: "success", ms: Date.now() - startTime };
+    throw new Error("job status is " + (LABELS[jobStatusUri] || jobStatusUri) + " (expected success)");
+  } catch (error) {
+    return { ok: false, detail: error && error.message ? error.message : String(error), ms: Date.now() - startTime };
   }
 }
 
 async function checkSubmissionSent(submissionUri, pollTimedOut) {
-  const t0 = Date.now();
+  const startTime = Date.now();
   try {
     if (pollTimedOut) throw new Error("timed out before job finished");
     const rows = await sparql(submissionStatusQuery(submissionUri));
     if (rows && rows.error) throw new Error(rows.error);
     if (!Array.isArray(rows) || rows.length === 0) throw new Error("submission not found");
     const row = rows[0];
-    const ss = row.status.value;
+    const submissionStatusUri = row.status.value;
     const sentDate = row.sentDate ? row.sentDate.value : null;
     const formData = row.formData ? row.formData.value : null;
-    if (ss !== STATUS_VERSTUURD) {
-      throw new Error("submission stayed " + ss.split("/").pop() + " (expected Verstuurd)");
+    if (submissionStatusUri !== STATUS_VERSTUURD) {
+      throw new Error("submission stayed " + (LABELS[submissionStatusUri] || submissionStatusUri) + " (expected Verstuurd)");
     }
     if (!sentDate) throw new Error("Verstuurd but nmo:sentDate is missing");
     if (!formData) throw new Error("Verstuurd but no melding:FormData");
     return {
       ok: true,
       detail: "verstuurd, sentDate " + sentDate + ", formData " + formData,
-      ms: Date.now() - t0,
+      ms: Date.now() - startTime,
     };
-  } catch (e) {
-    return { ok: false, detail: e && e.message ? e.message : String(e), ms: Date.now() - t0 };
+  } catch (error) {
+    return { ok: false, detail: error && error.message ? error.message : String(error), ms: Date.now() - startTime };
   }
 }
