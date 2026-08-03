@@ -13,7 +13,7 @@ function pickOwnIp() {
     throw new Error(
       "expected exactly 1 non-internal IPv4, found " +
         ipv4s.length +
-        " (" + ipv4s.join(", ") + ") — self-hosting needs a single network"
+        " (" + ipv4s.join(", ") + ") - self-hosting needs a single network"
     );
   }
   return ipv4s[0];

@@ -1,52 +1,29 @@
 import { randomUUID } from "node:crypto";
-import { ORG_UNIT, ORGAN_IN_TIJD, ORGAN_ABSTRACT, DOC_URI_BASE, POLL_INTERVAL, POLL_TIMEOUT } from "./config.js";
-import { collectInput, deriveValues } from "./input.js";
+import { POLL_INTERVAL, POLL_TIMEOUT } from "./config.js";
+import { collectInput } from "./input.js";
 import { renderTemplate } from "./template.js";
 import { startPageServer } from "./server.js";
-import { runChecks, checks } from "./checks.js";
-import { report } from "./report.js";
+import { runChecks } from "./checks.js";
 
 const runId = randomUUID();
-const startedAt = new Date().toISOString();
-const runState = {
-  runId,
-  input: {},
-  generated: {},
-  response: {},
-  diagnostics: { tasks: [], errors: [] },
-};
 
 let server = null;
 try {
   const argv = process.argv.slice(2);
-  const input = await collectInput(argv, runId);
-  const derived = deriveValues(input, runId, DOC_URI_BASE);
-  derived.vendorKey = input.vendorKey;
+  const input = await collectInput(argv);
 
-  runState.input = {
-    vendorUri: input.vendorUri,
-    organization: ORG_UNIT,
-    organInTijd: ORGAN_IN_TIJD,
-    organAbstract: ORGAN_ABSTRACT,
-    status: input.statusChoice === "1" ? "concept" : "inzendbaar",
-    datumZitting: input.datumZitting,
-    datumPublicatie: input.datumPublicatie,
-    titelAgendapunt: input.titelAgendapunt,
-    titelBesluit: input.titelBesluit,
-  };
-  runState.generated = { docUri: derived.docUri };
+  const { html, docUri } = renderTemplate(runId);
+  console.log("doc URI: " + docUri);
 
-  const html = renderTemplate(runId, derived, input.datumPublicatie);
-  runState.generated.html = html;
-
-  const started = await startPageServer(html, derived.docUri, runId);
+  const started = await startPageServer(html, docUri, runId);
   server = started.server;
-  runState.generated.pageUrl = started.pageUrl;
+  console.log("page server listening at " + started.pageUrl);
 
-  await runChecks(runState, derived, started.pageUrl, input, POLL_INTERVAL, POLL_TIMEOUT);
+  await runChecks(runId, input, started.pageUrl, POLL_INTERVAL, POLL_TIMEOUT);
 } catch (e) {
   console.error("FATAL: " + (e && e.stack ? e.stack : e));
 } finally {
   if (server) try { server.close(); } catch (e) {}
-  report(checks, runState, startedAt);
 }
+
+console.log("Automatic submission test run " + runId + " - please check logs to see how it went.");

@@ -32,5 +32,3 @@ export const DOC_URI_BASE = "http://test.local/besluitenlijsten/";
 export const PAGE_PORT = 8888;
 export const POLL_INTERVAL = 2000;
 export const POLL_TIMEOUT = 150000;
-
-export const RESULT_FILE = "/data/app/test-automatic-submission/last-run.json";
