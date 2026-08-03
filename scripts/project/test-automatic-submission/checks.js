@@ -50,7 +50,7 @@ PREFIX nmo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#>
 PREFIX nie: <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#>
 PREFIX prov: <http://www.w3.org/ns/prov#>
 PREFIX task: <http://redpencil.data.gift/vocabularies/tasks/>
-SELECT ?dlStatus ?jobStatus ?submissionStatus ?sentDate ?formData
+SELECT DISTINCT ?dlStatus ?jobStatus ?submissionStatus ?sentDate ?formData
        (GROUP_CONCAT(DISTINCT CONCAT(STR(?taskIndex), "=", STR(?taskStatus)); separator=",") AS ?tasks)
 WHERE {
   BIND(${sparqlEscapeUri(submissionUri)} AS ?submission)
@@ -73,7 +73,7 @@ PREFIX adms: <http://www.w3.org/ns/adms#>
 PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX oslc: <http://open-services.net/ns/core#>
 PREFIX task: <http://redpencil.data.gift/vocabularies/tasks/>
-SELECT ?task ?op ?status ?msg WHERE {
+SELECT DISTINCT ?task ?op ?status ?msg WHERE {
   ?task dct:isPartOf ${sparqlEscapeUri(jobUri)} ; task:operation ?op ; adms:status ?status .
   OPTIONAL { ?task task:error ?err . ?err oslc:message ?msg }
 }`;
@@ -85,7 +85,7 @@ PREFIX besluit:  <http://data.vlaanderen.be/ns/besluit#>
 PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
 PREFIX skos:    <http://www.w3.org/2004/02/skos/core#>
 PREFIX lblodlg: <http://data.lblod.info/vocabularies/leidinggevenden/>
-SELECT ?organ ?start ?einde WHERE {
+SELECT DISTINCT ?organ ?start ?einde WHERE {
   GRAPH <http://mu.semte.ch/graphs/public> {
     ${sparqlEscapeUri(ORGAN_ABSTRACT)} besluit:bestuurt ${sparqlEscapeUri(ORG_UNIT)} ;
                       skos:prefLabel ?abstractLabel ;
@@ -105,7 +105,7 @@ function errorGraphQuery(jobUri, submissionUri) {
   return `
 PREFIX oslc: <http://open-services.net/ns/core#>
 PREFIX dct:  <http://purl.org/dc/terms/>
-SELECT ?s ?p ?o ?msg WHERE {
+SELECT DISTINCT ?s ?p ?o ?msg WHERE {
   GRAPH <http://mu.semte.ch/graphs/error> {
     ?s ?p ?o .
     OPTIONAL { ?s oslc:message ?msg }
