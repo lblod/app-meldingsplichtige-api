@@ -1,8 +1,6 @@
 import readline from "node:readline/promises";
 import { STATUS_CONCEPT, STATUS_INZENDBAAR } from "./config.js";
 
-const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
-
 function todayStr() {
   const d = new Date();
   const p = (n) => String(n).padStart(2, "0");
