@@ -1,14 +1,24 @@
 import { SPARQL_ENDPOINT } from "./config.js";
 
-process.env.MU_SPARQL_ENDPOINT = SPARQL_ENDPOINT;
-const mu = await import("/usr/src/app/helpers/mu/sparql.js");
+export function sparqlEscapeUri(value) {
+  return "<" + String(value).replace(/[<>"]/g, function (m) { return "\\" + m; }) + ">";
+}
 
 export async function sparql(query) {
   try {
-    const res = await mu.query(query, { sudo: false });
-    if (res === null) return { error: "sparql returned unparseable response" };
-    if (typeof res.boolean === "boolean") return { boolean: res.boolean };
-    return res.results ? res.results.bindings : [];
+    const res = await fetch(
+      SPARQL_ENDPOINT + "?query=" + encodeURIComponent(query),
+      { headers: { Accept: "application/sparql-results+json" } }
+    );
+    const text = await res.text();
+    let parsed;
+    try {
+      parsed = JSON.parse(text);
+    } catch (e) {
+      return { error: "sparql returned unparseable response" };
+    }
+    if (typeof parsed.boolean === "boolean") return { boolean: parsed.boolean };
+    return parsed.results ? parsed.results.bindings : [];
   } catch (e) {
     return { error: e && e.message ? e.message : String(e) };
   }

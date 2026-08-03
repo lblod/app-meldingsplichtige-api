@@ -10,10 +10,7 @@ import {
   DL_SUCCESS,
   DL_FAILURE,
 } from "./config.js";
-import { sparql, postJson } from "./sparql.js";
-
-const mu = await import("/usr/src/app/helpers/mu/sparql.js");
-const { sparqlEscapeUri } = mu;
+import { sparql, postJson, sparqlEscapeUri } from "./sparql.js";
 
 export const checks = [];
 export async function check(id, label, fn) {

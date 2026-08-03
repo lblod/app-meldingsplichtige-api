@@ -1,3 +1,4 @@
+import { randomUUID } from "node:crypto";
 import { ORG_UNIT, ORGAN_IN_TIJD, ORGAN_ABSTRACT, DOC_URI_BASE, POLL_INTERVAL, POLL_TIMEOUT } from "./config.js";
 import { collectInput, deriveValues } from "./input.js";
 import { renderTemplate } from "./template.js";
@@ -5,8 +6,7 @@ import { startPageServer } from "./server.js";
 import { runChecks, checks } from "./checks.js";
 import { report } from "./report.js";
 
-const mu = await import("/usr/src/app/helpers/mu/index.js");
-const runId = mu.uuid();
+const runId = randomUUID();
 const startedAt = new Date().toISOString();
 const runState = {
   runId,

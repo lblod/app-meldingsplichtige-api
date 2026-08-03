@@ -8,7 +8,7 @@
         "arguments": ["[vendor-uri]", "[vendor-key]"]
       },
       "environment": {
-        "image": "semtech/mu-javascript-template:1.9.1",
+        "image": "node:20-bookworm",
         "interactive": true,
         "join_networks": true,
         "script": "test-automatic-submission/run.sh"
