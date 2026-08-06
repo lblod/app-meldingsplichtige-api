@@ -35,9 +35,9 @@ export async function collectInput(argv) {
     console.log("!!  DO NOT run this against a production stack.               !!");
     console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     console.log("");
-    const safety = (await reader.question("Are you in production? [yes/NO] ")).trim();
-    if (safety !== "NO" && safety !== "") {
-      console.log("Aborting - this script is not safe for production. It's a CAPS NO.");
+    const safety = (await reader.question("Are you in production? type NO to continue: ")).trim();
+    if (safety !== "NO") {
+      console.log("Aborting - type NO (CAPS) to confirm you are not in production.");
       process.exit(0);
     }
 
