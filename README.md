@@ -56,6 +56,26 @@ Vendor URI: "http://example.com/vendor/d3c9e5e5-d50c-46c9-8f09-6af76712c277",
 Key: "my-super-secret-key"
 ```
 
+## Sanity test the automatic submission flow
+
+A `mu script` is available to test the automatic submission flow end to
+end: it publishes a besluitenlijst for gemeente Mechelen, posts it, and follows
+the job to completion.
+
+```sh
+mu script project-scripts test-automatic-submission
+```
+
+It prompts for vendor credentials and a status (1=Concept, 2=Inzendbaar);
+all other besluitenlijst fields use defaults. Pass the vendor URI and key as
+arguments to skip the first two prompts:
+
+```sh
+mu script project-scripts test-automatic-submission vendor-uri vendor-key
+```
+
+Prerequisites: the stack is up.
+
 ## Technical flow
 
 A publication is submitted on an endpoint of the
