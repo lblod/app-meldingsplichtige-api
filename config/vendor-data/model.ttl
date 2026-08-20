@@ -54,7 +54,8 @@ meb:Submission
     }
   """ ;
   vdds:sourceGraphTemplate "http://mu.semte.ch/graphs/organizations/${organisationUuid}/LoketLB-toezichtGebruiker" ;
-  vdds:targetGraphTemplate "http://mu.semte.ch/graphs/vendors/${vendorUuid}/${organisationUuid}" .
+  vdds:targetGraphTemplate "http://mu.semte.ch/graphs/vendors/${vendorUuid}/${organisationUuid}" ;
+  vdds:targetGraphTemplate "http://mu.semte.ch/graphs/worship-submissions/canonical" .
 
 ext:SubmissionDocument
   rdf:type vdds:Subclass .

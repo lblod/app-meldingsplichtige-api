@@ -26,6 +26,18 @@ services:
       - "logging=true"
     restart: always
     logging: *default-logging
+  frontend-worship-decisions:
+    image: lblod/frontend-worship-decisions:0.18.1
+    environment:
+      EMBER_LOGIN_ROUTE: 'mock-login'
+    volumes:
+      - ./config/frontend:/config
+    links:
+      - identifier:backend
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   identifier:
     image: semtech/mu-identifier:1.10.3
     environment:
@@ -218,6 +230,10 @@ services:
     logging: *default-logging
   worship-decisions-cross-reference:
     image: lblod/worship-decisions-cross-reference-service:0.4.8
+    environment:
+      WORSHIP_DECISIONS_BASE_URL: "https://dev.databankerediensten.lokaalbestuur.lblod.info/search/submissions/"
+      SCOPE_SUBMISSIONS_TO_ONE_GRAPH: "true"
+      BYPASS_HOP_CENTRAAL_BESTUUR: "true"
     labels:
       - "logging=true"
     restart: always
@@ -275,6 +291,20 @@ services:
       WRITE_ERRORS: "true"
     volumes:
       - ./config/vendor-data:/config
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  worship-submissions-graph-dispatcher:
+    image: lblod/worship-submissions-graph-dispatcher-service:0.19.1
+    environment:
+      ALLOW_MU_AUTH_SUDO: "true"
+      DISPATCH_SOURCE_GRAPH: "http://mu.semte.ch/graphs/worship-submissions/canonical"
+      ORG_GRAPH_BASE: "http://mu.semte.ch/graphs/organizations"
+      ORG_GRAPH_SUFFIX: "LoketLB-toezichtGebruiker"
+      ABB_UUID: "141d9d6b-54af-4d17-b313-8d1c30bc3f5b"
+      ENABLE_HEALING: "false"
+      DISPATCH_FILES_GRAPH: "http://mu.semte.ch/graphs/temp/original-physical-files-data"
     labels:
       - "logging=true"
     restart: always

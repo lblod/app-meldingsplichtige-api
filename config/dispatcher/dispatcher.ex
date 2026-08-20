@@ -1,6 +1,16 @@
 defmodule Dispatcher do
   use Matcher
-  define_accept_types []
+  define_accept_types [
+    html: [ "text/html", "application/xhtml+html" ],
+    json: [ "application/vnd.api+json", "application/json" ],
+    turtle: [ "text/turtle", "application/n-triples" ],
+    any: [ "*/*" ]
+  ]
+
+  @any %{ accept: %{ any: true } }
+  @turtle %{ accept: %{ turtle: true } }
+  @html %{ accept: %{ html: true } }
+  @json %{ accept: %{ json: true } }
 
   # In order to forward the 'themes' resource to the
   # resource service, use the following forward rule.
@@ -99,6 +109,30 @@ defmodule Dispatcher do
   end
   match "/submission-document-statuses/*path" do
     forward conn, path, "http://cache/submission-document-statuses/"
+  end
+
+  match "/vestigingen/*path" do
+    forward conn, path, "http://cache/vestigingen/"
+  end
+
+  match "/adressen/*path" do
+    forward conn, path, "http://cache/adressen/"
+  end
+
+  match "/contact-punten/*path" do
+    forward conn, path, "http://cache/contact-punten/"
+  end
+
+  match "/werkingsgebieden/*path" do
+    forward conn, path, "http://cache/werkingsgebieden/"
+  end
+
+  match "/recognized-worship-types/*path" do
+    forward conn, path, "http://cache/recognized-worship-types/"
+  end
+
+  match "/search-queries/*path" do
+    forward conn, path, "http://cache/search-queries/"
   end
 
   match "/remote-urls/*path" do
@@ -292,6 +326,64 @@ defmodule Dispatcher do
 
   get "/health/accounts" do
     forward conn, [], "http://resource/accounts/"
+  end
+
+  #################################################################
+  # Frontends (served via reverse_host)
+  #   dashboard.localhost       -> dashboard
+  #   worship.localhost         -> frontend-worship-decisions
+  #   loket.localhost (default) -> frontend
+  #################################################################
+
+  get "/favicon.ico", @any do
+    send_resp( conn, 404, "" )
+  end
+
+  # --- dashboard ---
+  get "/assets/*path", %{ reverse_host: ["dashboard" | _rest] } do
+    forward conn, path, "http://dashboard/assets/"
+  end
+
+  get "/@appuniversum/*path", %{ reverse_host: ["dashboard" | _rest] } do
+    forward conn, path, "http://dashboard/@appuniversum/"
+  end
+
+  match "/*_path", %{ reverse_host: ["dashboard" | _rest] } do
+    forward conn, [], "http://dashboard/index.html"
+  end
+
+  # --- frontend-worship-decisions ---
+  get "/assets/*path", %{ reverse_host: ["worship" | _rest] } do
+    forward conn, path, "http://frontend-worship-decisions/assets/"
+  end
+
+  get "/@appuniversum/*path", %{ reverse_host: ["worship" | _rest] } do
+    forward conn, path, "http://frontend-worship-decisions/@appuniversum/"
+  end
+
+  get "/@embroider/*path", %{ reverse_host: ["worship" | _rest] } do
+    forward conn, path, "http://frontend-worship-decisions/@embroider/"
+  end
+
+  match "/*_path", %{ reverse_host: ["worship" | _rest] } do
+    forward conn, [], "http://frontend-worship-decisions/index.html"
+  end
+
+  # --- frontend (meldingsplichtige, default) ---
+  get "/assets/*path" do
+    forward conn, path, "http://frontend/assets/"
+  end
+
+  get "/@appuniversum/*path" do
+    forward conn, path, "http://frontend/@appuniversum/"
+  end
+
+  get "/@embroider/*path" do
+    forward conn, path, "http://frontend/@embroider/"
+  end
+
+  match "/*_path", @html do
+    forward conn, [], "http://frontend/index.html"
   end
 
   #################################################################
