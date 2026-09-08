@@ -14,6 +14,20 @@
         "script": "test-automatic-submission/run.sh"
       },
       "mounts": { "app": "/data/app/" }
+    },
+    {
+      "documentation": {
+        "command": "test-automatic-submission-vendor",
+        "description": "Submit a besluitenlijst, follow the automatic submission flow, then poll and check the submission status through the vendor SPARQL API",
+        "arguments": ["[vendor-uri]", "[vendor-key]"]
+      },
+      "environment": {
+        "image": "node:20-bookworm",
+        "interactive": true,
+        "join_networks": true,
+        "script": "test-automatic-submission-vendor/run.sh"
+      },
+      "mounts": { "app": "/data/app/" }
     }
   ]
 }

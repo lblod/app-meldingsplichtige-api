@@ -76,6 +76,22 @@ mu script project-scripts test-automatic-submission vendor-uri vendor-key
 
 Prerequisites: the stack is up.
 
+## Sanity test the vendor SPARQL API
+
+An extended version of the script also verifies what a vendor can see of the
+submission: it logs in on `/vendor/login`, polls `/vendor/sparql` until the
+submission reaches its final status (Verstuurd, or Concept with form data), and
+logs out. It does not force the vendor-data-distribution batch; it waits for
+the normal batch flow to pick up the submission. Poll duration accounts for the
+`PROCESSING_INTERVAL` configured on vendor-data-distribution in the compose
+files.
+
+```sh
+mu script project-scripts test-automatic-submission-vendor
+```
+
+Same prompts and arguments as `test-automatic-submission`.
+
 ## Technical flow
 
 A publication is submitted on an endpoint of the
