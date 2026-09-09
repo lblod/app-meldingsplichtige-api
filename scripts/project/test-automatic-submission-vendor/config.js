@@ -9,6 +9,11 @@ export const ORGAN_LABEL = "Gemeenteraad Mechelen";
 export const BESLUITENLIJST_TYPE =
   "https://data.vlaanderen.be/id/concept/BesluitDocumentType/3fa67785-ffdc-4b30-8880-2b99d97b4dee";
 
+export const EENHEID_CLASSIFICATIE_GEMEENTE =
+  "http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/5ab0e9b8a3b2ca7c5e000001";
+export const ORGAAN_CLASSIFICATIE_GEMEENTERAAD =
+  "http://data.vlaanderen.be/id/concept/BestuursorgaanClassificatieCode/5ab0e9b8a3b2ca7c5e000005";
+
 export const SPARQL_ENDPOINT = "http://virtuoso:8890/sparql";
 export const MELDING_ENDPOINT = "http://identifier/melding";
 

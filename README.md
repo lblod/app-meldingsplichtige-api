@@ -59,22 +59,32 @@ Key: "my-super-secret-key"
 ## Sanity test the automatic submission flow
 
 A `mu script` is available to test the automatic submission flow end to
-end: it publishes a besluitenlijst for gemeente Mechelen, posts it, and follows
+end: it publishes a besluitenlijst for a gemeente of choice, posts it, and follows
 the job to completion.
 
 ```sh
 mu script project-scripts test-automatic-submission
 ```
 
-It prompts for vendor credentials and a status (1=Concept, 2=Inzendbaar);
-all other besluitenlijst fields use defaults. Pass the vendor URI and key as
-arguments to skip the first two prompts:
+The script walks you through the run: it asks you to search and pick a vendor
+(the vendor key/password is asked later), then to search and pick a
+bestuurseenheid - only gemeenten the vendor can act on behalf of are listed,
+because only those are guaranteed to have a Gemeenteraad. Then it asks for
+the vendor key and a status (1=Concept, 2=Inzendbaar); all other
+besluitenlijst fields use defaults. The Gemeenteraad of the chosen gemeente
+is resolved from the triplestore (latest mandate period); pass its
+bestuursorgaan (in tijd) URI as a fourth argument when that cannot resolve
+on its own.
+
+Everything can also be passed as arguments to skip the prompts:
 
 ```sh
-mu script project-scripts test-automatic-submission vendor-uri vendor-key
+mu script project-scripts test-automatic-submission vendor-uri vendor-key bestuurseenheid-uri bestuursorgaan-uri
 ```
 
-Prerequisites: the stack is up.
+Prerequisites: the stack is up, and the vendor is allowed to act on behalf
+of the chosen bestuurseenheid (see the migration
+`20260908153000-allow-all-vendors-on-all-bestuurseenheden`).
 
 ## Sanity test the vendor SPARQL API
 

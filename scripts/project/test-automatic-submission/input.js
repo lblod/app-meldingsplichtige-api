@@ -1,4 +1,6 @@
 import readline from "node:readline/promises";
+import { sparql } from "./sparql.js";
+import { vendorsSearchQuery, eenhedenSearchQuery } from "./queries.js";
 
 async function prompt(reader, label, defaultValue) {
   const suffix = defaultValue === "" || defaultValue == null ? "" : " [" + defaultValue + "]";
@@ -25,6 +27,22 @@ async function promptValidated(reader, label, defaultValue, isValid, hint) {
   }
 }
 
+async function searchAndPick(reader, label, runSearch) {
+  while (true) {
+    const search = (await reader.question("search " + label + " by name (or part of it, empty lists the first matches): ")).trim();
+    const rows = await sparql(runSearch(search));
+    if (rows && rows.error) throw new Error("search failed: " + rows.error);
+    if (!Array.isArray(rows) || rows.length === 0) {
+      console.log("  no " + label + " found for '" + search + "', try again");
+      continue;
+    }
+    rows.forEach((row, index) => console.log("[" + (index + 1) + "] " + row.label.value + " (" + row.uri.value + ")"));
+    const chosen = rows[Number((await reader.question("pick a number: ")).trim()) - 1];
+    if (chosen) return { uri: chosen.uri.value, label: chosen.label.value };
+    console.log("  invalid choice, try again");
+  }
+}
+
 export async function collectInput(argv) {
   const reader = readline.createInterface({ input: process.stdin, output: process.stdout });
   try {
@@ -41,24 +59,41 @@ export async function collectInput(argv) {
       process.exit(0);
     }
 
-    let vendorUri, vendorKey;
+    let vendorUri;
     if (argv[0]) {
       vendorUri = argv[0];
       console.log("Vendor URI: " + vendorUri + " (from arg)");
     } else {
-      vendorUri = await promptValidated(
-        reader,
-        "Vendor URI",
-        "",
-        (value) => { try { new URL(value); return true; } catch (error) { return false; } },
-        "must be a valid URL"
-      );
+      const vendor = await searchAndPick(reader, "vendor", (search) => vendorsSearchQuery(search));
+      vendorUri = vendor.uri;
+      console.log("note: the vendor key (password) will be asked after the bestuurseenheid");
     }
+
+    let eenheidUri;
+    if (argv[2]) {
+      eenheidUri = argv[2];
+      console.log("Bestuurseenheid URI: " + eenheidUri + " (from arg)");
+    } else {
+      const eenheid = await searchAndPick(
+        reader,
+        "bestuurseenheid (gemeente, where this vendor can act on behalf of)",
+        (search) => eenhedenSearchQuery(vendorUri, search)
+      );
+      eenheidUri = eenheid.uri;
+    }
+
+    let vendorKey;
     if (argv[1]) {
       vendorKey = argv[1];
       console.log("Vendor key: <from arg>");
     } else {
-      vendorKey = await prompt(reader, "Vendor key", "");
+      vendorKey = await prompt(reader, "Vendor key (password)", "");
+    }
+
+    let organUri;
+    if (argv[3]) {
+      organUri = argv[3];
+      console.log("Bestuursorgaan (in tijd) URI: " + organUri + " (from arg)");
     }
 
     const statusChoice = await promptValidated(
@@ -69,7 +104,7 @@ export async function collectInput(argv) {
       "enter 1 or 2"
     );
 
-    return { vendorUri, vendorKey, statusChoice };
+    return { vendorUri, vendorKey, statusChoice, eenheidUri, organUri };
   } finally {
     reader.close();
   }

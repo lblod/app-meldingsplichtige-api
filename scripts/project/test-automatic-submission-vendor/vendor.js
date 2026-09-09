@@ -1,5 +1,4 @@
 import {
-  ORG_UNIT,
   VENDOR_LOGIN_ENDPOINT,
   VENDOR_SPARQL_ENDPOINT,
   VENDOR_LOGOUT_ENDPOINT,
@@ -16,7 +15,7 @@ export async function vendorLogin(input) {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      organization: ORG_UNIT,
+      organization: input.orgUnit,
       publisher: { uri: input.vendorUri, key: input.vendorKey },
     }),
   });

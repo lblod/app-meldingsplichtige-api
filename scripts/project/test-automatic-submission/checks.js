@@ -1,5 +1,4 @@
 import {
-  ORG_UNIT,
   MELDING_ENDPOINT,
   JOB_SUCCESS,
   JOB_FAILED,
@@ -74,7 +73,7 @@ async function checkMeldingAccepted(runId, input, pageUrl) {
   const startTime = Date.now();
   try {
     const body = {
-      organization: ORG_UNIT,
+      organization: input.orgUnit,
       href: pageUrl,
       submittedResource: DOC_URI_BASE + runId,
       status: input.statusChoice === "1" ? STATUS_CONCEPT : STATUS_INZENDBAAR,

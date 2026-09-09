@@ -1,6 +1,7 @@
 import { randomUUID } from "node:crypto";
-import { POLL_INTERVAL, POLL_TIMEOUT, VENDOR_POLL_TIMEOUT, ORG_UNIT, ORGAN_IN_TIJD, ORGAN_ABSTRACT, ORGAN_LABEL, BESLUITENLIJST_TYPE } from "./config.js";
+import { POLL_INTERVAL, POLL_TIMEOUT, VENDOR_POLL_TIMEOUT, BESLUITENLIJST_TYPE } from "./config.js";
 import { collectInput } from "./input.js";
+import { resolveOrgan } from "./orgs.js";
 import { renderTemplate } from "./template.js";
 import { startPageServer } from "./server.js";
 import { runChecks } from "./checks.js";
@@ -11,9 +12,9 @@ const runId = randomUUID();
 let server = null;
 try {
   const argv = process.argv.slice(2);
-  const input = await collectInput(argv);
+  const input = await resolveOrgan(await collectInput(argv));
 
-  const { html, docUri } = renderTemplate(runId);
+  const { html, docUri } = renderTemplate(runId, input);
   console.log("doc URI: " + docUri);
 
   const started = await startPageServer(html, docUri, runId);
@@ -42,9 +43,9 @@ console.log("Automatic submission vendor test run " + runId + " - please check l
 function printOverview(input, docUri, pageUrl, submissionUri, jobUri) {
   console.log("=== URI overview ===");
   console.log("vendor:            " + input.vendorUri);
-  console.log("bestuurseenheid:    " + ORG_UNIT);
-  console.log("organ (in tijd):    " + ORGAN_IN_TIJD + " (" + ORGAN_LABEL + ")");
-  console.log("organ (abstract):  " + ORGAN_ABSTRACT);
+  console.log("bestuurseenheid:    " + input.orgUnit);
+  console.log("organ (in tijd):    " + input.organInTijd + " (" + input.organLabel + ")");
+  console.log("organ (abstract):  " + input.organAbstract);
   console.log("document type:      " + BESLUITENLIJST_TYPE);
   console.log("submitted resource: " + docUri);
   console.log("download page:     " + pageUrl);

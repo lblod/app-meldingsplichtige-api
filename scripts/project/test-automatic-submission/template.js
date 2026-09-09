@@ -1,9 +1,6 @@
 import fs from "node:fs";
 import {
   BESLUITENLIJST_TYPE,
-  ORGAN_IN_TIJD,
-  ORGAN_ABSTRACT,
-  ORGAN_LABEL,
   DOC_URI_BASE,
 } from "./config.js";
 
@@ -24,16 +21,16 @@ function toDateTime(dateString, hours, minutes, seconds, milliseconds) {
   );
 }
 
-export function renderTemplate(runId) {
+export function renderTemplate(runId, organ) {
   const docUri = DOC_URI_BASE + runId;
   const today = todayString();
   const substitutions = {
     BESLUITENLIJST_TYPE,
     RUN_ID: runId,
     DOC_URI: docUri,
-    ORGAN_IN_TIJD,
-    ORGAN_ABSTRACT,
-    ORGAN_LABEL,
+    ORGAN_IN_TIJD: organ.organInTijd,
+    ORGAN_ABSTRACT: organ.organAbstract,
+    ORGAN_LABEL: organ.organLabel,
     DATE_PUBLICATION: today,
     ZITTING_GEPLANDE_START: toDateTime(today, 18, 0, 0, 0),
     ZITTING_START: toDateTime(today, 18, 5, 0, 0),

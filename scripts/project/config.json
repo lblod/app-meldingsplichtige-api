@@ -4,8 +4,8 @@
     {
       "documentation": {
         "command": "test-automatic-submission",
-        "description": "Smoke test: publish a besluitenlijst for gemeente Mechelen and follow the automatic submission flow",
-        "arguments": ["[vendor-uri]", "[vendor-key]"]
+        "description": "Smoke test: publish a besluitenlijst for a gemeente of choice and follow the automatic submission flow",
+        "arguments": ["[vendor-uri]", "[vendor-key]", "[bestuurseenheid-uri]", "[bestuursorgaan-uri]"]
       },
       "environment": {
         "image": "node:20-bookworm",
@@ -18,8 +18,8 @@
     {
       "documentation": {
         "command": "test-automatic-submission-vendor",
-        "description": "Submit a besluitenlijst, follow the automatic submission flow, then poll and check the submission status through the vendor SPARQL API",
-        "arguments": ["[vendor-uri]", "[vendor-key]"]
+        "description": "Submit a besluitenlijst for a gemeente of choice, follow the automatic submission flow, then poll and check the submission status through the vendor SPARQL API",
+        "arguments": ["[vendor-uri]", "[vendor-key]", "[bestuurseenheid-uri]", "[bestuursorgaan-uri]"]
       },
       "environment": {
         "image": "node:20-bookworm",

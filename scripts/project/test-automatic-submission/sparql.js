@@ -4,6 +4,10 @@ export function sparqlEscapeUri(value) {
   return "<" + String(value).replace(/[<>"]/g, function (match) { return "\\" + match; }) + ">";
 }
 
+export function sparqlEscapeString(value) {
+  return '"' + String(value).replace(/\\/g, "\\\\").replace(/"/g, '\\"') + '"';
+}
+
 export async function sparql(query) {
   console.log("SPARQL query:");
   console.log(query);
