@@ -1,5 +1,3 @@
-version: '3.4'
-
 x-logging:
   &default-logging
   driver: "json-file"
@@ -241,6 +239,7 @@ services:
     environment:
       WORSHIP_DECISIONS_BASE_URL: "https://dev.databankerediensten.lokaalbestuur.lblod.info/search/submissions/"
       SCOPE_SUBMISSIONS_TO_ONE_GRAPH: "true"
+      # WARN: Only because this is a test app:
       BYPASS_HOP_CENTRAAL_BESTUUR: "true"
     labels:
       - "logging=true"
@@ -308,11 +307,11 @@ services:
     environment:
       ALLOW_MU_AUTH_SUDO: "true"
       DISPATCH_SOURCE_GRAPH: "http://mu.semte.ch/graphs/worship-submissions/canonical"
-      ORG_GRAPH_BASE: "http://mu.semte.ch/graphs/organizations"
       ORG_GRAPH_SUFFIX: "LoketLB-toezichtGebruiker"
-      ABB_UUID: "141d9d6b-54af-4d17-b313-8d1c30bc3f5b"
-      ENABLE_HEALING: "false"
-      DISPATCH_FILES_GRAPH: "http://mu.semte.ch/graphs/temp/original-physical-files-data"
+      # ORG_GRAPH_BASE: "http://mu.semte.ch/graphs/organizations"
+      # ABB_UUID: "141d9d6b-54af-4d17-b313-8d1c30bc3f5b"
+      # ENABLE_HEALING: "false"
+      # DISPATCH_FILES_GRAPH: "http://mu.semte.ch/graphs/temp/original-physical-files-data"
     labels:
       - "logging=true"
     restart: always
