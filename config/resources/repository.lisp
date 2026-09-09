@@ -29,3 +29,9 @@
 (add-prefix "hrvst" "http://lblod.data.gift/vocabularies/harvesting/")
 (add-prefix "services" "http://lblod.data.gift/services/")
 (add-prefix "job" "http://lblod.data.gift/jobs/")
+(add-prefix "searchToezicht" "http://lblod.data.gift/vocabularies/search-queries-toezicht/")
+(add-prefix "organisatie" "https://data.vlaanderen.be/ns/organisatie#")
+(add-prefix "adres" "https://data.vlaanderen.be/ns/adres#")
+(add-prefix "locn" "http://www.w3.org/ns/locn#")
+(add-prefix "lblodlg" "http://data.lblod.info/vocabularies/leidinggevenden/")
+
