@@ -230,14 +230,10 @@ export default [
   },
   {
     match: {
-      predicate: {
+      graph: {
         type: 'uri',
-        value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
+        value: 'http://mu.semte.ch/graphs/worship-submissions/canonical'
       },
-      object: {
-        type: 'uri',
-        value: 'http://rdf.myexperiment.org/ontologies/base/Submission'
-      }
     },
     callback: {
       url: 'http://worship-submissions-graph-dispatcher/delta',
