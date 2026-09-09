@@ -293,6 +293,10 @@ services:
     environment:
       LOGLEVEL: "error"
       WRITE_ERRORS: "true"
+      SUDO_QUERY_RETRY: "true"
+      SUDO_QUERY_RETRY_FOR_HTTP_STATUS_CODES: "500"
+      # SPARQL_ENDPOINT_COPY_OPERATIONS: "http://virtuoso:8890/sparql"
+      # SPARQL_ENDPOINT_HEALING_OPERATIONS: "http://virtuoso:8890/sparql"
     volumes:
       - ./config/vendor-data:/config
     labels:
