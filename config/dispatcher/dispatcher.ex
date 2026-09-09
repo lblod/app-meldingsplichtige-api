@@ -135,6 +135,10 @@ defmodule Dispatcher do
     forward conn, path, "http://cache/remote-urls/"
   end
 
+  match "/sites/*path" do
+    forward conn, path, "http://cache/sites/"
+  end
+
   #################################################################
   # Resources for Jobs and their metadata
   #################################################################
@@ -166,6 +170,7 @@ defmodule Dispatcher do
   #################################################################
   # Dashboard routes
   #################################################################
+
   # Jobs
   match "/jobs/*path" do
     forward conn, path, "http://cache/jobs/"
@@ -195,11 +200,6 @@ defmodule Dispatcher do
 
   match "/status-codes/*path" do
     forward conn, path, "http://cache/acm-idm-service-log-entries/"
-  end
-
-  # Jobs
-  match "/jobs/*path" do
-    forward conn, path, "http://cache/jobs/"
   end
 
   #################################################################
@@ -281,6 +281,7 @@ defmodule Dispatcher do
   #################################################################
   # RRN SERVICE: person-uri-for-social-security-number-service
   #################################################################
+
   match "/rrn/*path" do
     forward conn, path, "http://person-uri-for-social-security-number/"
   end
@@ -366,6 +367,11 @@ defmodule Dispatcher do
   get "/@appuniversum/*path", %{ reverse_host: ["dashboard" | _rest] } do
     forward conn, path, "http://dashboard/@appuniversum/"
   end
+
+  # needs to be enabled? (2026-09-03)
+  # get "/@embroider/*path", %{ reverse_host: ["dashboard" | _rest] } do
+  #   forward conn, path, "http://dashboard/@embroider/"
+  # end
 
   match "/*_path", %{ reverse_host: ["dashboard" | _rest] } do
     forward conn, [], "http://dashboard/index.html"
