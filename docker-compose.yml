@@ -303,12 +303,12 @@ services:
     restart: always
     logging: *default-logging
   worship-submissions-graph-dispatcher:
-    image: lblod/worship-submissions-graph-dispatcher-service:0.19.1
+    image: lblod/worship-submissions-graph-dispatcher-service:0.19.2
     environment:
       ALLOW_MU_AUTH_SUDO: "true"
       DISPATCH_SOURCE_GRAPH: "http://mu.semte.ch/graphs/worship-submissions/canonical"
-      ORG_GRAPH_SUFFIX: "LoketLB-toezichtGebruiker"
       # ORG_GRAPH_BASE: "http://mu.semte.ch/graphs/organizations"
+      ORG_GRAPH_SUFFIX: "LoketLB-databankEredienstenGebruiker"
       # ABB_UUID: "141d9d6b-54af-4d17-b313-8d1c30bc3f5b"
       # ENABLE_HEALING: "false"
       # DISPATCH_FILES_GRAPH: "http://mu.semte.ch/graphs/temp/original-physical-files-data"
