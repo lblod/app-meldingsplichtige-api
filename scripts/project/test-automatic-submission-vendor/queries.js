@@ -115,3 +115,25 @@ SELECT DISTINCT ?orgaanInTijd ?orgaanAbstract ?label ?eenheid WHERE {
                    org:classification ${sparqlEscapeUri(ORGAAN_CLASSIFICATIE_GEMEENTERAAD)} .
 }`;
 }
+
+// The vendor SPARQL API has no view on the internal cogs:Job. The vendor-visible
+// state of the submitted job is the Submission's status (with its label), the
+// sentDate, the generated FormData and the harvested submission document.
+export function vendorSubmissionQuery(submissionUri) {
+  return `
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX am: <http://lblod.data.gift/vocabularies/automatische-melding/>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX meb: <http://rdf.myexperiment.org/ontologies/base/>
+PREFIX nmo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+SELECT DISTINCT ?status ?statusLabel ?sentDate ?formData ?submissionDocument WHERE {
+  ${sparqlEscapeUri(submissionUri)} a meb:Submission ;
+      adms:status ?status .
+  OPTIONAL { ?status skos:prefLabel ?statusLabel . FILTER (LANG(?statusLabel) = "nl") }
+  OPTIONAL { ${sparqlEscapeUri(submissionUri)} nmo:sentDate ?sentDate }
+  OPTIONAL { ${sparqlEscapeUri(submissionUri)} prov:generated ?formData . ?formData a am:FormData }
+  OPTIONAL { ${sparqlEscapeUri(submissionUri)} dct:subject ?submissionDocument }
+}`;
+}

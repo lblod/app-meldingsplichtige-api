@@ -10,6 +10,7 @@ import {
   DOC_URI_BASE,
   LABELS,
   TASK_OPS,
+  TOTAL_CHECKS,
 } from "./config.js";
 import { sparql, postJson } from "./sparql.js";
 import { pollQuery, tasksQuery, jobStatusQuery, submissionStatusQuery } from "./queries.js";
@@ -17,7 +18,7 @@ import { pollQuery, tasksQuery, jobStatusQuery, submissionStatusQuery } from "./
 export async function runChecks(runId, input, pageUrl, pollInterval, pollTimeout) {
   const meldingResult = await checkMeldingAccepted(runId, input, pageUrl);
   logCheck(1, "melding accepted", meldingResult);
-  if (!meldingResult.ok) return;
+  if (!meldingResult.ok) return { submissionUri: null, jobUri: null };
   const { submissionUri, jobUri } = meldingResult;
 
   const { pollFinal, pollTimedOut } = await pollJob(
@@ -35,11 +36,12 @@ export async function runChecks(runId, input, pageUrl, pollInterval, pollTimeout
 
   if (input.statusChoice === "1") {
     logCheck(5, "submission sent", { ok: false, detail: "skipped - run used Concept status", ms: 0 });
-    return;
+    return { submissionUri, jobUri };
   }
 
   const submissionResult = await checkSubmissionSent(submissionUri, pollTimedOut);
   logCheck(5, "submission sent", submissionResult);
+  return { submissionUri, jobUri };
 }
 
 // --------------------------------------------------------------- HELPERS
@@ -63,10 +65,10 @@ async function pollJob(submissionUri, pageUrl, pollInterval, pollTimeout) {
   }
 }
 
-function logCheck(id, label, result) {
+export function logCheck(id, label, result) {
   const tag = result.ok ? "ok  " : "FAIL";
   const elapsed = result.ms ? " " + result.ms + "ms" : "";
-  console.log("[" + id + "/5] " + tag + "  " + label + " - " + (result.detail || "") + elapsed);
+  console.log("[" + id + "/" + TOTAL_CHECKS + "] " + tag + "  " + label + " - " + (result.detail || "") + elapsed);
 }
 
 async function checkMeldingAccepted(runId, input, pageUrl) {
