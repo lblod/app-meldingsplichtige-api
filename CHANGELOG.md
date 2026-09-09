@@ -1,5 +1,5 @@
 # Changelog
-## Unreleased
+## v1.54.0 (2026-09-09)
  - Replace mu-auth by sparql-parser [DL-6574]
  - mu script `test-automatic-submission-vendor`: follow a submission through the vendor SPARQL API (login, poll status, logout) [DL-7578]
  - mu scripts: pick vendor and bestuurseenheid (gemeente) from a list, Gemeenteraad resolved automatically [DL-7578]
