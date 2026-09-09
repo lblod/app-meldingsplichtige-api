@@ -114,6 +114,32 @@ defmodule Acl.UserGroups.Config do
                         "http://vocab.deri.ie/cogs#Job"
                       ] } } ] },
 
+      # // Databank Erediensten
+      %GroupSpec{
+        name: "o-databere-rwf",
+        useage: [:read, :write, :read_for_write],
+        access: access_by_role( "LoketLB-databankEredienstenGebruiker" ),
+        graphs: [ %GraphSpec{
+                    graph: "http://mu.semte.ch/graphs/organizations/",
+                    constraint: %ResourceConstraint{
+                      resource_types: [
+                        "http://xmlns.com/foaf/0.1/Document",
+                        "http://rdf.myexperiment.org/ontologies/base/Submission",
+                        "http://mu.semte.ch/vocabularies/ext/SubmissionDocument",
+                        "http://lblod.data.gift/vocabularies/besluit/TaxRate",
+                        "http://lblod.data.gift/vocabularies/automatische-melding/FormData",
+                        "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject",
+                        "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#LocalFileDataObject",
+                        "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RemoteDataObject",
+                        "http://lblod.data.gift/services/Service",
+                        "http://redpencil.data.gift/vocabularies/tasks/Operation",
+                        "http://vocab.deri.ie/cogs#ExecutionStatus",
+                        "http://redpencil.data.gift/vocabularies/tasks/Task",
+                        "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#DataContainer",
+                        "http://lblod.data.gift/vocabularies/harvesting/HarvestingCollection",
+                        "http://vocab.deri.ie/cogs#Job"
+                      ] } } ] },
+
       # // TOEZICHT VENDOR API
       %GroupSpec{
         name: "o-vendor-api-r",
