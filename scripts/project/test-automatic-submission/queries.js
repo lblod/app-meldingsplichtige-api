@@ -3,9 +3,9 @@ import {
   ORGAAN_CLASSIFICATIE_GEMEENTERAAD,
   EENHEID_CLASSIFICATIE_GEMEENTE,
 } from "./config.js";
-import { sparqlEscapeUri, sparqlEscapeString } from "./sparql.js";
+import { sparqlEscapeUri } from "./sparql.js";
 
-export function vendorsSearchQuery(search) {
+export function vendorsQuery() {
   return `
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX muAccount: <http://mu.semte.ch/vocabularies/account/>
@@ -15,11 +15,10 @@ SELECT DISTINCT ?uri ?label WHERE {
          foaf:name ?label ;
          muAccount:key ?key .
   }
-  ${search ? "FILTER(CONTAINS(LCASE(?label), LCASE(" + sparqlEscapeString(search) + ")))" : ""}
-} ORDER BY ?label LIMIT 20`;
+} ORDER BY ?label`;
 }
 
-export function eenhedenSearchQuery(vendorUri, search) {
+export function eenhedenQuery(vendorUri) {
   return `
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX muAccount: <http://mu.semte.ch/vocabularies/account/>
@@ -31,8 +30,7 @@ SELECT DISTINCT ?uri ?label WHERE {
   ?uri a besluit:Bestuurseenheid ;
        besluit:classificatie ${sparqlEscapeUri(EENHEID_CLASSIFICATIE_GEMEENTE)} ;
        skos:prefLabel ?label .
-  ${search ? "FILTER(CONTAINS(LCASE(?label), LCASE(" + sparqlEscapeString(search) + ")))" : ""}
-} ORDER BY ?label LIMIT 15`;
+} ORDER BY ?label`;
 }
 
 export function pollQuery(submissionUri, pageUrl) {

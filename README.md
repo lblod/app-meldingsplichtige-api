@@ -66,15 +66,14 @@ the job to completion.
 mu script project-scripts test-automatic-submission
 ```
 
-The script walks you through the run: it asks you to search and pick a vendor
-(the vendor key/password is asked later), then to search and pick a
-bestuurseenheid - only gemeenten the vendor can act on behalf of are listed,
-because only those are guaranteed to have a Gemeenteraad. Then it asks for
-the vendor key and a status (1=Concept, 2=Inzendbaar); all other
-besluitenlijst fields use defaults. The Gemeenteraad of the chosen gemeente
-is resolved from the triplestore (latest mandate period); pass its
-bestuursorgaan (in tijd) URI as a fourth argument when that cannot resolve
-on its own.
+The script walks you through the run: it lists all vendors (the vendor
+key/password is asked later), then all bestuurseenheden the vendor can act
+on behalf of - only gemeenten, because only those are guaranteed to have a
+Gemeenteraad - and you pick both from a list. Then it asks for the vendor
+key and a status (1=Concept, 2=Inzendbaar); all other besluitenlijst fields
+use defaults. The Gemeenteraad of the chosen gemeente is resolved from the
+triplestore (latest mandate period); pass its bestuursorgaan (in tijd) URI
+as a fourth argument when that cannot resolve on its own.
 
 Everything can also be passed as arguments to skip the prompts:
 
