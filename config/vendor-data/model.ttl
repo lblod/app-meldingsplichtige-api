@@ -47,7 +47,7 @@ meb:Submission
         mu:uuid ?organisationUuid .
       GRAPH <http://mu.semte.ch/graphs/automatic-submission> {
         ?vendor
-          a foaf:Agent ;
+          a ext:Vendor ;
           muAccount:canActOnBehalfOf ?organisation ;
           mu:uuid ?vendorUuid .
       }
