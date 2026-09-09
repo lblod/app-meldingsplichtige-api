@@ -125,6 +125,14 @@ services:
     logging: *default-logging
     links:
       - database:database
+  search-query-management:
+    image: lblod/toezicht-search-query-management-service:0.3.11
+    volumes:
+      - ./config/search-query:/share/search-query
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   download-url:
     image: lblod/download-url-service:1.0.7
     environment:

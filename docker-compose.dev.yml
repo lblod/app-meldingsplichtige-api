@@ -31,6 +31,8 @@ services:
     restart: "no"
   file:
     restart: "no"
+  search-query-management:
+    restart: "no"
   download-url:
     restart: "no"
   automatic-submission:

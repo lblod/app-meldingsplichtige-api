@@ -131,10 +131,6 @@ defmodule Dispatcher do
     forward conn, path, "http://cache/recognized-worship-types/"
   end
 
-  match "/search-queries/*path" do
-    forward conn, path, "http://cache/search-queries/"
-  end
-
   match "/remote-urls/*path" do
     forward conn, path, "http://cache/remote-urls/"
   end
@@ -287,6 +283,29 @@ defmodule Dispatcher do
   #################################################################
   match "/rrn/*path" do
     forward conn, path, "http://person-uri-for-social-security-number/"
+  end
+
+ ###############################################################
+ # Searching
+ ###############################################################
+
+  get "/search-queries/*path", @json do
+    Proxy.forward conn, path, "http://resource/search-queries/"
+  end
+  post "/search-queries/*path", @json do
+    Proxy.forward conn, path, "http://resource/search-queries/"
+  end
+  get "/search-queries/*path", @turtle do
+    Proxy.forward conn, path, "http://search-query-management/search-queries/"
+  end
+  put "/search-queries/*path", @turtle do
+    Proxy.forward conn, path, "http://search-query-management/search-queries/"
+  end
+  delete "/search-queries/*path", @turtle do
+    Proxy.forward conn, path, "http://search-query-management/search-queries/"
+  end
+  match "/search-query-forms/*path", @turtle do
+    Proxy.forward conn, path, "http://search-query-management/search-query-forms/"
   end
 
   #################################################################
