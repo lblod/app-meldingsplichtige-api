@@ -117,6 +117,20 @@
     :to-graph (org)
     :for-allowed-group "toezicht-gebruiker")
 
+(supply-allowed-group "databank-erediensten-gebruiker"
+    :parameters ("session_group" "session_role")
+    :query "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+            PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+            SELECT ?session_group ?session_role WHERE {
+                <SESSION_ID> ext:sessionGroup/mu:uuid ?session_group;
+                            ext:sessionRole ?session_role.
+                FILTER( ?session_role = \"LoketLB-databankEredienstenGebruiker\" )
+            }")
+
+(grant (read write)
+    :to-graph (org)
+    :for-allowed-group "databank-erediensten-gebruiker")
+
 (grant (read)
     :to-graph (vendors)
     :for-allowed-group "vendor-api")
