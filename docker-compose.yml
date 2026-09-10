@@ -235,12 +235,10 @@ services:
     restart: always
     logging: *default-logging
   worship-decisions-cross-reference:
-    image: lblod/worship-decisions-cross-reference-service:0.4.8
+    image: lblod/worship-decisions-cross-reference-service:0.5.2
     environment:
-      WORSHIP_DECISIONS_BASE_URL: "https://dev.databankerediensten.lokaalbestuur.lblod.info/search/submissions/"
+      WORSHIP_DECISIONS_BASE_URL: "https://databankerediensten.vendor-test.lblod.info/search/submissions/"
       SCOPE_SUBMISSIONS_TO_ONE_GRAPH: "true"
-      # WARN: Only because this is a test app:
-      BYPASS_HOP_CENTRAAL_BESTUUR: "true"
     labels:
       - "logging=true"
     restart: always
@@ -298,6 +296,7 @@ services:
       WRITE_ERRORS: "true"
       SUDO_QUERY_RETRY: "true"
       SUDO_QUERY_RETRY_FOR_HTTP_STATUS_CODES: "500"
+      HOSTNAME: "https://databankerediensten.vendor-test.lblod.info/"
       # SPARQL_ENDPOINT_COPY_OPERATIONS: "http://virtuoso:8890/sparql"
       # SPARQL_ENDPOINT_HEALING_OPERATIONS: "http://virtuoso:8890/sparql"
     volumes:

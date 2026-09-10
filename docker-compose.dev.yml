@@ -67,8 +67,10 @@ services:
   vendor-data-distribution:
     restart: "no"
     environment:
-      HOSTNAME: "http://localhost"
+      HOSTNAME: "http://databankerediensten.localhost/"
   worship-decisions-cross-reference:
+    environment:
+      WORSHIP_DECISIONS_BASE_URL: "http://databankerediensten.localhost/search/submissions/"
     restart: "no"
   worship-submissions-graph-dispatcher:
     restart: "no"
