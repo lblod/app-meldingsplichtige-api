@@ -307,7 +307,7 @@ services:
     restart: always
     logging: *default-logging
   worship-submissions-graph-dispatcher:
-    image: lblod/worship-submissions-graph-dispatcher-service:0.20.1
+    image: lblod/worship-submissions-graph-dispatcher-service:0.20.2
     environment:
       ALLOW_MU_AUTH_SUDO: "true"
       DISPATCH_SOURCE_GRAPH: "http://mu.semte.ch/graphs/worship-submissions/canonical"
