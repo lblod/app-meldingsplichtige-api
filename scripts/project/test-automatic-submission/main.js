@@ -1,6 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { POLL_INTERVAL, POLL_TIMEOUT } from "./config.js";
 import { collectInput } from "./input.js";
+import { resolveOrgan } from "./orgs.js";
 import { renderTemplate } from "./template.js";
 import { startPageServer } from "./server.js";
 import { runChecks } from "./checks.js";
@@ -10,9 +11,9 @@ const runId = randomUUID();
 let server = null;
 try {
   const argv = process.argv.slice(2);
-  const input = await collectInput(argv);
+  const input = await resolveOrgan(await collectInput(argv));
 
-  const { html, docUri } = renderTemplate(runId);
+  const { html, docUri } = renderTemplate(runId, input);
   console.log("doc URI: " + docUri);
 
   const started = await startPageServer(html, docUri, runId);

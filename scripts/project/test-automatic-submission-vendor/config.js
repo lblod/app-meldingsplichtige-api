@@ -17,6 +17,10 @@ export const ORGAAN_CLASSIFICATIE_GEMEENTERAAD =
 export const SPARQL_ENDPOINT = "http://virtuoso:8890/sparql";
 export const MELDING_ENDPOINT = "http://identifier/melding";
 
+export const VENDOR_LOGIN_ENDPOINT = "http://identifier/vendor/login";
+export const VENDOR_SPARQL_ENDPOINT = "http://identifier/vendor/sparql";
+export const VENDOR_LOGOUT_ENDPOINT = "http://identifier/vendor/logout";
+
 export const STATUS_CONCEPT =
   "http://lblod.data.gift/concepts/79a52da4-f491-4e2f-9374-89a13cde8ecd";
 export const STATUS_INZENDBAAR =
@@ -74,3 +78,5 @@ export const DOC_URI_BASE = "http://test.local/besluitenlijsten/";
 export const PAGE_PORT = 8888;
 export const POLL_INTERVAL = 2000;
 export const POLL_TIMEOUT = 150000;
+export const VENDOR_POLL_TIMEOUT = 120000;
+export const TOTAL_CHECKS = 8;

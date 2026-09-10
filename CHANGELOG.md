@@ -1,4 +1,26 @@
 # Changelog
+## v1.54.0 (2026-09-09)
+ - Replace mu-auth by sparql-parser [DL-6574]
+ - mu script `test-automatic-submission-vendor`: follow a submission through the vendor SPARQL API (login, poll status, logout) [DL-7578]
+ - mu scripts: pick vendor and bestuurseenheid (gemeente) from a list, Gemeenteraad resolved automatically [DL-7578]
+
+### Deploy Notes
+In `docker-compose.override.yml`, ensure:
+```
+  resource:
+    environment:
+      LISP_DYNAMIC_SPACE_SIZE: "8192" # 1GB by default, increase to 8GB on systems with a lot of data
+  database:
+    environment:
+      LISP_DYNAMIC_SPACE_SIZE: 8192
+```
+The `LISP_DYNAMIC_SPACE_SIZE` should be increased to 8192 in both services.
+
+#### All environments
+```
+drc up -d database resource
+```
+
 ## v1.53.0 (2026-07-31)
  - added explicit healtchecks [DL-7466]
 

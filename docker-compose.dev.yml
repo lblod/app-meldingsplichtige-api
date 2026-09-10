@@ -12,9 +12,6 @@ services:
   deltanotifier:
     restart: "no"
   database:
-    environment:
-      LOG_OUTGOING_SPARQL_QUERIES: "true"
-      LOG_INCOMING_SPARQL_QUERIES: "true"
     restart: "no"
   virtuoso:
     restart: "no"
@@ -66,6 +63,12 @@ services:
   vendor-data-distribution:
     restart: "no"
     environment:
-      HOSTNAME: "http://localhost"
+      HOSTNAME: "http://databankerediensten.localhost/"
   worship-decisions-cross-reference:
+    environment:
+      WORSHIP_DECISIONS_BASE_URL: "http://databankerediensten.localhost/search/submissions/"
+    restart: "no"
+  worship-submissions-graph-dispatcher:
+    restart: "no"
+  project-scripts:
     restart: "no"

@@ -20,6 +20,16 @@ like `docker-compose.override.yml` and include it as you wish.
 The stack is built starting from
 [mu-project](https://github.com/mu-semtech/mu-project).
 
+## Frontends
+
+Three frontends are served on port 80, routed by hostname:
+
+- `http://localhost/` — the meldingsplichtige frontend (default)
+- `http://dashboard.localhost/` — dashboard (jobs and submissions monitoring)
+- `http://databankerediensten.localhost/` — Databank Erediensten
+
+Use mock login to sign in as a bestuurseenheid.
+
 ## Cleaning the database
 
 Given that this application is for testing purposes, you might want to clean the
@@ -59,22 +69,47 @@ Key: "my-super-secret-key"
 ## Sanity test the automatic submission flow
 
 A `mu script` is available to test the automatic submission flow end to
-end: it publishes a besluitenlijst for gemeente Mechelen, posts it, and follows
+end: it publishes a besluitenlijst for a gemeente of choice, posts it, and follows
 the job to completion.
 
 ```sh
 mu script project-scripts test-automatic-submission
 ```
 
-It prompts for vendor credentials and a status (1=Concept, 2=Inzendbaar);
-all other besluitenlijst fields use defaults. Pass the vendor URI and key as
-arguments to skip the first two prompts:
+The script walks you through the run: it lists all vendors (the vendor
+key/password is asked later), then all bestuurseenheden the vendor can act
+on behalf of - only gemeenten, because only those are guaranteed to have a
+Gemeenteraad - and you pick both from a list. Then it asks for the vendor
+key and a status (1=Concept, 2=Inzendbaar); all other besluitenlijst fields
+use defaults. The Gemeenteraad of the chosen gemeente is resolved from the
+triplestore (latest mandate period); pass its bestuursorgaan (in tijd) URI
+as a fourth argument when that cannot resolve on its own.
+
+Everything can also be passed as arguments to skip the prompts:
 
 ```sh
-mu script project-scripts test-automatic-submission vendor-uri vendor-key
+mu script project-scripts test-automatic-submission vendor-uri vendor-key bestuurseenheid-uri bestuursorgaan-uri
 ```
 
-Prerequisites: the stack is up.
+Prerequisites: the stack is up, and the vendor is allowed to act on behalf
+of the chosen bestuurseenheid (see the migration
+`20260908153000-allow-all-vendors-on-all-bestuurseenheden`).
+
+## Sanity test the vendor SPARQL API
+
+An extended version of the script also verifies what a vendor can see of the
+submission: it logs in on `/vendor/login`, polls `/vendor/sparql` until the
+submission reaches its final status (Verstuurd, or Concept with form data), and
+logs out. It does not force the vendor-data-distribution batch; it waits for
+the normal batch flow to pick up the submission. Poll duration accounts for the
+`PROCESSING_INTERVAL` configured on vendor-data-distribution in the compose
+files.
+
+```sh
+mu script project-scripts test-automatic-submission-vendor
+```
+
+Same prompts and arguments as `test-automatic-submission`.
 
 ## Technical flow
 

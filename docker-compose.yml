@@ -7,7 +7,7 @@ x-logging:
 
 services:
   frontend:
-    image: lblod/frontend-meldingsplichtige-api:1.1.0
+    image: lblod/frontend-meldingsplichtige-api:1.2.1
     links:
       - identifier:backend
     labels:
@@ -61,11 +61,13 @@ services:
     restart: always
     logging: *default-logging
   database:
-    image: semtech/mu-authorization:feature-service-roam-r1.1
+    image: semtech/sparql-parser:0.0.15
     environment:
       MU_SPARQL_ENDPOINT: "http://virtuoso:8890/sparql"
+      LISP_DYNAMIC_SPACE_SIZE: 4096 # 1GB by default, increase to 8GB on systems with a lot of data
     volumes:
       - ./config/authorization:/config
+      - ./data/authorization:/data
     labels:
       - "logging=true"
     restart: always
@@ -104,9 +106,10 @@ services:
    restart: always
    logging: *default-logging
   resource:
-    image: semtech/mu-cl-resources:1.26.0
+    image: semtech/mu-cl-resources:1.27.2
     environment:
       CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
+      LISP_DYNAMIC_SPACE_SIZE: "4096" # 1GB by default, increase to 8GB on systems with a lot of data
     volumes:
       - ./config/resources:/config
     labels:
@@ -232,12 +235,10 @@ services:
     restart: always
     logging: *default-logging
   worship-decisions-cross-reference:
-    image: lblod/worship-decisions-cross-reference-service:0.4.8
+    image: lblod/worship-decisions-cross-reference-service:0.5.2
     environment:
-      WORSHIP_DECISIONS_BASE_URL: "https://dev.databankerediensten.lokaalbestuur.lblod.info/search/submissions/"
+      WORSHIP_DECISIONS_BASE_URL: "https://databankerediensten.vendor-test.lblod.info/search/submissions/"
       SCOPE_SUBMISSIONS_TO_ONE_GRAPH: "true"
-      # WARN: Only because this is a test app:
-      BYPASS_HOP_CENTRAAL_BESTUUR: "true"
     labels:
       - "logging=true"
     restart: always
@@ -295,6 +296,7 @@ services:
       WRITE_ERRORS: "true"
       SUDO_QUERY_RETRY: "true"
       SUDO_QUERY_RETRY_FOR_HTTP_STATUS_CODES: "500"
+      HOSTNAME: "https://databankerediensten.vendor-test.lblod.info/"
       # SPARQL_ENDPOINT_COPY_OPERATIONS: "http://virtuoso:8890/sparql"
       # SPARQL_ENDPOINT_HEALING_OPERATIONS: "http://virtuoso:8890/sparql"
     volumes:
@@ -304,7 +306,7 @@ services:
     restart: always
     logging: *default-logging
   worship-submissions-graph-dispatcher:
-    image: lblod/worship-submissions-graph-dispatcher-service:0.19.2
+    image: lblod/worship-submissions-graph-dispatcher-service:0.20.2
     environment:
       ALLOW_MU_AUTH_SUDO: "true"
       DISPATCH_SOURCE_GRAPH: "http://mu.semte.ch/graphs/worship-submissions/canonical"
