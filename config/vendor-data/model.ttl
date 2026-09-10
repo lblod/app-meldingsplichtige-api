@@ -36,25 +36,31 @@
 
 meb:Submission
   rdf:type vdds:Class ;
+  vdds:trigger """
+    GRAPH ?g {
+      ${subject} ?p ?o .
+    }
+    FILTER (!REGEX(STR(?g), "LoketLB-databankEredienstenGebruiker"))
+  """ ;
   vdds:graphQuery """
     SELECT DISTINCT ?organisationUuid ?vendorUuid
     WHERE {
       ${subject}
-        pav:createdBy ?organisation ;
-        pav:providedBy ?vendor .
+        pav:createdBy ?organisation .
       ?organisation
         a besluit:Bestuurseenheid ;
         mu:uuid ?organisationUuid .
       GRAPH <http://mu.semte.ch/graphs/automatic-submission> {
         ?vendor
-          a foaf:Agent ;
+          a ext:Vendor ;
           muAccount:canActOnBehalfOf ?organisation ;
           mu:uuid ?vendorUuid .
       }
     }
   """ ;
   vdds:sourceGraphTemplate "http://mu.semte.ch/graphs/organizations/${organisationUuid}/LoketLB-toezichtGebruiker" ;
-  vdds:targetGraphTemplate "http://mu.semte.ch/graphs/vendors/${vendorUuid}/${organisationUuid}" .
+  vdds:targetGraphTemplate "http://mu.semte.ch/graphs/vendors/${vendorUuid}/${organisationUuid}" ;
+  vdds:targetGraphTemplate "http://mu.semte.ch/graphs/worship-submissions/canonical" .
 
 ext:SubmissionDocument
   rdf:type vdds:Subclass .

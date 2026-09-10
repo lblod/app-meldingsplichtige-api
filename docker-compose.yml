@@ -1,5 +1,3 @@
-version: '3.4'
-
 x-logging:
   &default-logging
   driver: "json-file"
@@ -9,7 +7,7 @@ x-logging:
 
 services:
   frontend:
-    image: lblod/frontend-meldingsplichtige-api:1.1.0
+    image: lblod/frontend-meldingsplichtige-api:1.2.1
     links:
       - identifier:backend
     labels:
@@ -20,6 +18,18 @@ services:
     image: lblod/frontend-dashboard:1.5.2
     environment:
       EMBER_LOGIN_ROUTE: 'mock-login'
+    links:
+      - identifier:backend
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  frontend-worship-decisions:
+    image: lblod/frontend-worship-decisions:0.18.1
+    environment:
+      EMBER_LOGIN_ROUTE: 'mock-login'
+    volumes:
+      - ./config/frontend:/config
     links:
       - identifier:backend
     labels:
@@ -116,6 +126,14 @@ services:
     logging: *default-logging
     links:
       - database:database
+  search-query-management:
+    image: lblod/toezicht-search-query-management-service:0.3.11
+    volumes:
+      - ./config/search-query:/share/search-query
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   download-url:
     image: lblod/download-url-service:1.0.7
     environment:
@@ -217,7 +235,10 @@ services:
     restart: always
     logging: *default-logging
   worship-decisions-cross-reference:
-    image: lblod/worship-decisions-cross-reference-service:0.4.8
+    image: lblod/worship-decisions-cross-reference-service:0.5.2
+    environment:
+      WORSHIP_DECISIONS_BASE_URL: "https://databankerediensten.vendor-test.lblod.info/search/submissions/"
+      SCOPE_SUBMISSIONS_TO_ONE_GRAPH: "true"
     labels:
       - "logging=true"
     restart: always
@@ -273,8 +294,27 @@ services:
     environment:
       LOGLEVEL: "error"
       WRITE_ERRORS: "true"
+      SUDO_QUERY_RETRY: "true"
+      SUDO_QUERY_RETRY_FOR_HTTP_STATUS_CODES: "500"
+      HOSTNAME: "https://databankerediensten.vendor-test.lblod.info/"
+      # SPARQL_ENDPOINT_COPY_OPERATIONS: "http://virtuoso:8890/sparql"
+      # SPARQL_ENDPOINT_HEALING_OPERATIONS: "http://virtuoso:8890/sparql"
     volumes:
       - ./config/vendor-data:/config
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  worship-submissions-graph-dispatcher:
+    image: lblod/worship-submissions-graph-dispatcher-service:0.20.2
+    environment:
+      ALLOW_MU_AUTH_SUDO: "true"
+      DISPATCH_SOURCE_GRAPH: "http://mu.semte.ch/graphs/worship-submissions/canonical"
+      # ORG_GRAPH_BASE: "http://mu.semte.ch/graphs/organizations"
+      ORG_GRAPH_SUFFIX: "LoketLB-databankEredienstenGebruiker"
+      # ABB_UUID: "141d9d6b-54af-4d17-b313-8d1c30bc3f5b"
+      # ENABLE_HEALING: "false"
+      # DISPATCH_FILES_GRAPH: "http://mu.semte.ch/graphs/temp/original-physical-files-data"
     labels:
       - "logging=true"
     restart: always

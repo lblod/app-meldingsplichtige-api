@@ -1,6 +1,16 @@
 defmodule Dispatcher do
   use Matcher
-  define_accept_types []
+  define_accept_types [
+    html: [ "text/html", "application/xhtml+html" ],
+    json: [ "application/vnd.api+json", "application/json" ],
+    turtle: [ "text/turtle", "application/n-triples" ],
+    any: [ "*/*" ]
+  ]
+
+  @any %{ accept: %{ any: true } }
+  @turtle %{ accept: %{ turtle: true } }
+  @html %{ accept: %{ html: true } }
+  @json %{ accept: %{ json: true } }
 
   # In order to forward the 'themes' resource to the
   # resource service, use the following forward rule.
@@ -101,8 +111,32 @@ defmodule Dispatcher do
     forward conn, path, "http://cache/submission-document-statuses/"
   end
 
+  match "/vestigingen/*path" do
+    forward conn, path, "http://cache/vestigingen/"
+  end
+
+  match "/adressen/*path" do
+    forward conn, path, "http://cache/adressen/"
+  end
+
+  match "/contact-punten/*path" do
+    forward conn, path, "http://cache/contact-punten/"
+  end
+
+  match "/werkingsgebieden/*path" do
+    forward conn, path, "http://cache/werkingsgebieden/"
+  end
+
+  match "/recognized-worship-types/*path" do
+    forward conn, path, "http://cache/recognized-worship-types/"
+  end
+
   match "/remote-urls/*path" do
     forward conn, path, "http://cache/remote-urls/"
+  end
+
+  match "/sites/*path" do
+    forward conn, path, "http://cache/sites/"
   end
 
   #################################################################
@@ -136,6 +170,7 @@ defmodule Dispatcher do
   #################################################################
   # Dashboard routes
   #################################################################
+
   # Jobs
   match "/jobs/*path" do
     forward conn, path, "http://cache/jobs/"
@@ -165,11 +200,6 @@ defmodule Dispatcher do
 
   match "/status-codes/*path" do
     forward conn, path, "http://cache/acm-idm-service-log-entries/"
-  end
-
-  # Jobs
-  match "/jobs/*path" do
-    forward conn, path, "http://cache/jobs/"
   end
 
   #################################################################
@@ -251,8 +281,32 @@ defmodule Dispatcher do
   #################################################################
   # RRN SERVICE: person-uri-for-social-security-number-service
   #################################################################
+
   match "/rrn/*path" do
     forward conn, path, "http://person-uri-for-social-security-number/"
+  end
+
+ ###############################################################
+ # Searching
+ ###############################################################
+
+  get "/search-queries/*path", @json do
+    Proxy.forward conn, path, "http://resource/search-queries/"
+  end
+  post "/search-queries/*path", @json do
+    Proxy.forward conn, path, "http://resource/search-queries/"
+  end
+  get "/search-queries/*path", @turtle do
+    Proxy.forward conn, path, "http://search-query-management/search-queries/"
+  end
+  put "/search-queries/*path", @turtle do
+    Proxy.forward conn, path, "http://search-query-management/search-queries/"
+  end
+  delete "/search-queries/*path", @turtle do
+    Proxy.forward conn, path, "http://search-query-management/search-queries/"
+  end
+  match "/search-query-forms/*path", @turtle do
+    Proxy.forward conn, path, "http://search-query-management/search-query-forms/"
   end
 
   #################################################################
@@ -292,6 +346,140 @@ defmodule Dispatcher do
 
   get "/health/accounts" do
     forward conn, [], "http://resource/accounts/"
+  end
+
+  # Impersonation is not deployed in this stack (no impersonation service).
+  # frontend-worship-decisions requests GET /impersonations/current while
+  # loading the current session and only acts on it when the response is OK,
+  # so a 404 (instead of the worship SPA fallback) lets the session load succeed.
+  match "/impersonations/*_path" do
+    send_resp( conn, 404, "" )
+  end
+
+  #################################################################
+  # Frontends (served via reverse_host)
+  #   dashboard.localhost             -> dashboard
+  #   databankerediensten.localhost   -> frontend-worship-decisions
+  #   localhost (default)             -> frontend
+  #################################################################
+
+  get "/favicon.ico", @any do
+    send_resp( conn, 404, "" )
+  end
+
+  # --- dashboard ---
+  get "/assets/*path", %{ reverse_host: ["dashboard" | _rest] } do
+    forward conn, path, "http://dashboard/assets/"
+  end
+
+  get "/@appuniversum/*path", %{ reverse_host: ["dashboard" | _rest] } do
+    forward conn, path, "http://dashboard/@appuniversum/"
+  end
+
+  # needs to be enabled? (2026-09-03)
+  # get "/@embroider/*path", %{ reverse_host: ["dashboard" | _rest] } do
+  #   forward conn, path, "http://dashboard/@embroider/"
+  # end
+
+  match "/*_path", %{ reverse_host: ["dashboard" | _rest] } do
+    forward conn, [], "http://dashboard/index.html"
+  end
+
+  # --- frontend-worship-decisions ---
+  get "/assets/*path", %{ reverse_host: ["databankerediensten" | _rest] } do
+    forward conn, path, "http://frontend-worship-decisions/assets/"
+  end
+
+  get "/@appuniversum/*path", %{ reverse_host: ["databankerediensten" | _rest] } do
+    forward conn, path, "http://frontend-worship-decisions/@appuniversum/"
+  end
+
+  get "/@embroider/*path", %{ reverse_host: ["databankerediensten" | _rest] } do
+    forward conn, path, "http://frontend-worship-decisions/@embroider/"
+  end
+
+  match "/*_path", %{ reverse_host: ["databankerediensten" | _rest] } do
+    forward conn, [], "http://frontend-worship-decisions/index.html"
+  end
+
+  # --- frontend (meldingsplichtige, default) ---
+  get "/assets/*path" do
+    forward conn, path, "http://frontend/assets/"
+  end
+
+  get "/@appuniversum/*path" do
+    forward conn, path, "http://frontend/@appuniversum/"
+  end
+
+  get "/@embroider/*path" do
+    forward conn, path, "http://frontend/@embroider/"
+  end
+
+  match "/*_path", @html do
+    forward conn, [], "http://frontend/index.html"
+  end
+
+  #################################################################
+  # Frontends (served via reverse_host)
+  #   dashboard.localhost       -> dashboard
+  #   worship.localhost         -> frontend-worship-decisions
+  #   loket.localhost (default) -> frontend
+  #################################################################
+
+  get "/favicon.ico", @any do
+    send_resp( conn, 404, "" )
+  end
+
+  # --- dashboard ---
+  get "/assets/*path", %{ reverse_host: ["dashboard" | _rest] } do
+    forward conn, path, "http://dashboard/assets/"
+  end
+
+  get "/@appuniversum/*path", %{ reverse_host: ["dashboard" | _rest] } do
+    forward conn, path, "http://dashboard/@appuniversum/"
+  end
+
+  # needs to be enabled? (2026-09-03)
+  # get "/@embroider/*path", %{ reverse_host: ["dashboard" | _rest] } do
+  #   forward conn, path, "http://dashboard/@embroider/"
+  # end
+
+  match "/*_path", %{ reverse_host: ["dashboard" | _rest] } do
+    forward conn, [], "http://dashboard/index.html"
+  end
+
+  # --- frontend-worship-decisions ---
+  get "/assets/*path", %{ reverse_host: ["worship" | _rest] } do
+    forward conn, path, "http://frontend-worship-decisions/assets/"
+  end
+
+  get "/@appuniversum/*path", %{ reverse_host: ["worship" | _rest] } do
+    forward conn, path, "http://frontend-worship-decisions/@appuniversum/"
+  end
+
+  get "/@embroider/*path", %{ reverse_host: ["worship" | _rest] } do
+    forward conn, path, "http://frontend-worship-decisions/@embroider/"
+  end
+
+  match "/*_path", %{ reverse_host: ["worship" | _rest] } do
+    forward conn, [], "http://frontend-worship-decisions/index.html"
+  end
+
+  # --- frontend (meldingsplichtige, default) ---
+  get "/assets/*path" do
+    forward conn, path, "http://frontend/assets/"
+  end
+
+  get "/@appuniversum/*path" do
+    forward conn, path, "http://frontend/@appuniversum/"
+  end
+
+  get "/@embroider/*path" do
+    forward conn, path, "http://frontend/@embroider/"
+  end
+
+  match "/*_path", @html do
+    forward conn, [], "http://frontend/index.html"
   end
 
   #################################################################

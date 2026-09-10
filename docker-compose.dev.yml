@@ -1,14 +1,11 @@
-version: '3.4'
 services:
   frontend:
     restart: "no"
   dashboard:
-    ports:
-      - "82:80"
+    restart: "no"
+  frontend-worship-decisions:
     restart: "no"
   identifier:
-    ports:
-      - "80:80"
     restart: "no"
   dispatcher:
     restart: "no"
@@ -17,8 +14,6 @@ services:
   database:
     restart: "no"
   virtuoso:
-    ports:
-      - "8890:8890"
     restart: "no"
   migrations:
     restart: "no"
@@ -27,6 +22,8 @@ services:
   resource:
     restart: "no"
   file:
+    restart: "no"
+  search-query-management:
     restart: "no"
   download-url:
     restart: "no"
@@ -53,8 +50,6 @@ services:
   yasgui:
     image: redpencil/yasgui:latest
     restart: "no"
-    ports:
-      - "8891:80"
     environment:
       DEFAULT_SPARQL_ENDPOINT: "http://localhost:8890/sparql"
   job-controller:
@@ -68,6 +63,12 @@ services:
   vendor-data-distribution:
     restart: "no"
     environment:
-      HOSTNAME: "http://localhost"
+      HOSTNAME: "http://databankerediensten.localhost/"
   worship-decisions-cross-reference:
+    environment:
+      WORSHIP_DECISIONS_BASE_URL: "http://databankerediensten.localhost/search/submissions/"
+    restart: "no"
+  worship-submissions-graph-dispatcher:
+    restart: "no"
+  project-scripts:
     restart: "no"

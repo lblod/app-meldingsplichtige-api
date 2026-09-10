@@ -20,6 +20,7 @@ CONSTRUCT {
     adres:gemeentenaam,
     locn:adminUnitL2,
     adres:verwijstNaar,
+    adres:adresIsGelegenIn,
     dct:source
   ))
 }
