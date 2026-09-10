@@ -6,6 +6,8 @@ services:
   frontend-worship-decisions:
     restart: "no"
   identifier:
+    ports:
+      - "80:80"
     restart: "no"
   dispatcher:
     restart: "no"
@@ -65,4 +67,8 @@ services:
     environment:
       HOSTNAME: "http://localhost"
   worship-decisions-cross-reference:
+    restart: "no"
+  worship-submissions-graph-dispatcher:
+    restart: "no"
+  project-scripts:
     restart: "no"
