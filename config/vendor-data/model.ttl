@@ -36,6 +36,12 @@
 
 meb:Submission
   rdf:type vdds:Class ;
+  vdds:trigger """
+    GRAPH ?g {
+      ${subject} ?p ?o .
+    }
+    FILTER (!REGEX(STR(?g), "LoketLB-databankEredienstenGebruiker"))
+  """ ;
   vdds:graphQuery """
     SELECT DISTINCT ?organisationUuid ?vendorUuid
     WHERE {
