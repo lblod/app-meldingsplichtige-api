@@ -348,6 +348,14 @@ defmodule Dispatcher do
     forward conn, [], "http://resource/accounts/"
   end
 
+  # Impersonation is not deployed in this stack (no impersonation service).
+  # frontend-worship-decisions requests GET /impersonations/current while
+  # loading the current session and only acts on it when the response is OK,
+  # so a 404 (instead of the worship SPA fallback) lets the session load succeed.
+  match "/impersonations/*_path" do
+    send_resp( conn, 404, "" )
+  end
+
   #################################################################
   # Frontends (served via reverse_host)
   #   dashboard.localhost       -> dashboard
