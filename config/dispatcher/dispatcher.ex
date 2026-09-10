@@ -358,9 +358,9 @@ defmodule Dispatcher do
 
   #################################################################
   # Frontends (served via reverse_host)
-  #   dashboard.localhost       -> dashboard
-  #   worship.localhost         -> frontend-worship-decisions
-  #   loket.localhost (default) -> frontend
+  #   dashboard.localhost             -> dashboard
+  #   databankerediensten.localhost   -> frontend-worship-decisions
+  #   localhost (default)             -> frontend
   #################################################################
 
   get "/favicon.ico", @any do
@@ -386,19 +386,19 @@ defmodule Dispatcher do
   end
 
   # --- frontend-worship-decisions ---
-  get "/assets/*path", %{ reverse_host: ["worship" | _rest] } do
+  get "/assets/*path", %{ reverse_host: ["databankerediensten" | _rest] } do
     forward conn, path, "http://frontend-worship-decisions/assets/"
   end
 
-  get "/@appuniversum/*path", %{ reverse_host: ["worship" | _rest] } do
+  get "/@appuniversum/*path", %{ reverse_host: ["databankerediensten" | _rest] } do
     forward conn, path, "http://frontend-worship-decisions/@appuniversum/"
   end
 
-  get "/@embroider/*path", %{ reverse_host: ["worship" | _rest] } do
+  get "/@embroider/*path", %{ reverse_host: ["databankerediensten" | _rest] } do
     forward conn, path, "http://frontend-worship-decisions/@embroider/"
   end
 
-  match "/*_path", %{ reverse_host: ["worship" | _rest] } do
+  match "/*_path", %{ reverse_host: ["databankerediensten" | _rest] } do
     forward conn, [], "http://frontend-worship-decisions/index.html"
   end
 
