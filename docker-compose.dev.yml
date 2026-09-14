@@ -72,3 +72,10 @@ services:
     restart: "no"
   project-scripts:
     restart: "no"
+  error-alert:
+    environment:
+      EMAIL_FROM: "error-alert@example.com"
+      EMAIL_TO: "to-error-alert-recipient@example.com"
+    restart: "no"
+  deliver-email-service:
+    restart: "no"
