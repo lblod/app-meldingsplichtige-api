@@ -70,10 +70,19 @@
     ("harvesting:HarvestingCollection" -> _)
     ("cogs:Job" -> _))
 
-(define-graph vendors ("http://mu.semte.ch/graphs/vendors/")
+;; Note: :delta nil is not working ATM
+(define-graph vendors ("http://mu.semte.ch/graphs/vendors/" :delta nil)
     ("base:Submission" -> _)
     ("ext:SubmissionDocument" -> _)
     ("am:FormData" -> _))
+
+;; Note: :delta nil is not working ATM
+(define-graph vendors-erediensten ("http://mu.semte.ch/graphs/vendors-erediensten/" :delta nil)
+  ("http://rdf.myexperiment.org/ontologies/base/Submission" -> _)
+  ("ext:SubmissionDocument" -> _)
+  ("http://lblod.data.gift/vocabularies/automatische-melding/FormData" -> _)
+  ("nfo:FileDataObject" -> _)
+  ("nfo:RemoteDataObject" -> _))
 
 (define-graph automatic-submission ("http://mu.semte.ch/graphs/automatic-submission")
     (_ -> _))
@@ -133,6 +142,10 @@
 
 (grant (read)
     :to-graph (vendors)
+    :for-allowed-group "vendor-api")
+
+(grant (read)
+    :to-graph (vendors-erediensten)
     :for-allowed-group "vendor-api")
 
 (grant (read write)

@@ -63,6 +63,10 @@ services:
   vendor-data-distribution:
     restart: "no"
     environment:
+      HOSTNAME: "http://localhost/"
+  vendor-data-distribution-erediensten:
+    restart: "no"
+    environment:
       HOSTNAME: "http://databankerediensten.localhost/"
   worship-decisions-cross-reference:
     environment:

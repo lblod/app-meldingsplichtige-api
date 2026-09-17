@@ -53,7 +53,10 @@ services:
     restart: always
     logging: *default-logging
   deltanotifier:
-    image: cecemel/delta-notifier:0.2.0-beta.6
+    image: semtech/delta-notifier:pr-26
+    pull_policy: build
+    build:
+      context: https://github.com/mu-semtech/delta-notifier.git#refs/pull/26/head
     volumes:
       - ./config/delta:/config
     labels:
@@ -306,15 +309,35 @@ services:
   vendor-data-distribution:
     image: lblod/vendor-data-distribution-service:2.2.0
     environment:
+      MU_SCOPE: "http://redpencil.data.gift/id/concept/muScope/deltas/vendor-data"
       LOGLEVEL: "error"
       WRITE_ERRORS: "true"
       SUDO_QUERY_RETRY: "true"
-      SUDO_QUERY_RETRY_FOR_HTTP_STATUS_CODES: "500"
-      HOSTNAME: "https://databankerediensten.vendor-test.lblod.info/"
+      SUDO_QUERY_RETRY_FOR_HTTP_STATUS_CODES: "404,500,503"
+      TEMP_GRAPH: "http://mu.semte.ch/graphs/vendor-data-distribution/temp"
+      HOSTNAME: "https://loket.vendor-test.lblod.info/"
       # SPARQL_ENDPOINT_COPY_OPERATIONS: "http://virtuoso:8890/sparql"
       # SPARQL_ENDPOINT_HEALING_OPERATIONS: "http://virtuoso:8890/sparql"
     volumes:
       - ./config/vendor-data:/config
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  vendor-data-distribution-erediensten:
+    image: lblod/vendor-data-distribution-service:2.2.0
+    environment:
+      MU_SCOPE: "http://redpencil.data.gift/id/concept/muScope/deltas/vendor-data-erediensten"
+      LOGLEVEL: "error"
+      WRITE_ERRORS: "true"
+      SUDO_QUERY_RETRY: "true"
+      SUDO_QUERY_RETRY_FOR_HTTP_STATUS_CODES: "404,500,503"
+      TEMP_GRAPH: "http://mu.semte.ch/graphs/vendor-data-distribution/temp-erediensten"
+      HOSTNAME: "https://databankerediensten.vendor-test.lblod.info/"
+      # SPARQL_ENDPOINT_COPY_OPERATIONS: "http://virtuoso:8890/sparql"
+      # SPARQL_ENDPOINT_HEALING_OPERATIONS: "http://virtuoso:8890/sparql"
+    volumes:
+      - ./config/vendor-data-erediensten:/config
     labels:
       - "logging=true"
     restart: always
@@ -324,11 +347,11 @@ services:
     environment:
       ALLOW_MU_AUTH_SUDO: "true"
       DISPATCH_SOURCE_GRAPH: "http://mu.semte.ch/graphs/worship-submissions/canonical"
-      # ORG_GRAPH_BASE: "http://mu.semte.ch/graphs/organizations"
+      DISPATCH_FILES_GRAPH: "http://mu.semte.ch/graphs/worship-submissions/canonical"
+      ORG_GRAPH_BASE: "http://mu.semte.ch/graphs/organizations"
       ORG_GRAPH_SUFFIX: "LoketLB-databankEredienstenGebruiker"
-      # ABB_UUID: "141d9d6b-54af-4d17-b313-8d1c30bc3f5b"
-      # ENABLE_HEALING: "false"
-      # DISPATCH_FILES_GRAPH: "http://mu.semte.ch/graphs/temp/original-physical-files-data"
+      ABB_UUID: "141d9d6b-54af-4d17-b313-8d1c30bc3f5b"
+      ENABLE_HEALING: "false"
     labels:
       - "logging=true"
     restart: always

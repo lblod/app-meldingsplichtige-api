@@ -246,7 +246,12 @@ export default [
     }
   },
   {
-    match: {},
+    match: {
+     graph: {
+        type: "uri",
+        value: /^http:\/\/mu\.semte\.ch\/graphs\/organizations\/[^\/]+\/LoketLB-toezichtGebruiker$/
+      }
+    },
     callback: {
       url: 'http://vendor-data-distribution/delta',
       method: 'POST'
@@ -254,7 +259,26 @@ export default [
     options: {
       resourceFormat: 'v0.0.1',
       gracePeriod: 1000,
-      ignoreFromSelf: true
+      ignoreFromSelf: true,
+      sendMatchesOnly: true
+    }
+  },
+  {
+    match: {
+     graph: {
+        type: "uri",
+        value: /^http:\/\/mu\.semte\.ch\/graphs\/organizations\/[^\/]+\/LoketLB-databankEredienstenGebruiker$/
+      }
+    },
+    callback: {
+      url: 'http://vendor-data-distribution-erediensten/delta',
+      method: 'POST'
+    },
+    options: {
+      resourceFormat: 'v0.0.1',
+      gracePeriod: 1000,
+      ignoreFromSelf: true,
+      sendMatchesOnly: true
     }
   },
   {

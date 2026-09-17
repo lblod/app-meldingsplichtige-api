@@ -31,7 +31,6 @@
 
 ##############################################################################
 # Submissions
-# Mostly copy from worship-decisions-database, but without attachments
 ##############################################################################
 
 meb:Submission
@@ -86,6 +85,61 @@ eli:has_part
   rdf:type vdds:HierarchyProperty ;
   rdfs:domain ext:SubmissionDocument ;
   rdfs:range besluit:Artikel .
+
+<LogicalFile>
+  rdf:type vdds:Subclass ;
+  vdds:type nfo:FileDataObject ;
+  vdds:postProcessDelete """
+    ${subject} nie:url ?originalDownloadLink .
+  """ ;
+  vdds:postProcessInsert """
+    ${subject}
+      nie:url ?bijlageDownloadLink ;
+      prov:hadPrimarySource ?originalDownloadLink .
+  """ ;
+  vdds:postProcessWhere """
+    OPTIONAL {
+      GRAPH ?sourceGraph {
+        ${subject} nie:url ?originalDownloadLink .
+      }
+      FILTER(REGEX(STR(?sourceGraph), "organizations"))
+    }
+    ${subject} mu:uuid ?bijlageUUID .
+    BIND (CONCAT("#{HOSTNAME}files/", STR(?bijlageUUID), "/download") AS ?bijlageDownloadLink)
+  """ .
+
+<PhysicalFile>
+  rdf:type vdds:Subclass ;
+  vdds:type nfo:FileDataObject .
+
+<SubmissionDocumentSourceFile>
+  rdf:type vdds:Subclass ;
+  vdds:type nfo:FileDataObject .
+
+<RelSubmissionFile>
+  rdf:type vdds:HierarchyProperty ;
+  vdds:type nie:hasPart ;
+  rdfs:domain meb:Submission ;
+  rdfs:range <LogicalFile> .
+
+<RelFormDataFile>
+  rdf:type vdds:HierarchyProperty ;
+  vdds:type dct:hasPart ;
+  rdfs:domain am:FormData ;
+  rdfs:range <LogicalFile> .
+
+<RelSubmissionFileDataSource>
+  rdf:type vdds:HierarchyProperty ;
+  vdds:type nie:dataSource ;
+  rdfs:domain <PhysicalFile> ;
+  rdfs:range <LogicalFile> ;
+  vdds:inverse true .
+
+<RelSubmissionDocumentSourceFile>
+  rdf:type vdds:HierarchyProperty ;
+  vdds:type dct:source ;
+  rdfs:domain ext:SubmissionDocument ;
+  rdfs:range <SubmissionDocumentSourceFile> .
 
 ##############################################################################
 # Berichten
