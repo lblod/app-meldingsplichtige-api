@@ -238,7 +238,7 @@ services:
     restart: always
     logging: *default-logging
   worship-decisions-cross-reference:
-    image: lblod/worship-decisions-cross-reference-service:0.5.2
+    image: lblod/worship-decisions-cross-reference-service:0.6.0
     environment:
       WORSHIP_DECISIONS_BASE_URL: "https://databankerediensten.vendor-test.lblod.info/search/submissions/"
       SCOPE_SUBMISSIONS_TO_ONE_GRAPH: "true"
@@ -315,6 +315,7 @@ services:
       SUDO_QUERY_RETRY_FOR_HTTP_STATUS_CODES: "404,500,503"
       TEMP_GRAPH: "http://mu.semte.ch/graphs/vendor-data-distribution/temp"
       HOSTNAME: "https://loket.vendor-test.lblod.info/"
+      PROCESSING_INTERVAL: 5000
       # SPARQL_ENDPOINT_COPY_OPERATIONS: "http://virtuoso:8890/sparql"
       # SPARQL_ENDPOINT_HEALING_OPERATIONS: "http://virtuoso:8890/sparql"
     volumes:
@@ -332,6 +333,7 @@ services:
       SUDO_QUERY_RETRY_FOR_HTTP_STATUS_CODES: "404,500,503"
       TEMP_GRAPH: "http://mu.semte.ch/graphs/vendor-data-distribution/temp-erediensten"
       HOSTNAME: "https://databankerediensten.vendor-test.lblod.info/"
+      PROCESSING_INTERVAL: 5000
       # SPARQL_ENDPOINT_COPY_OPERATIONS: "http://virtuoso:8890/sparql"
       # SPARQL_ENDPOINT_HEALING_OPERATIONS: "http://virtuoso:8890/sparql"
     volumes:
