@@ -309,7 +309,6 @@ services:
   vendor-data-distribution:
     image: lblod/vendor-data-distribution-service:2.2.0
     environment:
-      MU_SCOPE: "http://redpencil.data.gift/id/concept/muScope/deltas/vendor-data"
       LOGLEVEL: "error"
       WRITE_ERRORS: "true"
       SUDO_QUERY_RETRY: "true"
@@ -327,7 +326,6 @@ services:
   vendor-data-distribution-erediensten:
     image: lblod/vendor-data-distribution-service:2.2.0
     environment:
-      MU_SCOPE: "http://redpencil.data.gift/id/concept/muScope/deltas/vendor-data-erediensten"
       LOGLEVEL: "error"
       WRITE_ERRORS: "true"
       SUDO_QUERY_RETRY: "true"
