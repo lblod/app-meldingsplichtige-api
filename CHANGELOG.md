@@ -7,8 +7,8 @@ In `docker-compose.override.yml`, ensure:
 ```
   error-alert:
     environment:
-      EMAIL_FROM: "Agentschap Binnenlands Bestuur Vlaanderen <noreply-binnenland@vlaanderen.be>"
-      EMAIL_TO: "test@email.com" # To be discussed who should get those emails
+      EMAIL_FROM: "Meldingsplichtige API <noreply-binnenland@vlaanderen.be>"
+      EMAIL_TO: "felix.ruizdearcaute@redpencil.io,claire.lovisa@redpencil.io"
 
   deliver-email-service:
      environment:
