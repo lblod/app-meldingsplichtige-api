@@ -11,6 +11,12 @@ services:
     restart: "no"
   deltanotifier:
     restart: "no"
+    environment:
+      DEBUG_DELTA_SEND: "true"
+      DEBUG_DELTA_NOT_SENDING_EMPTY: "true"
+      DEBUG_DELTA_MATCH: "true"
+      DEBUG_TRIPLE_MATCHES_SPEC: "true"
+      DEBUG_DELTA_FOLD: "true"
   database:
     restart: "no"
   virtuoso:

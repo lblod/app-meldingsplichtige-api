@@ -238,7 +238,7 @@ services:
     restart: always
     logging: *default-logging
   worship-decisions-cross-reference:
-    image: lblod/worship-decisions-cross-reference-service:0.6.0
+    image: lblod/worship-decisions-cross-reference-service:0.6.2
     environment:
       WORSHIP_DECISIONS_BASE_URL: "https://databankerediensten.vendor-test.lblod.info/search/submissions/"
       SCOPE_SUBMISSIONS_TO_ONE_GRAPH: "true"

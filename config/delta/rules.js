@@ -10,10 +10,7 @@ export default [
     options: {
       resourceFormat: "v0.0.1",
       gracePeriod: 250,
-      ignoreFromSelf: true,
-      optOutMuScopeIds: [
-        "http://redpencil.data.gift/id/concept/muScope/deltas/vendor-data"
-      ]
+      ignoreFromSelf: true
     }
   },
   {
@@ -199,13 +196,16 @@ export default [
       resourceFormat: 'v0.0.1',
       gracePeriod: 1000,
       ignoreFromSelf: true,
-      optOutMuScopeIds: [
-        "http://redpencil.data.gift/id/concept/muScope/deltas/vendor-data"
-      ]
+      sendMatchesOnly: true,
+      foldEffectiveChanges: true
     }
   },
   {
     match: {
+      graph: {
+         type: "uri",
+         value: /^http:\/\/mu\.semte\.ch\/graphs\/organizations\/[^\/]+\/LoketLB-toezichtGebruiker$/
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/ns/adms#status'
@@ -215,7 +215,7 @@ export default [
         value: 'http://lblod.data.gift/concepts/9bd8d86d-bb10-4456-a84e-91e9507c374c'
       }
     },
-    callback: {
+      callback: {
       url: 'http://toezicht-flattened-form-data-generator/manual/delta',
       method: 'POST'
     },
@@ -223,9 +223,8 @@ export default [
       resourceFormat: 'v0.0.1',
       gracePeriod: 1000,
       ignoreFromSelf: true,
-      optOutMuScopeIds: [
-        "http://redpencil.data.gift/id/concept/muScope/deltas/vendor-data"
-      ]
+      sendMatchesOnly: true,
+      foldEffectiveChanges: true
     }
   },
   {
@@ -242,7 +241,8 @@ export default [
     options: {
       resourceFormat: 'v0.0.1',
       gracePeriod: 10000,
-      ignoreFromSelf: true
+      ignoreFromSelf: true,
+      sendMatchesOnly: true
     }
   },
   {
@@ -260,7 +260,8 @@ export default [
       resourceFormat: 'v0.0.1',
       gracePeriod: 1000,
       ignoreFromSelf: true,
-      sendMatchesOnly: true
+      sendMatchesOnly: true,
+      foldEffectiveChanges: true
     }
   },
   {
@@ -278,7 +279,8 @@ export default [
       resourceFormat: 'v0.0.1',
       gracePeriod: 1000,
       ignoreFromSelf: true,
-      sendMatchesOnly: true
+      sendMatchesOnly: true,
+      foldEffectiveChanges: true
     }
   },
   {
