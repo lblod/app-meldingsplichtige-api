@@ -28,6 +28,20 @@
         "script": "test-automatic-submission-vendor/run.sh"
       },
       "mounts": { "app": "/data/app/" }
+    },
+    {
+      "documentation": {
+        "command": "test-jaarrekening-flow",
+        "description": "Full collaborative flow (Grobbendonk space): vendor A submits the jaarrekening for Kerkfabriek St.-Lambertus, vendor B (CKB) publishes the bundle, vendor C (gemeente) publishes the gunstig advies, vendor A verifies the approval and downloads the source document via the mapped URL",
+        "arguments": ["[key-vendor-A]", "[key-vendor-B]", "[key-vendor-C]"]
+      },
+      "environment": {
+        "image": "node:20-bookworm",
+        "interactive": true,
+        "join_networks": true,
+        "script": "test-jaarrekening-flow/run.sh"
+      },
+      "mounts": { "app": "/data/app/" }
     }
   ]
 }
