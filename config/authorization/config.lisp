@@ -70,10 +70,19 @@
     ("harvesting:HarvestingCollection" -> _)
     ("cogs:Job" -> _))
 
-(define-graph vendors ("http://mu.semte.ch/graphs/vendors/")
+;; Note: :delta nil is not working ATM
+(define-graph vendors ("http://mu.semte.ch/graphs/vendors/" :delta nil)
     ("base:Submission" -> _)
     ("ext:SubmissionDocument" -> _)
     ("am:FormData" -> _))
+
+;; Note: :delta nil is not working ATM
+(define-graph vendors-erediensten ("http://mu.semte.ch/graphs/vendors-erediensten/" :delta nil)
+  ("http://rdf.myexperiment.org/ontologies/base/Submission" -> _)
+  ("ext:SubmissionDocument" -> _)
+  ("http://lblod.data.gift/vocabularies/automatische-melding/FormData" -> _)
+  ("nfo:FileDataObject" -> _)
+  ("nfo:RemoteDataObject" -> _))
 
 (define-graph automatic-submission ("http://mu.semte.ch/graphs/automatic-submission")
     (_ -> _))
@@ -117,8 +126,26 @@
     :to-graph (org)
     :for-allowed-group "toezicht-gebruiker")
 
+(supply-allowed-group "databank-erediensten-gebruiker"
+    :parameters ("session_group" "session_role")
+    :query "PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+            PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+            SELECT ?session_group ?session_role WHERE {
+                <SESSION_ID> ext:sessionGroup/mu:uuid ?session_group;
+                            ext:sessionRole ?session_role.
+                FILTER( ?session_role = \"LoketLB-databankEredienstenGebruiker\" )
+            }")
+
+(grant (read write)
+    :to-graph (org)
+    :for-allowed-group "databank-erediensten-gebruiker")
+
 (grant (read)
     :to-graph (vendors)
+    :for-allowed-group "vendor-api")
+
+(grant (read)
+    :to-graph (vendors-erediensten)
     :for-allowed-group "vendor-api")
 
 (grant (read write)

@@ -1,0 +1,286 @@
+@prefix form: <http://lblod.data.gift/vocabularies/forms/> .
+@prefix sh: <http://www.w3.org/ns/shacl#>.
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
+@prefix fieldGroups: <http://data.lblod.info/field-groups/> .
+@prefix fields: <http://data.lblod.info/fields/> .
+@prefix dateRange: <http://data.lblod.info/form-fields/date-range/> .
+@prefix displayTypes: <http://lblod.data.gift/display-types/> .
+@prefix eli: <http://data.europa.eu/eli/ontology#>.
+@prefix besluit: <http://data.vlaanderen.be/ns/besluit#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix prov: <http://www.w3.org/ns/prov#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix lblodBesluit: <http://lblod.data.gift/vocabularies/besluit/> .
+@prefix besluit: <http://data.vlaanderen.be/ns/besluit#>.
+@prefix mandaat: <http://data.vlaanderen.be/ns/mandaat#>.
+@prefix elod: <http://linkedeconomy.org/ontology#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix nfo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#> .
+@prefix nie: <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#>.
+@prefix schema: <http://schema.org/>.
+@prefix search: <http://redpencil.data.gift/vocabularies/search-queries/> .
+@prefix searchToezicht: <http://lblod.data.gift/vocabularies/search-queries-toezicht/> .
+
+##########################################################
+#  START property-groups
+##########################################################
+fields:8e24d707-0e29-45b5-9bbf-a39e4fdb2c11 a form:PropertyGroup;
+    mu:uuid "8e24d707-0e29-45b5-9bbf-a39e4fdb2c11";
+    sh:description "used to split-up the form in different sections, mainly for scaling";
+    sh:order 1 .
+
+fields:7fe1a020-7e48-44c2-b7f0-6b7943ddff3e a form:PropertyGroup;
+    mu:uuid "7fe1a020-7e48-44c2-b7f0-6b7943ddff3e";
+    sh:description "used to split-up the form in different sections, mainly for scaling";
+    sh:order 2 .
+
+fields:015d85ac-7ff0-424d-862e-6c38626ea915 a form:PropertyGroup;
+    mu:uuid "015d85ac-7ff0-424d-862e-6c38626ea915";
+    sh:description "elastic-search filter-group";
+    sh:order 3 ;
+    sh:group fields:8e24d707-0e29-45b5-9bbf-a39e4fdb2c11 .
+
+fields:cb08e556-459d-4378-a79b-51f35c9a965e a form:PropertyGroup;
+    mu:uuid "cb08e556-459d-4378-a79b-51f35c9a965e";
+    sh:description "governing entities filter-group";
+    sh:order 4 ;
+    sh:group fields:8e24d707-0e29-45b5-9bbf-a39e4fdb2c11 .
+
+fields:f950e7b3-b09b-4343-84aa-6083aa0241c6 a form:PropertyGroup;
+    mu:uuid "f950e7b3-b09b-4343-84aa-6083aa0241c6";
+    sh:description "document/file filter-group";
+    sh:order 5 ;
+    sh:group fields:7fe1a020-7e48-44c2-b7f0-6b7943ddff3e .
+
+fields:b729fd8e-62a1-4e20-8faf-ce32e625a938 a form:PropertyGroup;
+    mu:uuid "b729fd8e-62a1-4e20-8faf-ce32e625a938";
+    sh:description "subcategory for taxes and retributions";
+    sh:order 6;
+    sh:name "Subcategorie: Belasting of retributie" ;
+    sh:group fields:7fe1a020-7e48-44c2-b7f0-6b7943ddff3e .
+
+fields:2c6ae26c-c3de-4bbc-9021-9cb45b886742 a form:PropertyGroup;
+    mu:uuid "2c6ae26c-c3de-4bbc-9021-9cb45b886742";
+    sh:description "date-ranges filter-group";
+    sh:order 7 ;
+    sh:group fields:7fe1a020-7e48-44c2-b7f0-6b7943ddff3e .
+
+fields:9825b9c3-f942-4ba9-bd6c-5201dbae24b8 a form:PropertyGroup;
+    mu:uuid "9825b9c3-f942-4ba9-bd6c-5201dbae24b8";
+    sh:description "date filter";
+    sh:order 8 ;
+    sh:group fields:7fe1a020-7e48-44c2-b7f0-6b7943ddff3e .
+
+##########################################################
+#  END property-groups
+##########################################################
+
+##########################################################
+#  START fields
+##########################################################
+
+##########################################################
+# START search-term
+##########################################################
+fields:747f627d-9301-40b3-986d-ad7c335b275f a form:Field ;
+    mu:uuid "747f627d-9301-40b3-986d-ad7c335b275f2";
+    sh:name "Zoekterm" ;
+    sh:order 30 ;
+    search:emberQueryParameterKey "search" ;
+    sh:path search:term ;
+    form:displayType displayTypes:customSearch ;
+    sh:group fields:015d85ac-7ff0-424d-862e-6c38626ea915 .
+##########################################################
+# END search-term
+##########################################################
+
+##########################################################
+# START administrative unit
+##########################################################
+fields:8f6ee5fa-4d2b-40a3-86ab-a9d2115f4f91 a form:Field ;
+    mu:uuid "8f6ee5fa-4d2b-40a3-86ab-a9d2115f4f91" ;
+    sh:name "Bestuurseenheid" ;
+    sh:order 50 ;
+    search:emberQueryParameterKey "administrativeUnites" ;
+    sh:path searchToezicht:administrativeUnit ;
+    form:options  """{"conceptScheme":"http://lblod.data.gift/concept-schemes/7e2b965e-c824-474f-b5d5-b1c115740083"}""" ;
+    form:displayType displayTypes:conceptSchemeMultiSelector ;
+    form:help "vb. Gemeente Hasselt, OCMW Gent" ;
+    sh:group fields:cb08e556-459d-4378-a79b-51f35c9a965e .
+##########################################################
+# END administrative unit
+##########################################################
+
+##########################################################
+# START province
+##########################################################
+fields:73370536-ff00-4fc5-9c6a-40aeea9c14ee a form:Field ;
+    mu:uuid "73370536-ff00-4fc5-9c6a-40aeea9c14ee" ;
+    sh:name "Provincie" ;
+    sh:order 60 ;
+    search:emberQueryParameterKey "provinces" ;
+    sh:path searchToezicht:province ;
+    form:options  """{"conceptScheme":"http://lblod.data.gift/concept-schemes/372797ff-917c-4572-925f-f09cc30932e6"}""" ;
+    form:displayType displayTypes:conceptSchemeMultiSelector ;
+    form:help "vb. Antwerpen of Oost-Vlaanderen" ;
+    sh:group fields:cb08e556-459d-4378-a79b-51f35c9a965e .
+##########################################################
+# END province
+##########################################################
+
+##########################################################
+# START administrative unit classification
+##########################################################
+fields:35465e1a-531a-4bab-8b19-bbd59f19cd4a a form:Field ;
+    mu:uuid "35465e1a-531a-4bab-8b19-bbd59f19cd4a" ;
+    sh:name "Type bestuur" ;
+    sh:order 70 ;
+    search:emberQueryParameterKey "administrativeUnitClassifications" ;
+    sh:path searchToezicht:administrativeUnitClassification ;
+    form:options  """{"conceptScheme":"http://data.vlaanderen.be/id/conceptscheme/BestuurseenheidClassificatieCode"}""" ;
+    form:displayType displayTypes:conceptSchemeSelector ;
+    form:help "vb. Kerkfabriek of gemeente" ;
+    sh:group fields:cb08e556-459d-4378-a79b-51f35c9a965e ;
+    form:hasConditionalFieldGroup fields:0fe2e436-673e-4cc8-9e29-f227f18dabb2. ## Type Eredienst
+
+fields:0fe2e436-673e-4cc8-9e29-f227f18dabb2 a form:ConditionalFieldGroup ;
+    mu:uuid "0fe2e436-673e-4cc8-9e29-f227f18dabb2";
+    form:conditions
+      [ a form:MatchValues ;
+        form:grouping form:Bag ;
+        sh:path searchToezicht:administrativeUnitClassification ;
+        form:valuesIn (
+          <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/66ec74fd-8cfc-4e16-99c6-350b35012e86> # Bestuur van de eredienst
+          <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/f9cac08a-13c1-49da-9bcb-f650b0604054> # Centraal bestuur van de eredienst
+          <http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/36372fad-0358-499c-a4e3-f412d2eae213> # Representatief orgaan
+        ) ;
+      ] ;
+    form:hasFieldGroup fieldGroups:e982310c-1c90-43a6-bdd2-a1d15ad740aa .
+
+fieldGroups:e982310c-1c90-43a6-bdd2-a1d15ad740aa a form:FieldGroup;
+    mu:uuid "e982310c-1c90-43a6-bdd2-a1d15ad740aa" ;
+    form:hasField
+                ### Type Eredienst
+                fields:d18e810d-1ec8-4cdc-ac17-ee6b9d8958b6 .
+##########################################################
+# END administrative unit classification
+##########################################################
+
+##########################################################
+# START Type Eredienst
+##########################################################
+fields:d18e810d-1ec8-4cdc-ac17-ee6b9d8958b6 a form:Field ;
+    mu:uuid "d18e810d-1ec8-4cdc-ac17-ee6b9d8958b6" ;
+    sh:name "Type eredienst" ;
+    sh:order 80 ;
+    search:emberQueryParameterKey "typeEredienst" ;
+    sh:path searchToezicht:typeEredienst ;
+    form:options  """{"conceptScheme":"http://lblod.data.gift/concept-schemes/5be1fce008d73105d9bc6de9e488b0b9"}""" ;
+    form:displayType displayTypes:conceptSchemeSelector ;
+    form:help "vb. Anglicaanse, Islamitische, Israëlitische, Orthodox, Protestantse of Rooms-Katholiek" ;
+    sh:group fields:cb08e556-459d-4378-a79b-51f35c9a965e .
+##########################################################
+# END Type Eredienst
+##########################################################
+
+##########################################################
+# START decision type
+##########################################################
+fields:edcd6b86-2a9c-4c2a-a283-e536f49fbe7b a form:Field ;
+    mu:uuid "edcd6b86-2a9c-4c2a-a283-e536f49fbe7b" ;
+    sh:name "Categorie dossier" ;
+    sh:order 90 ;
+    sh:path searchToezicht:decisionType ;
+    search:emberQueryParameterKey "decisionTypes" ;
+    form:options  """{"conceptScheme":"http://lblod.data.gift/concept-schemes/71e6455e-1204-46a6-abf4-87319f58eaa5"}""" ;
+    form:displayType displayTypes:conceptSchemeMultiSelector ;
+    form:help "vb. Notulen, budget, advies bij jaarrekening eredienstbestuur…" ;
+    sh:group fields:f950e7b3-b09b-4343-84aa-6083aa0241c6 .
+
+##########################################################
+# END decision type
+##########################################################
+
+##########################################################
+# START session date [second version]
+##########################################################
+fields:6565db60-c0d3-4878-b240-35d661b3ca86 a form:Field ;
+ mu:uuid "6565db60-c0d3-4878-b240-35d661b3ca86" ;
+ sh:name "Periode zitting / besluit" ;
+ sh:order 110 ;
+ form:displayType displayTypes:dateRange ;
+ dateRange:from fields:272dfe20-518b-4025-b782-a0ec06b48850;
+ dateRange:to fields:db613412-727e-486f-8a11-7fc25abed640;
+ sh:group fields:2c6ae26c-c3de-4bbc-9021-9cb45b886742 .
+
+fields:272dfe20-518b-4025-b782-a0ec06b48850 a form:Field ;
+ mu:uuid "272dfe20-518b-4025-b782-a0ec06b48850" ;
+ sh:order 1001 ;
+ search:emberQueryParameterKey "sessionDateFrom" ;
+ sh:path searchToezicht:sessionDateFrom ;
+ sh:group fields:2c6ae26c-c3de-4bbc-9021-9cb45b886742 .
+
+fields:db613412-727e-486f-8a11-7fc25abed640 a form:Field ;
+ mu:uuid "db613412-727e-486f-8a11-7fc25abed640" ;
+ sh:order 1002 ;
+ search:emberQueryParameterKey "sessionDateTo" ;
+ sh:path searchToezicht:sessionDateTo ;
+ sh:group fields:2c6ae26c-c3de-4bbc-9021-9cb45b886742 .
+##########################################################
+#  END session date
+##########################################################
+
+##########################################################
+# START unique session date 
+##########################################################
+fields:b6c4c973-b15e-4ffd-861f-1198e3fef1f0 a form:Field ;
+ mu:uuid "b6c4c973-b15e-4ffd-861f-1198e3fef1f0" ;
+ sh:name "Zoeken op specifieke datum zitting / besluit" ;
+ sh:order 111 ;
+ search:emberQueryParameterKey "sessionDateTime" ;
+ sh:path searchToezicht:sessionDateTime ;
+ form:displayType displayTypes:dateTime ;
+ sh:group fields:9825b9c3-f942-4ba9-bd6c-5201dbae24b8 .
+
+##########################################################
+#  END unique session date
+##########################################################
+
+##########################################################
+#  END fields
+##########################################################
+
+##########################################################
+#  START main-form
+##########################################################
+fieldGroups:filter a form:FieldGroup ;
+    mu:uuid "70eebdf0-14dc-47f7-85df-e1cfd41c3855" ;
+    form:hasField
+
+                ### Administrative Unit select
+                fields:8f6ee5fa-4d2b-40a3-86ab-a9d2115f4f91,
+
+                ### Province select
+                fields:73370536-ff00-4fc5-9c6a-40aeea9c14ee,
+
+                ### Administrative Unit Classification select
+                fields:35465e1a-531a-4bab-8b19-bbd59f19cd4a,
+
+                ### Decision Type select
+                fields:edcd6b86-2a9c-4c2a-a283-e536f49fbe7b,
+
+                ### Session Date From-To datepicker
+                fields:6565db60-c0d3-4878-b240-35d661b3ca86,
+
+                ### Unique Session Date from date
+                fields:b6c4c973-b15e-4ffd-861f-1198e3fef1f0.
+
+form: a form:Form ;
+    mu:uuid "6b70a6f0-cce2-4afe-81f5-5911f45b0b27" ;
+    form:hasFieldGroup fieldGroups:filter .
+##########################################################
+#  END main-form
+##########################################################
