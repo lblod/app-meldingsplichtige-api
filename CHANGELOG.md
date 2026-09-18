@@ -1,4 +1,26 @@
 # Changelog
+## Unreleased
+ - Add `error-alert` and `deliver-email` services to the stack
+
+### Deploy Notes
+In `docker-compose.override.yml`, ensure:
+```
+  error-alert:
+    environment:
+      EMAIL_FROM: "Meldingsplichtige API <noreply-binnenland@vlaanderen.be>"
+      EMAIL_TO: "felix.ruizdearcaute@redpencil.io,claire.lovisa@redpencil.io"
+
+  deliver-email-service:
+     environment:
+      EMAIL_CRON_PATTERN: "*/10 * * * *"
+      EMAIL_PROTOCOL: "smtp"
+      WELL_KNOWN_SERVICE: "Outlook365"
+      EMAIL_ADDRESS: "abb.binnenland@service.vlaanderen.be"
+      EMAIL_PASSWORD: "xxx" # check on servers for the pwd
+      # !! We can't set this to 10+ because the service currently does a string comparison instead of a number comparison so it would stop at 2 retry attempts. !!
+      MAX_RETRY_ATTEMPTS: 9
+```
+
 ## v1.54.0 (2026-09-09)
  - Replace mu-auth by sparql-parser [DL-6574]
  - mu script `test-automatic-submission-vendor`: follow a submission through the vendor SPARQL API (login, poll status, logout) [DL-7578]
