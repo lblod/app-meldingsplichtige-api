@@ -59,7 +59,7 @@ export async function step2Bundel(ctx, eredienstDocument) {
     DOC_URI_BASE + ctx.runId + "-bundel",
     ctx.vendors.a.uri, ctx.vendors.a.key
   );
-  await waitVerstuurd("step 2", submission.submissionUri, ctx.pageUrls.bundel);
+  await waitVerstuurd(cookie, "step 2", submission.submissionUri, ctx.pageUrls.bundel);
   await vendorLogout(cookie);
   return { submission };
 }

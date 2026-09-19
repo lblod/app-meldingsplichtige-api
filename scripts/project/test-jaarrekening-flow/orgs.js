@@ -1,16 +1,9 @@
-import { KFB_ORG, GEMEENTE_ORG } from "./config.js";
+import { GEMEENTE_ORG } from "./config.js";
 import { sparql, sparqlEscapeUri } from "./sparql.js";
 import { say } from "./log.js";
 
-// Fetch a single vendor's stored plain key (USE_HASHED_KEY must be off here).
-export const vendorKeysQuery = (vendorUri) => `
-PREFIX muAccount: <http://mu.semte.ch/vocabularies/account/>
-SELECT ?key WHERE {
-  GRAPH <http://mu.semte.ch/graphs/automatic-submission> {
-    ${sparqlEscapeUri(vendorUri)} muAccount:key ?key .
-  }
-}`;
-
+// Resolve of the organ structure happens on the centrale vindplaats, not on
+// the local databank.
 export const organQuery = (unitUri, classificatie) => `
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
@@ -29,7 +22,7 @@ SELECT DISTINCT ?organInTijd ?organAbstract ?label ?bindingStart WHERE {
 // gemeente a Gemeenteraad organ. All are found via besluit:bestuurt plus a
 // BestuursorgaanClassificatieCode to disambiguate.
 export async function resolveOrgan(unitUri, label, classificatie) {
-  const rows = await sparql("organ lookup (databank SPARQL)", organQuery(unitUri, classificatie));
+  const rows = await sparql("organ lookup (centrale vindplaats SPARQL)", organQuery(unitUri, classificatie));
   if (rows && rows.error) throw new Error("bestuursorgaan lookup failed for " + label + ": " + rows.error);
   if (rows.length === 0) {
     throw new Error("no bestuursorgaan (in tijd) found for " + label + " " + unitUri);
@@ -54,15 +47,18 @@ export async function resolveOrgan(unitUri, label, classificatie) {
   return organ;
 }
 
-// Fetch a vendor's stored key unless one was passed as an argument.
-export async function resolveVendor(uri, keyArg) {
-  let key = keyArg;
-  if (!key) {
-    const keyRows = await sparql("vendor key lookup (databank SPARQL)", vendorKeysQuery(uri));
-    if (!Array.isArray(keyRows) || keyRows.length === 0) {
-      throw new Error("no muAccount:key found for " + uri + " - pass it as an argument");
-    }
-    key = keyRows[0].key.value;
+// The vendor key is a secret of the own stack; it is never resolved via a
+// SPARQL query. It must be passed on the command line. No key? Tell the user
+// which vendor (label + uri) is missing it and how the CLI call should look.
+export async function resolveVendor(label, uri, keyArg) {
+  if (!keyArg) {
+    throw new Error(
+      "no key for " + label + " (" + uri + ")" +
+        " - pass it as the command line argument for this vendor, ordered like this:\n" +
+        "  node main.js keyA keyB\n" +
+        "  keyA = vendor A (kerkfabriek + CKB)\n" +
+        "  keyB = vendor B (gemeente)"
+    );
   }
-  return { uri, key };
+  return { uri, key: keyArg };
 }

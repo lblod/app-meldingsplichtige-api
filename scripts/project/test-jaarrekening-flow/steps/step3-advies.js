@@ -47,7 +47,7 @@ export async function step3Advies(ctx, eredienstDocument) {
     DOC_URI_BASE + ctx.runId + "-advies-besluit",
     ctx.vendors.b.uri, ctx.vendors.b.key
   );
-  await waitVerstuurd("step 3", submission.submissionUri, ctx.pageUrls.advies);
+  await waitVerstuurd(cookie, "step 3", submission.submissionUri, ctx.pageUrls.advies);
   await vendorLogout(cookie);
   return { submission };
 }

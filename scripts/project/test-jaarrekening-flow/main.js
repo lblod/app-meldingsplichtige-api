@@ -32,18 +32,26 @@ process.on("SIGTERM", function () {
   process.exit(143);
 });
 
-// Just hard code the two vendors that are needed for this flow. Arguments
-// [keyA keyB] override the stored keys (USE_HASHED_KEY must be off here).
+// Just hard code the two vendors that are needed for this flow. Their keys
+// are secrets and must be passed as arguments [keyA keyB]; the script never
+// reads them from a SPARQL endpoint.
 const ctx = {
   runId: runId,
   pages: new Map(),
-  vendors: {
-    a: await resolveVendor(VENDOR_A_URI, process.argv[2]),
-    b: await resolveVendor(VENDOR_B_URI, process.argv[3]),
-  },
 };
 
 try {
+  if (!process.argv[2] || !process.argv[3]) {
+    throw new Error(
+      "usage: node main.js keyA keyB\n" +
+        "  keyA = vendor A (kerkfabriek + CKB): " + VENDOR_A_URI + "\n" +
+        "  keyB = vendor B (gemeente):          " + VENDOR_B_URI
+    );
+  }
+  ctx.vendors = {
+    a: await resolveVendor("vendor A", VENDOR_A_URI, process.argv[2]),
+    b: await resolveVendor("vendor B", VENDOR_B_URI, process.argv[3]),
+  };
   say("vendor A (kerkfabriek + CKB): " + ctx.vendors.a.uri);
   say("vendor B (gemeente):          " + ctx.vendors.b.uri);
   ctx.pageUrls = buildPageUrls(runId, await pickOwnIp());

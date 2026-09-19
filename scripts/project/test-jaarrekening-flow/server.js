@@ -24,10 +24,11 @@ export async function startPageServer(pages) {
 }
 
 export function pickOwnIp() {
-  // Ask the OS which local address a real connection to the SPARQL endpoint
-  // would use, so we bind to the interface other containers can reach us on.
-  // Works with any number of networks (mu-scripts joins 1, direct runs may join more).
-  const address = outboundAddressTo("virtuoso", 8890);
+  // Ask the OS which local address a real connection to the identifier
+  // endpoint would use, so we bind to the interface other containers can
+  // reach us on. Works with any number of networks (mu-scripts joins 1,
+  // direct runs may join more).
+  const address = outboundAddressTo("identifier", 80);
   const ownIp = address || firstNonInternalIpv4();
   if (!ownIp) {
     throw new Error("could not determine a closable non-internal IPv4 address");

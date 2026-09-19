@@ -5,6 +5,7 @@ import { resolveOrgan } from "../orgs.js";
 import { renderJaarrekeningPage } from "../template.js";
 import { verifySelfFetch } from "../server.js";
 import { submitMelding, waitVerstuurd } from "../checks.js";
+import { vendorLogin, vendorLogout } from "../vendor.js";
 
 // TODO : make this more realistic:
 // connect to centrale vindplaats, and first search for eredienst that has
@@ -26,7 +27,9 @@ export async function step1Jaarrekening(ctx) {
     DOC_URI_BASE + ctx.runId + "-jaarrekening",
     ctx.vendors.a.uri, ctx.vendors.a.key
   );
-  const state = await waitVerstuurd("step 1", submission.submissionUri, ctx.pageUrls.jaarrekening);
+  const cookie = (await vendorLogin(KFB_ORG, ctx.vendors.a.uri, ctx.vendors.a.key)).cookie;
+  const state = await waitVerstuurd(cookie, "step 1", submission.submissionUri, ctx.pageUrls.jaarrekening);
+  await vendorLogout(cookie);
   const document = state.submissionDocument.value;
   say("SubmissionDocument " + document);
   return { submission, document };

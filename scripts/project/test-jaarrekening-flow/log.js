@@ -12,7 +12,7 @@ export function say(message) {
 
 // Every HTTP command gets printed before it runs, together with WHAT it is
 // checking (which endpoint, which probe). Example:
-//   -> poll-check (job + download status): GET http://virtuoso:8890/sparql?query=...
+//   -> poll-check (job + download status): POST http://identifier/vendor/sparql
 export function logCommand(what, method, url) {
   console.log("  -> " + what + ": " + method + " " + url);
 }
@@ -22,6 +22,14 @@ export function logSparql(what, query) {
   console.log("  SPARQL query (" + what + "):");
   for (const line of query.split("\n")) {
     if (line.trim()) console.log("    " + line.trim());
+  }
+}
+
+// The request body, printed for real (no truncation), JSON, body lines indented.
+export function logBody(what, body) {
+  console.log("  body (" + what + "):");
+  for (const line of JSON.stringify(body, null, 2).split("\n")) {
+    console.log("    " + line);
   }
 }
 

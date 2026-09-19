@@ -46,8 +46,6 @@ export const STATUS_VERSTUURD =
   "http://lblod.data.gift/concepts/9bd8d86d-bb10-4456-a84e-91e9507c374c";
 export const JOB_SUCCESS = "http://redpencil.data.gift/id/concept/JobStatus/success";
 export const JOB_FAILED = "http://redpencil.data.gift/id/concept/JobStatus/failed";
-export const JOB_OPERATION =
-  "http://lblod.data.gift/id/jobs/concept/JobOperation/automaticSubmissionFlow";
 export const DL_SUCCESS = "http://lblod.data.gift/file-download-statuses/success";
 
 // The vendor-data-distribution instance rewrites every file's nie:url into
@@ -56,7 +54,7 @@ export const DL_SUCCESS = "http://lblod.data.gift/file-download-statuses/success
 // in main.js the host of the ?downloadLink value is replaced with the mu-identifier
 // ("http://identifier") on the docker network before downloading.
 
-export const SPARQL_ENDPOINT = "http://virtuoso:8890/sparql";
+export const CV_SPARQL_ENDPOINT = "https://centrale-vindplaats.lblod.info/sparql";
 export const MELDING_ENDPOINT = "http://identifier/melding";
 export const VENDOR_LOGIN_ENDPOINT = "http://identifier/vendor/login";
 export const VENDOR_SPARQL_ENDPOINT = "http://identifier/vendor/sparql";

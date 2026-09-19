@@ -1,28 +1,6 @@
-import { JOB_OPERATION } from "./config.js";
 import { sparqlEscapeUri } from "./sparql.js";
 
-// Vendor A submits the jaarrekening, B publishes the bundle for the CKB,
-// C publishes the approval for the gemeente. Every merged melding poll uses
-// the internal cogs:Job + the vendor-visible status of the Submission.
-
-export function pollQuery(submissionUri, pageUrl) {
-  return `
-PREFIX adms: <http://www.w3.org/ns/adms#>
-PREFIX cogs: <http://vocab.deri.ie/cogs#>
-PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX nie: <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#>
-PREFIX prov: <http://www.w3.org/ns/prov#>
-PREFIX task: <http://redpencil.data.gift/vocabularies/tasks/>
-SELECT DISTINCT ?dlStatus ?jobStatus ?job
-WHERE {
-  BIND(${sparqlEscapeUri(submissionUri)} AS ?submission)
-  ?job a cogs:Job ;
-       task:operation ${sparqlEscapeUri(JOB_OPERATION)} ;
-       adms:status ?jobStatus ;
-       prov:generated ?submission .
-  OPTIONAL { ?submission nie:hasPart ?rdo . ?rdo nie:url ${sparqlEscapeUri(pageUrl)} ; adms:status ?dlStatus }
-}`;
-}
+// Queries for the vendor SPARQL endpoint (vendor-visible graphs only).
 
 export function submissionStatusQuery(submissionUri) {
   return `
@@ -44,24 +22,6 @@ SELECT DISTINCT ?status ?sentDate ?formData ?submissionDocument WHERE {
 // All tasks of the job that generated this submission, with their operation
 // and status. Used to detect a stalled chain (task at success, successor
 // never created because the job-controller missed its delta).
-export function jobTasksQuery(submissionUri) {
-  return `
-PREFIX adms: <http://www.w3.org/ns/adms#>
-PREFIX cogs: <http://vocab.deri.ie/cogs#>
-PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX prov: <http://www.w3.org/ns/prov#>
-PREFIX task: <http://redpencil.data.gift/vocabularies/tasks/>
-SELECT DISTINCT ?task ?op ?status WHERE {
-  ?job a cogs:Job ;
-       prov:generated ${sparqlEscapeUri(submissionUri)} .
-  ?task dct:isPartOf ?job ;
-        task:operation ?op ;
-        adms:status ?status .
-}`;
-}
-
-// Vendor B (CKB) discovery: the SubmissionDocument of the eredienstbestuur's
-// jaarrekening (the pages-vendors "voorbeeld-ckb-grobbendonk.sparql" query).
 export function ckbDiscoveryQuery() {
   return `
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
