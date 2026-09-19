@@ -1,12 +1,18 @@
 // Full collaborative jaarrekening flow (Grobbendonk test space):
-// vendor A (KFB) submits the jaarrekening, vendor B (CKB) publishes the bundle,
-// vendor C (gemeente) publishes the approval, vendor A verifies and downloads.
+// vendor A (eredienstbestuur vendor) submits the jaarrekening for the KFB and
+// the CKB bundle, vendor B (gemeente vendor) publishes the approval,
+// vendor A verifies and downloads.
 export const KFB_ORG =
   "http://data.lblod.info/id/besturenVanDeEredienst/4bafd12e53d6aaa218d74446202dc2ed";
 export const CKB_ORG =
   "http://data.lblod.info/id/centraleBesturenVanDeEredienst/3e95fcbcdde9a46586f91b693985578f";
 export const GEMEENTE_ORG =
   "http://data.lblod.info/id/bestuurseenheden/f4641f7ba21f1a575993f1b523fb581af12269164006abeab121886037ac0cad";
+
+// Vendor A acts for both eredienst organisaties (KFB and CKB), vendor B acts
+// for the gemeente.
+export const VENDOR_A_URI = "http://data.lblod.info/vendors/b1e41693-639a-4f61-92a9-5b9a3e0b924e";
+export const VENDOR_B_URI = "http://data.lblod.info/vendors/d6d4f2ae-1d08-11eb-adc1-0242ac120002";
 
 // BesluitType "Jaarrekening" (document of the eredienstbestuur itself)
 export const JAARREKENING_TYPE =
@@ -46,8 +52,9 @@ export const DL_SUCCESS = "http://lblod.data.gift/file-download-statuses/success
 
 // The vendor-data-distribution instance rewrites every file's nie:url into
 // "#{HOSTNAME}files/<uuid>/download" and keeps the original under prov:hadPrimarySource.
-// HOSTNAME in docker-compose.override.yml is "http://localhost/".
-export const VENDOR_FILES_HOST = "http://localhost/";
+// The HOSTNAME depends on the stack config, so the script does not assert on it:
+// in main.js the host of the ?downloadLink value is replaced with the mu-identifier
+// ("http://identifier") on the docker network before downloading.
 
 export const SPARQL_ENDPOINT = "http://virtuoso:8890/sparql";
 export const MELDING_ENDPOINT = "http://identifier/melding";

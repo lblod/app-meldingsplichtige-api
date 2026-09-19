@@ -3,14 +3,15 @@ import {
   KFB_ORG,
   CKB_ORG,
   GEMEENTE_ORG,
-  VENDOR_FILES_HOST,
+  VENDOR_A_URI,
+  VENDOR_B_URI,
   DOC_URI_BASE,
   CLASSIFICATIE_KERKRAAD,
   CLASSIFICATIE_CKB,
   CLASSIFICATIE_GEMEENTERAAD,
 } from "./config.js";
 import { sparql } from "./sparql.js";
-import { grantedVendorsQuery, vendorKeysQuery, resolveOrgan } from "./orgs.js";
+import { vendorKeysQuery, resolveOrgan } from "./orgs.js";
 import { renderJaarrekeningPage, renderBundlePage, renderAdviesPage } from "./template.js";
 import { startPageServer, pickOwnIp, buildPageUrls, verifySelfFetch } from "./server.js";
 import { submitMelding, waitVerstuurd } from "./checks.js";
@@ -25,13 +26,12 @@ import {
 // Piece de resistance: the full automatic submission flow for the Grobbendonk
 // test space, driven entirely over HTTP:
 //   step 1: vendor A submits the jaarrekening for Kerkfabriek St.-Lambertus
-//   step 2: vendor B (CKB Grobbendonk) publishes the bundle referring to it
-//   step 3: vendor C (gemeente Grobbendonk) publishes the gunstig advies
+//   step 2: vendor A (CKB Grobbendonk role) publishes the bundle referring to it
+//   step 3: vendor B (gemeente Grobbendonk) publishes the gunstig advies
 //   step 4: vendor A checks the approval on databankerediensten
 //   step 5: vendor A downloads the source document via the mapped URL
 
 const runId = randomUUID();
-const argv = process.argv.slice(2);
 let server = null;
 
 // Ctrl+C must stop the script immediately, even while it is inside a poll/sleep loop.
@@ -45,11 +45,16 @@ process.on("SIGTERM", function () {
   process.exit(143);
 });
 
+// Just hard code the two vendors that are needed for this flow. Arguments
+// [keyA keyB] override the stored keys (USE_HASHED_KEY must be off here).
+const VENDORS = {
+  a: await resolveVendor(VENDOR_A_URI, process.argv[2]),
+  b: await resolveVendor(VENDOR_B_URI, process.argv[3]),
+};
+
 try {
-  const vendors = await pickVendors(argv);
-  console.log("vendor A (kerkfabriek):     " + vendors.a.uri + " " + vendors.a.name);
-  console.log("vendor B (centraal kerkb.): " + vendors.b.uri + " " + vendors.b.name);
-  console.log("vendor C (gemeente):        " + vendors.c.uri + " " + vendors.c.name);
+  console.log("vendor A (kerkfabriek + CKB): " + VENDORS.a.uri);
+  console.log("vendor B (gemeente):          " + VENDORS.b.uri);
 
   const ownIp = await pickOwnIp();
   const pages = new Map();
@@ -73,7 +78,7 @@ try {
   await verifySelfFetch(pageUrls.jaarrekening);
   const jar = await submitMelding(
     "step 1", KFB_ORG, pageUrls.jaarrekening, DOC_URI_BASE + runId + "-jaarrekening",
-    vendors.a.uri, vendors.a.key
+    VENDORS.a.uri, VENDORS.a.key
   );
   const jarState = await waitVerstuurd("step 1", jar.submissionUri, pageUrls.jaarrekening);
   const eredienstDocument = jarState.submissionDocument.value;
@@ -83,8 +88,8 @@ try {
 
   // ------------------------------------------------------- STEP 2: vendor B
   console.log("");
-  console.log("=== STEP 2: vendor B (CKB Grobbendonk) publishes the bundle ===");
-  const cookieB = (await vendorLogin(CKB_ORG, vendors.b.uri, vendors.b.key)).cookie;
+  console.log("=== STEP 2: vendor A (CKB Grobbendonk role) publishes the bundle ===");
+  const cookieB = (await vendorLogin(CKB_ORG, VENDORS.a.uri, VENDORS.a.key)).cookie;
 
   // TODO : make this more realistic:
   // connect to centrale vindplaats, and first search for eredienst related to CKB_ORG,
@@ -123,17 +128,17 @@ try {
   await verifySelfFetch(pageUrls.bundel);
   const bundel = await submitMelding(
     "step 2", CKB_ORG, pageUrls.bundel, DOC_URI_BASE + runId + "-bundel",
-    vendors.b.uri, vendors.b.key
+    VENDORS.a.uri, VENDORS.a.key
   );
   await waitVerstuurd("step 2", bundel.submissionUri, pageUrls.bundel);
   await vendorLogout(cookieB);
 
   //process.exit(0); // 0 = success, non-zero = error
 
-  // ------------------------------------------------------- STEP 3: vendor C
+  // ------------------------------------------------------- STEP 3: vendor B
   console.log("");
-  console.log("=== STEP 3: vendor C (gemeente Grobbendonk) publishes the gunstig advies ===");
-  const cookieC = (await vendorLogin(GEMEENTE_ORG, vendors.c.uri, vendors.c.key)).cookie;
+  console.log("=== STEP 3: vendor B (gemeente Grobbendonk) publishes the gunstig advies ===");
+  const cookieC = (await vendorLogin(GEMEENTE_ORG, VENDORS.b.uri, VENDORS.b.key)).cookie;
   // The CKB bundle chain only becomes visible to the gemeente after the
   // vendor-data-distribution (erediensten instance) has copied the databank
   // org graph into the vendors-erediensten graphs; poll until it surfaces.
@@ -159,7 +164,7 @@ try {
   await verifySelfFetch(pageUrls.advies);
   const advies = await submitMelding(
     "step 3", GEMEENTE_ORG, pageUrls.advies, DOC_URI_BASE + runId + "-advies-besluit",
-    vendors.c.uri, vendors.c.key
+    VENDORS.b.uri, VENDORS.b.key
   );
   await waitVerstuurd("step 3", advies.submissionUri, pageUrls.advies);
   await vendorLogout(cookieC);
@@ -167,7 +172,7 @@ try {
   // ------------------------------------------------------- STEP 4: vendor A check
   console.log("");
   console.log("=== STEP 4: vendor A checks on databankerediensten that the document was approved ===");
-  const cookieA2 = (await vendorLogin(KFB_ORG, vendors.a.uri, vendors.a.key)).cookie;
+  const cookieA2 = (await vendorLogin(KFB_ORG, VENDORS.a.uri, VENDORS.a.key)).cookie;
   await pollApproval("step 4", cookieA2, eredienstDocument, GEMEENTE_ORG);
 
   // ------------------------------------------------------- STEP 5: download
@@ -175,13 +180,17 @@ try {
   console.log("=== STEP 5: vendor A downloads the source document via the mapped URL ===");
   const fileRows = await vendorSparql(cookieA2, downloadLinkQuery(jar.submissionUri));
   assertFound("step 5: no file with a download link found on the jaarrekening formData", fileRows);
-  const downloadLink = fileRows[0].downloadLink.value;
+  const rawDownloadLink = fileRows[0].downloadLink.value;
   const hadPrimarySource = fileRows[0].hadPrimarySource ? fileRows[0].hadPrimarySource.value : null;
-  console.log("step 5: mapped download link: " + downloadLink);
+  // Whatever host the VDDS put on the nie:url, fetch it through the mu-identifier
+  // on the docker network; any other host does not resolve from here.
+  const downloadLink = rawDownloadLink.replace(
+    /^(https?:\/\/[^\/]+)(\/files\/)/, "http://identifier$2");
+  console.log("step 5: mapped download link: " + rawDownloadLink + " -> " + downloadLink);
   if (hadPrimarySource) console.log("step 5: hadPrimarySource (original URL): " + hadPrimarySource);
-  if (!downloadLink.startsWith(VENDOR_FILES_HOST) ||
-      !new RegExp("^" + escapeRegexp(VENDOR_FILES_HOST) + "files/[0-9a-f-]+/download$").test(downloadLink)) {
-    throw new Error("step 5: FAIL the download URL was not mapped (expected " + VENDOR_FILES_HOST + "files/<uuid>/download)");
+  if (!downloadLink.startsWith("http://identifier/") ||
+      !new RegExp("^http://identifier/files/[0-9a-f-]+/download$").test(downloadLink)) {
+    throw new Error("step 5: FAIL the download URL was not mapped (expected http://identifier/files/<uuid>/download)");
   }
   if (!hadPrimarySource) {
     throw new Error("step 5: FAIL the original URL was not retained under prov:hadPrimarySource");
@@ -238,44 +247,17 @@ async function pollApproval(step, cookie, eredienstDocument, gemeente) {
   }
 }
 
-async function pickVendors(argv) {
-  const rows = await sparql(grantedVendorsQuery());
-  if (!Array.isArray(rows) || rows.length < 3) {
-    throw new Error(
-      "need at least 3 distinct vendors with canActOnBehalfOf for all 3 Grobbendonk orgs" +
-        " - run migration 20260918100000 first"
-    );
-  }
-  const picked = [];
-  const seen = new Set();
-  for (const row of rows) {
-    if (picked.length === 3) break;
-    const uri = row.vendor.value;
-    if (seen.has(uri)) continue;
-    seen.add(uri);
-    picked.push({ uri, name: row.name.value, key: null });
-  }
-  if (picked.length < 3) throw new Error("could not pick 3 distinct vendors");
-
-  // argv: [keyA keyB keyC] overrides the keys; otherwise use the plain key of
-  // each vendor (USE_HASHED_KEY must be off in this stack).
-  const wanted = argv.slice(0, 3);
-  for (let index = 0; index < picked.length; index += 1) {
-    if (wanted[index]) {
-      picked[index].key = wanted[index];
-      continue;
-    }
-    const keyRows = await sparql(vendorKeysQuery(picked[index].uri));
+// Fetch a vendor's stored key unless one was passed as an argument.
+async function resolveVendor(uri, keyArg) {
+  let key = keyArg;
+  if (!key) {
+    const keyRows = await sparql(vendorKeysQuery(uri));
     if (!Array.isArray(keyRows) || keyRows.length === 0) {
-      throw new Error("no muAccount:key found for " + picked[index].uri);
+      throw new Error("no muAccount:key found for " + uri + " - pass it as an argument");
     }
-    picked[index].key = keyRows[0].key.value;
+    key = keyRows[0].key.value;
   }
-  return { a: picked[0], b: picked[1], c: picked[2] };
-}
-
-function escapeRegexp(value) {
-  return String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return { uri, key };
 }
 
 function assertFound(message, rows) {

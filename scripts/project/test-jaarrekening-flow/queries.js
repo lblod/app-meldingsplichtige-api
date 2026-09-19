@@ -90,7 +90,7 @@ WHERE {
 // bundle (the pages-vendors "voorbeeld-gemeente-grobbendonk.sparql" query,
 // bound to the Grobbendonk orgs).
 export function gemeenteDiscoveryQuery(eredienst) {
-  return `
+  const queryStr = `
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX prov: <http://www.w3.org/ns/prov#>
@@ -116,6 +116,8 @@ WHERE {
 
   ?eredienstDocument rdf:type ext:SubmissionDocument .
 } ORDER BY DESC(?ckbSubmissionSentDate) LIMIT 10`;
+  console.log(queryStr);
+  return queryStr;
 }
 
 // Vendor A approval check: in the databank vendor graph, find the advies
@@ -152,7 +154,7 @@ SELECT DISTINCT ?adviesSubmission ?sentDate ?artikel ?artikelType ?status WHERE 
 // Vendor A download discovery: files of the jaarrekening formData, with the
 // mapped download link and the retained original (voorbeeld-downloadlink).
 export function downloadLinkQuery(submissionUri) {
-  return `
+  const queryStr =  `
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX meb: <http://rdf.myexperiment.org/ontologies/base/>
@@ -167,4 +169,6 @@ SELECT DISTINCT ?file ?downloadLink ?hadPrimarySource WHERE {
   ?file nie:url ?downloadLink .
   OPTIONAL { ?file prov:hadPrimarySource ?hadPrimarySource }
 }`;
+  console.log(queryStr);
+  return queryStr;
 }

@@ -1,23 +1,7 @@
-import { KFB_ORG, CKB_ORG, GEMEENTE_ORG } from "./config.js";
+import { KFB_ORG, GEMEENTE_ORG } from "./config.js";
 import { sparql, sparqlEscapeUri } from "./sparql.js";
 
-// Pick 3 distinct vendors that can act on behalf of all three Grobbendonk orgs.
-// Migration 20260918100000 grants every ext:Vendor canActOnBehalfOf for the 3
-// test organisations, so any 3 vendors work.
-export const grantedVendorsQuery = () => `
-PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-PREFIX muAccount: <http://mu.semte.ch/vocabularies/account/>
-SELECT DISTINCT ?vendor ?name WHERE {
-  GRAPH <http://mu.semte.ch/graphs/automatic-submission> {
-    ?vendor muAccount:key ?key ;
-            muAccount:canActOnBehalfOf
-              ${sparqlEscapeUri(KFB_ORG)},
-              ${sparqlEscapeUri(CKB_ORG)},
-              ${sparqlEscapeUri(GEMEENTE_ORG)} ;
-            foaf:name ?name .
-  }
-} ORDER BY ?name ?vendor`;
-
+// Fetch a single vendor's stored plain key (USE_HASHED_KEY must be off here).
 export const vendorKeysQuery = (vendorUri) => `
 PREFIX muAccount: <http://mu.semte.ch/vocabularies/account/>
 SELECT ?key WHERE {

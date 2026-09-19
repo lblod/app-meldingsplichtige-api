@@ -33,7 +33,7 @@
       "documentation": {
         "command": "test-jaarrekening-flow",
         "description": "Full collaborative flow (Grobbendonk space): vendor A submits the jaarrekening for Kerkfabriek St.-Lambertus, vendor B (CKB) publishes the bundle, vendor C (gemeente) publishes the gunstig advies, vendor A verifies the approval and downloads the source document via the mapped URL",
-        "arguments": ["[key-vendor-A]", "[key-vendor-B]", "[key-vendor-C]"]
+        "arguments": ["[key-vendor-A]", "[key-vendor-B]"]
       },
       "environment": {
         "image": "node:20-bookworm",
