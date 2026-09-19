@@ -1,12 +1,13 @@
 import { SPARQL_ENDPOINT } from "./config.js";
+import { logSparql, logCommand } from "./log.js";
 
 export function sparqlEscapeUri(value) {
   return "<" + String(value).replace(/[<>"]/g, function (match) { return "\\" + match; }) + ">";
 }
 
-export async function sparql(query) {
-  console.log("SPARQL query:");
-  console.log(query);
+export async function sparql(what, query) {
+  logCommand(what, "GET", SPARQL_ENDPOINT);
+  logSparql(what, query);
   try {
     const response = await fetch(
       SPARQL_ENDPOINT + "?query=" + encodeURIComponent(query),
@@ -26,7 +27,8 @@ export async function sparql(query) {
   }
 }
 
-export async function postJson(url, body) {
+export async function postJson(what, url, body) {
+  logCommand(what, "POST", url);
   const response = await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },

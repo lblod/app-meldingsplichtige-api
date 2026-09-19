@@ -1,16 +1,17 @@
 import {
   MELDING_ENDPOINT,
-  VENDOR_SPARQL_ENDPOINT,
   JOB_SUCCESS,
   JOB_FAILED,
-  DL_SUCCESS,
+  STATUS_INZENDBAAR,
   STATUS_VERSTUURD,
   POLL_INTERVAL,
   POLL_TIMEOUT,
   LABELS,
 } from "./config.js";
 import { sparql, postJson } from "./sparql.js";
+import { say, logRetry } from "./log.js";
 import { pollQuery, submissionStatusQuery, jobTasksQuery } from "./queries.js";
+import { sleep } from "./steps/util.js";
 
 // Shared melding + polling for all four writers. Each writer publishes a page,
 // POSTs /melding with inzendbaar status, and waits until the internal job
@@ -27,10 +28,10 @@ export async function submitMelding(description, organization, pageUrl, submitte
     href: pageUrl,
     organization: organization,
     submittedResource: submittedResource,
-    status: "http://lblod.data.gift/concepts/f6330856-e261-430f-b949-8e510d20d0ff",
+    status: STATUS_INZENDBAAR,
     publisher: { uri: vendorUri, key: vendorKey },
   };
-  const result = await postJson(MELDING_ENDPOINT, body);
+  const result = await postJson("submit-melding", MELDING_ENDPOINT, body);
   if (result.status !== 201) {
     throw new Error(
       description + ": melding expected 201, got " + result.status +
@@ -39,21 +40,23 @@ export async function submitMelding(description, organization, pageUrl, submitte
   }
   const submissionUri = result.body && (result.body.submission || result.body.uri);
   const jobUri = result.body && result.body.job;
-  console.log(description + ": melding accepted, submission " + submissionUri + ", job " + jobUri);
+  say(description + ": melding accepted, submission " + submissionUri + ", job " + jobUri);
   return { submissionUri, jobUri };
 }
 
 export async function waitVerstuurd(description, submissionUri, pageUrl) {
-  console.log(description + ": polling until the job succeeded and the submission is verstuurd...");
+  say(description + ": polling until the job succeeded and the submission is verstuurd...");
   const pollStart = Date.now();
+  let attempt = 0;
   let jobDone = null;
   let nudged = new Set();
   while (true) {
     if (Date.now() - pollStart > POLL_TIMEOUT) {
       throw new Error(description + ": timed out waiting for job/submission status");
     }
-    const rows = await sparql(pollQuery(submissionUri, pageUrl));
+    const rows = await sparql("poll-check (job + download status on databank SPARQL)", pollQuery(submissionUri, pageUrl));
     if (!rows || rows.error || !Array.isArray(rows) || rows.length === 0) {
+      logRetry(attempt++, "job/submission not ready yet", POLL_INTERVAL);
       await sleep(POLL_INTERVAL);
       continue;
     }
@@ -61,12 +64,12 @@ export async function waitVerstuurd(description, submissionUri, pageUrl) {
     const jobStatus = row.jobStatus ? row.jobStatus.value : null;
     if (!jobDone && (jobStatus === JOB_SUCCESS || jobStatus === JOB_FAILED)) {
       jobDone = jobStatus;
-      console.log(description + ": job status " + label(jobStatus));
+      say(description + ": job status " + label(jobStatus));
     }
     if (jobStatus === JOB_FAILED) {
       throw new Error(description + ": automatic submission job failed");
     }
-    const statusRows = await sparql(submissionStatusQuery(submissionUri));
+    const statusRows = await sparql("poll-check (submission status on databank SPARQL)", submissionStatusQuery(submissionUri));
     if (Array.isArray(statusRows) && statusRows.length > 0) {
       const status = statusRows[0].status ? statusRows[0].status.value : null;
       if (status === STATUS_VERSTUURD) {
@@ -83,6 +86,7 @@ export async function waitVerstuurd(description, submissionUri, pageUrl) {
         nudged.add(stalled.task.value);
       }
     }
+    logRetry(attempt++, "submission not verstuurd yet", POLL_INTERVAL);
     await sleep(POLL_INTERVAL);
   }
 }
@@ -91,7 +95,7 @@ async function findStalledSuccess(description, submissionUri, jobStatus, nudged)
   // only kick when the job is still open (busy/...) but some poll rows say
   // the download already succeeded; the tasks query finds the latest task at
   // success whose successor does not exist
-  const rows = await sparql(jobTasksQuery(submissionUri));
+  const rows = await sparql("stall-check (task chain of the submission job on databank SPARQL)", jobTasksQuery(submissionUri));
   if (!Array.isArray(rows) || rows.length === 0) return null;
   const byOp = new Map();
   for (const row of rows) {
@@ -134,16 +138,12 @@ async function replaySuccessDelta(description, stalledRow) {
       deletes: [],
     },
   ];
-  console.log(description + ": job chain stalled after " + stalledRow.op.value.split("/").pop() +
+  say(description + ": job chain stalled after " + stalledRow.op.value.split("/").pop() +
     ", replaying its success delta to the job-controller");
-  const result = await postJson("http://job-controller/delta", delta);
-  console.log(description + ": job-controller nudge returned " + result.status);
+  const result = await postJson("job-controller nudge", "http://job-controller/delta", delta);
+  say(description + ": job-controller nudge returned " + result.status);
 }
 
 function label(uri) {
   return LABELS[uri] || uri;
-}
-
-function sleep(ms) {
-  return new Promise(function (resolve) { setTimeout(resolve, ms); });
 }

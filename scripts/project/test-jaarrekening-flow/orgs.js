@@ -1,5 +1,6 @@
 import { KFB_ORG, GEMEENTE_ORG } from "./config.js";
 import { sparql, sparqlEscapeUri } from "./sparql.js";
+import { say } from "./log.js";
 
 // Fetch a single vendor's stored plain key (USE_HASHED_KEY must be off here).
 export const vendorKeysQuery = (vendorUri) => `
@@ -28,7 +29,7 @@ SELECT DISTINCT ?organInTijd ?organAbstract ?label ?bindingStart WHERE {
 // gemeente a Gemeenteraad organ. All are found via besluit:bestuurt plus a
 // BestuursorgaanClassificatieCode to disambiguate.
 export async function resolveOrgan(unitUri, label, classificatie) {
-  const rows = await sparql(organQuery(unitUri, classificatie));
+  const rows = await sparql("organ lookup (databank SPARQL)", organQuery(unitUri, classificatie));
   if (rows && rows.error) throw new Error("bestuursorgaan lookup failed for " + label + ": " + rows.error);
   if (rows.length === 0) {
     throw new Error("no bestuursorgaan (in tijd) found for " + label + " " + unitUri);
@@ -49,6 +50,19 @@ export async function resolveOrgan(unitUri, label, classificatie) {
     organAbstract: firstAbstract,
     organLabel: rows[0].label.value,
   };
-  console.log("bestuursorgaan for " + label + ": " + organ.organLabel + " - " + organ.organInTijd);
+  say("bestuursorgaan for " + label + ": " + organ.organLabel + " - " + organ.organInTijd);
   return organ;
+}
+
+// Fetch a vendor's stored key unless one was passed as an argument.
+export async function resolveVendor(uri, keyArg) {
+  let key = keyArg;
+  if (!key) {
+    const keyRows = await sparql("vendor key lookup (databank SPARQL)", vendorKeysQuery(uri));
+    if (!Array.isArray(keyRows) || keyRows.length === 0) {
+      throw new Error("no muAccount:key found for " + uri + " - pass it as an argument");
+    }
+    key = keyRows[0].key.value;
+  }
+  return { uri, key };
 }

@@ -2,6 +2,7 @@ import http from "node:http";
 import dgram from "node:dgram";
 import os from "node:os";
 import { PAGE_PORT } from "./config.js";
+import { logCommand } from "./log.js";
 
 // Serves every annotated page on the container IP, so other containers
 // (download-url-service) can harvest them without JS.
@@ -64,6 +65,7 @@ export function buildPageUrls(runId, ownIp) {
 }
 
 export async function verifySelfFetch(pageUrl) {
+  logCommand("self-fetch check (annotated page served here, page-server endpoint)", "GET", pageUrl);
   const response = await fetch(pageUrl);
   if (response.status !== 200) throw new Error("self-fetch of " + pageUrl + " returned " + response.status);
   const text = await response.text();

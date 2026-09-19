@@ -116,7 +116,6 @@ WHERE {
 
   ?eredienstDocument rdf:type ext:SubmissionDocument .
 } ORDER BY DESC(?ckbSubmissionSentDate) LIMIT 10`;
-  console.log(queryStr);
   return queryStr;
 }
 
@@ -147,7 +146,6 @@ SELECT DISTINCT ?adviesSubmission ?sentDate ?artikel ?artikelType ?status WHERE 
     eli:type_document ?artikelType ;
     eli:refers_to ${sparqlEscapeUri(eredienstDocument)} .
 }`;
-  console.log(q);
   return q;
 }
 
@@ -167,8 +165,7 @@ SELECT DISTINCT ?file ?downloadLink ?hadPrimarySource WHERE {
     prov:generated ?formData .
   ?formData dct:hasPart ?file .
   ?file nie:url ?downloadLink .
-  OPTIONAL { ?file prov:hadPrimarySource ?hadPrimarySource }
+    OPTIONAL { ?file prov:hadPrimarySource ?hadPrimarySource }
 }`;
-  console.log(queryStr);
   return queryStr;
 }

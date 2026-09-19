@@ -3,11 +3,17 @@ import {
   VENDOR_SPARQL_ENDPOINT,
   VENDOR_LOGOUT_ENDPOINT,
 } from "./config.js";
+import { logCommand, logRetry, logSparql } from "./log.js";
+
+function sleep(ms) {
+  return new Promise(function (resolve) { setTimeout(resolve, ms); });
+}
 
 // Same contract as the pages-vendors "Vendor SPARQL API" docs: POST /vendor/login
 // gives a session cookie, POST /vendor/sparql runs read-only SPARQL within the
 // vendor's own graphs, DELETE /vendor/logout ends the session.
 export async function vendorLogin(organization, vendorUri, vendorKey) {
+  logCommand("vendor login", "POST", VENDOR_LOGIN_ENDPOINT);
   const response = await fetch(VENDOR_LOGIN_ENDPOINT, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -37,7 +43,9 @@ export async function vendorLogin(organization, vendorUri, vendorKey) {
   return { cookie, sessionUri: body && body["@id"] ? body["@id"] : null };
 }
 
-export async function vendorSparql(cookie, query) {
+export async function vendorSparql(cookie, what, query) {
+  logCommand(what, "POST", VENDOR_SPARQL_ENDPOINT);
+  logSparql(what, query);
   // The session write from /vendor/login is not always visible to the
   // authorization wrapper immediately (read-after-write lag), which makes the
   // first query after login fail with 403. Retry a few times before giving up.
@@ -54,7 +62,9 @@ export async function vendorSparql(cookie, query) {
     });
     const text = await response.text();
     if (response.status === 403 && attempt < maxAttempts) {
-      await new Promise((resolve) => setTimeout(resolve, 1000 * attempt));
+      const waitMs = 1000 * attempt;
+      logRetry(attempt, "vendor sparql returned 403 (session not visible yet)", waitMs, "403, retrying");
+      await sleep(waitMs);
       continue;
     }
     if (response.status !== 200) {
@@ -73,6 +83,7 @@ export async function vendorSparql(cookie, query) {
 }
 
 export async function vendorLogout(cookie) {
+  logCommand("vendor logout", "DELETE", VENDOR_LOGOUT_ENDPOINT);
   const response = await fetch(VENDOR_LOGOUT_ENDPOINT, {
     method: "DELETE",
     headers: { Cookie: cookie },
@@ -81,6 +92,7 @@ export async function vendorLogout(cookie) {
 }
 
 export async function vendorDownload(cookie, url) {
+  logCommand("vendor file download", "GET", url);
   const response = await fetch(url, {
     headers: { Cookie: cookie, Accept: "*/*" },
     redirect: "follow",
