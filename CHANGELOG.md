@@ -1,4 +1,56 @@
 # Changelog
+
+## Unreleased
+ - Add `error-alert` and `deliver-email` services to the stack
+
+### Deploy Notes
+In `docker-compose.override.yml`, ensure:
+```
+  error-alert:
+    environment:
+      EMAIL_FROM: "Meldingsplichtige API <noreply-binnenland@vlaanderen.be>"
+      EMAIL_TO: "felix.ruizdearcaute@redpencil.io,claire.lovisa@redpencil.io"
+
+  deliver-email-service:
+     environment:
+      EMAIL_CRON_PATTERN: "*/10 * * * *"
+      EMAIL_PROTOCOL: "smtp"
+      WELL_KNOWN_SERVICE: "Outlook365"
+      EMAIL_ADDRESS: "abb.binnenland@service.vlaanderen.be"
+      EMAIL_PASSWORD: "xxx" # check on servers for the pwd
+      # !! We can't set this to 10+ because the service currently does a string comparison instead of a number comparison so it would stop at 2 retry attempts. !!
+      MAX_RETRY_ATTEMPTS: 9
+```
+ - Vendor data distribution now dispatches the files of a submission again to the vendor graphs and the canonical graph: the logical file (with rewritten download link), the physical file and the harvested/meta/form-data TTL sources [DL-7534]
+ - Second vendor-data-distribution instance distributes the submissions that landed in the Databank Erediensten org graphs to the vendor graph, with its own `TEMP_GRAPH` and host for the file download links [DL-7534]
+ - Legacy remote data objects and files (2019-10 to 2022-01) whose data lived in `http://mu.semte.ch/graphs/public` are now distributed too [DL-7534]
+ - Form-data exposes `decision-type` and `regulation-type` relationships, so the Databank Erediensten overview shows "categorie dossier" and allows filtering and sorting on it [DL-7534]
+ - The provincie of an organization's primary site shows in the Databank Erediensten overview: `adres:adresIsGelegenIn` copied from the OP landing zone to public [DL-7534]
+ - Auth: `LoketLB-databankEredienstenGebruiker` reads have a dedicated sparql-parser allowed group and grant (was lost in the mu-auth removal) [DL-7534]
+ - Mock accounts get the `LoketLB-databankEredienstenGebruiker` session role whenever the bestuurseenheid's classification allows it per the mock-login rules [DL-7534]
+ - Fix: namespaces missing from the resources config (`rpioHttp`, `ere`, `code`, `vcard`) broke reading remote-data-objects and other resources [DL-7534]
+ - Fix: on `worship.localhost` a hard refresh logged the user out; the dispatcher now returns a clean 404 for `/impersonations/*` [DL-7534]
+
+### Deploy Notes
+Migrations run automatically at `migrations` startup. Then restart the affected
+services so their configs are re-read:
+```
+drc stop;
+drc up -d migrations virtuoso
+drc up -d
+```
+After a `vendor-data-distribution` restart, backfill the existing submissions
+into the vendor graphs (healing writes bypass deltas, so nothing else sees them):
+```
+drc exec vendor-data-distribution curl -X POST http://localhost/heal/configs \
+  -H "Content-Type: application/json" \
+  -d '{"configs": ["http://rdf.myexperiment.org/ontologies/base/Submission"]}'
+drc exec vendor-data-distribution-erediensten curl -X POST http://localhost/heal/configs \
+  -H "Content-Type: application/json" \
+  -d '{"configs": ["http://rdf.myexperiment.org/ontologies/base/Submission"]}'
+>>>>>>> e8d3154 (Added second VDDS for erediensten + better notifier)
+```
+
 ## v1.54.0 (2026-09-09)
  - Replace mu-auth by sparql-parser [DL-6574]
  - mu script `test-automatic-submission-vendor`: follow a submission through the vendor SPARQL API (login, poll status, logout) [DL-7578]

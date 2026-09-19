@@ -1,5 +1,3 @@
-version: '3.4'
-
 x-logging:
   &default-logging
   driver: "json-file"
@@ -9,7 +7,7 @@ x-logging:
 
 services:
   frontend:
-    image: lblod/frontend-meldingsplichtige-api:1.1.0
+    image: lblod/frontend-meldingsplichtige-api:1.2.1
     links:
       - identifier:backend
     labels:
@@ -20,6 +18,18 @@ services:
     image: lblod/frontend-dashboard:1.5.2
     environment:
       EMBER_LOGIN_ROUTE: 'mock-login'
+    links:
+      - identifier:backend
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  frontend-worship-decisions:
+    image: lblod/frontend-worship-decisions:0.18.1
+    environment:
+      EMBER_LOGIN_ROUTE: 'mock-login'
+    volumes:
+      - ./config/frontend:/config
     links:
       - identifier:backend
     labels:
@@ -43,7 +53,10 @@ services:
     restart: always
     logging: *default-logging
   deltanotifier:
-    image: cecemel/delta-notifier:0.2.0-beta.6
+    image: cecemel/delta-notifier:regex-fix
+    pull_policy: build
+    build:
+      context: https://github.com/cecemel/delta-notifier.git#feature/regex-based-filtering-fix
     volumes:
       - ./config/delta:/config
     labels:
@@ -116,6 +129,14 @@ services:
     logging: *default-logging
     links:
       - database:database
+  search-query-management:
+    image: lblod/toezicht-search-query-management-service:0.3.11
+    volumes:
+      - ./config/search-query:/share/search-query
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
   download-url:
     image: lblod/download-url-service:1.0.7
     environment:
@@ -217,7 +238,24 @@ services:
     restart: always
     logging: *default-logging
   worship-decisions-cross-reference:
-    image: lblod/worship-decisions-cross-reference-service:0.4.8
+    image: lblod/worship-decisions-cross-reference-service:0.6.2
+    environment:
+      WORSHIP_DECISIONS_BASE_URL: "https://databankerediensten.vendor-test.lblod.info/search/submissions/"
+      SCOPE_SUBMISSIONS_TO_ONE_GRAPH: "true"
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  error-alert:
+    image: lblod/loket-error-alert-service:1.0.2
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  deliver-email-service:
+    image: redpencil/deliver-email-service:1.0.1
+    environment:
+      MAILBOX_URI: "http://data.lblod.info/id/mailboxes/1"
     labels:
       - "logging=true"
     restart: always
@@ -269,12 +307,51 @@ services:
     restart: always
     logging: *default-logging
   vendor-data-distribution:
-    image: lblod/vendor-data-distribution-service:2.2.0
+    image: lblod/vendor-data-distribution-service:2.4.0
     environment:
       LOGLEVEL: "error"
       WRITE_ERRORS: "true"
+      SUDO_QUERY_RETRY: "true"
+      SUDO_QUERY_RETRY_FOR_HTTP_STATUS_CODES: "404,500,503"
+      TEMP_GRAPH: "http://mu.semte.ch/graphs/vendor-data-distribution/temp"
+      HOSTNAME: "https://loket.vendor-test.lblod.info/"
+      PROCESSING_INTERVAL: 5000
+      # SPARQL_ENDPOINT_COPY_OPERATIONS: "http://virtuoso:8890/sparql"
+      # SPARQL_ENDPOINT_HEALING_OPERATIONS: "http://virtuoso:8890/sparql"
     volumes:
       - ./config/vendor-data:/config
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  vendor-data-distribution-erediensten:
+    image: lblod/vendor-data-distribution-service:2.4.0
+    environment:
+      LOGLEVEL: "error"
+      WRITE_ERRORS: "true"
+      SUDO_QUERY_RETRY: "true"
+      SUDO_QUERY_RETRY_FOR_HTTP_STATUS_CODES: "404,500,503"
+      TEMP_GRAPH: "http://mu.semte.ch/graphs/vendor-data-distribution/temp-erediensten"
+      HOSTNAME: "https://databankerediensten.vendor-test.lblod.info/"
+      PROCESSING_INTERVAL: 5000
+      # SPARQL_ENDPOINT_COPY_OPERATIONS: "http://virtuoso:8890/sparql"
+      # SPARQL_ENDPOINT_HEALING_OPERATIONS: "http://virtuoso:8890/sparql"
+    volumes:
+      - ./config/vendor-data-erediensten:/config
+    labels:
+      - "logging=true"
+    restart: always
+    logging: *default-logging
+  worship-submissions-graph-dispatcher:
+    image: lblod/worship-submissions-graph-dispatcher-service:0.20.3
+    environment:
+      ALLOW_MU_AUTH_SUDO: "true"
+      DISPATCH_SOURCE_GRAPH: "http://mu.semte.ch/graphs/worship-submissions/canonical"
+      DISPATCH_FILES_GRAPH: "http://mu.semte.ch/graphs/worship-submissions/canonical"
+      ORG_GRAPH_BASE: "http://mu.semte.ch/graphs/organizations"
+      ORG_GRAPH_SUFFIX: "LoketLB-databankEredienstenGebruiker"
+      ABB_UUID: "141d9d6b-54af-4d17-b313-8d1c30bc3f5b"
+      ENABLE_HEALING: "false"
     labels:
       - "logging=true"
     restart: always
