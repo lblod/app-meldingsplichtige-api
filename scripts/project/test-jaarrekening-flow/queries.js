@@ -122,7 +122,7 @@ WHERE {
 // besluit of the gemeente whose artikel refers to the eredienst document, and
 // its submission status.
 export function approvalCheckQuery(eredienstDocument, gemeente) {
-  return `
+  const q =  `
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX eli: <http://data.europa.eu/eli/ontology#>
@@ -138,14 +138,15 @@ SELECT DISTINCT ?adviesSubmission ?sentDate ?artikel ?artikelType ?status WHERE 
     dct:subject ?adviesDocument ;
     pav:createdBy ${sparqlEscapeUri(gemeente)} ;
     nmo:sentDate ?sentDate ;
-    adms:status ?status ;
-    prov:generated ?adviesFormData .
-  ?adviesFormData eli:has_part ?artikel .
+    adms:status ?status.
+  ?adviesDocument eli:has_part ?artikel .
   ?artikel
     rdf:type besluit:Artikel ;
     eli:type_document ?artikelType ;
     eli:refers_to ${sparqlEscapeUri(eredienstDocument)} .
 }`;
+  console.log(q);
+  return q;
 }
 
 // Vendor A download discovery: files of the jaarrekening formData, with the

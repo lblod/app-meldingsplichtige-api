@@ -68,6 +68,8 @@ try {
   const eredienstDocument = jarState.submissionDocument.value;
   console.log("step 1: SubmissionDocument " + eredienstDocument);
 
+  //process.exit(0); // 0 = success, non-zero = error
+
   // ------------------------------------------------------- STEP 2: vendor B
   console.log("");
   console.log("=== STEP 2: vendor B (CKB Grobbendonk) publishes the bundle ===");
@@ -82,7 +84,20 @@ try {
   //  yuo should "look" for the most recent one, related to eredienst you found in previous TODO
 
 
-  const discoveryB = await vendorSparql(cookieB, ckbDiscoveryQuery());
+  // The step 1 submission document only becomes visible to vendor B after
+  // propagation; poll until it surfaces instead of failing on the first query.
+  let discoveryB = null;
+  const discoveryBStart = Date.now();
+  while (true) {
+    discoveryB = await vendorSparql(cookieB, ckbDiscoveryQuery());
+    if (Array.isArray(discoveryB) && discoveryB.length > 0) break;
+    if (discoveryB && discoveryB.error) throw new Error("step 2: discovery query failed: " + discoveryB.error);
+    if (Date.now() - discoveryBStart > 90000) {
+      throw new Error("step 2: no SubmissionDocument found for the kerkfabriek jaarrekening after 90s");
+    }
+    console.log("step 2: SubmissionDocument not visible to vendor B yet, waiting...");
+    await sleep(2000);
+  }
   assertFound("step 2: no SubmissionDocument found for the kerkfabriek jaarrekening", discoveryB);
   const ckbFound = discoveryB[0].subject.value;
   if (ckbFound !== eredienstDocument) {
@@ -102,6 +117,8 @@ try {
   await waitVerstuurd("step 2", bundel.submissionUri, pageUrls.bundel);
   await vendorLogout(cookieB);
 
+  //process.exit(0); // 0 = success, non-zero = error
+
   // ------------------------------------------------------- STEP 3: vendor C
   console.log("");
   console.log("=== STEP 3: vendor C (gemeente Grobbendonk) publishes the gunstig advies ===");
@@ -117,8 +134,8 @@ try {
     discoveryC = await vendorSparql(cookieC, gemeenteDiscoveryQuery(KFB_ORG));
     if (Array.isArray(discoveryC) && discoveryC.length > 0) break;
     if (discoveryC && discoveryC.error) throw new Error("step 3: discovery query failed: " + discoveryC.error);
-    if (Date.now() - discoveryStart > 90000) {
-      throw new Error("step 3: no eredienstDocument found via the CKB bundle chain after 90s");
+    if (Date.now() - discoveryStart > 300000) {
+      throw new Error("step 3: no eredienstDocument found via the CKB bundle chain after 300s");
     }
     console.log("step 3: CKB bundle not visible to the gemeente yet, waiting for vendor data distribution...");
     await sleep(2000);
@@ -190,7 +207,7 @@ console.log("Jaarrekening collaborative flow test run " + runId + " - please che
 async function pollApproval(step, cookie, eredienstDocument, gemeente) {
   const pollStart = Date.now();
   while (true) {
-    if (Date.now() - pollStart > 120000) {
+    if (Date.now() - pollStart >  300000) {
       throw new Error(step + ": timed out waiting for the gemeente advies to surface in the databank graphs");
     }
     const rows = await vendorSparql(cookie, approvalCheckQuery(eredienstDocument, gemeente));
