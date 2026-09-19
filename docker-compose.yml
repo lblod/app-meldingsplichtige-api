@@ -53,10 +53,10 @@ services:
     restart: always
     logging: *default-logging
   deltanotifier:
-    image: semtech/delta-notifier:pr-26
+    image: cecemel/delta-notifier:regex-fix
     pull_policy: build
     build:
-      context: https://github.com/mu-semtech/delta-notifier.git#refs/pull/26/head
+      context: https://github.com/cecemel/delta-notifier.git#feature/regex-based-filtering-fix
     volumes:
       - ./config/delta:/config
     labels:
@@ -307,7 +307,7 @@ services:
     restart: always
     logging: *default-logging
   vendor-data-distribution:
-    image: lblod/vendor-data-distribution-service:2.2.0
+    image: lblod/vendor-data-distribution-service:2.4.0
     environment:
       LOGLEVEL: "error"
       WRITE_ERRORS: "true"
@@ -325,7 +325,7 @@ services:
     restart: always
     logging: *default-logging
   vendor-data-distribution-erediensten:
-    image: lblod/vendor-data-distribution-service:2.2.0
+    image: lblod/vendor-data-distribution-service:2.4.0
     environment:
       LOGLEVEL: "error"
       WRITE_ERRORS: "true"
@@ -343,7 +343,7 @@ services:
     restart: always
     logging: *default-logging
   worship-submissions-graph-dispatcher:
-    image: lblod/worship-submissions-graph-dispatcher-service:0.20.2
+    image: lblod/worship-submissions-graph-dispatcher-service:0.20.3
     environment:
       ALLOW_MU_AUTH_SUDO: "true"
       DISPATCH_SOURCE_GRAPH: "http://mu.semte.ch/graphs/worship-submissions/canonical"
