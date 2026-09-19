@@ -34,6 +34,17 @@ const runId = randomUUID();
 const argv = process.argv.slice(2);
 let server = null;
 
+// Ctrl+C must stop the script immediately, even while it is inside a poll/sleep loop.
+process.on("SIGINT", function () {
+  console.log("\ninterrupted, stopping...");
+  try { server?.close(); } catch { /* server may be gone already */ }
+  process.exit(130);
+});
+process.on("SIGTERM", function () {
+  try { server?.close(); } catch { /* server may be gone already */ }
+  process.exit(143);
+});
+
 try {
   const vendors = await pickVendors(argv);
   console.log("vendor A (kerkfabriek):     " + vendors.a.uri + " " + vendors.a.name);
