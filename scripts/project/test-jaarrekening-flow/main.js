@@ -3,6 +3,7 @@ import { writeFile, mkdir } from "node:fs/promises";
 import { join } from "node:path";
 import { VENDOR_A_URI, VENDOR_B_URI, DOC_URI_BASE } from "./config.js";
 import { resolveVendor } from "./orgs.js";
+import { collectInput } from "./input.js";
 import { pickOwnIp, startPageServer, buildPageUrls } from "./server.js";
 import { step1Jaarrekening } from "./steps/step1-jaarrekening.js";
 import { step2Bundel } from "./steps/step2-bundel.js";
@@ -144,16 +145,9 @@ function pool(hasNext, next, work, parallel) {
 
 try {
   const args = parseArgs(process.argv.slice(2));
-  if (!args.keyA || !args.keyB) {
-    throw new Error(
-      "usage: node main.js keyA keyB [--runs N] [--parallel P] [--out DIR]\n" +
-        "  keyA = vendor A (kerkfabriek + CKB): " + VENDOR_A_URI + "\n" +
-        "  keyB = vendor B (gemeente):          " + VENDOR_B_URI + "\n" +
-        "  --runs N      total number of runs           (default 1)\n" +
-        "  --parallel P  runs in parallel               (default 1)\n" +
-        "  --out DIR     where batch results are stored (default " + OUT_DIR + ")"
-    );
-  }
+  const input = await collectInput(args);
+  args.keyA = input.keyA;
+  args.keyB = input.keyB;
   const isBatch = args.runs > 1 || args.parallel > 1;
 
   if (!isBatch) {
