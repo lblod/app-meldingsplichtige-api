@@ -2,6 +2,12 @@
   "http://lblod.data.gift/id/jobs/concept/JobOperation/automaticSubmissionFlow": {
     "tasksConfiguration": [
       {
+        "currentOperation": "http://lblod.data.gift/id/jobs/concept/TaskOperation/register",
+        "nextOperation": "http://lblod.data.gift/id/jobs/concept/TaskOperation/download",
+        "nextIndex": "1",
+        "external": true
+      },
+      {
         "currentOperation": "http://lblod.data.gift/id/jobs/concept/TaskOperation/download",
         "nextOperation": "http://lblod.data.gift/id/jobs/concept/TaskOperation/import",
         "nextIndex": "2"

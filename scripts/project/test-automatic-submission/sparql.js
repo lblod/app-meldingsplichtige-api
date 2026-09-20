@@ -27,6 +27,9 @@ export async function sparql(query) {
 }
 
 export async function postJson(url, body) {
+  console.log("HTTP POST " + url);
+  console.log("HTTP POST body:");
+  console.log(JSON.stringify(body, null, 2));
   const response = await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -39,5 +42,6 @@ export async function postJson(url, body) {
   } catch (parseError) {
     /* keep raw text */
   }
+  console.log("HTTP POST response: " + response.status + " " + text);
   return { status: response.status, body: parsed };
 }

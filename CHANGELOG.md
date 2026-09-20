@@ -2,6 +2,7 @@
 
 ## Unreleased
  - Add `error-alert` and `deliver-email` services to the stack
+ - `test-jaarrekening-flow` script: removed unused config/imports and dead code; CLI now has the "Are you in production? type NO" gate and vendor labels on key prompts instead of a usage error [DL-7534]
 
 ### Deploy Notes
 In `docker-compose.override.yml`, ensure:
@@ -48,7 +49,6 @@ drc exec vendor-data-distribution curl -X POST http://localhost/heal/configs \
 drc exec vendor-data-distribution-erediensten curl -X POST http://localhost/heal/configs \
   -H "Content-Type: application/json" \
   -d '{"configs": ["http://rdf.myexperiment.org/ontologies/base/Submission"]}'
->>>>>>> e8d3154 (Added second VDDS for erediensten + better notifier)
 ```
 
 ## v1.54.0 (2026-09-09)
