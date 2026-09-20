@@ -197,7 +197,7 @@ export default [
       gracePeriod: 1000,
       ignoreFromSelf: true,
       sendMatchesOnly: true,
-      foldEffectiveChanges: true
+//      foldEffectiveChanges: true
     }
   },
   {
@@ -224,7 +224,7 @@ export default [
       gracePeriod: 1000,
       ignoreFromSelf: true,
       sendMatchesOnly: true,
-      foldEffectiveChanges: true
+//      foldEffectiveChanges: true
     }
   },
   {
@@ -261,7 +261,7 @@ export default [
       gracePeriod: 1000,
       ignoreFromSelf: true,
       sendMatchesOnly: true,
-      foldEffectiveChanges: true
+//      foldEffectiveChanges: true
     }
   },
   {
@@ -280,7 +280,7 @@ export default [
       gracePeriod: 1000,
       ignoreFromSelf: true,
       sendMatchesOnly: true,
-      foldEffectiveChanges: true
+//      foldEffectiveChanges: true
     }
   },
   {
