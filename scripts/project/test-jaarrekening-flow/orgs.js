@@ -1,4 +1,3 @@
-import { GEMEENTE_ORG } from "./config.js";
 import { sparql, sparqlEscapeUri } from "./sparql.js";
 import { say } from "./log.js";
 

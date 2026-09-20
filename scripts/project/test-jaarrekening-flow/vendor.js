@@ -4,10 +4,7 @@ import {
   VENDOR_LOGOUT_ENDPOINT,
 } from "./config.js";
 import { logCommand, logRetry, logSparql } from "./log.js";
-
-function sleep(ms) {
-  return new Promise(function (resolve) { setTimeout(resolve, ms); });
-}
+import { sleep } from "./steps/util.js";
 
 // Same contract as the pages-vendors "Vendor SPARQL API" docs: POST /vendor/login
 // gives a session cookie, POST /vendor/sparql runs read-only SPARQL within the

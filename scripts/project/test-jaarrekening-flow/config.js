@@ -23,9 +23,6 @@ export const CKB_BUNDLE_TYPE =
 // BesluitType "Advies bij jaarrekening eredienstbestuur" (gemeente)
 export const ADVIES_BESLUIT_TYPE =
   "https://data.vlaanderen.be/id/concept/BesluitType/79414af4-4f57-4ca3-aaa4-f8f1e015e71c";
-// ArtikelType "Goedkeuring gerefereerde documenten"
-export const ARTIKELTYPE_GOEDKEURING =
-  "http://data.lblod.info/concepts/ArtikelTypes/080def57-72ce-4f32-b3f9-369009644fd2";
 // ArtikelType "Gunstig advies" (alternative colouring used by the docs example)
 export const ARTIKELTYPE_GUNSTIG_ADVIES =
   "http://data.lblod.info/concepts/ArtikelTypes/9a54a930-7dd6-4ff2-a4b1-ee403f7cda5c";
@@ -44,9 +41,6 @@ export const STATUS_INZENDBAAR =
   "http://lblod.data.gift/concepts/f6330856-e261-430f-b949-8e510d20d0ff";
 export const STATUS_VERSTUURD =
   "http://lblod.data.gift/concepts/9bd8d86d-bb10-4456-a84e-91e9507c374c";
-export const JOB_SUCCESS = "http://redpencil.data.gift/id/concept/JobStatus/success";
-export const JOB_FAILED = "http://redpencil.data.gift/id/concept/JobStatus/failed";
-export const DL_SUCCESS = "http://lblod.data.gift/file-download-statuses/success";
 
 // The vendor-data-distribution instance rewrites every file's nie:url into
 // "#{HOSTNAME}files/<uuid>/download" and keeps the original under prov:hadPrimarySource.
@@ -60,24 +54,8 @@ export const VENDOR_LOGIN_ENDPOINT = "http://identifier/vendor/login";
 export const VENDOR_SPARQL_ENDPOINT = "http://identifier/vendor/sparql";
 export const VENDOR_LOGOUT_ENDPOINT = "http://identifier/vendor/logout";
 
-export const AUTOMATIC_SUBMISSION_GRAPH =
-  "http://mu.semte.ch/graphs/automatic-submission";
-
 export const RAPPORTJAAR = "2025";
 export const DOC_URI_BASE = "http://test.local/jaarrekening-flow/";
 export const PAGE_PORT = 8899;
 export const POLL_INTERVAL = 2000;
 export const POLL_TIMEOUT = 150000;
-
-export const LABELS = {
-  [JOB_SUCCESS]: "success",
-  [JOB_FAILED]: "failed",
-  [STATUS_INZENDBAAR]: "inzendbaar",
-  [STATUS_VERSTUURD]: "verstuurd",
-  [DL_SUCCESS]: "success",
-  "http://redpencil.data.gift/id/concept/JobStatus/scheduled": "scheduled",
-  "http://redpencil.data.gift/id/concept/JobStatus/busy": "busy",
-  "http://lblod.data.gift/file-download-statuses/ongoing": "ongoing",
-  "http://lblod.data.gift/file-download-statuses/ready-to-be-cached": "ready-to-be-cached",
-  "http://lblod.data.gift/file-download-statuses/failure": "failure",
-};

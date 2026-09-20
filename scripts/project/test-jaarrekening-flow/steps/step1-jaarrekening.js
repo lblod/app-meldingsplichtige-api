@@ -28,7 +28,7 @@ export async function step1Jaarrekening(ctx) {
     ctx.vendors.a.uri, ctx.vendors.a.key
   );
   const cookie = (await vendorLogin(KFB_ORG, ctx.vendors.a.uri, ctx.vendors.a.key)).cookie;
-  const state = await waitVerstuurd(cookie, "step 1", submission.submissionUri, ctx.pageUrls.jaarrekening);
+  const state = await waitVerstuurd(cookie, "step 1", submission.submissionUri);
   await vendorLogout(cookie);
   const document = state.submissionDocument.value;
   say("SubmissionDocument " + document);

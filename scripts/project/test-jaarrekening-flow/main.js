@@ -11,8 +11,11 @@ import { step4Approval } from "./steps/step4-approval.js";
 import { step5Download } from "./steps/step5-download.js";
 import { say, withLogPrefix } from "./log.js";
 
-// Piece de resistance: the full automatic submission flow for the Grobbendonk
+// The full automatic submission flow for the Grobbendonk
 // test space, driven entirely over HTTP:
+// The interesting thing here: It spins up it's own webserver, so the the flow can be fired as if
+//   the script was a vendor.
+
 //   step 1: vendor A submits the jaarrekening for Kerkfabriek St.-Lambertus
 //   step 2: vendor A (CKB Grobbendonk role) publishes the bundle referring to it
 //   step 3: vendor B (gemeente Grobbendonk) publishes the gunstig advies
@@ -26,6 +29,8 @@ import { say, withLogPrefix } from "./log.js";
 // Every run gets its own runId (so its documents in the triple store never
 // collide) and its own page server on an ephemeral port (so nothing shares
 // state). Results are written as JSON under OUT_DIR.
+
+
 
 const OUT_DIR = "./data/files/mu-script-runs/test-jaarrekening-flow";
 
@@ -90,8 +95,6 @@ async function runFlow(index, keyA, keyB, logPrefix = null) {
       const server = await startPageServer(ctx.pages, 0); // port 0: ephemeral, no collisions
       const port = server.address().port;
       ctx.pageUrls = buildPageUrls(runId, ownIp, port);
-      let step1Done = false;
-
       try {
         ctx.vendors = {
           a: await resolveVendor("vendor A", VENDOR_A_URI, keyA),
@@ -101,7 +104,6 @@ async function runFlow(index, keyA, keyB, logPrefix = null) {
         say("vendor B (gemeente):          " + ctx.vendors.b.uri);
 
         const jar = await step1Jaarrekening(ctx);
-        step1Done = true;
         result.submissionUris.push(jar.submission.submissionUri);
         result.submissionDocument = jar.document;
         const bundel = await step2Bundel(ctx, jar.document);
@@ -118,10 +120,6 @@ async function runFlow(index, keyA, keyB, logPrefix = null) {
         console.error("FATAL: " + (error && error.stack ? error.stack : error));
       } finally {
         try { server?.close(); } catch { /* server may be gone already */ }
-      }
-      if (!step1Done) {
-        // even step 1 did not produce a submission; error already recorded
-        result.submissionUris = [];
       }
     } finally {
       clearInterval(timer);

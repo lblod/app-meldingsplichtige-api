@@ -8,7 +8,7 @@ import { verifySelfFetch } from "../server.js";
 import { submitMelding, waitVerstuurd } from "../checks.js";
 import { vendorLogin, vendorSparql, vendorLogout } from "../vendor.js";
 import { ckbDiscoveryQuery } from "../queries.js";
-import { sleep, assertFound } from "./util.js";
+import { sleep } from "./util.js";
 
 // TODO : make this more realistic:
 // connect to centrale vindplaats, and first search for eredienst related to CKB_ORG,
@@ -40,7 +40,6 @@ export async function step2Bundel(ctx, eredienstDocument) {
     logRetry(++attempt, "SubmissionDocument not visible to vendor B yet", 2000);
     await sleep(2000);
   }
-  assertFound("step 2: no SubmissionDocument found for the kerkfabriek jaarrekening", discovery);
 
   const found = discovery[0].subject.value;
   if (found !== eredienstDocument) {
@@ -59,7 +58,7 @@ export async function step2Bundel(ctx, eredienstDocument) {
     DOC_URI_BASE + ctx.runId + "-bundel",
     ctx.vendors.a.uri, ctx.vendors.a.key
   );
-  await waitVerstuurd(cookie, "step 2", submission.submissionUri, ctx.pageUrls.bundel);
+  await waitVerstuurd(cookie, "step 2", submission.submissionUri);
   await vendorLogout(cookie);
   return { submission };
 }

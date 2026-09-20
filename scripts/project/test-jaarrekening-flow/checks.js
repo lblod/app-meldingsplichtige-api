@@ -38,7 +38,7 @@ export async function submitMelding(description, organization, pageUrl, submitte
   return { submissionUri, jobUri };
 }
 
-export async function waitVerstuurd(cookie, description, submissionUri, pageUrl) {
+export async function waitVerstuurd(cookie, description, submissionUri) {
   say(description + ": polling until the submission status is verstuurd (sent)...");
   const pollStart = Date.now();
   let attempt = 0;
