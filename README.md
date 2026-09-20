@@ -20,6 +20,16 @@ like `docker-compose.override.yml` and include it as you wish.
 The stack is built starting from
 [mu-project](https://github.com/mu-semtech/mu-project).
 
+## Frontends
+
+Three frontends are served on port 80, routed by hostname:
+
+- `http://localhost/` — the meldingsplichtige frontend (default)
+- `http://dashboard.localhost/` — dashboard (jobs and submissions monitoring)
+- `http://databankerediensten.localhost/` — Databank Erediensten
+
+Use mock login to sign in as a bestuurseenheid.
+
 ## Cleaning the database
 
 Given that this application is for testing purposes, you might want to clean the

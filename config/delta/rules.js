@@ -10,10 +10,7 @@ export default [
     options: {
       resourceFormat: "v0.0.1",
       gracePeriod: 250,
-      ignoreFromSelf: true,
-      optOutMuScopeIds: [
-        "http://redpencil.data.gift/id/concept/muScope/deltas/vendor-data"
-      ]
+      ignoreFromSelf: true
     }
   },
   {
@@ -199,13 +196,16 @@ export default [
       resourceFormat: 'v0.0.1',
       gracePeriod: 1000,
       ignoreFromSelf: true,
-      optOutMuScopeIds: [
-        "http://redpencil.data.gift/id/concept/muScope/deltas/vendor-data"
-      ]
+      sendMatchesOnly: true,
+//      foldEffectiveChanges: true  // The folding might break some assumptions in the automatic-submission flow. Hence not here
     }
   },
   {
     match: {
+      graph: {
+         type: "uri",
+         value: /^http:\/\/mu\.semte\.ch\/graphs\/organizations\/[^\/]+\/LoketLB-toezichtGebruiker$/
+      },
       predicate: {
         type: 'uri',
         value: 'http://www.w3.org/ns/adms#status'
@@ -215,7 +215,7 @@ export default [
         value: 'http://lblod.data.gift/concepts/9bd8d86d-bb10-4456-a84e-91e9507c374c'
       }
     },
-    callback: {
+      callback: {
       url: 'http://toezicht-flattened-form-data-generator/manual/delta',
       method: 'POST'
     },
@@ -223,13 +223,35 @@ export default [
       resourceFormat: 'v0.0.1',
       gracePeriod: 1000,
       ignoreFromSelf: true,
-      optOutMuScopeIds: [
-        "http://redpencil.data.gift/id/concept/muScope/deltas/vendor-data"
-      ]
+      sendMatchesOnly: true,
+//      foldEffectiveChanges: true  // The folding might break some assumptions in the automatic-submission flow. Hence not here
     }
   },
   {
-    match: {},
+    match: {
+      graph: {
+        type: 'uri',
+        value: 'http://mu.semte.ch/graphs/worship-submissions/canonical'
+      },
+    },
+    callback: {
+      url: 'http://worship-submissions-graph-dispatcher/delta',
+      method: 'POST'
+    },
+    options: {
+      resourceFormat: 'v0.0.1',
+      gracePeriod: 10000,
+      ignoreFromSelf: true,
+      sendMatchesOnly: true
+    }
+  },
+  {
+    match: {
+     graph: {
+        type: "uri",
+        value: /^http:\/\/mu\.semte\.ch\/graphs\/organizations\/[^\/]+\/LoketLB-toezichtGebruiker$/
+      }
+    },
     callback: {
       url: 'http://vendor-data-distribution/delta',
       method: 'POST'
@@ -237,7 +259,49 @@ export default [
     options: {
       resourceFormat: 'v0.0.1',
       gracePeriod: 1000,
-      ignoreFromSelf: true
+      ignoreFromSelf: true,
+      sendMatchesOnly: true,
+//      foldEffectiveChanges: true  // The folding might break some assumptions in the automatic-submission flow. Hence not here
     }
   },
+  {
+    match: {
+     graph: {
+        type: "uri",
+        value: /^http:\/\/mu\.semte\.ch\/graphs\/organizations\/[^\/]+\/LoketLB-databankEredienstenGebruiker$/
+      }
+    },
+    callback: {
+      url: 'http://vendor-data-distribution-erediensten/delta',
+      method: 'POST'
+    },
+    options: {
+      resourceFormat: 'v0.0.1',
+      gracePeriod: 1000,
+      ignoreFromSelf: true,
+      sendMatchesOnly: true,
+//      foldEffectiveChanges: true  // The folding might break some assumptions in the automatic-submission flow. Hence not here
+    }
+  },
+  {
+    match: {
+      predicate: {
+        type: 'uri',
+        value: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
+      },
+      object: {
+        type: 'uri',
+        value:'http://open-services.net/ns/core#Error'
+      }
+    },
+    callback: {
+      url: 'http://error-alert/delta',
+      method:'POST'
+    },
+    options: {
+      resourceFormat: 'v0.0.1',
+      gracePeriod: 1000,
+      ignoreFromSelf: true
+    }
+  }
 ];

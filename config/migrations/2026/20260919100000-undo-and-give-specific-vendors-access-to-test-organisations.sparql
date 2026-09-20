@@ -1,0 +1,26 @@
+PREFIX acc: <http://mu.semte.ch/vocabularies/account/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+DELETE {
+  GRAPH <http://mu.semte.ch/graphs/automatic-submission> {
+    ?vendor acc:canActOnBehalfOf <http://data.lblod.info/id/bestuurseenheden/f4641f7ba21f1a575993f1b523fb581af12269164006abeab121886037ac0cad> ;
+            acc:canActOnBehalfOf <http://data.lblod.info/id/besturenVanDeEredienst/4bafd12e53d6aaa218d74446202dc2ed> ;
+            acc:canActOnBehalfOf <http://data.lblod.info/id/centraleBesturenVanDeEredienst/3e95fcbcdde9a46586f91b693985578f> .
+  }
+}
+WHERE {
+  GRAPH <http://mu.semte.ch/graphs/automatic-submission> {
+    ?vendor a ext:Vendor .
+  }
+} ;
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/automatic-submission> {
+    <http://data.lblod.info/vendors/b1e41693-639a-4f61-92a9-5b9a3e0b924e>
+      acc:canActOnBehalfOf <http://data.lblod.info/id/besturenVanDeEredienst/4bafd12e53d6aaa218d74446202dc2ed> ;
+      acc:canActOnBehalfOf <http://data.lblod.info/id/centraleBesturenVanDeEredienst/3e95fcbcdde9a46586f91b693985578f> .
+
+    <http://data.lblod.info/vendors/d6d4f2ae-1d08-11eb-adc1-0242ac120002>
+      acc:canActOnBehalfOf <http://data.lblod.info/id/bestuurseenheden/f4641f7ba21f1a575993f1b523fb581af12269164006abeab121886037ac0cad> .
+  }
+}

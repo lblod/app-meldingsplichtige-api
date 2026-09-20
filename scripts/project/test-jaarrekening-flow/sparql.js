@@ -1,15 +1,19 @@
-import { SPARQL_ENDPOINT } from "./config.js";
+import { CV_SPARQL_ENDPOINT } from "./config.js";
+import { logSparql, logCommand, logBody } from "./log.js";
 
 export function sparqlEscapeUri(value) {
   return "<" + String(value).replace(/[<>"]/g, function (match) { return "\\" + match; }) + ">";
 }
 
-export async function sparql(query) {
-  console.log("SPARQL query:");
-  console.log(query);
+// Generic SPARQL helper for read-only lookups that do NOT belong to the own
+// stack: vendeur-key-independent data like organisation structures. These go
+// to the centrale vindplaats, never to virtuoso.
+export async function sparql(what, query) {
+  logCommand(what, "GET", CV_SPARQL_ENDPOINT);
+  logSparql(what, query);
   try {
     const response = await fetch(
-      SPARQL_ENDPOINT + "?query=" + encodeURIComponent(query),
+      CV_SPARQL_ENDPOINT + "?query=" + encodeURIComponent(query),
       { headers: { Accept: "application/sparql-results+json" } }
     );
     const text = await response.text();
@@ -26,10 +30,9 @@ export async function sparql(query) {
   }
 }
 
-export async function postJson(url, body) {
-  console.log("HTTP POST " + url);
-  console.log("HTTP POST body:");
-  console.log(JSON.stringify(body, null, 2));
+export async function postJson(what, url, body) {
+  logCommand(what, "POST", url);
+  logBody(what, body);
   const response = await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -42,6 +45,5 @@ export async function postJson(url, body) {
   } catch (parseError) {
     /* keep raw text */
   }
-  console.log("HTTP POST response: " + response.status + " " + text);
   return { status: response.status, body: parsed };
 }

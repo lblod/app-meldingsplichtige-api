@@ -1,0 +1,144 @@
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vdds:    <https://github.com/lblod/vendor-data-distribution-service#> .
+@prefix prov:    <http://www.w3.org/ns/prov#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix dct:     <http://purl.org/dc/terms/> .
+@prefix core:    <http://mu.semte.ch/vocabularies/core/> .
+@prefix sd:      <http://data.lblod.info/submission-documents/> .
+@prefix fd:      <http://data.lblod.info/form-data/> .
+@prefix nfo:     <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#> .
+@prefix nie:     <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#> .
+@prefix nmo:     <http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#> .
+@prefix ext:     <http://mu.semte.ch/vocabularies/ext/> .
+@prefix pav:     <http://purl.org/pav/> .
+@prefix adms:    <http://www.w3.org/ns/adms#> .
+@prefix dbpedia: <http://dbpedia.org/ontology/> .
+@prefix am:      <http://lblod.data.gift/vocabularies/automatische-melding/> .
+@prefix meb:     <http://rdf.myexperiment.org/ontologies/base/> .
+@prefix cogs:    <http://vocab.deri.ie/cogs#> .
+@prefix osc:     <http://open-services.net/ns/core#> .
+@prefix task:    <http://redpencil.data.gift/vocabularies/tasks/> .
+@prefix eli:     <http://data.europa.eu/eli/ontology#> .
+
+# Extra prefixes for use in queries
+
+@prefix besluit:   <http://data.vlaanderen.be/ns/besluit#> .
+@prefix foaf:      <http://xmlns.com/foaf/0.1/> .
+@prefix mu:        <http://mu.semte.ch/vocabularies/core/> .
+@prefix muAccount: <http://mu.semte.ch/vocabularies/account/> .
+@prefix schema:    <http://schema.org/> .
+
+##############################################################################
+# Submissions
+#
+# Config for the second vendor-data-distribution instance in this stack
+# Its source is the copy of the submission that the
+# delta-notifier -> worship-submissions-graph-dispatcher pipeline stores in
+# the Databank Erediensten org graph. It only targets the vendor graph, so
+# there is no canonical duplication here, and the logical files get their
+# download link from the Databank host (#{HOSTNAME} of this instance), as
+# opposed to the host used by the primary instance's ../vendor-data/model.ttl.
+##############################################################################
+
+meb:Submission
+  rdf:type vdds:Class ;
+  vdds:graphQuery """
+    SELECT DISTINCT ?organisationUuid ?vendorUuid
+    WHERE {
+      GRAPH ?g {
+        ${subject} a meb:Submission .
+      }
+      FILTER (REGEX(STR(?g), "^http://mu.semte.ch/graphs/organizations/"))
+      BIND(STRAFTER(STR(?g), "http://mu.semte.ch/graphs/organizations/") AS ?afterPrefix)
+      BIND(STRBEFORE(?afterPrefix, "/LoketLB-databankEredienstenGebruiker") AS ?organisationUuid)
+      ?vendor
+        rdf:type ext:Vendor ;
+        muAccount:canActOnBehalfOf ?organisation ;
+        mu:uuid ?vendorUuid .
+      ?organisation
+        mu:uuid ?organisationUuid .
+    }
+  """ ;
+  vdds:sourceGraphTemplate "http://mu.semte.ch/graphs/organizations/${organisationUuid}/LoketLB-databankEredienstenGebruiker" ;
+  vdds:targetGraphTemplate "http://mu.semte.ch/graphs/vendors-erediensten/${vendorUuid}/${organisationUuid}" .
+
+ext:SubmissionDocument
+  rdf:type vdds:Subclass .
+
+besluit:Artikel
+  rdf:type vdds:Subclass .
+
+am:FormData
+  rdf:type vdds:Subclass .
+
+prov:generated
+  rdf:type vdds:HierarchyProperty ;
+  rdfs:domain meb:Submission ;
+  rdfs:range am:FormData .
+
+<RelSubmissionSubmissionDocument>
+  rdf:type vdds:HierarchyProperty ;
+  vdds:type dct:subject ;
+  rdfs:domain meb:Submission ;
+  rdfs:range ext:SubmissionDocument .
+
+eli:has_part
+  rdf:type vdds:HierarchyProperty ;
+  rdfs:domain ext:SubmissionDocument ;
+  rdfs:range besluit:Artikel .
+
+<LogicalFile>
+  rdf:type vdds:Subclass ;
+  vdds:type nfo:FileDataObject ;
+  vdds:postProcessDelete """
+    ${subject} nie:url ?originalDownloadLink .
+  """ ;
+  vdds:postProcessInsert """
+    ${subject}
+      nie:url ?bijlageDownloadLink ;
+      prov:hadPrimarySource ?originalDownloadLink .
+  """ ;
+  vdds:postProcessWhere """
+    OPTIONAL {
+      GRAPH ?sourceGraph {
+        ${subject} nie:url ?originalDownloadLink .
+      }
+      FILTER(REGEX(STR(?sourceGraph), "organizations"))
+    }
+    ${subject} mu:uuid ?bijlageUUID .
+    BIND (CONCAT("#{HOSTNAME}files/", STR(?bijlageUUID), "/download") AS ?bijlageDownloadLink)
+  """ .
+
+<PhysicalFile>
+  rdf:type vdds:Subclass ;
+  vdds:type nfo:FileDataObject .
+
+<SubmissionDocumentSourceFile>
+  rdf:type vdds:Subclass ;
+  vdds:type nfo:FileDataObject .
+
+<RelSubmissionFile>
+  rdf:type vdds:HierarchyProperty ;
+  vdds:type nie:hasPart ;
+  rdfs:domain meb:Submission ;
+  rdfs:range <LogicalFile> .
+
+<RelFormDataFile>
+  rdf:type vdds:HierarchyProperty ;
+  vdds:type dct:hasPart ;
+  rdfs:domain am:FormData ;
+  rdfs:range <LogicalFile> .
+
+<RelSubmissionFileDataSource>
+  rdf:type vdds:HierarchyProperty ;
+  vdds:type nie:dataSource ;
+  rdfs:domain <PhysicalFile> ;
+  rdfs:range <LogicalFile> ;
+  vdds:inverse true .
+
+<RelSubmissionDocumentSourceFile>
+  rdf:type vdds:HierarchyProperty ;
+  vdds:type dct:source ;
+  rdfs:domain ext:SubmissionDocument ;
+  rdfs:range <SubmissionDocumentSourceFile> .

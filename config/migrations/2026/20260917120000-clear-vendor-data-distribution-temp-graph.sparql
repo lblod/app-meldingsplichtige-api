@@ -1,0 +1,5 @@
+# Clear the temporary inbox graph of the vendor-data-distribution service.
+# Its contents pre-date the fixed model.ttl (Tasks 6 and 8 of DL-7534) and are
+# processed differently since; the service refills the graph on new deltas and
+# the heal endpoint backfills existing submissions, so clearing is safe.
+DROP SILENT GRAPH <http://mu.semte.ch/graphs/vendor-data-distribution/temp>
