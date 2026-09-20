@@ -7,7 +7,9 @@ import { logCommand } from "./log.js";
 // Serves every annotated page on the container IP, so other containers
 // (download-url-service) can harvest them without JS.
 
-export async function startPageServer(pages) {
+// port 0 (the default is the fixed PAGE_PORT) makes the OS pick an ephemeral
+// port, which lets parallel batch runs each use their own server at once.
+export async function startPageServer(pages, port = PAGE_PORT) {
   // pages: Map<path, html>
   const server = http.createServer(function (request, response) {
     const path = request.url.replace(/\?.*$/, "");
@@ -19,7 +21,7 @@ export async function startPageServer(pages) {
       response.writeHead(404).end("not found");
     }
   });
-  await new Promise((resolve) => server.listen(PAGE_PORT, "0.0.0.0", resolve));
+  await new Promise((resolve) => server.listen(port, "0.0.0.0", resolve));
   return server;
 }
 
@@ -57,11 +59,11 @@ function firstNonInternalIpv4() {
   return null;
 }
 
-export function buildPageUrls(runId, ownIp) {
+export function buildPageUrls(runId, ownIp, port = PAGE_PORT) {
   return {
-    jaarrekening: "http://" + ownIp + ":" + PAGE_PORT + "/jaarrekening-" + runId + ".html",
-    bundel: "http://" + ownIp + ":" + PAGE_PORT + "/bundel-" + runId + ".html",
-    advies: "http://" + ownIp + ":" + PAGE_PORT + "/advies-" + runId + ".html",
+    jaarrekening: "http://" + ownIp + ":" + port + "/jaarrekening-" + runId + ".html",
+    bundel: "http://" + ownIp + ":" + port + "/bundel-" + runId + ".html",
+    advies: "http://" + ownIp + ":" + port + "/advies-" + runId + ".html",
   };
 }
 

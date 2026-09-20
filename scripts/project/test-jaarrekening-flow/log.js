@@ -1,5 +1,33 @@
 // Log helpers so the run log reads like a protocol transcript:
 // step banners, every command we run, then a one-line result.
+import { AsyncLocalStorage } from "node:async_hooks";
+
+// In batch mode several runs share one stdout. Every log line belongs to the
+// run that printed it, so the active run registers a prefix in an
+// AsyncLocalStorage and the console methods print it. The store lookup
+// happens the moment console.log is called, which is inside the run's async
+// chain, so interleaved runs each keep their own prefix while other output
+// (e.g. batch overview) prints unprefixed.
+const logContext = new AsyncLocalStorage();
+let patched = false;
+
+function patchConsole() {
+  if (patched) return;
+  patched = true;
+  for (const method of ["log", "error", "warn", "info"]) {
+    const original = console[method].bind(console);
+    console[method] = function (...args) {
+      const prefixText = logContext.getStore()?.prefix;
+      if (prefixText) original(prefixText + args[0], ...args.slice(1));
+      else original(...args);
+    };
+  }
+}
+
+export function withLogPrefix(prefixText, fn) {
+  patchConsole();
+  return logContext.run({ prefix: prefixText }, fn);
+}
 
 export function step(number, title) {
   console.log("");
