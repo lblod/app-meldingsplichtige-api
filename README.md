@@ -66,7 +66,9 @@ Vendor URI: "http://example.com/vendor/d3c9e5e5-d50c-46c9-8f09-6af76712c277",
 Key: "my-super-secret-key"
 ```
 
-## Sanity test the automatic submission flow
+## mu cli scripts
+
+### Sanity test the automatic submission flow
 
 A `mu script` is available to test the automatic submission flow end to
 end: it publishes a besluitenlijst for a gemeente of choice, posts it, and follows
@@ -95,7 +97,7 @@ Prerequisites: the stack is up, and the vendor is allowed to act on behalf
 of the chosen bestuurseenheid (see the migration
 `20260908153000-allow-all-vendors-on-all-bestuurseenheden`).
 
-## Sanity test the vendor SPARQL API
+### Sanity test the vendor SPARQL API
 
 An extended version of the script also verifies what a vendor can see of the
 submission: it logs in on `/vendor/login`, polls `/vendor/sparql` until the
@@ -110,6 +112,29 @@ mu script project-scripts test-automatic-submission-vendor
 ```
 
 Same prompts and arguments as `test-automatic-submission`.
+
+### Sanity test the collaborative jaarrekening flow
+
+An end-to-end test for the collaborative flow of the Grobbendonk test space:
+vendor A (eredienstbestuur vendor) submits the jaarrekening for the KFB and the
+CKB bundle, vendor B (gemeente vendor) publishes the gunstig advies, vendor A
+verifies the approval on databankerediensten and downloads the source document
+via the mapped URL. Each run gets a unique runId and its own ephemeral page
+server, so runs never collide.
+
+```sh
+mu script project-scripts test-jaarrekening-flow vendor-a-key vendor-b-key
+```
+Keys can be omitted, in that case they are asked interactively
+with the vendor name and URI (`Key for vendor A (kerkfabriek + CKB) (...):`).
+
+For soak testing, a batch of runs with a worker pool is available; each run is
+reported, and a JSON summary is written to
+`./data/files/mu-script-runs/test-jaarrekening-flow`:
+
+```sh
+mu script project-scripts test-jaarrekening-flow vendor-a-key vendor-b-key --runs 10 --parallel 3 --out DIR
+```
 
 ## Technical flow
 
