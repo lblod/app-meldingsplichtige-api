@@ -197,7 +197,7 @@ export default [
       gracePeriod: 1000,
       ignoreFromSelf: true,
       sendMatchesOnly: true,
-//      foldEffectiveChanges: true
+//      foldEffectiveChanges: true  // The folding might break some assumptions in the automatic-submission flow. Hence not here
     }
   },
   {
@@ -224,7 +224,7 @@ export default [
       gracePeriod: 1000,
       ignoreFromSelf: true,
       sendMatchesOnly: true,
-//      foldEffectiveChanges: true
+//      foldEffectiveChanges: true  // The folding might break some assumptions in the automatic-submission flow. Hence not here
     }
   },
   {
@@ -261,7 +261,7 @@ export default [
       gracePeriod: 1000,
       ignoreFromSelf: true,
       sendMatchesOnly: true,
-//      foldEffectiveChanges: true
+//      foldEffectiveChanges: true  // The folding might break some assumptions in the automatic-submission flow. Hence not here
     }
   },
   {
@@ -280,7 +280,7 @@ export default [
       gracePeriod: 1000,
       ignoreFromSelf: true,
       sendMatchesOnly: true,
-//      foldEffectiveChanges: true
+//      foldEffectiveChanges: true  // The folding might break some assumptions in the automatic-submission flow. Hence not here
     }
   },
   {
