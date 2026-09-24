@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.55.1 (2026-09-24)
+- Bump vendor-data-distribution service - periodic healing via cron job [DL-7536]
+
+### Deploy notes
+```
+drc up -d vendor-data-distribution
+```
+
 ## v1.55.0 (2026-09-20)
  - Add `error-alert` and `deliver-email` services to the stack
  - `test-jaarrekening-flow` script: removed unused config/imports and dead code; CLI now has the "Are you in production? type NO" gate and vendor labels on key prompts instead of a usage error [DL-7534]
