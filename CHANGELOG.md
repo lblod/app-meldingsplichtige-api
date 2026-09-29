@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+- Bump automatic-submission-service and fix test scripts [DL-7614]
+
+### Deploy Notes
+```
+drc up -d automatic-submission
+drc restart migrations
+```
+
 ## v1.55.1 (2026-09-24)
 - Bump vendor-data-distribution service - periodic healing via cron job [DL-7536]
 
