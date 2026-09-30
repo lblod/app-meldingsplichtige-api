@@ -1,4 +1,6 @@
 # Changelog
+## v1.55.3 (2026-09-30)
+- Add missing mailbox and mailfolders in the triplestore [DL-7539]
 
 ## v1.55.2 (2026-09-30)
 - Bump automatic-submission-service and fix test scripts [DL-7614]
