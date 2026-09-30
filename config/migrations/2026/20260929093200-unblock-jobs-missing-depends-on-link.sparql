@@ -1,0 +1,29 @@
+PREFIX cogs: <http://vocab.deri.ie/cogs#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX task: <http://redpencil.data.gift/vocabularies/tasks/>
+PREFIX adms: <http://www.w3.org/ns/adms#>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+
+DELETE {
+  GRAPH ?g {
+    ?task ext:checkedForScheduling ?date .
+  }
+} INSERT {
+  GRAPH ?g {
+    ?download cogs:dependsOn ?register .
+  }
+} WHERE {
+  GRAPH ?g {
+    ?job a cogs:Job ;
+      task:operation <http://lblod.data.gift/id/jobs/concept/JobOperation/automaticSubmissionFlow> ;
+      adms:status <http://redpencil.data.gift/id/concept/JobStatus/busy> .
+
+    ?register dct:isPartOf ?job ;
+      task:operation <http://lblod.data.gift/id/jobs/concept/TaskOperation/register> .
+
+    ?download dct:isPartOf ?job ;
+      task:operation <http://lblod.data.gift/id/jobs/concept/TaskOperation/download> .
+    
+    OPTIONAL { ?task dct:isPartOf ?job ; ext:checkedForScheduling ?date .}
+  }
+}

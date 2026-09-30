@@ -90,12 +90,11 @@ export function organsQuery(eenheidUri) {
   return `
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
-PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 SELECT DISTINCT ?orgaanInTijd ?orgaanAbstract ?label ?bindingStart WHERE {
   ?orgaanAbstract besluit:bestuurt ${sparqlEscapeUri(eenheidUri)} ;
-                   skos:prefLabel ?label ;
-                   org:classification ${sparqlEscapeUri(ORGAAN_CLASSIFICATIE_GEMEENTERAAD)} .
+                  skos:prefLabel ?label ;
+                  besluit:classificatie ${sparqlEscapeUri(ORGAAN_CLASSIFICATIE_GEMEENTERAAD)} .
   ?orgaanInTijd mandaat:isTijdspecialisatieVan ?orgaanAbstract ;
                 mandaat:bindingStart ?bindingStart .
 }`;
@@ -105,13 +104,12 @@ export function singleOrganQuery(organInTijdUri) {
   return `
 PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
 PREFIX mandaat: <http://data.vlaanderen.be/ns/mandaat#>
-PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 SELECT DISTINCT ?orgaanInTijd ?orgaanAbstract ?label ?eenheid WHERE {
   BIND(${sparqlEscapeUri(organInTijdUri)} AS ?orgaanInTijd)
   ?orgaanInTijd mandaat:isTijdspecialisatieVan ?orgaanAbstract .
   ?orgaanAbstract skos:prefLabel ?label ;
-                   besluit:bestuurt ?eenheid ;
-                   org:classification ${sparqlEscapeUri(ORGAAN_CLASSIFICATIE_GEMEENTERAAD)} .
+                  besluit:bestuurt ?eenheid ;
+                  besluit:classificatie ${sparqlEscapeUri(ORGAAN_CLASSIFICATIE_GEMEENTERAAD)} .
 }`;
 }
