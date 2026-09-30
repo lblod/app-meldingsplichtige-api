@@ -149,7 +149,7 @@ services:
     restart: always
     logging: *default-logging
   automatic-submission:
-    image: lblod/automatic-submission-service:2.0.4 # TODO: Bump version
+    image: lblod/automatic-submission-service:2.0.5
     labels:
       - "logging=true"
     restart: always
