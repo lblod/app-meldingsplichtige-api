@@ -58,4 +58,4 @@ export const RAPPORTJAAR = "2025";
 export const DOC_URI_BASE = "http://test.local/jaarrekening-flow/";
 export const PAGE_PORT = 8899;
 export const POLL_INTERVAL = 2000;
-export const POLL_TIMEOUT = 150000;
+export const POLL_TIMEOUT = 30000;
