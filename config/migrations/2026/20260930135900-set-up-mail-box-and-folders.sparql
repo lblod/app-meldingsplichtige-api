@@ -1,0 +1,41 @@
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX nmo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#>
+PREFIX nfo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#>
+PREFIX nie: <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#>
+
+INSERT DATA {
+  GRAPH <http://mu.semte.ch/graphs/system/email> {
+    <http://data.lblod.info/id/mailboxes/1> a nmo:Mailbox ;
+      mu:uuid "cf9cb7e4-9a00-4855-9ee0-e8e3bbeba9e9" ;
+      nie:hasPart <http://data.lblod.info/id/mail-folders/1> ;
+      nie:hasPart <http://data.lblod.info/id/mail-folders/2> ;
+      nie:hasPart <http://data.lblod.info/id/mail-folders/3> ;
+      nie:hasPart <http://data.lblod.info/id/mail-folders/4> ;
+      nie:hasPart <http://data.lblod.info/id/mail-folders/5> ;
+      nie:hasPart <http://data.lblod.info/id/mail-folders/6> .
+
+    <http://data.lblod.info/id/mail-folders/1> a nfo:Folder ;
+      mu:uuid "2cdb2c28-3fc4-4e47-84dc-1bf1369c3a5f" ;
+      nie:title "inbox" .
+
+    <http://data.lblod.info/id/mail-folders/2> a nfo:Folder ;
+      mu:uuid "6e165651-1e05-4e45-abab-21a2d0c1c383" ;
+      nie:title "outbox" .
+
+    <http://data.lblod.info/id/mail-folders/3> a nfo:Folder ;
+      mu:uuid "7189e9a6-d14c-47b0-977e-3e70f5a515a3" ;
+      nie:title "sentbox" .
+
+    <http://data.lblod.info/id/mail-folders/4> a nfo:Folder ;
+      mu:uuid "b2e3290e-4ec9-4dba-ae38-b67893cfab35" ;
+      nie:title "sending" .
+
+    <http://data.lblod.info/id/mail-folders/5> a nfo:Folder ;
+      mu:uuid "a4c91ca0-79a4-4e91-8e3b-3a4ec2777adb" ;
+      nie:title "drafts" .
+
+    <http://data.lblod.info/id/mail-folders/6> a nfo:Folder ;
+      mu:uuid "d5a3c4e9-7f2b-4a8d-b1c6-5e9f3a2d8b7c" ;
+      nie:title "failbox" .
+  }
+}

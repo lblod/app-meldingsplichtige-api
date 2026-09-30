@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## v1.55.2 (2026-09-30)
 - Bump automatic-submission-service and fix test scripts [DL-7614]
 
 ### Deploy Notes
