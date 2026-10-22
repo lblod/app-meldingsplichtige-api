@@ -402,55 +402,6 @@ defmodule Dispatcher do
     forward conn, [], "http://frontend-worship-decisions/index.html"
   end
 
-  # --- frontend (meldingsplichtige, default) ---
-  get "/assets/*path" do
-    forward conn, path, "http://frontend/assets/"
-  end
-
-  get "/@appuniversum/*path" do
-    forward conn, path, "http://frontend/@appuniversum/"
-  end
-
-  get "/@embroider/*path" do
-    forward conn, path, "http://frontend/@embroider/"
-  end
-
-  match "/*_path", @html do
-    forward conn, [], "http://frontend/index.html"
-  end
-
-  #################################################################
-  # Frontends (served via reverse_host)
-  #   dashboard.localhost       -> dashboard
-  #   worship.localhost         -> frontend-worship-decisions
-  #   loket.localhost (default) -> frontend
-  #################################################################
-
-  get "/favicon.ico", @any do
-    send_resp( conn, 404, "" )
-  end
-
-  # --- dashboard ---
-  get "/assets/*path", %{ reverse_host: ["dashboard" | _rest] } do
-    forward conn, path, "http://dashboard/assets/"
-  end
-
-  get "/@appuniversum/*path", %{ reverse_host: ["dashboard" | _rest] } do
-    forward conn, path, "http://dashboard/@appuniversum/"
-  end
-
-  # needs to be enabled? (2026-09-03)
-  # get "/@embroider/*path", %{ reverse_host: ["dashboard" | _rest] } do
-  #   forward conn, path, "http://dashboard/@embroider/"
-  # end
-
-  match "/*_path", %{ reverse_host: ["dashboard" | _rest] } do
-    forward conn, [], "http://dashboard/index.html"
-  end
-
-  # --- frontend-worship-decisions ---
-  get "/assets/*path", %{ reverse_host: ["worship" | _rest] } do
-    forward conn, path, "http://frontend-worship-decisions/assets/"
   end
 
   get "/@appuniversum/*path", %{ reverse_host: ["worship" | _rest] } do
