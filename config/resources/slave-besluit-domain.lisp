@@ -3,7 +3,10 @@
   :properties `((:naam :string ,(s-prefix "skos:prefLabel"))
                 (:alternatieve-naam :string-set ,(s-prefix "skos:altLabel"))
                 (:wil-mail-ontvangen :boolean ,(s-prefix "ext:wilMailOntvangen"))
-                (:mail-adres :string ,(s-prefix "ext:mailAdresVoorNotificaties")))
+                (:mail-adres :string ,(s-prefix "ext:mailAdresVoorNotificaties"))
+                ;; read/written by the vendor-management frontend when it
+                ;; attaches a bestuurseenheid to a vendor (see DL-7635)
+                (:view-only-modules :string-set ,(s-prefix "ext:viewOnlyModules")))
   :has-one `((werkingsgebied :via ,(s-prefix "besluit:werkingsgebied")
                              :as "werkingsgebied")
              (vestiging :via ,(s-prefix "org:hasPrimarySite")

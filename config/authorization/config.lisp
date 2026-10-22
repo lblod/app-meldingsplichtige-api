@@ -50,6 +50,11 @@
     ("besluit:BehandelingVanAgendapunt" -> _)
     ("nfo:FileDataObject" -> _)
     ("nfo:RemoteDataObject" -> _)
+ ;; Vendor-management frontend: mock accounts (person + account, incl.
+ ;; ext:sessionRole) live in the public graph. Needed so the frontend
+ ;; can list/mock-login accounts.
+    ("foaf:Person" -> _)
+    ("foaf:OnlineAccount" -> _)
     ("skos:ConceptScheme" -> _)
     ("skos:Concept" -> _))
 
@@ -87,6 +92,11 @@
 (define-graph automatic-submission ("http://mu.semte.ch/graphs/automatic-submission")
     (_ -> _))
 
+;; Vendor-management frontend writes ext:viewOnlyModules on bestuurseenheden
+;; (used for the "view only" module flags when attaching them to a vendor).
+(define-graph public-view-only-modules-rw ("http://mu.semte.ch/graphs/public")
+    ("besluit:Bestuurseenheid" -> "ext:viewOnlyModules"))
+
 (supply-allowed-group "public")
 
 (supply-allowed-group "toezicht-gebruiker"
@@ -115,7 +125,7 @@
             SELECT ?session_group ?session_role WHERE {
                 <SESSION_ID> ext:sessionGroup/mu:uuid ?session_group;
                             ext:sessionRole ?session_role.
-                FILTER( ?session_role = \"LoketLB-vendorManagementGebruiker\" )
+                FILTER( ?session_role = \"VMTGebruiker\" )
             }")
 
 (grant (read)
@@ -150,4 +160,8 @@
 
 (grant (read write)
     :to-graph (automatic-submission)
+    :for-allowed-group "vendor-management")
+
+(grant (read write)
+    :to-graph (public-view-only-modules-rw)
     :for-allowed-group "vendor-management")

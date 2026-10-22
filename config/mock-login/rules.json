@@ -43,6 +43,12 @@
         "http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/36372fad-0358-499c-a4e3-f412d2eae213",
         "http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/4b8450cf-a326-4c66-9e63-b4ec10acc7f6"
       ]
+    },
+    {
+      "sessionRole": "VMTGebruiker",
+      "restrictToClassifications": [
+        "http://data.vlaanderen.be/id/concept/BestuurseenheidClassificatieCode/52cc9d8d-1c9a-4d92-9936-da9d4a622ec4"
+      ]
     }
   ]
 }

@@ -1,0 +1,28 @@
+# DL-7635: the vendor-management frontend (frontend-vendor-access-management)
+# requires the session role "VMTGebruiker" (canManageVendors) before it lets
+# a logged-in account manage vendors. The frontend's mock-login route only
+# lists accounts of "Agentschap Binnenlands Bestuur" (Abb, uuid
+# 141d9d6b-54af-4d17-b313-8d1c30bc3f5b), so give exactly that account
+# the role.
+PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
+PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX besluit: <http://data.vlaanderen.be/ns/besluit#>
+
+INSERT {
+  GRAPH ?g {
+    ?account ext:sessionRole
+        "VMTGebruiker".
+  }
+}
+WHERE {
+  ?persoon a foaf:Person;
+    foaf:member <http://data.lblod.info/id/bestuurseenheden/141d9d6b-54af-4d17-b313-8d1c30bc3f5b>;
+    foaf:account ?account.
+
+  GRAPH ?g {
+   ?account a foaf:OnlineAccount;
+      foaf:accountServiceHomepage <https://github.com/lblod/mock-login-service>;
+      ext:sessionRole ?role.
+  }
+}

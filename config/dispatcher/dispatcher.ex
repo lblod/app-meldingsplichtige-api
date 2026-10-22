@@ -92,7 +92,7 @@ defmodule Dispatcher do
   get "/submissions/*path" do
     forward conn, path, "http://cache/submissions/"
   end
-  match "/vendors/*path" do
+  match "/vendors/*path", @json do
     forward conn, path, "http://cache/vendors/"
   end
   match "/authenticity-types/*path" do
@@ -360,6 +360,7 @@ defmodule Dispatcher do
   # Frontends (served via reverse_host)
   #   dashboard.localhost             -> dashboard
   #   databankerediensten.localhost   -> frontend-worship-decisions
+  #   vendor-management.localhost     -> vendor-management
   #   localhost (default)             -> frontend
   #################################################################
 
@@ -402,18 +403,21 @@ defmodule Dispatcher do
     forward conn, [], "http://frontend-worship-decisions/index.html"
   end
 
+  # --- vendor-management ---
+  get "/assets/*path", %{ reverse_host: ["vendor-management" | _rest] } do
+    forward conn, path, "http://vendor-management/assets/"
   end
 
-  get "/@appuniversum/*path", %{ reverse_host: ["worship" | _rest] } do
-    forward conn, path, "http://frontend-worship-decisions/@appuniversum/"
+  get "/@appuniversum/*path", %{ reverse_host: ["vendor-management" | _rest] } do
+    forward conn, path, "http://vendor-management/@appuniversum/"
   end
 
-  get "/@embroider/*path", %{ reverse_host: ["worship" | _rest] } do
-    forward conn, path, "http://frontend-worship-decisions/@embroider/"
+  get "/@embroider/*path", %{ reverse_host: ["vendor-management" | _rest] } do
+    forward conn, path, "http://vendor-management/@embroider/"
   end
 
-  match "/*_path", %{ reverse_host: ["worship" | _rest] } do
-    forward conn, [], "http://frontend-worship-decisions/index.html"
+  match "/*_path", %{ reverse_host: ["vendor-management" | _rest] } do
+    forward conn, [], "http://vendor-management/index.html"
   end
 
   # --- frontend (meldingsplichtige, default) ---
