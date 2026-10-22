@@ -1,4 +1,13 @@
 # Changelog
+## v1.56.0 (2026-10-22)
+- Added vendor-management. [DL-7635]
+
+### Deploy Notes
+```
+drc stop;
+drc up -d;
+```
+
 ## v1.55.3 (2026-09-30)
 - Add missing mailbox and mailfolders in the triplestore [DL-7539]
 
