@@ -43,6 +43,14 @@
 
 meb:Submission
   rdf:type vdds:Class ;
+  vdds:partialHealingTrigger """
+    ${subject}
+      dct:modified ?modified .
+
+    BIND ((NOW() - (86400 * 10)) AS ?thresholdDate)
+    BIND (STRDT(?modified, xsd:dateTime) AS ?modifiedDate)
+    FILTER (?modifiedDate > ?thresholdDate)
+  """;
   vdds:graphQuery """
     SELECT DISTINCT ?organisationUuid ?vendorUuid
     WHERE {

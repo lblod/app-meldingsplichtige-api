@@ -314,7 +314,7 @@ services:
     restart: always
     logging: *default-logging
   vendor-data-distribution:
-    image: lblod/vendor-data-distribution-service:2.5.0
+    image: lblod/vendor-data-distribution-service:2.6.0
     environment:
       LOGLEVEL: "error"
       WRITE_ERRORS: "true"
@@ -332,7 +332,7 @@ services:
     restart: always
     logging: *default-logging
   vendor-data-distribution-erediensten:
-    image: lblod/vendor-data-distribution-service:2.4.0
+    image: lblod/vendor-data-distribution-service:2.6.0
     environment:
       LOGLEVEL: "error"
       WRITE_ERRORS: "true"
